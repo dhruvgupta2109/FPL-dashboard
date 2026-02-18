@@ -1,0 +1,128 @@
+/* Background */
+.stApp {
+    background: linear-gradient(135deg, #37003c, #2b1e5b, #00ff87);
+    min-height: 100vh;
+}
+
+/* Remove Streamlit default padding, add our own */
+.stMainBlockContainer {
+    padding-top: 2.5rem !important;
+    max-width: 860px !important;
+}
+
+/* Header */
+.header-container { text-align: center; color: white; margin-bottom: 16px; }
+.gw-label { font-size: 20px; opacity: 0.9; }
+.total-points { font-size: 85px; font-weight: 900; color: #00ff87; line-height: 1; margin-bottom: 10px; }
+
+/* The Large Container */
+.big-glassbox {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+/* Pitch */
+.pitch {
+    background: linear-gradient(to bottom, #2ecc71 50%, #27ae60 50%);
+    background-size: 100% 60px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border: 3px solid rgba(255,255,255,0.2);
+}
+
+/* Each row of players on pitch */
+.pitch-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Bench */
+.bench-label {
+    color: rgba(255,255,255,0.6);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.bench {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+    padding: 15px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 15px;
+}
+
+/* Player cards */
+.player-card {
+    text-align: center;
+    width: 85px;
+    margin: 5px;
+}
+
+.jersey { font-size: 45px; line-height: 1; }
+
+.player-name {
+    background: #37003c;
+    color: white;
+    font-size: 11px;
+    padding: 2px 4px;
+    border-radius: 3px;
+    margin-top: -2px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.player-pts {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    width: fit-content;
+    padding: 2px 8px;
+    margin: 4px auto 0;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.sub { width: 70px; opacity: 0.85; }
+.sub .jersey { font-size: 35px; }
+
+/* Back button */
+div[data-testid="stButton"] {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 1.5rem !important;
+}
+
+div[data-testid="stButton"] > button {
+    background: rgba(255,255,255,0.12) !important;
+    color: white !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    border-radius: 12px !important;
+    padding: 10px 32px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    transition: background 0.2s ease !important;
+}
+
+div[data-testid="stButton"] > button:hover {
+    background: rgba(255,255,255,0.22) !important;
+    color: white !important;
+}

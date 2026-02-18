@@ -1,0 +1,8032 @@
+[
+  {
+    "name": "Nordi Mukiele",
+    "team": "Sunderland",
+    "price": 4.5,
+    "total_points": 102,
+    "ppg": 4.88,
+    "value": 22.67,
+    "form": 5.3,
+    "element_type": 2
+  },
+  {
+    "name": "Marc Gu\u00e9hi",
+    "team": "Man City",
+    "price": 5.2,
+    "total_points": 111,
+    "ppg": 5.29,
+    "value": 21.35,
+    "form": 3.0,
+    "element_type": 2
+  },
+  {
+    "name": "Micky van de Ven",
+    "team": "Spurs",
+    "price": 4.6,
+    "total_points": 96,
+    "ppg": 4.39,
+    "value": 20.87,
+    "form": 5.2,
+    "element_type": 2
+  },
+  {
+    "name": "Michael Keane",
+    "team": "Everton",
+    "price": 4.7,
+    "total_points": 96,
+    "ppg": 5.16,
+    "value": 20.43,
+    "form": 2.5,
+    "element_type": 2
+  },
+  {
+    "name": "Trevoh Chalobah",
+    "team": "Chelsea",
+    "price": 5.6,
+    "total_points": 114,
+    "ppg": 5.34,
+    "value": 20.36,
+    "form": 3.3,
+    "element_type": 2
+  },
+  {
+    "name": "Matty Cash",
+    "team": "Aston Villa",
+    "price": 4.8,
+    "total_points": 95,
+    "ppg": 4.38,
+    "value": 19.79,
+    "form": 3.3,
+    "element_type": 2
+  },
+  {
+    "name": "Maxence Lacroix",
+    "team": "Crystal Palace",
+    "price": 5.1,
+    "total_points": 100,
+    "ppg": 4.35,
+    "value": 19.61,
+    "form": 3.0,
+    "element_type": 2
+  },
+  {
+    "name": "Robin Roefs",
+    "team": "Sunderland",
+    "price": 5.0,
+    "total_points": 98,
+    "ppg": 4.26,
+    "value": 19.6,
+    "form": 3.0,
+    "element_type": 1
+  },
+  {
+    "name": "Marcos Senesi Bar\u00f3n",
+    "team": "Bournemouth",
+    "price": 4.8,
+    "total_points": 94,
+    "ppg": 4.37,
+    "value": 19.58,
+    "form": 3.0,
+    "element_type": 2
+  },
+  {
+    "name": "Matheus Nunes",
+    "team": "Man City",
+    "price": 5.4,
+    "total_points": 105,
+    "ppg": 5.68,
+    "value": 19.44,
+    "form": 4.8,
+    "element_type": 2
+  },
+  {
+    "name": "Omar Alderete",
+    "team": "Sunderland",
+    "price": 4.1,
+    "total_points": 79,
+    "ppg": 4.31,
+    "value": 19.27,
+    "form": 2.7,
+    "element_type": 2
+  },
+  {
+    "name": "Chris Richards",
+    "team": "Crystal Palace",
+    "price": 4.4,
+    "total_points": 84,
+    "ppg": 4.44,
+    "value": 19.09,
+    "form": 1.5,
+    "element_type": 2
+  },
+  {
+    "name": "James Garner",
+    "team": "Everton",
+    "price": 5.2,
+    "total_points": 99,
+    "ppg": 4.52,
+    "value": 19.04,
+    "form": 5.8,
+    "element_type": 3
+  },
+  {
+    "name": "Harry Wilson",
+    "team": "Fulham",
+    "price": 6.0,
+    "total_points": 114,
+    "ppg": 6.13,
+    "value": 19.0,
+    "form": 5.7,
+    "element_type": 3
+  },
+  {
+    "name": "Jan Paul van Hecke",
+    "team": "Brighton",
+    "price": 4.5,
+    "total_points": 85,
+    "ppg": 3.86,
+    "value": 18.89,
+    "form": 3.2,
+    "element_type": 2
+  },
+  {
+    "name": "Joachim Andersen",
+    "team": "Fulham",
+    "price": 4.6,
+    "total_points": 86,
+    "ppg": 4.01,
+    "value": 18.7,
+    "form": 3.8,
+    "element_type": 2
+  },
+  {
+    "name": "James Tarkowski",
+    "team": "Everton",
+    "price": 5.8,
+    "total_points": 108,
+    "ppg": 4.91,
+    "value": 18.62,
+    "form": 5.2,
+    "element_type": 2
+  },
+  {
+    "name": "Cristian Romero",
+    "team": "Spurs",
+    "price": 5.0,
+    "total_points": 92,
+    "ppg": 5.06,
+    "value": 18.4,
+    "form": 5.5,
+    "element_type": 2
+  },
+  {
+    "name": "Elliot Anderson",
+    "team": "Nott'm Forest",
+    "price": 5.3,
+    "total_points": 97,
+    "ppg": 4.22,
+    "value": 18.3,
+    "form": 4.7,
+    "element_type": 3
+  },
+  {
+    "name": "Martin D\u00fabravka",
+    "team": "Burnley",
+    "price": 4.0,
+    "total_points": 73,
+    "ppg": 3.17,
+    "value": 18.25,
+    "form": 4.5,
+    "element_type": 1
+  },
+  {
+    "name": "Nathan Collins",
+    "team": "Brentford",
+    "price": 5.0,
+    "total_points": 91,
+    "ppg": 4.1,
+    "value": 18.2,
+    "form": 6.3,
+    "element_type": 2
+  },
+  {
+    "name": "Caoimh\u00edn Kelleher",
+    "team": "Brentford",
+    "price": 4.6,
+    "total_points": 83,
+    "ppg": 3.61,
+    "value": 18.04,
+    "form": 4.5,
+    "element_type": 1
+  },
+  {
+    "name": "Daniel Ballard",
+    "team": "Sunderland",
+    "price": 4.6,
+    "total_points": 83,
+    "ppg": 5.33,
+    "value": 18.04,
+    "form": 1.3,
+    "element_type": 2
+  },
+  {
+    "name": "Robert Lynch S\u00e1nchez",
+    "team": "Chelsea",
+    "price": 4.9,
+    "total_points": 88,
+    "ppg": 4.18,
+    "value": 17.96,
+    "form": 3.5,
+    "element_type": 1
+  },
+  {
+    "name": "Jordan Pickford",
+    "team": "Everton",
+    "price": 5.6,
+    "total_points": 100,
+    "ppg": 4.55,
+    "value": 17.86,
+    "form": 5.0,
+    "element_type": 1
+  },
+  {
+    "name": "Anton Stach",
+    "team": "Leeds",
+    "price": 4.9,
+    "total_points": 87,
+    "ppg": 5.12,
+    "value": 17.76,
+    "form": 2.5,
+    "element_type": 3
+  },
+  {
+    "name": "Gabriel dos Santos Magalh\u00e3es",
+    "team": "Arsenal",
+    "price": 6.9,
+    "total_points": 121,
+    "ppg": 7.54,
+    "value": 17.54,
+    "form": 6.7,
+    "element_type": 2
+  },
+  {
+    "name": "Jurri\u00ebn Timber",
+    "team": "Arsenal",
+    "price": 6.3,
+    "total_points": 110,
+    "ppg": 5.44,
+    "value": 17.46,
+    "form": 4.0,
+    "element_type": 2
+  },
+  {
+    "name": "Granit Xhaka",
+    "team": "Sunderland",
+    "price": 5.2,
+    "total_points": 90,
+    "ppg": 4.13,
+    "value": 17.31,
+    "form": 3.2,
+    "element_type": 3
+  },
+  {
+    "name": "Igor Thiago Nascimento Rodrigues",
+    "team": "Brentford",
+    "price": 7.2,
+    "total_points": 124,
+    "ppg": 5.78,
+    "value": 17.22,
+    "form": 6.7,
+    "element_type": 4
+  },
+  {
+    "name": "Marcus Tavernier",
+    "team": "Bournemouth",
+    "price": 5.5,
+    "total_points": 94,
+    "ppg": 4.8,
+    "value": 17.09,
+    "form": 3.2,
+    "element_type": 3
+  },
+  {
+    "name": "Declan Rice",
+    "team": "Arsenal",
+    "price": 7.4,
+    "total_points": 126,
+    "ppg": 6.05,
+    "value": 17.03,
+    "form": 4.8,
+    "element_type": 3
+  },
+  {
+    "name": "Ryan Gravenberch",
+    "team": "Liverpool",
+    "price": 5.7,
+    "total_points": 97,
+    "ppg": 4.72,
+    "value": 17.02,
+    "form": 4.0,
+    "element_type": 3
+  },
+  {
+    "name": "Tyrick Mitchell",
+    "team": "Crystal Palace",
+    "price": 5.0,
+    "total_points": 85,
+    "ppg": 3.75,
+    "value": 17.0,
+    "form": 2.3,
+    "element_type": 2
+  },
+  {
+    "name": "R\u00faben dos Santos Gato Alves Dias",
+    "team": "Man City",
+    "price": 5.6,
+    "total_points": 95,
+    "ppg": 5.01,
+    "value": 16.96,
+    "form": 2.3,
+    "element_type": 2
+  },
+  {
+    "name": "Reece James",
+    "team": "Chelsea",
+    "price": 5.7,
+    "total_points": 96,
+    "ppg": 5.67,
+    "value": 16.84,
+    "form": 3.7,
+    "element_type": 2
+  },
+  {
+    "name": "Patrick Dorgu",
+    "team": "Man Utd",
+    "price": 4.4,
+    "total_points": 74,
+    "ppg": 5.01,
+    "value": 16.82,
+    "form": 6.2,
+    "element_type": 2
+  },
+  {
+    "name": "Carlos Henrique Casimiro",
+    "team": "Man Utd",
+    "price": 5.5,
+    "total_points": 92,
+    "ppg": 5.62,
+    "value": 16.73,
+    "form": 4.4,
+    "element_type": 3
+  },
+  {
+    "name": "Antoine Semenyo",
+    "team": "Man City",
+    "price": 7.8,
+    "total_points": 130,
+    "ppg": 5.91,
+    "value": 16.67,
+    "form": 5.2,
+    "element_type": 3
+  },
+  {
+    "name": "Malick Thiaw",
+    "team": "Newcastle",
+    "price": 5.1,
+    "total_points": 85,
+    "ppg": 4.59,
+    "value": 16.67,
+    "form": 6.0,
+    "element_type": 2
+  },
+  {
+    "name": "Enzo Le F\u00e9e",
+    "team": "Sunderland",
+    "price": 4.9,
+    "total_points": 81,
+    "ppg": 4.15,
+    "value": 16.53,
+    "form": 3.5,
+    "element_type": 3
+  },
+  {
+    "name": "Nico O'Reilly",
+    "team": "Man City",
+    "price": 5.1,
+    "total_points": 84,
+    "ppg": 4.69,
+    "value": 16.47,
+    "form": 1.7,
+    "element_type": 2
+  },
+  {
+    "name": "Adrien Truffert",
+    "team": "Bournemouth",
+    "price": 4.5,
+    "total_points": 74,
+    "ppg": 3.28,
+    "value": 16.44,
+    "form": 2.2,
+    "element_type": 2
+  },
+  {
+    "name": "Bruno Guimar\u00e3es Rodriguez Moura",
+    "team": "Newcastle",
+    "price": 7.3,
+    "total_points": 120,
+    "ppg": 5.87,
+    "value": 16.44,
+    "form": 6.8,
+    "element_type": 3
+  },
+  {
+    "name": "Joe Rodon",
+    "team": "Leeds",
+    "price": 3.9,
+    "total_points": 64,
+    "ppg": 3.31,
+    "value": 16.41,
+    "form": 1.3,
+    "element_type": 2
+  },
+  {
+    "name": "Dean Henderson",
+    "team": "Crystal Palace",
+    "price": 5.0,
+    "total_points": 82,
+    "ppg": 3.57,
+    "value": 16.4,
+    "form": 3.0,
+    "element_type": 1
+  },
+  {
+    "name": "Brenden Aaronson",
+    "team": "Leeds",
+    "price": 5.4,
+    "total_points": 87,
+    "ppg": 5.88,
+    "value": 16.11,
+    "form": 5.3,
+    "element_type": 3
+  },
+  {
+    "name": "Yasin Ayari",
+    "team": "Brighton",
+    "price": 4.8,
+    "total_points": 77,
+    "ppg": 4.31,
+    "value": 16.04,
+    "form": 6.2,
+    "element_type": 3
+  },
+  {
+    "name": "Guglielmo Vicario",
+    "team": "Spurs",
+    "price": 4.8,
+    "total_points": 77,
+    "ppg": 3.35,
+    "value": 16.04,
+    "form": 2.8,
+    "element_type": 1
+  },
+  {
+    "name": "Ezri Konsa Ngoyo",
+    "team": "Aston Villa",
+    "price": 4.4,
+    "total_points": 70,
+    "ppg": 3.22,
+    "value": 15.91,
+    "form": 3.5,
+    "element_type": 2
+  },
+  {
+    "name": "Enzo Fern\u00e1ndez",
+    "team": "Chelsea",
+    "price": 6.7,
+    "total_points": 106,
+    "ppg": 5.09,
+    "value": 15.82,
+    "form": 6.0,
+    "element_type": 3
+  },
+  {
+    "name": "Bart Verbruggen",
+    "team": "Brighton",
+    "price": 4.5,
+    "total_points": 71,
+    "ppg": 3.09,
+    "value": 15.78,
+    "form": 2.5,
+    "element_type": 1
+  },
+  {
+    "name": "Diogo Dalot Teixeira",
+    "team": "Man Utd",
+    "price": 4.5,
+    "total_points": 71,
+    "ppg": 4.03,
+    "value": 15.78,
+    "form": 2.2,
+    "element_type": 2
+  },
+  {
+    "name": "Tijjani Reijnders",
+    "team": "Man City",
+    "price": 5.2,
+    "total_points": 82,
+    "ppg": 5.26,
+    "value": 15.77,
+    "form": 4.2,
+    "element_type": 3
+  },
+  {
+    "name": "David Raya Mart\u00edn",
+    "team": "Arsenal",
+    "price": 5.9,
+    "total_points": 93,
+    "ppg": 4.04,
+    "value": 15.76,
+    "form": 3.0,
+    "element_type": 1
+  },
+  {
+    "name": "Mart\u00edn Zubimendi Ib\u00e1\u00f1ez",
+    "team": "Arsenal",
+    "price": 5.2,
+    "total_points": 81,
+    "ppg": 3.83,
+    "value": 15.58,
+    "form": 3.7,
+    "element_type": 3
+  },
+  {
+    "name": "Neco Williams",
+    "team": "Nott'm Forest",
+    "price": 4.7,
+    "total_points": 73,
+    "ppg": 3.17,
+    "value": 15.53,
+    "form": 3.5,
+    "element_type": 2
+  },
+  {
+    "name": "Daniel Mu\u00f1oz Mej\u00eda",
+    "team": "Crystal Palace",
+    "price": 5.8,
+    "total_points": 90,
+    "ppg": 6.07,
+    "value": 15.52,
+    "form": 0.2,
+    "element_type": 2
+  },
+  {
+    "name": "Jake O'Brien",
+    "team": "Everton",
+    "price": 4.9,
+    "total_points": 76,
+    "ppg": 3.7,
+    "value": 15.51,
+    "form": 4.2,
+    "element_type": 2
+  },
+  {
+    "name": "Kiernan Dewsbury-Hall",
+    "team": "Everton",
+    "price": 4.9,
+    "total_points": 75,
+    "ppg": 5.37,
+    "value": 15.31,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Virgil van Dijk",
+    "team": "Liverpool",
+    "price": 5.9,
+    "total_points": 90,
+    "ppg": 3.91,
+    "value": 15.25,
+    "form": 4.3,
+    "element_type": 2
+  },
+  {
+    "name": "Emiliano Mart\u00ednez Romero",
+    "team": "Aston Villa",
+    "price": 5.0,
+    "total_points": 76,
+    "ppg": 4.11,
+    "value": 15.2,
+    "form": 3.2,
+    "element_type": 1
+  },
+  {
+    "name": "Pedro Porro Sauceda",
+    "team": "Spurs",
+    "price": 5.2,
+    "total_points": 79,
+    "ppg": 3.91,
+    "value": 15.19,
+    "form": 4.2,
+    "element_type": 2
+  },
+  {
+    "name": "Dominic Calvert-Lewin",
+    "team": "Leeds",
+    "price": 6.0,
+    "total_points": 91,
+    "ppg": 5.85,
+    "value": 15.17,
+    "form": 3.5,
+    "element_type": 4
+  },
+  {
+    "name": "Lucas Digne",
+    "team": "Aston Villa",
+    "price": 4.5,
+    "total_points": 68,
+    "ppg": 5.0,
+    "value": 15.11,
+    "form": 2.5,
+    "element_type": 2
+  },
+  {
+    "name": "Malo Gusto",
+    "team": "Chelsea",
+    "price": 4.9,
+    "total_points": 74,
+    "ppg": 5.41,
+    "value": 15.1,
+    "form": 1.2,
+    "element_type": 2
+  },
+  {
+    "name": "Ibrahima Konat\u00e9",
+    "team": "Liverpool",
+    "price": 5.4,
+    "total_points": 81,
+    "ppg": 3.89,
+    "value": 15.0,
+    "form": 3.2,
+    "element_type": 2
+  },
+  {
+    "name": "Pascal Struijk",
+    "team": "Leeds",
+    "price": 4.3,
+    "total_points": 64,
+    "ppg": 3.35,
+    "value": 14.88,
+    "form": 4.3,
+    "element_type": 2
+  },
+  {
+    "name": "Trai Hume",
+    "team": "Sunderland",
+    "price": 4.5,
+    "total_points": 66,
+    "ppg": 3.17,
+    "value": 14.67,
+    "form": 1.7,
+    "element_type": 2
+  },
+  {
+    "name": "Mateus Gon\u00e7alo Espanha Fernandes",
+    "team": "West Ham",
+    "price": 5.5,
+    "total_points": 80,
+    "ppg": 4.3,
+    "value": 14.55,
+    "form": 4.3,
+    "element_type": 3
+  },
+  {
+    "name": "Nick Pope",
+    "team": "Newcastle",
+    "price": 5.1,
+    "total_points": 74,
+    "ppg": 4.39,
+    "value": 14.51,
+    "form": 3.8,
+    "element_type": 1
+  },
+  {
+    "name": "Gabriel Gudmundsson",
+    "team": "Leeds",
+    "price": 3.8,
+    "total_points": 55,
+    "ppg": 2.7,
+    "value": 14.47,
+    "form": 3.0,
+    "element_type": 2
+  },
+  {
+    "name": "Michael Kayode",
+    "team": "Brentford",
+    "price": 4.5,
+    "total_points": 65,
+    "ppg": 2.93,
+    "value": 14.44,
+    "form": 2.8,
+    "element_type": 2
+  },
+  {
+    "name": "Jo\u00e3o Pedro Junqueira de Jesus",
+    "team": "Chelsea",
+    "price": 7.2,
+    "total_points": 104,
+    "ppg": 5.58,
+    "value": 14.44,
+    "form": 5.3,
+    "element_type": 4
+  },
+  {
+    "name": "Kenny Tete",
+    "team": "Fulham",
+    "price": 4.5,
+    "total_points": 65,
+    "ppg": 4.35,
+    "value": 14.44,
+    "form": 1.2,
+    "element_type": 2
+  },
+  {
+    "name": "Morgan Rogers",
+    "team": "Aston Villa",
+    "price": 7.7,
+    "total_points": 111,
+    "ppg": 4.88,
+    "value": 14.42,
+    "form": 3.3,
+    "element_type": 3
+  },
+  {
+    "name": "Jaidon Anthony",
+    "team": "Burnley",
+    "price": 5.1,
+    "total_points": 73,
+    "ppg": 4.59,
+    "value": 14.31,
+    "form": 2.2,
+    "element_type": 3
+  },
+  {
+    "name": "Bernd Leno",
+    "team": "Fulham",
+    "price": 4.9,
+    "total_points": 70,
+    "ppg": 3.04,
+    "value": 14.29,
+    "form": 3.0,
+    "element_type": 1
+  },
+  {
+    "name": "Alex Scott",
+    "team": "Bournemouth",
+    "price": 5.0,
+    "total_points": 71,
+    "ppg": 4.02,
+    "value": 14.2,
+    "form": 3.7,
+    "element_type": 3
+  },
+  {
+    "name": "Jo\u00e3o Maria Lobo Alves Palhares Costa Palhinha Gon\u00e7alves",
+    "team": "Spurs",
+    "price": 5.5,
+    "total_points": 78,
+    "ppg": 5.4,
+    "value": 14.18,
+    "form": 2.0,
+    "element_type": 3
+  },
+  {
+    "name": "Josh Cullen",
+    "team": "Burnley",
+    "price": 5.0,
+    "total_points": 70,
+    "ppg": 4.16,
+    "value": 14.0,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Yehor Yarmoliuk",
+    "team": "Brentford",
+    "price": 5.0,
+    "total_points": 70,
+    "ppg": 3.63,
+    "value": 14.0,
+    "form": 4.3,
+    "element_type": 3
+  },
+  {
+    "name": "Yankuba Minteh",
+    "team": "Brighton",
+    "price": 5.8,
+    "total_points": 81,
+    "ppg": 4.63,
+    "value": 13.97,
+    "form": 1.2,
+    "element_type": 3
+  },
+  {
+    "name": "Ethan Ampadu",
+    "team": "Leeds",
+    "price": 4.9,
+    "total_points": 68,
+    "ppg": 3.65,
+    "value": 13.88,
+    "form": 3.0,
+    "element_type": 3
+  },
+  {
+    "name": "Gianluigi Donnarumma",
+    "team": "Man City",
+    "price": 5.7,
+    "total_points": 79,
+    "ppg": 3.95,
+    "value": 13.86,
+    "form": 3.7,
+    "element_type": 1
+  },
+  {
+    "name": "Jarrod Bowen",
+    "team": "West Ham",
+    "price": 7.6,
+    "total_points": 105,
+    "ppg": 4.57,
+    "value": 13.82,
+    "form": 5.0,
+    "element_type": 4
+  },
+  {
+    "name": "Riccardo Calafiori",
+    "team": "Arsenal",
+    "price": 5.6,
+    "total_points": 77,
+    "ppg": 5.52,
+    "value": 13.75,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Keane Lewis-Potter",
+    "team": "Brentford",
+    "price": 4.9,
+    "total_points": 67,
+    "ppg": 6.55,
+    "value": 13.67,
+    "form": 2.7,
+    "element_type": 2
+  },
+  {
+    "name": "Ferdi Kad\u0131o\u011flu",
+    "team": "Brighton",
+    "price": 4.4,
+    "total_points": 59,
+    "ppg": 2.98,
+    "value": 13.41,
+    "form": 3.2,
+    "element_type": 2
+  },
+  {
+    "name": "Emiliano Buend\u00eda Stati",
+    "team": "Aston Villa",
+    "price": 5.3,
+    "total_points": 71,
+    "ppg": 6.83,
+    "value": 13.4,
+    "form": 3.5,
+    "element_type": 3
+  },
+  {
+    "name": "Lesley Ugochukwu",
+    "team": "Burnley",
+    "price": 5.0,
+    "total_points": 67,
+    "ppg": 4.14,
+    "value": 13.4,
+    "form": 3.0,
+    "element_type": 3
+  },
+  {
+    "name": "Dan Burn",
+    "team": "Newcastle",
+    "price": 5.0,
+    "total_points": 67,
+    "ppg": 4.8,
+    "value": 13.4,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "\u0110or\u0111e Petrovi\u0107",
+    "team": "Bournemouth",
+    "price": 4.5,
+    "total_points": 60,
+    "ppg": 2.61,
+    "value": 13.33,
+    "form": 0.8,
+    "element_type": 1
+  },
+  {
+    "name": "Mois\u00e9s Caicedo Corozo",
+    "team": "Chelsea",
+    "price": 5.7,
+    "total_points": 76,
+    "ppg": 4.55,
+    "value": 13.33,
+    "form": 2.5,
+    "element_type": 3
+  },
+  {
+    "name": "Pedro Lomba Neto",
+    "team": "Chelsea",
+    "price": 7.1,
+    "total_points": 94,
+    "ppg": 4.69,
+    "value": 13.24,
+    "form": 2.7,
+    "element_type": 3
+  },
+  {
+    "name": "Adam Wharton",
+    "team": "Crystal Palace",
+    "price": 5.0,
+    "total_points": 66,
+    "ppg": 3.44,
+    "value": 13.2,
+    "form": 1.8,
+    "element_type": 3
+  },
+  {
+    "name": "John McGinn",
+    "team": "Aston Villa",
+    "price": 5.4,
+    "total_points": 71,
+    "ppg": 4.02,
+    "value": 13.15,
+    "form": 3.5,
+    "element_type": 3
+  },
+  {
+    "name": "Jo\u0161ko Gvardiol",
+    "team": "Man City",
+    "price": 5.9,
+    "total_points": 77,
+    "ppg": 5.33,
+    "value": 13.05,
+    "form": 1.7,
+    "element_type": 2
+  },
+  {
+    "name": "Matz Sels",
+    "team": "Nott'm Forest",
+    "price": 4.6,
+    "total_points": 60,
+    "ppg": 3.31,
+    "value": 13.04,
+    "form": 3.3,
+    "element_type": 1
+  },
+  {
+    "name": "Marc Cucurella Saseta",
+    "team": "Chelsea",
+    "price": 6.0,
+    "total_points": 78,
+    "ppg": 4.12,
+    "value": 13.0,
+    "form": 1.3,
+    "element_type": 2
+  },
+  {
+    "name": "Nikola Milenkovi\u0107",
+    "team": "Nott'm Forest",
+    "price": 5.1,
+    "total_points": 66,
+    "ppg": 2.87,
+    "value": 12.94,
+    "form": 3.8,
+    "element_type": 2
+  },
+  {
+    "name": "Lewis Miley",
+    "team": "Newcastle",
+    "price": 4.5,
+    "total_points": 58,
+    "ppg": 4.61,
+    "value": 12.89,
+    "form": 3.6,
+    "element_type": 3
+  },
+  {
+    "name": "Bruno Borges Fernandes",
+    "team": "Man Utd",
+    "price": 9.4,
+    "total_points": 121,
+    "ppg": 6.35,
+    "value": 12.87,
+    "form": 4.4,
+    "element_type": 3
+  },
+  {
+    "name": "Maxime Est\u00e8ve",
+    "team": "Burnley",
+    "price": 3.9,
+    "total_points": 50,
+    "ppg": 2.65,
+    "value": 12.82,
+    "form": 1.3,
+    "element_type": 2
+  },
+  {
+    "name": "Djed Spence",
+    "team": "Spurs",
+    "price": 4.3,
+    "total_points": 55,
+    "ppg": 3.29,
+    "value": 12.79,
+    "form": 2.8,
+    "element_type": 2
+  },
+  {
+    "name": "Dominik Szoboszlai",
+    "team": "Liverpool",
+    "price": 6.6,
+    "total_points": 84,
+    "ppg": 3.83,
+    "value": 12.73,
+    "form": 3.5,
+    "element_type": 3
+  },
+  {
+    "name": "Vitalii Mykolenko",
+    "team": "Everton",
+    "price": 4.9,
+    "total_points": 62,
+    "ppg": 3.27,
+    "value": 12.65,
+    "form": 3.7,
+    "element_type": 2
+  },
+  {
+    "name": "Calvin Bassey",
+    "team": "Fulham",
+    "price": 4.4,
+    "total_points": 55,
+    "ppg": 3.65,
+    "value": 12.5,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Boubacar Kamara",
+    "team": "Aston Villa",
+    "price": 4.9,
+    "total_points": 61,
+    "ppg": 3.89,
+    "value": 12.45,
+    "form": 1.3,
+    "element_type": 3
+  },
+  {
+    "name": "Junior Kroupi",
+    "team": "Bournemouth",
+    "price": 4.6,
+    "total_points": 57,
+    "ppg": 7.28,
+    "value": 12.39,
+    "form": 2.7,
+    "element_type": 4
+  },
+  {
+    "name": "Jack Grealish",
+    "team": "Everton",
+    "price": 6.4,
+    "total_points": 79,
+    "ppg": 4.37,
+    "value": 12.34,
+    "form": 2.2,
+    "element_type": 3
+  },
+  {
+    "name": "Morgan Gibbs-White",
+    "team": "Nott'm Forest",
+    "price": 7.3,
+    "total_points": 90,
+    "ppg": 4.13,
+    "value": 12.33,
+    "form": 5.0,
+    "element_type": 3
+  },
+  {
+    "name": "Kevin Schade",
+    "team": "Brentford",
+    "price": 7.2,
+    "total_points": 88,
+    "ppg": 4.36,
+    "value": 12.22,
+    "form": 6.3,
+    "element_type": 3
+  },
+  {
+    "name": "Leandro Trossard",
+    "team": "Arsenal",
+    "price": 6.8,
+    "total_points": 83,
+    "ppg": 5.99,
+    "value": 12.21,
+    "form": 3.5,
+    "element_type": 3
+  },
+  {
+    "name": "Florentino Ibrain Morris Lu\u00eds",
+    "team": "Burnley",
+    "price": 5.0,
+    "total_points": 61,
+    "ppg": 3.73,
+    "value": 12.2,
+    "form": 3.3,
+    "element_type": 3
+  },
+  {
+    "name": "Rodrigo Bentancur",
+    "team": "Spurs",
+    "price": 5.3,
+    "total_points": 64,
+    "ppg": 4.09,
+    "value": 12.08,
+    "form": 2.5,
+    "element_type": 3
+  },
+  {
+    "name": "Alisson Becker",
+    "team": "Liverpool",
+    "price": 5.4,
+    "total_points": 65,
+    "ppg": 3.61,
+    "value": 12.04,
+    "form": 3.8,
+    "element_type": 1
+  },
+  {
+    "name": "Mikel Merino Zaz\u00f3n",
+    "team": "Arsenal",
+    "price": 5.5,
+    "total_points": 66,
+    "ppg": 5.96,
+    "value": 12.0,
+    "form": 2.2,
+    "element_type": 3
+  },
+  {
+    "name": "Phil Foden",
+    "team": "Man City",
+    "price": 8.5,
+    "total_points": 102,
+    "ppg": 5.59,
+    "value": 12.0,
+    "form": 1.8,
+    "element_type": 3
+  },
+  {
+    "name": "Rayan Cherki",
+    "team": "Man City",
+    "price": 6.7,
+    "total_points": 80,
+    "ppg": 7.57,
+    "value": 11.94,
+    "form": 4.5,
+    "element_type": 3
+  },
+  {
+    "name": "Murillo Costa dos Santos",
+    "team": "Nott'm Forest",
+    "price": 5.2,
+    "total_points": 62,
+    "ppg": 3.82,
+    "value": 11.92,
+    "form": 4.2,
+    "element_type": 2
+  },
+  {
+    "name": "Mats Wieffer",
+    "team": "Brighton",
+    "price": 4.9,
+    "total_points": 58,
+    "ppg": 4.43,
+    "value": 11.84,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Jordan Henderson",
+    "team": "Brentford",
+    "price": 5.0,
+    "total_points": 59,
+    "ppg": 3.91,
+    "value": 11.8,
+    "form": 1.0,
+    "element_type": 3
+  },
+  {
+    "name": "Sepp van den Berg",
+    "team": "Brentford",
+    "price": 4.5,
+    "total_points": 53,
+    "ppg": 3.01,
+    "value": 11.78,
+    "form": 0.2,
+    "element_type": 2
+  },
+  {
+    "name": "Lewis Dunk",
+    "team": "Brighton",
+    "price": 4.5,
+    "total_points": 53,
+    "ppg": 2.47,
+    "value": 11.78,
+    "form": 2.7,
+    "element_type": 2
+  },
+  {
+    "name": "Luke Shaw",
+    "team": "Man Utd",
+    "price": 4.5,
+    "total_points": 53,
+    "ppg": 2.39,
+    "value": 11.78,
+    "form": 2.2,
+    "element_type": 2
+  },
+  {
+    "name": "Iliman Ndiaye",
+    "team": "Everton",
+    "price": 6.2,
+    "total_points": 73,
+    "ppg": 4.89,
+    "value": 11.77,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Mohammed Kudus",
+    "team": "Spurs",
+    "price": 6.4,
+    "total_points": 75,
+    "ppg": 4.4,
+    "value": 11.72,
+    "form": 1.2,
+    "element_type": 3
+  },
+  {
+    "name": "Richarlison de Andrade",
+    "team": "Spurs",
+    "price": 6.4,
+    "total_points": 75,
+    "ppg": 5.29,
+    "value": 11.72,
+    "form": 1.7,
+    "element_type": 4
+  },
+  {
+    "name": "Lucas Tolentino Coelho de Lima",
+    "team": "West Ham",
+    "price": 5.9,
+    "total_points": 69,
+    "ppg": 4.1,
+    "value": 11.69,
+    "form": 3.0,
+    "element_type": 3
+  },
+  {
+    "name": "William Saliba",
+    "team": "Arsenal",
+    "price": 6.0,
+    "total_points": 70,
+    "ppg": 4.11,
+    "value": 11.67,
+    "form": 3.5,
+    "element_type": 2
+  },
+  {
+    "name": "Maxim De Cuyper",
+    "team": "Brighton",
+    "price": 4.3,
+    "total_points": 50,
+    "ppg": 4.61,
+    "value": 11.63,
+    "form": 0.7,
+    "element_type": 2
+  },
+  {
+    "name": "Sander Berge",
+    "team": "Fulham",
+    "price": 4.9,
+    "total_points": 57,
+    "ppg": 2.7,
+    "value": 11.63,
+    "form": 3.2,
+    "element_type": 3
+  },
+  {
+    "name": "Hugo Bueno L\u00f3pez",
+    "team": "Wolves",
+    "price": 4.3,
+    "total_points": 50,
+    "ppg": 3.36,
+    "value": 11.63,
+    "form": 4.3,
+    "element_type": 2
+  },
+  {
+    "name": "Jayden Bogle",
+    "team": "Leeds",
+    "price": 4.4,
+    "total_points": 51,
+    "ppg": 2.77,
+    "value": 11.59,
+    "form": 1.5,
+    "element_type": 2
+  },
+  {
+    "name": "Quilindschy Hartman",
+    "team": "Burnley",
+    "price": 4.0,
+    "total_points": 46,
+    "ppg": 3.1,
+    "value": 11.5,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Harvey Barnes",
+    "team": "Newcastle",
+    "price": 6.1,
+    "total_points": 70,
+    "ppg": 5.61,
+    "value": 11.48,
+    "form": 4.6,
+    "element_type": 3
+  },
+  {
+    "name": "Ra\u00fal Jim\u00e9nez Rodr\u00edguez",
+    "team": "Fulham",
+    "price": 6.2,
+    "total_points": 71,
+    "ppg": 4.3,
+    "value": 11.45,
+    "form": 4.2,
+    "element_type": 4
+  },
+  {
+    "name": "Diego G\u00f3mez Amarilla",
+    "team": "Brighton",
+    "price": 4.9,
+    "total_points": 56,
+    "ppg": 3.57,
+    "value": 11.43,
+    "form": 3.3,
+    "element_type": 3
+  },
+  {
+    "name": "Alphonse Areola",
+    "team": "West Ham",
+    "price": 4.3,
+    "total_points": 49,
+    "ppg": 2.58,
+    "value": 11.4,
+    "form": 2.3,
+    "element_type": 1
+  },
+  {
+    "name": "Dango Ouattara",
+    "team": "Brentford",
+    "price": 5.8,
+    "total_points": 66,
+    "ppg": 5.27,
+    "value": 11.38,
+    "form": 0.3,
+    "element_type": 3
+  },
+  {
+    "name": "Santiago Ignacio Bueno",
+    "team": "Wolves",
+    "price": 4.4,
+    "total_points": 50,
+    "ppg": 3.74,
+    "value": 11.36,
+    "form": 3.7,
+    "element_type": 2
+  },
+  {
+    "name": "Ryan Sessegnon",
+    "team": "Fulham",
+    "price": 5.4,
+    "total_points": 61,
+    "ppg": 4.51,
+    "value": 11.3,
+    "form": 0.8,
+    "element_type": 3
+  },
+  {
+    "name": "Hjalmar Ekdal",
+    "team": "Burnley",
+    "price": 3.9,
+    "total_points": 44,
+    "ppg": 3.36,
+    "value": 11.28,
+    "form": 2.3,
+    "element_type": 2
+  },
+  {
+    "name": "J\u00e9r\u00e9my Doku",
+    "team": "Man City",
+    "price": 6.4,
+    "total_points": 72,
+    "ppg": 5.5,
+    "value": 11.25,
+    "form": 2.2,
+    "element_type": 3
+  },
+  {
+    "name": "Nick Woltemade",
+    "team": "Newcastle",
+    "price": 7.2,
+    "total_points": 81,
+    "ppg": 5.39,
+    "value": 11.25,
+    "form": 2.0,
+    "element_type": 4
+  },
+  {
+    "name": "El Hadji Malick Diouf",
+    "team": "West Ham",
+    "price": 4.0,
+    "total_points": 45,
+    "ppg": 2.88,
+    "value": 11.25,
+    "form": 0.2,
+    "element_type": 2
+  },
+  {
+    "name": "Vitaly Janelt",
+    "team": "Brentford",
+    "price": 4.9,
+    "total_points": 55,
+    "ppg": 5.28,
+    "value": 11.22,
+    "form": 5.0,
+    "element_type": 3
+  },
+  {
+    "name": "Ibrahim Sangar\u00e9",
+    "team": "Nott'm Forest",
+    "price": 4.9,
+    "total_points": 55,
+    "ppg": 4.74,
+    "value": 11.22,
+    "form": 1.3,
+    "element_type": 3
+  },
+  {
+    "name": "Jean-Philippe Mateta",
+    "team": "Crystal Palace",
+    "price": 7.5,
+    "total_points": 84,
+    "ppg": 3.97,
+    "value": 11.2,
+    "form": 3.2,
+    "element_type": 4
+  },
+  {
+    "name": "Bryan Mbeumo",
+    "team": "Man Utd",
+    "price": 8.3,
+    "total_points": 93,
+    "ppg": 5.42,
+    "value": 11.2,
+    "form": 3.8,
+    "element_type": 3
+  },
+  {
+    "name": "Kyle Walker",
+    "team": "Burnley",
+    "price": 4.4,
+    "total_points": 49,
+    "ppg": 2.24,
+    "value": 11.14,
+    "form": 2.2,
+    "element_type": 2
+  },
+  {
+    "name": "Georginio Rutter",
+    "team": "Brighton",
+    "price": 5.6,
+    "total_points": 62,
+    "ppg": 4.1,
+    "value": 11.07,
+    "form": 2.2,
+    "element_type": 3
+  },
+  {
+    "name": "Jaka Bijol",
+    "team": "Leeds",
+    "price": 3.9,
+    "total_points": 43,
+    "ppg": 3.94,
+    "value": 11.03,
+    "form": 2.7,
+    "element_type": 2
+  },
+  {
+    "name": "Erling Haaland",
+    "team": "Man City",
+    "price": 15.1,
+    "total_points": 166,
+    "ppg": 7.79,
+    "value": 10.99,
+    "form": 2.5,
+    "element_type": 4
+  },
+  {
+    "name": "Danny Welbeck",
+    "team": "Brighton",
+    "price": 6.2,
+    "total_points": 68,
+    "ppg": 4.8,
+    "value": 10.97,
+    "form": 1.5,
+    "element_type": 4
+  },
+  {
+    "name": "Cody Gakpo",
+    "team": "Liverpool",
+    "price": 7.3,
+    "total_points": 80,
+    "ppg": 4.82,
+    "value": 10.96,
+    "form": 2.5,
+    "element_type": 3
+  },
+  {
+    "name": "Pau Torres",
+    "team": "Aston Villa",
+    "price": 4.3,
+    "total_points": 47,
+    "ppg": 3.79,
+    "value": 10.93,
+    "form": 1.3,
+    "element_type": 2
+  },
+  {
+    "name": "Kristoffer Ajer",
+    "team": "Brentford",
+    "price": 4.4,
+    "total_points": 48,
+    "ppg": 3.94,
+    "value": 10.91,
+    "form": 4.0,
+    "element_type": 2
+  },
+  {
+    "name": "Donyell Malen",
+    "team": "Aston Villa",
+    "price": 5.1,
+    "total_points": 55,
+    "ppg": 7.73,
+    "value": 10.78,
+    "form": 1.2,
+    "element_type": 3
+  },
+  {
+    "name": "Jo\u00e3o Victor Gomes da Silva",
+    "team": "Wolves",
+    "price": 5.3,
+    "total_points": 57,
+    "ppg": 2.92,
+    "value": 10.75,
+    "form": 3.2,
+    "element_type": 3
+  },
+  {
+    "name": "Bafod\u00e9 Diakit\u00e9",
+    "team": "Bournemouth",
+    "price": 4.2,
+    "total_points": 45,
+    "ppg": 3.18,
+    "value": 10.71,
+    "form": 0.3,
+    "element_type": 2
+  },
+  {
+    "name": "Mikkel Damsgaard",
+    "team": "Brentford",
+    "price": 5.7,
+    "total_points": 61,
+    "ppg": 4.32,
+    "value": 10.7,
+    "form": 2.3,
+    "element_type": 3
+  },
+  {
+    "name": "Amadou Onana",
+    "team": "Aston Villa",
+    "price": 4.8,
+    "total_points": 51,
+    "ppg": 4.71,
+    "value": 10.62,
+    "form": 1.2,
+    "element_type": 3
+  },
+  {
+    "name": "Chemsdine Talbi",
+    "team": "Sunderland",
+    "price": 4.9,
+    "total_points": 52,
+    "ppg": 5.05,
+    "value": 10.61,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Sandro Tonali",
+    "team": "Newcastle",
+    "price": 5.3,
+    "total_points": 56,
+    "ppg": 3.2,
+    "value": 10.57,
+    "form": 2.4,
+    "element_type": 3
+  },
+  {
+    "name": "Callum Hudson-Odoi",
+    "team": "Nott'm Forest",
+    "price": 5.7,
+    "total_points": 59,
+    "ppg": 4.1,
+    "value": 10.35,
+    "form": 2.0,
+    "element_type": 3
+  },
+  {
+    "name": "Ollie Watkins",
+    "team": "Aston Villa",
+    "price": 8.8,
+    "total_points": 91,
+    "ppg": 4.7,
+    "value": 10.34,
+    "form": 6.0,
+    "element_type": 4
+  },
+  {
+    "name": "Francisco Evanilson de Lima Barbosa",
+    "team": "Bournemouth",
+    "price": 7.0,
+    "total_points": 72,
+    "ppg": 4.09,
+    "value": 10.29,
+    "form": 4.3,
+    "element_type": 4
+  },
+  {
+    "name": "Ladislav Krejc\u00ed",
+    "team": "Wolves",
+    "price": 4.5,
+    "total_points": 46,
+    "ppg": 2.64,
+    "value": 10.22,
+    "form": 4.0,
+    "element_type": 2
+  },
+  {
+    "name": "Tim Iroegbunam",
+    "team": "Everton",
+    "price": 4.8,
+    "total_points": 49,
+    "ppg": 4.78,
+    "value": 10.21,
+    "form": 3.3,
+    "element_type": 3
+  },
+  {
+    "name": "Tyler Adams",
+    "team": "Bournemouth",
+    "price": 4.9,
+    "total_points": 50,
+    "ppg": 3.76,
+    "value": 10.2,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Sa\u0161a Luki\u0107",
+    "team": "Fulham",
+    "price": 4.9,
+    "total_points": 50,
+    "ppg": 3.73,
+    "value": 10.2,
+    "form": 2.3,
+    "element_type": 3
+  },
+  {
+    "name": "Lewis Hall",
+    "team": "Newcastle",
+    "price": 5.3,
+    "total_points": 54,
+    "ppg": 4.34,
+    "value": 10.19,
+    "form": 5.2,
+    "element_type": 2
+  },
+  {
+    "name": "Brian Brobbey",
+    "team": "Sunderland",
+    "price": 5.5,
+    "total_points": 56,
+    "ppg": 5.79,
+    "value": 10.18,
+    "form": 5.0,
+    "element_type": 4
+  },
+  {
+    "name": "Crysencio Summerville",
+    "team": "West Ham",
+    "price": 5.5,
+    "total_points": 56,
+    "ppg": 3.83,
+    "value": 10.18,
+    "form": 4.3,
+    "element_type": 3
+  },
+  {
+    "name": "Callum Wilson",
+    "team": "West Ham",
+    "price": 5.8,
+    "total_points": 59,
+    "ppg": 6.44,
+    "value": 10.17,
+    "form": 2.5,
+    "element_type": 4
+  },
+  {
+    "name": "Bukayo Saka",
+    "team": "Arsenal",
+    "price": 10.1,
+    "total_points": 101,
+    "ppg": 5.89,
+    "value": 10.0,
+    "form": 3.8,
+    "element_type": 3
+  },
+  {
+    "name": "Y\u00e9remy Pino Santos",
+    "team": "Crystal Palace",
+    "price": 5.8,
+    "total_points": 58,
+    "ppg": 3.57,
+    "value": 10.0,
+    "form": 3.5,
+    "element_type": 3
+  },
+  {
+    "name": "Florian Wirtz",
+    "team": "Liverpool",
+    "price": 8.3,
+    "total_points": 83,
+    "ppg": 4.72,
+    "value": 10.0,
+    "form": 6.3,
+    "element_type": 3
+  },
+  {
+    "name": "Tino Livramento",
+    "team": "Newcastle",
+    "price": 4.9,
+    "total_points": 49,
+    "ppg": 4.21,
+    "value": 10.0,
+    "form": 0.4,
+    "element_type": 2
+  },
+  {
+    "name": "Reinildo Mandava",
+    "team": "Sunderland",
+    "price": 3.8,
+    "total_points": 38,
+    "ppg": 2.96,
+    "value": 10.0,
+    "form": 0.2,
+    "element_type": 2
+  },
+  {
+    "name": "Hugo Ekitik\u00e9",
+    "team": "Liverpool",
+    "price": 8.8,
+    "total_points": 87,
+    "ppg": 6.27,
+    "value": 9.89,
+    "form": 1.7,
+    "element_type": 4
+  },
+  {
+    "name": "Matheus Santos Carneiro da Cunha",
+    "team": "Man Utd",
+    "price": 8.0,
+    "total_points": 79,
+    "ppg": 5.04,
+    "value": 9.88,
+    "form": 5.2,
+    "element_type": 3
+  },
+  {
+    "name": "Amad Diallo",
+    "team": "Man Utd",
+    "price": 6.2,
+    "total_points": 61,
+    "ppg": 3.98,
+    "value": 9.84,
+    "form": 1.0,
+    "element_type": 3
+  },
+  {
+    "name": "Wilson Isidor",
+    "team": "Sunderland",
+    "price": 5.2,
+    "total_points": 51,
+    "ppg": 4.66,
+    "value": 9.81,
+    "form": 0.5,
+    "element_type": 4
+  },
+  {
+    "name": "Lukas Nmecha",
+    "team": "Leeds",
+    "price": 5.0,
+    "total_points": 49,
+    "ppg": 7.33,
+    "value": 9.8,
+    "form": 2.0,
+    "element_type": 4
+  },
+  {
+    "name": "Senne Lammens",
+    "team": "Man Utd",
+    "price": 5.0,
+    "total_points": 49,
+    "ppg": 2.88,
+    "value": 9.8,
+    "form": 2.8,
+    "element_type": 1
+  },
+  {
+    "name": "Harry Maguire",
+    "team": "Man Utd",
+    "price": 4.3,
+    "total_points": 42,
+    "ppg": 7.26,
+    "value": 9.77,
+    "form": 1.8,
+    "element_type": 2
+  },
+  {
+    "name": "Emile Smith Rowe",
+    "team": "Fulham",
+    "price": 5.6,
+    "total_points": 54,
+    "ppg": 4.65,
+    "value": 9.64,
+    "form": 2.7,
+    "element_type": 3
+  },
+  {
+    "name": "Fabian Sch\u00e4r",
+    "team": "Newcastle",
+    "price": 5.3,
+    "total_points": 51,
+    "ppg": 4.21,
+    "value": 9.62,
+    "form": 3.0,
+    "element_type": 2
+  },
+  {
+    "name": "Lucas Estella Perri",
+    "team": "Leeds",
+    "price": 4.5,
+    "total_points": 43,
+    "ppg": 2.69,
+    "value": 9.56,
+    "form": 2.5,
+    "element_type": 1
+  },
+  {
+    "name": "Wesley Fofana",
+    "team": "Chelsea",
+    "price": 4.4,
+    "total_points": 42,
+    "ppg": 4.69,
+    "value": 9.55,
+    "form": 0.7,
+    "element_type": 2
+  },
+  {
+    "name": "Joelinton C\u00e1ssio Apolin\u00e1rio de Lira",
+    "team": "Newcastle",
+    "price": 5.9,
+    "total_points": 56,
+    "ppg": 3.7,
+    "value": 9.49,
+    "form": 4.8,
+    "element_type": 3
+  },
+  {
+    "name": "Igor Jesus Maciel da Cruz",
+    "team": "Nott'm Forest",
+    "price": 5.8,
+    "total_points": 55,
+    "ppg": 3.85,
+    "value": 9.48,
+    "form": 3.7,
+    "element_type": 4
+  },
+  {
+    "name": "Milos Kerkez",
+    "team": "Liverpool",
+    "price": 5.6,
+    "total_points": 53,
+    "ppg": 3.11,
+    "value": 9.46,
+    "form": 2.3,
+    "element_type": 2
+  },
+  {
+    "name": "Noah Okafor",
+    "team": "Leeds",
+    "price": 5.5,
+    "total_points": 52,
+    "ppg": 4.25,
+    "value": 9.45,
+    "form": 1.5,
+    "element_type": 3
+  },
+  {
+    "name": "Andr\u00e9 Trindade da Costa Neto",
+    "team": "Wolves",
+    "price": 5.3,
+    "total_points": 50,
+    "ppg": 2.81,
+    "value": 9.43,
+    "form": 1.3,
+    "element_type": 3
+  },
+  {
+    "name": "Pape Matar Sarr",
+    "team": "Spurs",
+    "price": 4.5,
+    "total_points": 42,
+    "ppg": 5.38,
+    "value": 9.33,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Eberechi Eze",
+    "team": "Arsenal",
+    "price": 7.3,
+    "total_points": 68,
+    "ppg": 5.85,
+    "value": 9.32,
+    "form": 0.3,
+    "element_type": 3
+  },
+  {
+    "name": "Nico Gonz\u00e1lez Iglesias",
+    "team": "Man City",
+    "price": 5.9,
+    "total_points": 55,
+    "ppg": 3.72,
+    "value": 9.32,
+    "form": 1.5,
+    "element_type": 3
+  },
+  {
+    "name": "James Hill",
+    "team": "Bournemouth",
+    "price": 3.9,
+    "total_points": 36,
+    "ppg": 4.31,
+    "value": 9.23,
+    "form": 2.8,
+    "element_type": 2
+  },
+  {
+    "name": "Alex Iwobi",
+    "team": "Fulham",
+    "price": 6.3,
+    "total_points": 58,
+    "ppg": 3.69,
+    "value": 9.21,
+    "form": 0.3,
+    "element_type": 3
+  },
+  {
+    "name": "Mathias Jensen",
+    "team": "Brentford",
+    "price": 4.9,
+    "total_points": 45,
+    "ppg": 4.29,
+    "value": 9.18,
+    "form": 2.0,
+    "element_type": 3
+  },
+  {
+    "name": "Noah Sadiki",
+    "team": "Sunderland",
+    "price": 4.9,
+    "total_points": 45,
+    "ppg": 2.54,
+    "value": 9.18,
+    "form": 1.3,
+    "element_type": 3
+  },
+  {
+    "name": "Youri Tielemans",
+    "team": "Aston Villa",
+    "price": 5.9,
+    "total_points": 54,
+    "ppg": 3.75,
+    "value": 9.15,
+    "form": 4.3,
+    "element_type": 3
+  },
+  {
+    "name": "Konstantinos Mavropanos",
+    "team": "West Ham",
+    "price": 4.4,
+    "total_points": 40,
+    "ppg": 2.83,
+    "value": 9.09,
+    "form": 1.7,
+    "element_type": 2
+  },
+  {
+    "name": "Omari Hutchinson",
+    "team": "Nott'm Forest",
+    "price": 5.4,
+    "total_points": 49,
+    "ppg": 4.86,
+    "value": 9.07,
+    "form": 2.7,
+    "element_type": 3
+  },
+  {
+    "name": "Daichi Kamada",
+    "team": "Crystal Palace",
+    "price": 5.0,
+    "total_points": 45,
+    "ppg": 3.47,
+    "value": 9.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Sven Botman",
+    "team": "Newcastle",
+    "price": 4.9,
+    "total_points": 44,
+    "ppg": 4.5,
+    "value": 8.98,
+    "form": 2.4,
+    "element_type": 2
+  },
+  {
+    "name": "Jhon Arias",
+    "team": "Wolves",
+    "price": 4.9,
+    "total_points": 44,
+    "ppg": 3.58,
+    "value": 8.98,
+    "form": 2.8,
+    "element_type": 3
+  },
+  {
+    "name": "\u00c1lex Jim\u00e9nez S\u00e1nchez",
+    "team": "Bournemouth",
+    "price": 4.5,
+    "total_points": 40,
+    "ppg": 2.71,
+    "value": 8.89,
+    "form": 2.7,
+    "element_type": 2
+  },
+  {
+    "name": "Matthijs de Ligt",
+    "team": "Man Utd",
+    "price": 4.9,
+    "total_points": 43,
+    "ppg": 3.31,
+    "value": 8.78,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Thierno Barry",
+    "team": "Everton",
+    "price": 5.7,
+    "total_points": 50,
+    "ppg": 3.81,
+    "value": 8.77,
+    "form": 3.8,
+    "element_type": 4
+  },
+  {
+    "name": "Josh Laurent",
+    "team": "Burnley",
+    "price": 4.8,
+    "total_points": 42,
+    "ppg": 3.5,
+    "value": 8.75,
+    "form": 3.5,
+    "element_type": 3
+  },
+  {
+    "name": "Tanaka Ao",
+    "team": "Leeds",
+    "price": 4.8,
+    "total_points": 42,
+    "ppg": 5.3,
+    "value": 8.75,
+    "form": 0.8,
+    "element_type": 3
+  },
+  {
+    "name": "Bernardo Mota Veiga de Carvalho e Silva",
+    "team": "Man City",
+    "price": 6.2,
+    "total_points": 54,
+    "ppg": 2.92,
+    "value": 8.71,
+    "form": 2.7,
+    "element_type": 3
+  },
+  {
+    "name": "Nicol\u00f2 Savona",
+    "team": "Nott'm Forest",
+    "price": 4.5,
+    "total_points": 39,
+    "ppg": 3.42,
+    "value": 8.67,
+    "form": 0.3,
+    "element_type": 2
+  },
+  {
+    "name": "Jacob Murphy",
+    "team": "Newcastle",
+    "price": 5.9,
+    "total_points": 51,
+    "ppg": 4.57,
+    "value": 8.64,
+    "form": 1.0,
+    "element_type": 3
+  },
+  {
+    "name": "David Brooks",
+    "team": "Bournemouth",
+    "price": 5.0,
+    "total_points": 43,
+    "ppg": 4.15,
+    "value": 8.6,
+    "form": 2.8,
+    "element_type": 3
+  },
+  {
+    "name": "Rico Henry",
+    "team": "Brentford",
+    "price": 4.3,
+    "total_points": 37,
+    "ppg": 3.88,
+    "value": 8.6,
+    "form": 3.0,
+    "element_type": 2
+  },
+  {
+    "name": "Lyle Foster",
+    "team": "Burnley",
+    "price": 4.9,
+    "total_points": 42,
+    "ppg": 4.12,
+    "value": 8.57,
+    "form": 1.0,
+    "element_type": 4
+  },
+  {
+    "name": "Isma\u00efla Sarr",
+    "team": "Crystal Palace",
+    "price": 6.3,
+    "total_points": 54,
+    "ppg": 4.42,
+    "value": 8.57,
+    "form": 0.3,
+    "element_type": 3
+  },
+  {
+    "name": "Maximilian Kilman",
+    "team": "West Ham",
+    "price": 4.2,
+    "total_points": 36,
+    "ppg": 2.11,
+    "value": 8.57,
+    "form": 1.2,
+    "element_type": 2
+  },
+  {
+    "name": "Mateus Man\u00e9",
+    "team": "Wolves",
+    "price": 4.5,
+    "total_points": 38,
+    "ppg": 5.46,
+    "value": 8.44,
+    "form": 4.8,
+    "element_type": 4
+  },
+  {
+    "name": "Conor Bradley",
+    "team": "Liverpool",
+    "price": 5.0,
+    "total_points": 42,
+    "ppg": 4.07,
+    "value": 8.4,
+    "form": 3.5,
+    "element_type": 2
+  },
+  {
+    "name": "Sean Longstaff",
+    "team": "Leeds",
+    "price": 4.8,
+    "total_points": 40,
+    "ppg": 4.1,
+    "value": 8.33,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Leny Yoro",
+    "team": "Man Utd",
+    "price": 4.2,
+    "total_points": 35,
+    "ppg": 2.78,
+    "value": 8.33,
+    "form": 0.8,
+    "element_type": 2
+  },
+  {
+    "name": "Tom\u00e1\u0161 Sou\u010dek",
+    "team": "West Ham",
+    "price": 5.7,
+    "total_points": 47,
+    "ppg": 4.72,
+    "value": 8.25,
+    "form": 2.3,
+    "element_type": 3
+  },
+  {
+    "name": "Josh King",
+    "team": "Fulham",
+    "price": 4.4,
+    "total_points": 36,
+    "ppg": 3.69,
+    "value": 8.18,
+    "form": 0.8,
+    "element_type": 3
+  },
+  {
+    "name": "Jackson Tchatchoua",
+    "team": "Wolves",
+    "price": 4.4,
+    "total_points": 36,
+    "ppg": 2.62,
+    "value": 8.18,
+    "form": 2.5,
+    "element_type": 2
+  },
+  {
+    "name": "Josh Acheampong",
+    "team": "Chelsea",
+    "price": 3.8,
+    "total_points": 31,
+    "ppg": 5.9,
+    "value": 8.16,
+    "form": 0.7,
+    "element_type": 2
+  },
+  {
+    "name": "Idrissa Gana Gueye",
+    "team": "Everton",
+    "price": 5.4,
+    "total_points": 44,
+    "ppg": 3.77,
+    "value": 8.15,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Est\u00eav\u00e3o Almeida de Oliveira Gon\u00e7alves",
+    "team": "Chelsea",
+    "price": 6.4,
+    "total_points": 52,
+    "ppg": 6.93,
+    "value": 8.12,
+    "form": 3.3,
+    "element_type": 3
+  },
+  {
+    "name": "Wilson Odobert",
+    "team": "Spurs",
+    "price": 5.3,
+    "total_points": 43,
+    "ppg": 4.37,
+    "value": 8.11,
+    "form": 3.0,
+    "element_type": 3
+  },
+  {
+    "name": "Zian Flemming",
+    "team": "Burnley",
+    "price": 5.3,
+    "total_points": 42,
+    "ppg": 5.73,
+    "value": 7.92,
+    "form": 0.2,
+    "element_type": 4
+  },
+  {
+    "name": "Jorge Cuenca Barreno",
+    "team": "Fulham",
+    "price": 4.3,
+    "total_points": 34,
+    "ppg": 4.06,
+    "value": 7.91,
+    "form": 3.7,
+    "element_type": 2
+  },
+  {
+    "name": "Mason Mount",
+    "team": "Man Utd",
+    "price": 5.9,
+    "total_points": 46,
+    "ppg": 5.1,
+    "value": 7.8,
+    "form": 0.4,
+    "element_type": 3
+  },
+  {
+    "name": "Benjamin Sesko",
+    "team": "Man Utd",
+    "price": 7.2,
+    "total_points": 56,
+    "ppg": 4.81,
+    "value": 7.78,
+    "form": 3.6,
+    "element_type": 4
+  },
+  {
+    "name": "Samuel Chukwueze",
+    "team": "Fulham",
+    "price": 5.3,
+    "total_points": 41,
+    "ppg": 8.7,
+    "value": 7.74,
+    "form": 1.0,
+    "element_type": 3
+  },
+  {
+    "name": "Xavi Simons",
+    "team": "Spurs",
+    "price": 6.5,
+    "total_points": 50,
+    "ppg": 4.09,
+    "value": 7.69,
+    "form": 1.8,
+    "element_type": 3
+  },
+  {
+    "name": "Dan Ndoye",
+    "team": "Nott'm Forest",
+    "price": 5.5,
+    "total_points": 42,
+    "ppg": 3.74,
+    "value": 7.64,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Aaron Wan-Bissaka",
+    "team": "West Ham",
+    "price": 4.1,
+    "total_points": 31,
+    "ppg": 2.34,
+    "value": 7.56,
+    "form": 1.0,
+    "element_type": 2
+  },
+  {
+    "name": "Kieran Trippier",
+    "team": "Newcastle",
+    "price": 4.9,
+    "total_points": 37,
+    "ppg": 3.79,
+    "value": 7.55,
+    "form": 1.4,
+    "element_type": 2
+  },
+  {
+    "name": "Aaron Hickey",
+    "team": "Brentford",
+    "price": 4.0,
+    "total_points": 30,
+    "ppg": 5.03,
+    "value": 7.5,
+    "form": 1.0,
+    "element_type": 2
+  },
+  {
+    "name": "Tosin Adarabioyo",
+    "team": "Chelsea",
+    "price": 4.0,
+    "total_points": 30,
+    "ppg": 3.84,
+    "value": 7.5,
+    "form": 0.5,
+    "element_type": 2
+  },
+  {
+    "name": "Lucas Bergvall",
+    "team": "Spurs",
+    "price": 5.2,
+    "total_points": 39,
+    "ppg": 4.39,
+    "value": 7.5,
+    "form": 1.0,
+    "element_type": 3
+  },
+  {
+    "name": "Axel Tuanzebe",
+    "team": "Burnley",
+    "price": 3.9,
+    "total_points": 29,
+    "ppg": 2.95,
+    "value": 7.44,
+    "form": 1.8,
+    "element_type": 2
+  },
+  {
+    "name": "Anthony Gordon",
+    "team": "Newcastle",
+    "price": 7.4,
+    "total_points": 55,
+    "ppg": 4.39,
+    "value": 7.43,
+    "form": 2.6,
+    "element_type": 3
+  },
+  {
+    "name": "Alexis Mac Allister",
+    "team": "Liverpool",
+    "price": 6.2,
+    "total_points": 46,
+    "ppg": 2.84,
+    "value": 7.42,
+    "form": 1.5,
+    "element_type": 3
+  },
+  {
+    "name": "Curtis Jones",
+    "team": "Liverpool",
+    "price": 5.4,
+    "total_points": 40,
+    "ppg": 3.33,
+    "value": 7.41,
+    "form": 2.7,
+    "element_type": 3
+  },
+  {
+    "name": "Norberto Bercique Gomes Betuncal",
+    "team": "Everton",
+    "price": 5.0,
+    "total_points": 37,
+    "ppg": 4.01,
+    "value": 7.4,
+    "form": 1.7,
+    "element_type": 4
+  },
+  {
+    "name": "Jefferson Lerma Sol\u00eds",
+    "team": "Crystal Palace",
+    "price": 4.9,
+    "total_points": 36,
+    "ppg": 3.48,
+    "value": 7.35,
+    "form": 1.2,
+    "element_type": 3
+  },
+  {
+    "name": "Hwang Hee-chan",
+    "team": "Wolves",
+    "price": 5.6,
+    "total_points": 41,
+    "ppg": 3.57,
+    "value": 7.32,
+    "form": 3.5,
+    "element_type": 3
+  },
+  {
+    "name": "Mathys Tel",
+    "team": "Spurs",
+    "price": 6.2,
+    "total_points": 45,
+    "ppg": 7.58,
+    "value": 7.26,
+    "form": 2.7,
+    "element_type": 3
+  },
+  {
+    "name": "Jean-Clair Todibo",
+    "team": "West Ham",
+    "price": 4.3,
+    "total_points": 31,
+    "ppg": 1.95,
+    "value": 7.21,
+    "form": 1.7,
+    "element_type": 2
+  },
+  {
+    "name": "Marshall Munetsi",
+    "team": "Wolves",
+    "price": 5.3,
+    "total_points": 38,
+    "ppg": 3.92,
+    "value": 7.17,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Kyle Walker-Peters",
+    "team": "West Ham",
+    "price": 4.2,
+    "total_points": 30,
+    "ppg": 2.84,
+    "value": 7.14,
+    "form": 1.0,
+    "element_type": 2
+  },
+  {
+    "name": "Lutsharel Geertruida",
+    "team": "Sunderland",
+    "price": 4.5,
+    "total_points": 32,
+    "ppg": 2.97,
+    "value": 7.11,
+    "form": 1.8,
+    "element_type": 2
+  },
+  {
+    "name": "Jack Hinshelwood",
+    "team": "Brighton",
+    "price": 5.1,
+    "total_points": 36,
+    "ppg": 4.95,
+    "value": 7.06,
+    "form": 1.7,
+    "element_type": 3
+  },
+  {
+    "name": "Amine Adli",
+    "team": "Bournemouth",
+    "price": 5.4,
+    "total_points": 38,
+    "ppg": 5.73,
+    "value": 7.04,
+    "form": 3.2,
+    "element_type": 3
+  },
+  {
+    "name": "Simon Adingra",
+    "team": "Sunderland",
+    "price": 4.9,
+    "total_points": 34,
+    "ppg": 4.71,
+    "value": 6.94,
+    "form": 2.5,
+    "element_type": 3
+  },
+  {
+    "name": "Armando Broja",
+    "team": "Burnley",
+    "price": 5.2,
+    "total_points": 36,
+    "ppg": 4.22,
+    "value": 6.92,
+    "form": 2.8,
+    "element_type": 4
+  },
+  {
+    "name": "James Justin",
+    "team": "Leeds",
+    "price": 3.9,
+    "total_points": 27,
+    "ppg": 4.68,
+    "value": 6.92,
+    "form": 3.2,
+    "element_type": 2
+  },
+  {
+    "name": "Piero Hincapi\u00e9",
+    "team": "Arsenal",
+    "price": 5.1,
+    "total_points": 35,
+    "ppg": 3.33,
+    "value": 6.86,
+    "form": 0.8,
+    "element_type": 2
+  },
+  {
+    "name": "Freddie Potts",
+    "team": "West Ham",
+    "price": 4.4,
+    "total_points": 30,
+    "ppg": 2.75,
+    "value": 6.82,
+    "form": 1.2,
+    "element_type": 3
+  },
+  {
+    "name": "Marcus Edwards",
+    "team": "Burnley",
+    "price": 4.7,
+    "total_points": 32,
+    "ppg": 5.04,
+    "value": 6.81,
+    "form": 3.7,
+    "element_type": 3
+  },
+  {
+    "name": "Will Hughes",
+    "team": "Crystal Palace",
+    "price": 4.7,
+    "total_points": 32,
+    "ppg": 2.97,
+    "value": 6.81,
+    "form": 2.2,
+    "element_type": 3
+  },
+  {
+    "name": "Martin \u00d8degaard",
+    "team": "Arsenal",
+    "price": 7.8,
+    "total_points": 53,
+    "ppg": 4.85,
+    "value": 6.79,
+    "form": 5.0,
+    "element_type": 3
+  },
+  {
+    "name": "Jo\u00ebl Veltman",
+    "team": "Brighton",
+    "price": 4.3,
+    "total_points": 29,
+    "ppg": 3.88,
+    "value": 6.74,
+    "form": 3.0,
+    "element_type": 2
+  },
+  {
+    "name": "Justin Devenny",
+    "team": "Crystal Palace",
+    "price": 4.3,
+    "total_points": 29,
+    "ppg": 4.4,
+    "value": 6.74,
+    "form": 1.7,
+    "element_type": 3
+  },
+  {
+    "name": "Loum Tchaouna",
+    "team": "Burnley",
+    "price": 4.9,
+    "total_points": 33,
+    "ppg": 3.94,
+    "value": 6.73,
+    "form": 0.7,
+    "element_type": 3
+  },
+  {
+    "name": "Carlos Baleba",
+    "team": "Brighton",
+    "price": 4.5,
+    "total_points": 30,
+    "ppg": 2.71,
+    "value": 6.67,
+    "form": 0.8,
+    "element_type": 3
+  },
+  {
+    "name": "Ayden Heaven",
+    "team": "Man Utd",
+    "price": 3.9,
+    "total_points": 26,
+    "ppg": 3.68,
+    "value": 6.67,
+    "form": 1.4,
+    "element_type": 2
+  },
+  {
+    "name": "Ilia Gruev",
+    "team": "Leeds",
+    "price": 4.7,
+    "total_points": 31,
+    "ppg": 3.82,
+    "value": 6.6,
+    "form": 2.5,
+    "element_type": 3
+  },
+  {
+    "name": "Soungoutou Magassa",
+    "team": "West Ham",
+    "price": 5.0,
+    "total_points": 33,
+    "ppg": 4.06,
+    "value": 6.6,
+    "form": 1.3,
+    "element_type": 3
+  },
+  {
+    "name": "Antonee Robinson",
+    "team": "Fulham",
+    "price": 4.9,
+    "total_points": 32,
+    "ppg": 3.94,
+    "value": 6.53,
+    "form": 2.7,
+    "element_type": 2
+  },
+  {
+    "name": "Brajan Gruda",
+    "team": "Brighton",
+    "price": 5.4,
+    "total_points": 35,
+    "ppg": 4.45,
+    "value": 6.48,
+    "form": 1.3,
+    "element_type": 3
+  },
+  {
+    "name": "Tolu Arokodare",
+    "team": "Wolves",
+    "price": 5.4,
+    "total_points": 35,
+    "ppg": 4.21,
+    "value": 6.48,
+    "form": 2.3,
+    "element_type": 4
+  },
+  {
+    "name": "Viktor Gy\u00f6keres",
+    "team": "Arsenal",
+    "price": 8.7,
+    "total_points": 56,
+    "ppg": 3.66,
+    "value": 6.44,
+    "form": 1.7,
+    "element_type": 4
+  },
+  {
+    "name": "Kevin Danso",
+    "team": "Spurs",
+    "price": 4.2,
+    "total_points": 27,
+    "ppg": 3.69,
+    "value": 6.43,
+    "form": 1.3,
+    "element_type": 2
+  },
+  {
+    "name": "Jos\u00e9 Malheiro de S\u00e1",
+    "team": "Wolves",
+    "price": 4.2,
+    "total_points": 27,
+    "ppg": 2.45,
+    "value": 6.43,
+    "form": 3.3,
+    "element_type": 1
+  },
+  {
+    "name": "Brennan Johnson",
+    "team": "Crystal Palace",
+    "price": 6.5,
+    "total_points": 41,
+    "ppg": 3.98,
+    "value": 6.31,
+    "form": 1.3,
+    "element_type": 3
+  },
+  {
+    "name": "Alejandro Garnacho Ferreyra",
+    "team": "Chelsea",
+    "price": 6.4,
+    "total_points": 40,
+    "ppg": 4.42,
+    "value": 6.25,
+    "form": 1.2,
+    "element_type": 3
+  },
+  {
+    "name": "Mitoma Kaoru",
+    "team": "Brighton",
+    "price": 6.1,
+    "total_points": 38,
+    "ppg": 3.71,
+    "value": 6.23,
+    "form": 2.7,
+    "element_type": 3
+  },
+  {
+    "name": "J\u00f8rgen Strand Larsen",
+    "team": "Wolves",
+    "price": 6.1,
+    "total_points": 38,
+    "ppg": 2.48,
+    "value": 6.23,
+    "form": 1.3,
+    "element_type": 4
+  },
+  {
+    "name": "Nicol\u00e1s Dom\u00ednguez",
+    "team": "Nott'm Forest",
+    "price": 5.0,
+    "total_points": 31,
+    "ppg": 3.92,
+    "value": 6.2,
+    "form": 3.8,
+    "element_type": 3
+  },
+  {
+    "name": "Manuel Ugarte Ribeiro",
+    "team": "Man Utd",
+    "price": 4.7,
+    "total_points": 29,
+    "ppg": 3.58,
+    "value": 6.17,
+    "form": 1.8,
+    "element_type": 3
+  },
+  {
+    "name": "Lewis Cook",
+    "team": "Bournemouth",
+    "price": 4.9,
+    "total_points": 30,
+    "ppg": 3.97,
+    "value": 6.12,
+    "form": 3.2,
+    "element_type": 3
+  },
+  {
+    "name": "Yerson Mosquera Valdelamar",
+    "team": "Wolves",
+    "price": 4.3,
+    "total_points": 26,
+    "ppg": 2.24,
+    "value": 6.05,
+    "form": 4.0,
+    "element_type": 2
+  },
+  {
+    "name": "Lisandro Mart\u00ednez",
+    "team": "Man Utd",
+    "price": 4.8,
+    "total_points": 29,
+    "ppg": 4.12,
+    "value": 6.04,
+    "form": 2.8,
+    "element_type": 2
+  },
+  {
+    "name": "Jaydee Canvot",
+    "team": "Crystal Palace",
+    "price": 4.5,
+    "total_points": 27,
+    "ppg": 6.9,
+    "value": 6.0,
+    "form": 2.2,
+    "element_type": 2
+  },
+  {
+    "name": "Ian Maatsen",
+    "team": "Aston Villa",
+    "price": 4.2,
+    "total_points": 25,
+    "ppg": 2.65,
+    "value": 5.95,
+    "form": 2.0,
+    "element_type": 2
+  },
+  {
+    "name": "Bashir Humphreys",
+    "team": "Burnley",
+    "price": 3.9,
+    "total_points": 23,
+    "ppg": 3.93,
+    "value": 5.9,
+    "form": 3.8,
+    "element_type": 2
+  },
+  {
+    "name": "Benjamin White",
+    "team": "Arsenal",
+    "price": 5.1,
+    "total_points": 30,
+    "ppg": 6.6,
+    "value": 5.88,
+    "form": 1.3,
+    "element_type": 2
+  },
+  {
+    "name": "Kevin Santos Lopes de Macedo",
+    "team": "Fulham",
+    "price": 5.8,
+    "total_points": 34,
+    "ppg": 3.88,
+    "value": 5.86,
+    "form": 2.0,
+    "element_type": 3
+  },
+  {
+    "name": "Jeremie Frimpong",
+    "team": "Liverpool",
+    "price": 5.8,
+    "total_points": 34,
+    "ppg": 5.69,
+    "value": 5.86,
+    "form": 3.8,
+    "element_type": 2
+  },
+  {
+    "name": "Jacob Bruun Larsen",
+    "team": "Burnley",
+    "price": 5.3,
+    "total_points": 31,
+    "ppg": 3.27,
+    "value": 5.85,
+    "form": 0.8,
+    "element_type": 3
+  },
+  {
+    "name": "Archie Gray",
+    "team": "Spurs",
+    "price": 4.8,
+    "total_points": 28,
+    "ppg": 3.84,
+    "value": 5.83,
+    "form": 3.0,
+    "element_type": 3
+  },
+  {
+    "name": "Tyrone Mings",
+    "team": "Aston Villa",
+    "price": 4.3,
+    "total_points": 25,
+    "ppg": 4.39,
+    "value": 5.81,
+    "form": 0.2,
+    "element_type": 2
+  },
+  {
+    "name": "Timothy Castagne",
+    "team": "Fulham",
+    "price": 4.3,
+    "total_points": 25,
+    "ppg": 2.38,
+    "value": 5.81,
+    "form": 1.3,
+    "element_type": 2
+  },
+  {
+    "name": "Lamare Bogarde",
+    "team": "Aston Villa",
+    "price": 4.0,
+    "total_points": 23,
+    "ppg": 3.98,
+    "value": 5.75,
+    "form": 0.5,
+    "element_type": 2
+  },
+  {
+    "name": "Justin Kluivert",
+    "team": "Bournemouth",
+    "price": 7.0,
+    "total_points": 40,
+    "ppg": 3.94,
+    "value": 5.71,
+    "form": 1.8,
+    "element_type": 3
+  },
+  {
+    "name": "Joshua Zirkzee",
+    "team": "Man Utd",
+    "price": 5.8,
+    "total_points": 33,
+    "ppg": 6.17,
+    "value": 5.69,
+    "form": 2.6,
+    "element_type": 4
+  },
+  {
+    "name": "Charalampos Kostoulas",
+    "team": "Brighton",
+    "price": 4.8,
+    "total_points": 26,
+    "ppg": 12.86,
+    "value": 5.42,
+    "form": 2.3,
+    "element_type": 4
+  },
+  {
+    "name": "Ola Aina",
+    "team": "Nott'm Forest",
+    "price": 4.7,
+    "total_points": 25,
+    "ppg": 3.7,
+    "value": 5.32,
+    "form": 3.2,
+    "element_type": 2
+  },
+  {
+    "name": "Felipe Rodrigues da Silva",
+    "team": "Nott'm Forest",
+    "price": 4.3,
+    "total_points": 22,
+    "ppg": 2.78,
+    "value": 5.12,
+    "form": 0.3,
+    "element_type": 2
+  },
+  {
+    "name": "Hannibal Mejbri",
+    "team": "Burnley",
+    "price": 4.7,
+    "total_points": 24,
+    "ppg": 4.72,
+    "value": 5.11,
+    "form": 0.3,
+    "element_type": 3
+  },
+  {
+    "name": "Joe Gomez",
+    "team": "Liverpool",
+    "price": 4.9,
+    "total_points": 25,
+    "ppg": 8.06,
+    "value": 5.1,
+    "form": 0.3,
+    "element_type": 2
+  },
+  {
+    "name": "Dwight McNeil",
+    "team": "Everton",
+    "price": 5.5,
+    "total_points": 28,
+    "ppg": 4.42,
+    "value": 5.09,
+    "form": 3.2,
+    "element_type": 3
+  },
+  {
+    "name": "Bertrand Traor\u00e9",
+    "team": "Sunderland",
+    "price": 5.5,
+    "total_points": 28,
+    "ppg": 4.15,
+    "value": 5.09,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Eliezer Mayenda Dossou",
+    "team": "Sunderland",
+    "price": 5.2,
+    "total_points": 26,
+    "ppg": 4.09,
+    "value": 5.0,
+    "form": 1.5,
+    "element_type": 4
+  },
+  {
+    "name": "Mohamed Salah",
+    "team": "Liverpool",
+    "price": 14.0,
+    "total_points": 69,
+    "ppg": 4.88,
+    "value": 4.93,
+    "form": 0.8,
+    "element_type": 3
+  },
+  {
+    "name": "Jean-Ricner Bellegarde",
+    "team": "Wolves",
+    "price": 5.1,
+    "total_points": 25,
+    "ppg": 3.28,
+    "value": 4.9,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Andrey Nascimento dos Santos",
+    "team": "Chelsea",
+    "price": 4.5,
+    "total_points": 22,
+    "ppg": 3.12,
+    "value": 4.89,
+    "form": 1.2,
+    "element_type": 3
+  },
+  {
+    "name": "Carlos Alcaraz Dur\u00e1n",
+    "team": "Everton",
+    "price": 5.2,
+    "total_points": 25,
+    "ppg": 3.43,
+    "value": 4.81,
+    "form": 0.5,
+    "element_type": 3
+  },
+  {
+    "name": "Tom Cairney",
+    "team": "Fulham",
+    "price": 4.8,
+    "total_points": 23,
+    "ppg": 4.68,
+    "value": 4.79,
+    "form": 2.2,
+    "element_type": 3
+  },
+  {
+    "name": "Adam Smith",
+    "team": "Bournemouth",
+    "price": 4.4,
+    "total_points": 21,
+    "ppg": 3.0,
+    "value": 4.77,
+    "form": 0.3,
+    "element_type": 2
+  },
+  {
+    "name": "Sam Johnstone",
+    "team": "Wolves",
+    "price": 4.4,
+    "total_points": 21,
+    "ppg": 1.75,
+    "value": 4.77,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Emmanuel Agbadou",
+    "team": "Wolves",
+    "price": 4.2,
+    "total_points": 20,
+    "ppg": 1.78,
+    "value": 4.76,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Toti Gomes",
+    "team": "Wolves",
+    "price": 4.2,
+    "total_points": 20,
+    "ppg": 1.9,
+    "value": 4.76,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Nathan Ak\u00e9",
+    "team": "Man City",
+    "price": 5.3,
+    "total_points": 25,
+    "ppg": 4.65,
+    "value": 4.72,
+    "form": 2.2,
+    "element_type": 2
+  },
+  {
+    "name": "Victor Lindel\u00f6f",
+    "team": "Aston Villa",
+    "price": 4.5,
+    "total_points": 21,
+    "ppg": 3.34,
+    "value": 4.67,
+    "form": 1.8,
+    "element_type": 2
+  },
+  {
+    "name": "David M\u00f8ller Wolfe",
+    "team": "Wolves",
+    "price": 4.3,
+    "total_points": 20,
+    "ppg": 2.56,
+    "value": 4.65,
+    "form": 0.5,
+    "element_type": 2
+  },
+  {
+    "name": "Giorgi Mamardashvili",
+    "team": "Liverpool",
+    "price": 4.2,
+    "total_points": 19,
+    "ppg": 3.8,
+    "value": 4.52,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Anthony Elanga",
+    "team": "Newcastle",
+    "price": 6.5,
+    "total_points": 29,
+    "ppg": 3.6,
+    "value": 4.46,
+    "form": 0.4,
+    "element_type": 3
+  },
+  {
+    "name": "Federico Chiesa",
+    "team": "Liverpool",
+    "price": 6.3,
+    "total_points": 28,
+    "ppg": 10.96,
+    "value": 4.44,
+    "form": 0.8,
+    "element_type": 3
+  },
+  {
+    "name": "Abdukodir Khusanov",
+    "team": "Man City",
+    "price": 5.4,
+    "total_points": 24,
+    "ppg": 3.86,
+    "value": 4.44,
+    "form": 2.0,
+    "element_type": 2
+  },
+  {
+    "name": "Ollie Scarles",
+    "team": "West Ham",
+    "price": 4.3,
+    "total_points": 19,
+    "ppg": 2.74,
+    "value": 4.42,
+    "form": 2.8,
+    "element_type": 2
+  },
+  {
+    "name": "Andrew Robertson",
+    "team": "Liverpool",
+    "price": 5.7,
+    "total_points": 25,
+    "ppg": 4.18,
+    "value": 4.39,
+    "form": 1.3,
+    "element_type": 2
+  },
+  {
+    "name": "Kobbie Mainoo",
+    "team": "Man Utd",
+    "price": 4.6,
+    "total_points": 20,
+    "ppg": 4.41,
+    "value": 4.35,
+    "form": 1.8,
+    "element_type": 3
+  },
+  {
+    "name": "Cole Palmer",
+    "team": "Chelsea",
+    "price": 10.4,
+    "total_points": 45,
+    "ppg": 5.38,
+    "value": 4.33,
+    "form": 3.5,
+    "element_type": 3
+  },
+  {
+    "name": "Veljko Milosavljevic",
+    "team": "Bournemouth",
+    "price": 4.4,
+    "total_points": 19,
+    "ppg": 4.66,
+    "value": 4.32,
+    "form": 0.3,
+    "element_type": 2
+  },
+  {
+    "name": "James Milner",
+    "team": "Brighton",
+    "price": 4.9,
+    "total_points": 21,
+    "ppg": 6.18,
+    "value": 4.29,
+    "form": 0.7,
+    "element_type": 3
+  },
+  {
+    "name": "Gabriel Martinelli Silva",
+    "team": "Arsenal",
+    "price": 6.8,
+    "total_points": 29,
+    "ppg": 4.79,
+    "value": 4.26,
+    "form": 1.2,
+    "element_type": 3
+  },
+  {
+    "name": "Eddie Nketiah",
+    "team": "Crystal Palace",
+    "price": 5.4,
+    "total_points": 23,
+    "ppg": 5.0,
+    "value": 4.26,
+    "form": 0.2,
+    "element_type": 4
+  },
+  {
+    "name": "Liam Delap",
+    "team": "Chelsea",
+    "price": 6.2,
+    "total_points": 26,
+    "ppg": 3.95,
+    "value": 4.19,
+    "form": 2.3,
+    "element_type": 4
+  },
+  {
+    "name": "Rico Lewis",
+    "team": "Man City",
+    "price": 4.6,
+    "total_points": 19,
+    "ppg": 5.5,
+    "value": 4.13,
+    "form": 0.2,
+    "element_type": 2
+  },
+  {
+    "name": "Karl Darlow",
+    "team": "Leeds",
+    "price": 3.9,
+    "total_points": 16,
+    "ppg": 2.67,
+    "value": 4.1,
+    "form": 1.0,
+    "element_type": 1
+  },
+  {
+    "name": "Nathan Patterson",
+    "team": "Everton",
+    "price": 4.4,
+    "total_points": 18,
+    "ppg": 9.76,
+    "value": 4.09,
+    "form": 3.0,
+    "element_type": 2
+  },
+  {
+    "name": "Ryan Christie",
+    "team": "Bournemouth",
+    "price": 4.9,
+    "total_points": 20,
+    "ppg": 5.49,
+    "value": 4.08,
+    "form": 0.3,
+    "element_type": 3
+  },
+  {
+    "name": "Evann Guessand",
+    "team": "Aston Villa",
+    "price": 6.2,
+    "total_points": 25,
+    "ppg": 3.86,
+    "value": 4.03,
+    "form": 0.3,
+    "element_type": 3
+  },
+  {
+    "name": "Jamie Bynoe-Gittens",
+    "team": "Chelsea",
+    "price": 6.0,
+    "total_points": 24,
+    "ppg": 4.69,
+    "value": 4.0,
+    "form": 0.5,
+    "element_type": 3
+  },
+  {
+    "name": "Rodrigo 'Rodri' Hernandez Cascante",
+    "team": "Man City",
+    "price": 6.3,
+    "total_points": 25,
+    "ppg": 3.55,
+    "value": 3.97,
+    "form": 2.2,
+    "element_type": 3
+  },
+  {
+    "name": "Wilfried Gnonto",
+    "team": "Leeds",
+    "price": 5.2,
+    "total_points": 20,
+    "ppg": 5.34,
+    "value": 3.85,
+    "form": 0.7,
+    "element_type": 3
+  },
+  {
+    "name": "S\u00e1vio Moreira de Oliveira",
+    "team": "Man City",
+    "price": 6.9,
+    "total_points": 26,
+    "ppg": 4.41,
+    "value": 3.77,
+    "form": 0.3,
+    "element_type": 3
+  },
+  {
+    "name": "Lucas Pires Silva",
+    "team": "Burnley",
+    "price": 3.8,
+    "total_points": 14,
+    "ppg": 1.85,
+    "value": 3.68,
+    "form": 2.3,
+    "element_type": 2
+  },
+  {
+    "name": "Nathaniel Clyne",
+    "team": "Crystal Palace",
+    "price": 3.8,
+    "total_points": 14,
+    "ppg": 3.01,
+    "value": 3.68,
+    "form": 1.5,
+    "element_type": 2
+  },
+  {
+    "name": "Noussair Mazraoui",
+    "team": "Man Utd",
+    "price": 4.9,
+    "total_points": 18,
+    "ppg": 3.67,
+    "value": 3.67,
+    "form": 0.2,
+    "element_type": 2
+  },
+  {
+    "name": "Olivier Boscagli",
+    "team": "Brighton",
+    "price": 4.2,
+    "total_points": 15,
+    "ppg": 5.87,
+    "value": 3.57,
+    "form": 1.0,
+    "element_type": 2
+  },
+  {
+    "name": "Oscar Bobb",
+    "team": "Man City",
+    "price": 5.1,
+    "total_points": 18,
+    "ppg": 3.49,
+    "value": 3.53,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Randal Kolo Muani",
+    "team": "Spurs",
+    "price": 6.9,
+    "total_points": 24,
+    "ppg": 2.34,
+    "value": 3.48,
+    "form": 1.3,
+    "element_type": 4
+  },
+  {
+    "name": "Chris Wood",
+    "team": "Nott'm Forest",
+    "price": 7.2,
+    "total_points": 25,
+    "ppg": 4.18,
+    "value": 3.47,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Oliver Sonne",
+    "team": "Burnley",
+    "price": 3.8,
+    "total_points": 13,
+    "ppg": 7.13,
+    "value": 3.42,
+    "form": 0.3,
+    "element_type": 2
+  },
+  {
+    "name": "Rodrigo Martins Gomes",
+    "team": "Wolves",
+    "price": 4.4,
+    "total_points": 15,
+    "ppg": 3.54,
+    "value": 3.41,
+    "form": 0.3,
+    "element_type": 2
+  },
+  {
+    "name": "Adama Traor\u00e9 Diarra",
+    "team": "Fulham",
+    "price": 5.1,
+    "total_points": 17,
+    "ppg": 5.86,
+    "value": 3.33,
+    "form": 0.5,
+    "element_type": 3
+  },
+  {
+    "name": "William Osula",
+    "team": "Newcastle",
+    "price": 5.4,
+    "total_points": 18,
+    "ppg": 7.61,
+    "value": 3.33,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Destiny Udogie",
+    "team": "Spurs",
+    "price": 4.3,
+    "total_points": 14,
+    "ppg": 1.94,
+    "value": 3.26,
+    "form": 0.2,
+    "element_type": 2
+  },
+  {
+    "name": "Dennis Cirkin",
+    "team": "Sunderland",
+    "price": 4.0,
+    "total_points": 13,
+    "ppg": 3.95,
+    "value": 3.25,
+    "form": 2.2,
+    "element_type": 2
+  },
+  {
+    "name": "Noni Madueke",
+    "team": "Arsenal",
+    "price": 6.8,
+    "total_points": 22,
+    "ppg": 3.44,
+    "value": 3.24,
+    "form": 1.0,
+    "element_type": 3
+  },
+  {
+    "name": "Cristhian Mosquera",
+    "team": "Arsenal",
+    "price": 5.3,
+    "total_points": 17,
+    "ppg": 3.57,
+    "value": 3.21,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Rodrigo Muniz Carvalho",
+    "team": "Fulham",
+    "price": 5.3,
+    "total_points": 17,
+    "ppg": 4.4,
+    "value": 3.21,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Merlin R\u00f6hl",
+    "team": "Everton",
+    "price": 5.0,
+    "total_points": 16,
+    "ppg": 4.08,
+    "value": 3.2,
+    "form": 1.8,
+    "element_type": 3
+  },
+  {
+    "name": "Ryan Yates",
+    "team": "Nott'm Forest",
+    "price": 4.7,
+    "total_points": 15,
+    "ppg": 4.52,
+    "value": 3.19,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Chris Rigg",
+    "team": "Sunderland",
+    "price": 4.7,
+    "total_points": 15,
+    "ppg": 3.6,
+    "value": 3.19,
+    "form": 0.7,
+    "element_type": 3
+  },
+  {
+    "name": "Sebastiaan Bornauw",
+    "team": "Leeds",
+    "price": 3.8,
+    "total_points": 12,
+    "ppg": 6.55,
+    "value": 3.16,
+    "form": 1.7,
+    "element_type": 2
+  },
+  {
+    "name": "Omar Marmoush",
+    "team": "Man City",
+    "price": 8.3,
+    "total_points": 26,
+    "ppg": 8.45,
+    "value": 3.13,
+    "form": 1.7,
+    "element_type": 3
+  },
+  {
+    "name": "Ross Barkley",
+    "team": "Aston Villa",
+    "price": 4.8,
+    "total_points": 15,
+    "ppg": 11.84,
+    "value": 3.12,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Stefanos Tzimas",
+    "team": "Brighton",
+    "price": 5.2,
+    "total_points": 16,
+    "ppg": 10.91,
+    "value": 3.08,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Rio Ngumoha",
+    "team": "Liverpool",
+    "price": 4.3,
+    "total_points": 13,
+    "ppg": 15.39,
+    "value": 3.02,
+    "form": 0.5,
+    "element_type": 3
+  },
+  {
+    "name": "Joe Willock",
+    "team": "Newcastle",
+    "price": 5.0,
+    "total_points": 15,
+    "ppg": 5.65,
+    "value": 3.0,
+    "form": 0.6,
+    "element_type": 3
+  },
+  {
+    "name": "Marc Guiu Paz",
+    "team": "Chelsea",
+    "price": 4.2,
+    "total_points": 12,
+    "ppg": 4.37,
+    "value": 2.86,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Tyler Dibling",
+    "team": "Everton",
+    "price": 5.3,
+    "total_points": 15,
+    "ppg": 4.23,
+    "value": 2.83,
+    "form": 1.3,
+    "element_type": 3
+  },
+  {
+    "name": "Jacob Ramsey",
+    "team": "Newcastle",
+    "price": 5.3,
+    "total_points": 15,
+    "ppg": 2.47,
+    "value": 2.83,
+    "form": 0.8,
+    "element_type": 3
+  },
+  {
+    "name": "Alexander Isak",
+    "team": "Liverpool",
+    "price": 10.3,
+    "total_points": 29,
+    "ppg": 5.21,
+    "value": 2.82,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "F\u00e1bio Freitas Gouveia Carvalho",
+    "team": "Brentford",
+    "price": 4.7,
+    "total_points": 13,
+    "ppg": 11.7,
+    "value": 2.77,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "John Victor Maciel Furtado",
+    "team": "Nott'm Forest",
+    "price": 4.0,
+    "total_points": 11,
+    "ppg": 2.27,
+    "value": 2.75,
+    "form": 0.7,
+    "element_type": 1
+  },
+  {
+    "name": "Ki-Jana Hoever",
+    "team": "Wolves",
+    "price": 3.8,
+    "total_points": 10,
+    "ppg": 2.13,
+    "value": 2.63,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Marco Bizot",
+    "team": "Aston Villa",
+    "price": 4.2,
+    "total_points": 11,
+    "ppg": 2.44,
+    "value": 2.62,
+    "form": 0.3,
+    "element_type": 1
+  },
+  {
+    "name": "Jadon Sancho",
+    "team": "Aston Villa",
+    "price": 5.8,
+    "total_points": 15,
+    "ppg": 3.75,
+    "value": 2.59,
+    "form": 1.3,
+    "element_type": 3
+  },
+  {
+    "name": "Enes \u00dcnal",
+    "team": "Bournemouth",
+    "price": 5.4,
+    "total_points": 14,
+    "ppg": 11.25,
+    "value": 2.59,
+    "form": 0.7,
+    "element_type": 4
+  },
+  {
+    "name": "Harrison Reed",
+    "team": "Fulham",
+    "price": 4.3,
+    "total_points": 11,
+    "ppg": 70.71,
+    "value": 2.56,
+    "form": 1.7,
+    "element_type": 3
+  },
+  {
+    "name": "Christantus Uche",
+    "team": "Crystal Palace",
+    "price": 5.5,
+    "total_points": 14,
+    "ppg": 11.05,
+    "value": 2.55,
+    "form": 0.7,
+    "element_type": 4
+  },
+  {
+    "name": "Frank Onyeka",
+    "team": "Brentford",
+    "price": 4.8,
+    "total_points": 12,
+    "ppg": 12.27,
+    "value": 2.5,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Daniel James",
+    "team": "Leeds",
+    "price": 5.2,
+    "total_points": 13,
+    "ppg": 3.36,
+    "value": 2.5,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Taiwo Awoniyi",
+    "team": "Nott'm Forest",
+    "price": 5.2,
+    "total_points": 13,
+    "ppg": 5.74,
+    "value": 2.5,
+    "form": 1.3,
+    "element_type": 4
+  },
+  {
+    "name": "Matt Doherty",
+    "team": "Wolves",
+    "price": 4.4,
+    "total_points": 11,
+    "ppg": 1.65,
+    "value": 2.5,
+    "form": 0.5,
+    "element_type": 2
+  },
+  {
+    "name": "Habib Diarra",
+    "team": "Sunderland",
+    "price": 5.3,
+    "total_points": 13,
+    "ppg": 2.81,
+    "value": 2.45,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "James Trafford",
+    "team": "Man City",
+    "price": 4.5,
+    "total_points": 11,
+    "ppg": 3.67,
+    "value": 2.44,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Diego Coppola",
+    "team": "Brighton",
+    "price": 4.2,
+    "total_points": 10,
+    "ppg": 4.66,
+    "value": 2.38,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Myles Lewis-Skelly",
+    "team": "Arsenal",
+    "price": 5.1,
+    "total_points": 12,
+    "ppg": 3.47,
+    "value": 2.35,
+    "form": 0.5,
+    "element_type": 2
+  },
+  {
+    "name": "Jack Harrison",
+    "team": "Leeds",
+    "price": 5.1,
+    "total_points": 12,
+    "ppg": 4.12,
+    "value": 2.35,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Fer L\u00f3pez Gonz\u00e1lez",
+    "team": "Wolves",
+    "price": 5.1,
+    "total_points": 12,
+    "ppg": 4.74,
+    "value": 2.35,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Altay Bay\u0131nd\u0131r",
+    "team": "Man Utd",
+    "price": 4.7,
+    "total_points": 11,
+    "ppg": 1.83,
+    "value": 2.34,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Issa Diop",
+    "team": "Fulham",
+    "price": 4.3,
+    "total_points": 10,
+    "ppg": 2.18,
+    "value": 2.33,
+    "form": 0.8,
+    "element_type": 2
+  },
+  {
+    "name": "Ben Davies",
+    "team": "Spurs",
+    "price": 4.3,
+    "total_points": 10,
+    "ppg": 6.62,
+    "value": 2.33,
+    "form": 1.5,
+    "element_type": 2
+  },
+  {
+    "name": "Aaron Ramsdale",
+    "team": "Newcastle",
+    "price": 4.8,
+    "total_points": 11,
+    "ppg": 1.79,
+    "value": 2.29,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Rayan A\u00eft-Nouri",
+    "team": "Man City",
+    "price": 5.7,
+    "total_points": 13,
+    "ppg": 5.47,
+    "value": 2.28,
+    "form": 0.2,
+    "element_type": 2
+  },
+  {
+    "name": "Jo\u00ebl Piroe",
+    "team": "Leeds",
+    "price": 4.9,
+    "total_points": 11,
+    "ppg": 4.93,
+    "value": 2.24,
+    "form": 0.2,
+    "element_type": 4
+  },
+  {
+    "name": "Douglas Luiz Soares de Paulo",
+    "team": "Nott'm Forest",
+    "price": 4.9,
+    "total_points": 11,
+    "ppg": 3.15,
+    "value": 2.24,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "John Stones",
+    "team": "Man City",
+    "price": 5.4,
+    "total_points": 12,
+    "ppg": 3.08,
+    "value": 2.22,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Matt O'Riley",
+    "team": "Brighton",
+    "price": 5.5,
+    "total_points": 12,
+    "ppg": 6.1,
+    "value": 2.18,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Niclas F\u00fcllkrug",
+    "team": "West Ham",
+    "price": 5.6,
+    "total_points": 12,
+    "ppg": 2.65,
+    "value": 2.14,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Mads Hermansen",
+    "team": "West Ham",
+    "price": 4.2,
+    "total_points": 9,
+    "ppg": 2.25,
+    "value": 2.14,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Andy Irving",
+    "team": "West Ham",
+    "price": 4.3,
+    "total_points": 9,
+    "ppg": 5.19,
+    "value": 2.09,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Yoane Wissa",
+    "team": "Newcastle",
+    "price": 7.3,
+    "total_points": 15,
+    "ppg": 4.15,
+    "value": 2.05,
+    "form": 2.4,
+    "element_type": 4
+  },
+  {
+    "name": "Romaine Mundle",
+    "team": "Sunderland",
+    "price": 4.9,
+    "total_points": 10,
+    "ppg": 2.98,
+    "value": 2.04,
+    "form": 1.2,
+    "element_type": 3
+  },
+  {
+    "name": "Dilane Bakwa",
+    "team": "Nott'm Forest",
+    "price": 5.9,
+    "total_points": 12,
+    "ppg": 3.58,
+    "value": 2.03,
+    "form": 1.2,
+    "element_type": 3
+  },
+  {
+    "name": "Harrison Armstrong",
+    "team": "Everton",
+    "price": 4.5,
+    "total_points": 9,
+    "ppg": 4.26,
+    "value": 2.0,
+    "form": 1.3,
+    "element_type": 3
+  },
+  {
+    "name": "James Ward-Prowse",
+    "team": "West Ham",
+    "price": 5.6,
+    "total_points": 11,
+    "ppg": 2.39,
+    "value": 1.96,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Joe Worrall",
+    "team": "Burnley",
+    "price": 3.8,
+    "total_points": 7,
+    "ppg": 4.09,
+    "value": 1.84,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Gabriel Fernando de Jesus",
+    "team": "Arsenal",
+    "price": 6.4,
+    "total_points": 11,
+    "ppg": 4.81,
+    "value": 1.72,
+    "form": 1.5,
+    "element_type": 4
+  },
+  {
+    "name": "Guido Rodr\u00edguez",
+    "team": "West Ham",
+    "price": 4.8,
+    "total_points": 8,
+    "ppg": 4.11,
+    "value": 1.67,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Endo Wataru",
+    "team": "Liverpool",
+    "price": 4.9,
+    "total_points": 8,
+    "ppg": 7.27,
+    "value": 1.63,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Ethan Nwaneri",
+    "team": "Arsenal",
+    "price": 5.0,
+    "total_points": 8,
+    "ppg": 4.36,
+    "value": 1.6,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Beno\u00eet Badiashile Mukinayi",
+    "team": "Chelsea",
+    "price": 4.4,
+    "total_points": 7,
+    "ppg": 1.48,
+    "value": 1.59,
+    "form": 1.2,
+    "element_type": 2
+  },
+  {
+    "name": "Jorrel Hato",
+    "team": "Chelsea",
+    "price": 4.6,
+    "total_points": 7,
+    "ppg": 2.33,
+    "value": 1.52,
+    "form": 0.7,
+    "element_type": 2
+  },
+  {
+    "name": "Arnaud Kalimuendo",
+    "team": "Nott'm Forest",
+    "price": 6.0,
+    "total_points": 9,
+    "ppg": 9.1,
+    "value": 1.5,
+    "form": 0.2,
+    "element_type": 4
+  },
+  {
+    "name": "Ben Gannon-Doak",
+    "team": "Bournemouth",
+    "price": 4.8,
+    "total_points": 7,
+    "ppg": 11.89,
+    "value": 1.46,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Oleksandr Zinchenko",
+    "team": "Nott'm Forest",
+    "price": 4.9,
+    "total_points": 7,
+    "ppg": 1.79,
+    "value": 1.43,
+    "form": 0.2,
+    "element_type": 2
+  },
+  {
+    "name": "Igor Julio dos Santos de Paulo",
+    "team": "West Ham",
+    "price": 4.5,
+    "total_points": 6,
+    "ppg": 5.24,
+    "value": 1.33,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Pascal Gro\u00df",
+    "team": "Brighton",
+    "price": 5.5,
+    "total_points": 7,
+    "ppg": 2.2,
+    "value": 1.27,
+    "form": 1.8,
+    "element_type": 3
+  },
+  {
+    "name": "Valent\u00edn Castellanos",
+    "team": "West Ham",
+    "price": 5.5,
+    "total_points": 7,
+    "ppg": 2.48,
+    "value": 1.27,
+    "form": 2.3,
+    "element_type": 4
+  },
+  {
+    "name": "Reiss Nelson",
+    "team": "Brentford",
+    "price": 4.8,
+    "total_points": 6,
+    "ppg": 10.8,
+    "value": 1.25,
+    "form": 0.5,
+    "element_type": 3
+  },
+  {
+    "name": "Ezra Mayers",
+    "team": "West Ham",
+    "price": 4.0,
+    "total_points": 5,
+    "ppg": 4.02,
+    "value": 1.25,
+    "form": 0.5,
+    "element_type": 2
+  },
+  {
+    "name": "James McAtee",
+    "team": "Nott'm Forest",
+    "price": 5.0,
+    "total_points": 6,
+    "ppg": 3.2,
+    "value": 1.2,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Max Dowman",
+    "team": "Arsenal",
+    "price": 4.2,
+    "total_points": 5,
+    "ppg": 16.67,
+    "value": 1.19,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Max Alleyne",
+    "team": "Man City",
+    "price": 4.4,
+    "total_points": 5,
+    "ppg": 3.33,
+    "value": 1.14,
+    "form": 1.7,
+    "element_type": 2
+  },
+  {
+    "name": "Tom Watson",
+    "team": "Brighton",
+    "price": 4.8,
+    "total_points": 5,
+    "ppg": 7.89,
+    "value": 1.04,
+    "form": 0.3,
+    "element_type": 3
+  },
+  {
+    "name": "Borna Sosa",
+    "team": "Crystal Palace",
+    "price": 4.8,
+    "total_points": 5,
+    "ppg": 8.49,
+    "value": 1.04,
+    "form": 0.5,
+    "element_type": 2
+  },
+  {
+    "name": "Luis Guilherme Lira dos Santos",
+    "team": "West Ham",
+    "price": 4.9,
+    "total_points": 5,
+    "ppg": 3.72,
+    "value": 1.02,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Chadi Riad Dnanou",
+    "team": "Crystal Palace",
+    "price": 4.0,
+    "total_points": 4,
+    "ppg": 25.71,
+    "value": 1.0,
+    "form": 0.7,
+    "element_type": 2
+  },
+  {
+    "name": "Yves Bissouma",
+    "team": "Spurs",
+    "price": 5.2,
+    "total_points": 5,
+    "ppg": 3.69,
+    "value": 0.96,
+    "form": 0.8,
+    "element_type": 3
+  },
+  {
+    "name": "Ethan Pinnock",
+    "team": "Brentford",
+    "price": 4.2,
+    "total_points": 4,
+    "ppg": 1.58,
+    "value": 0.95,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Mike Tr\u00e9sor Ndayishimiye",
+    "team": "Burnley",
+    "price": 4.4,
+    "total_points": 4,
+    "ppg": 18.95,
+    "value": 0.91,
+    "form": 0.3,
+    "element_type": 3
+  },
+  {
+    "name": "Pablo Felipe Pereira de Jesus",
+    "team": "West Ham",
+    "price": 5.5,
+    "total_points": 5,
+    "ppg": 2.59,
+    "value": 0.91,
+    "form": 1.2,
+    "element_type": 4
+  },
+  {
+    "name": "Hamed Traor\u00e8",
+    "team": "Bournemouth",
+    "price": 4.5,
+    "total_points": 4,
+    "ppg": 22.5,
+    "value": 0.89,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Jonah Kusi-Asare",
+    "team": "Fulham",
+    "price": 4.5,
+    "total_points": 4,
+    "ppg": 12.0,
+    "value": 0.89,
+    "form": 0.2,
+    "element_type": 4
+  },
+  {
+    "name": "Romain Esse",
+    "team": "Crystal Palace",
+    "price": 4.7,
+    "total_points": 4,
+    "ppg": 9.0,
+    "value": 0.85,
+    "form": 0.5,
+    "element_type": 3
+  },
+  {
+    "name": "Tyrique George",
+    "team": "Chelsea",
+    "price": 4.8,
+    "total_points": 4,
+    "ppg": 2.54,
+    "value": 0.83,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Rom\u00e9o Lavia",
+    "team": "Chelsea",
+    "price": 4.9,
+    "total_points": 4,
+    "ppg": 3.43,
+    "value": 0.82,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Harvey Elliott",
+    "team": "Aston Villa",
+    "price": 5.1,
+    "total_points": 4,
+    "ppg": 3.71,
+    "value": 0.78,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Julio Soler Barreto",
+    "team": "Bournemouth",
+    "price": 4.0,
+    "total_points": 3,
+    "ppg": 7.94,
+    "value": 0.75,
+    "form": 0.2,
+    "element_type": 2
+  },
+  {
+    "name": "Conor Gallagher",
+    "team": "Spurs",
+    "price": 5.5,
+    "total_points": 4,
+    "ppg": 2.07,
+    "value": 0.73,
+    "form": 2.0,
+    "element_type": 3
+  },
+  {
+    "name": "S\u00e9amus Coleman",
+    "team": "Everton",
+    "price": 4.2,
+    "total_points": 3,
+    "ppg": 24.55,
+    "value": 0.71,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Jair Paula da Cunha Filho",
+    "team": "Nott'm Forest",
+    "price": 4.2,
+    "total_points": 3,
+    "ppg": 3.0,
+    "value": 0.71,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Filip J\u00f6rgensen",
+    "team": "Chelsea",
+    "price": 4.3,
+    "total_points": 3,
+    "ppg": 1.55,
+    "value": 0.7,
+    "form": 0.3,
+    "element_type": 1
+  },
+  {
+    "name": "Jack Fletcher",
+    "team": "Man Utd",
+    "price": 4.3,
+    "total_points": 3,
+    "ppg": 2.52,
+    "value": 0.7,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Dominic Solanke-Mitchell",
+    "team": "Spurs",
+    "price": 7.2,
+    "total_points": 5,
+    "ppg": 3.02,
+    "value": 0.69,
+    "form": 0.5,
+    "element_type": 4
+  },
+  {
+    "name": "Nayef Aguerd",
+    "team": "West Ham",
+    "price": 4.4,
+    "total_points": 3,
+    "ppg": 1.5,
+    "value": 0.68,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Mohamadou Kant\u00e9",
+    "team": "West Ham",
+    "price": 4.5,
+    "total_points": 3,
+    "ppg": 16.88,
+    "value": 0.67,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Dan Neil",
+    "team": "Sunderland",
+    "price": 4.8,
+    "total_points": 3,
+    "ppg": 20.77,
+    "value": 0.62,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Christian N\u00f8rgaard",
+    "team": "Arsenal",
+    "price": 5.1,
+    "total_points": 3,
+    "ppg": 8.71,
+    "value": 0.59,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Jenson Seelt",
+    "team": "Sunderland",
+    "price": 4.0,
+    "total_points": 2,
+    "ppg": 1.35,
+    "value": 0.5,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Trey Nyoni",
+    "team": "Liverpool",
+    "price": 4.3,
+    "total_points": 2,
+    "ppg": 90.0,
+    "value": 0.47,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Dane Scarlett",
+    "team": "Spurs",
+    "price": 4.3,
+    "total_points": 2,
+    "ppg": 25.71,
+    "value": 0.47,
+    "form": 0.3,
+    "element_type": 4
+  },
+  {
+    "name": "Callum Marshall",
+    "team": "West Ham",
+    "price": 4.3,
+    "total_points": 2,
+    "ppg": 3.1,
+    "value": 0.47,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Tawanda Chirewa",
+    "team": "Wolves",
+    "price": 4.3,
+    "total_points": 2,
+    "ppg": 7.2,
+    "value": 0.47,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Divine Mukasa",
+    "team": "Man City",
+    "price": 4.4,
+    "total_points": 2,
+    "ppg": 7.2,
+    "value": 0.45,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "George Hemmings",
+    "team": "Aston Villa",
+    "price": 4.5,
+    "total_points": 2,
+    "ppg": 7.2,
+    "value": 0.44,
+    "form": 0.3,
+    "element_type": 3
+  },
+  {
+    "name": "Jo\u00e9l Drakes-Thomas",
+    "team": "Crystal Palace",
+    "price": 4.5,
+    "total_points": 2,
+    "ppg": 25.71,
+    "value": 0.44,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Shea Lacey",
+    "team": "Man Utd",
+    "price": 4.5,
+    "total_points": 2,
+    "ppg": 15.0,
+    "value": 0.44,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Radu Dr\u0103gu\u0219in",
+    "team": "Spurs",
+    "price": 4.5,
+    "total_points": 2,
+    "ppg": 30.0,
+    "value": 0.44,
+    "form": 0.3,
+    "element_type": 2
+  },
+  {
+    "name": "Andr\u00e9s Garc\u00eda",
+    "team": "Aston Villa",
+    "price": 3.9,
+    "total_points": 1,
+    "ppg": 3.0,
+    "value": 0.26,
+    "form": 0.2,
+    "element_type": 2
+  },
+  {
+    "name": "Sam Byram",
+    "team": "Leeds",
+    "price": 3.8,
+    "total_points": 1,
+    "ppg": 12.86,
+    "value": 0.26,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Tyler Fredricson",
+    "team": "Man Utd",
+    "price": 3.8,
+    "total_points": 1,
+    "ppg": 45.0,
+    "value": 0.26,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Tyrell Malacia",
+    "team": "Man Utd",
+    "price": 3.8,
+    "total_points": 1,
+    "ppg": 45.0,
+    "value": 0.26,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Zach Abbott",
+    "team": "Nott'm Forest",
+    "price": 3.8,
+    "total_points": 1,
+    "ppg": 2.0,
+    "value": 0.26,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Arthur Masuaku",
+    "team": "Sunderland",
+    "price": 3.9,
+    "total_points": 1,
+    "ppg": 0.72,
+    "value": 0.26,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Luke O'Nien",
+    "team": "Sunderland",
+    "price": 4.0,
+    "total_points": 1,
+    "ppg": 5.0,
+    "value": 0.25,
+    "form": 0.3,
+    "element_type": 2
+  },
+  {
+    "name": "Pedro Cardoso de Lima",
+    "team": "Wolves",
+    "price": 4.0,
+    "total_points": 1,
+    "ppg": 90.0,
+    "value": 0.25,
+    "form": 0.2,
+    "element_type": 2
+  },
+  {
+    "name": "Ashley Barnes",
+    "team": "Burnley",
+    "price": 4.2,
+    "total_points": 1,
+    "ppg": 10.0,
+    "value": 0.24,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Bradley Burrowes",
+    "team": "Aston Villa",
+    "price": 4.4,
+    "total_points": 1,
+    "ppg": 5.62,
+    "value": 0.23,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Romelle Donovan",
+    "team": "Brentford",
+    "price": 4.4,
+    "total_points": 1,
+    "ppg": 90.0,
+    "value": 0.23,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Myles Peart-Harris",
+    "team": "Brentford",
+    "price": 4.4,
+    "total_points": 1,
+    "ppg": 90.0,
+    "value": 0.23,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Joe Knight",
+    "team": "Brighton",
+    "price": 4.4,
+    "total_points": 1,
+    "ppg": 90.0,
+    "value": 0.23,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Kaden Rodney",
+    "team": "Crystal Palace",
+    "price": 4.4,
+    "total_points": 1,
+    "ppg": 30.0,
+    "value": 0.23,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Jamaal Lascelles",
+    "team": "Newcastle",
+    "price": 4.3,
+    "total_points": 1,
+    "ppg": 4.74,
+    "value": 0.23,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Jamaldeen Jimoh-Aloba",
+    "team": "Aston Villa",
+    "price": 4.5,
+    "total_points": 1,
+    "ppg": 11.25,
+    "value": 0.22,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Jaydon Banel",
+    "team": "Burnley",
+    "price": 4.5,
+    "total_points": 1,
+    "ppg": 10.0,
+    "value": 0.22,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Ben Winterburn",
+    "team": "Bournemouth",
+    "price": 4.5,
+    "total_points": 1,
+    "ppg": 15.0,
+    "value": 0.22,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Nehemiah Oriola",
+    "team": "Brighton",
+    "price": 4.5,
+    "total_points": 1,
+    "ppg": 90.0,
+    "value": 0.22,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Facundo Buonanotte",
+    "team": "Leeds",
+    "price": 4.6,
+    "total_points": 1,
+    "ppg": 2.0,
+    "value": 0.22,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Bendito Mantato",
+    "team": "Man Utd",
+    "price": 4.5,
+    "total_points": 1,
+    "ppg": 6.0,
+    "value": 0.22,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "George Earthy",
+    "team": "West Ham",
+    "price": 4.5,
+    "total_points": 1,
+    "ppg": 11.25,
+    "value": 0.22,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Alex T\u00f3th",
+    "team": "Bournemouth",
+    "price": 5.0,
+    "total_points": 1,
+    "ppg": 18.0,
+    "value": 0.2,
+    "form": 1.0,
+    "element_type": 3
+  },
+  {
+    "name": "Odsonne \u00c9douard",
+    "team": "Crystal Palace",
+    "price": 5.0,
+    "total_points": 1,
+    "ppg": 45.0,
+    "value": 0.2,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Sa\u0161a Kalajd\u017ei\u0107",
+    "team": "Wolves",
+    "price": 4.9,
+    "total_points": 1,
+    "ppg": 6.43,
+    "value": 0.2,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Antoni Milambo",
+    "team": "Brentford",
+    "price": 5.2,
+    "total_points": 1,
+    "ppg": 2.0,
+    "value": 0.19,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Jo\u00e3o Pedro Ferreira da Silva",
+    "team": "Nott'm Forest",
+    "price": 5.4,
+    "total_points": 1,
+    "ppg": 8.18,
+    "value": 0.19,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Patrick Roberts",
+    "team": "Sunderland",
+    "price": 5.4,
+    "total_points": 1,
+    "ppg": 3.33,
+    "value": 0.19,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Leon Bailey",
+    "team": "Aston Villa",
+    "price": 5.5,
+    "total_points": 1,
+    "ppg": 2.9,
+    "value": 0.18,
+    "form": 0.2,
+    "element_type": 3
+  },
+  {
+    "name": "Mateo Kova\u010di\u0107",
+    "team": "Man City",
+    "price": 5.9,
+    "total_points": 1,
+    "ppg": 22.5,
+    "value": 0.17,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Kai Havertz",
+    "team": "Arsenal",
+    "price": 7.3,
+    "total_points": 1,
+    "ppg": 3.0,
+    "value": 0.14,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Kepa Arrizabalaga Revuelta",
+    "team": "Arsenal",
+    "price": 4.1,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Karl Hein",
+    "team": "Arsenal",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Tommy Setford",
+    "team": "Arsenal",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Jakub Kiwior",
+    "team": "Arsenal",
+    "price": 5.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Brayden Clarke",
+    "team": "Arsenal",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Maldini Kacurri",
+    "team": "Arsenal",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Josh Nichols",
+    "team": "Arsenal",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "F\u00e1bio Ferreira Vieira",
+    "team": "Arsenal",
+    "price": 5.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Ismeal Kabia",
+    "team": "Arsenal",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Albert Sambi Lokonga",
+    "team": "Arsenal",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Andre Harriman-Annous",
+    "team": "Arsenal",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Marli Salmon",
+    "team": "Arsenal",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Joe Gauci",
+    "team": "Aston Villa",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Filip Marschall",
+    "team": "Aston Villa",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "\u00c1lex Moreno Lopera",
+    "team": "Aston Villa",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Lino da Cruz Sousa",
+    "team": "Aston Villa",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Yasin \u00d6zcan",
+    "team": "Aston Villa",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Samuel Iling-Junior",
+    "team": "Aston Villa",
+    "price": 5.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Enzo Barrenechea",
+    "team": "Aston Villa",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Lewis Dobbin",
+    "team": "Aston Villa",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Ben Broggio",
+    "team": "Aston Villa",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Leander Dendoncker",
+    "team": "Aston Villa",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Kadan Young",
+    "team": "Aston Villa",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Z\u00e9piqueno Redmond",
+    "team": "Aston Villa",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "James Wright",
+    "team": "Aston Villa",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Triston Rowe",
+    "team": "Aston Villa",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Sam Proctor",
+    "team": "Aston Villa",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Travis Patterson",
+    "team": "Aston Villa",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Ronnie Hollingshead",
+    "team": "Aston Villa",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Leon Routh",
+    "team": "Aston Villa",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "TJ Carroll",
+    "team": "Aston Villa",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Alysson Edward Franco da Rocha dos Santos",
+    "team": "Aston Villa",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Max Wei\u00df",
+    "team": "Burnley",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Etienne Green",
+    "team": "Burnley",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "V\u00e1clav Hladk\u00fd",
+    "team": "Burnley",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Connor Roberts",
+    "team": "Burnley",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Hannes Delcroix",
+    "team": "Burnley",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Owen Dodgson",
+    "team": "Burnley",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Jordan Beyer",
+    "team": "Burnley",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Shurandy Sambo",
+    "team": "Burnley",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Manuel Benson Hedilazio",
+    "team": "Burnley",
+    "price": 5.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Enock Agyei",
+    "team": "Burnley",
+    "price": 4.7,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Darko Churlinov",
+    "team": "Burnley",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Luca Koleosho",
+    "team": "Burnley",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Aaron Ramsey",
+    "team": "Burnley",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Oluwaseun Adewumi",
+    "team": "Burnley",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Zeki Amdouni",
+    "team": "Burnley",
+    "price": 4.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Michael Obafemi",
+    "team": "Burnley",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Oliver Pimlott",
+    "team": "Burnley",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "George Brierley",
+    "team": "Burnley",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Norberto Murara Neto",
+    "team": "Bournemouth",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Will Dennis",
+    "team": "Bournemouth",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Callan McKenna",
+    "team": "Bournemouth",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Alex Paulsen",
+    "team": "Bournemouth",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Illia Zabarnyi",
+    "team": "Bournemouth",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Matai Akinmboni",
+    "team": "Bournemouth",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Owen Bevan",
+    "team": "Bournemouth",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Juli\u00e1n Araujo Z\u00fa\u00f1iga",
+    "team": "Bournemouth",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Chris Mepham",
+    "team": "Bournemouth",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Philip Billing",
+    "team": "Bournemouth",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Luis Sinisterra Lucum\u00ed",
+    "team": "Bournemouth",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Romain Faivre",
+    "team": "Bournemouth",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Dominic Sadi",
+    "team": "Bournemouth",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Zain Silcott-Duberry",
+    "team": "Bournemouth",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Daniel Adu-Adjei",
+    "team": "Bournemouth",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Remy Rees-Dottin",
+    "team": "Bournemouth",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Malcom DaCosta",
+    "team": "Bournemouth",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Fraser Forster",
+    "team": "Bournemouth",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Charlie Stevens",
+    "team": "Bournemouth",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Ellery Balcombe",
+    "team": "Brentford",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Matthew Cox",
+    "team": "Brentford",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Julian Eyestone",
+    "team": "Brentford",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "H\u00e1kon Rafn Valdimarsson",
+    "team": "Brentford",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Mads Roerslev Rasmussen",
+    "team": "Brentford",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Benjamin Arthur",
+    "team": "Brentford",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Benjamin Fredrick",
+    "team": "Brentford",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Kim Ji-soo",
+    "team": "Brentford",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Jayden Meghoma",
+    "team": "Brentford",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Gustavo Nunes Fernandes Gomes",
+    "team": "Brentford",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Yunus Emre Konak",
+    "team": "Brentford",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Paris Maghoma",
+    "team": "Brentford",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Ryan Trevitt",
+    "team": "Brentford",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Iwan Morgan",
+    "team": "Brentford",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Josh Dasilva",
+    "team": "Brentford",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Kaye Furo",
+    "team": "Brentford",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Jason Steele",
+    "team": "Brighton",
+    "price": 4.2,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Tom McGill",
+    "team": "Brighton",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Carl Rushworth",
+    "team": "Brighton",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Kjell Scherpen",
+    "team": "Brighton",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Pervis Estupi\u00f1\u00e1n Tenorio",
+    "team": "Brighton",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Tariq Lamptey",
+    "team": "Brighton",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Adam Webster",
+    "team": "Brighton",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Eiran Cashin",
+    "team": "Brighton",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Jacob Slater",
+    "team": "Brighton",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Charlie Tasker",
+    "team": "Brighton",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Solly March",
+    "team": "Brighton",
+    "price": 5.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Julio Enciso Esp\u00ednola",
+    "team": "Brighton",
+    "price": 5.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Abdallah Sima",
+    "team": "Brighton",
+    "price": 5.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Jeremy Sarmiento Morante",
+    "team": "Brighton",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Malick Yalcouy\u00e9",
+    "team": "Brighton",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Adrian Mazilu",
+    "team": "Brighton",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Andrew Moran",
+    "team": "Brighton",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Evan Ferguson",
+    "team": "Brighton",
+    "price": 5.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Freddie Simmonds",
+    "team": "Brighton",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Harry Howell",
+    "team": "Brighton",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Mike Penders",
+    "team": "Chelsea",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Gabriel S\u0142onina",
+    "team": "Chelsea",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Levi Samuels Colwill",
+    "team": "Chelsea",
+    "price": 4.7,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Mamadou Sarr",
+    "team": "Chelsea",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Aar\u00f3n Anselmino",
+    "team": "Chelsea",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Christopher Nkunku",
+    "team": "Chelsea",
+    "price": 5.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Mykhailo Mudryk",
+    "team": "Chelsea",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "D\u00e1rio Lu\u00eds Essugo",
+    "team": "Chelsea",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Kendry P\u00e1ez Andrade",
+    "team": "Chelsea",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Nicolas Jackson",
+    "team": "Chelsea",
+    "price": 6.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Landon Emenalo",
+    "team": "Chelsea",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Max Merrick",
+    "team": "Chelsea",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Teddy Sharman-Lowe",
+    "team": "Chelsea",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Walter Ben\u00edtez",
+    "team": "Crystal Palace",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Remi Matthews",
+    "team": "Crystal Palace",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Rob Holding",
+    "team": "Crystal Palace",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Caleb Kporha",
+    "team": "Crystal Palace",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Cheick Doucour\u00e9",
+    "team": "Crystal Palace",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Asher Agbinone",
+    "team": "Crystal Palace",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Naouirou Ahamada",
+    "team": "Crystal Palace",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Malcolm Ebiowei",
+    "team": "Crystal Palace",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Jesurun Rak-Sakyi",
+    "team": "Crystal Palace",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Matheus Fran\u00e7a de Oliveira",
+    "team": "Crystal Palace",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "David Ozoh",
+    "team": "Crystal Palace",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Franco Umeh-Chibueze",
+    "team": "Crystal Palace",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Zach Marsh",
+    "team": "Crystal Palace",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Rio Cardines",
+    "team": "Crystal Palace",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Dean Benamar",
+    "team": "Crystal Palace",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Ben Casey",
+    "team": "Crystal Palace",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "George King",
+    "team": "Crystal Palace",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Danny Imray",
+    "team": "Crystal Palace",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Mark Travers",
+    "team": "Everton",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Harry Tyrer",
+    "team": "Everton",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Jarrad Branthwaite",
+    "team": "Everton",
+    "price": 5.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Roman Dixon",
+    "team": "Everton",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Reece Welch",
+    "team": "Everton",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Callum Bates",
+    "team": "Everton",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Coby Ebere",
+    "team": "Everton",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Isaac Heath",
+    "team": "Everton",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Jenson Metcalfe",
+    "team": "Everton",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Youssef Ramalho Chermiti",
+    "team": "Everton",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Martin Sherif",
+    "team": "Everton",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Tom King",
+    "team": "Everton",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Adam Aznou",
+    "team": "Everton",
+    "price": 4.2,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Tyler Onyango",
+    "team": "Everton",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Elijah Campbell",
+    "team": "Everton",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Braiden Graham",
+    "team": "Everton",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Steven Benda",
+    "team": "Fulham",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Samuel Amissah",
+    "team": "Fulham",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Andreas Hoelgebaum Pereira",
+    "team": "Fulham",
+    "price": 5.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Martial Godo",
+    "team": "Fulham",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Luke Harris",
+    "team": "Fulham",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Benjamin Lecomte",
+    "team": "Fulham",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Seth Ridgeon",
+    "team": "Fulham",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Alfie McNally",
+    "team": "Fulham",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Illan Meslier",
+    "team": "Leeds",
+    "price": 4.2,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Alex Cairns",
+    "team": "Leeds",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Isaac Schmidt",
+    "team": "Leeds",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Sam Greenwood",
+    "team": "Leeds",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Largie Ramazani",
+    "team": "Leeds",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Charlie Crew",
+    "team": "Leeds",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Joe Gelhardt",
+    "team": "Leeds",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Darko Gyabi",
+    "team": "Leeds",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Patrick Bamford",
+    "team": "Leeds",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Mateo Joseph Fern\u00e1ndez-Regatillo",
+    "team": "Leeds",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Harry Gray",
+    "team": "Leeds",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Sam Chambers",
+    "team": "Leeds",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "\u00c1rmin P\u00e9csi",
+    "team": "Liverpool",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Freddie Woodman",
+    "team": "Liverpool",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Konstantinos Tsimikas",
+    "team": "Liverpool",
+    "price": 4.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Amara Nallo",
+    "team": "Liverpool",
+    "price": 3.7,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Rhys Williams",
+    "team": "Liverpool",
+    "price": 3.7,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Calvin Ramsay",
+    "team": "Liverpool",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Luis D\u00edaz Marulanda",
+    "team": "Liverpool",
+    "price": 8.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Stefan Baj\u010deti\u0107 Maquieira",
+    "team": "Liverpool",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "James McConnell",
+    "team": "Liverpool",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Tyler Morton",
+    "team": "Liverpool",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Darwin N\u00fa\u00f1ez Ribeiro",
+    "team": "Liverpool",
+    "price": 6.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Jayden Danns",
+    "team": "Liverpool",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Giovanni Leoni",
+    "team": "Liverpool",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Kieran Morrison",
+    "team": "Liverpool",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Wellity Lucky",
+    "team": "Liverpool",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Ederson Santana de Moraes",
+    "team": "Man City",
+    "price": 5.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Stefan Ortega Moreno",
+    "team": "Man City",
+    "price": 4.7,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Marcus Bettinelli",
+    "team": "Man City",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Manuel Akanji",
+    "team": "Man City",
+    "price": 5.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Vitor de Oliveira Nunes dos Reis",
+    "team": "Man City",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "\u0130lkay G\u00fcndo\u011fan",
+    "team": "Man City",
+    "price": 6.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Claudio Echeverri",
+    "team": "Man City",
+    "price": 5.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Sverre Nypan",
+    "team": "Man City",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Kalvin Phillips",
+    "team": "Man City",
+    "price": 4.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Stephen Mfuni",
+    "team": "Man City",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Ryan McAidoo",
+    "team": "Man City",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Charlie Gray",
+    "team": "Man City",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Reigan Heskey",
+    "team": "Man City",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Andr\u00e9 Onana",
+    "team": "Man Utd",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Elyh Harrison",
+    "team": "Man Utd",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Tom Heaton",
+    "team": "Man Utd",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Dermot Mee",
+    "team": "Man Utd",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Diego Le\u00f3n Blanco",
+    "team": "Man Utd",
+    "price": 4.2,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Harry Amass",
+    "team": "Man Utd",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Marcus Rashford",
+    "team": "Man Utd",
+    "price": 7.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Antony dos Santos",
+    "team": "Man Utd",
+    "price": 5.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Toby Collyer",
+    "team": "Man Utd",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Jayce Fitzgerald",
+    "team": "Man Utd",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "S\u00e9kou Kon\u00e9",
+    "team": "Man Utd",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Jack Moorhouse",
+    "team": "Man Utd",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Rasmus H\u00f8jlund",
+    "team": "Man Utd",
+    "price": 6.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Chido Obi",
+    "team": "Man Utd",
+    "price": 4.2,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Ethan Wheatley",
+    "team": "Man Utd",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Tyler Fletcher",
+    "team": "Man Utd",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Godwill Kukonki",
+    "team": "Man Utd",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Mark Gillespie",
+    "team": "Newcastle",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Odysseas Vlachodimos",
+    "team": "Newcastle",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Emil Krafth",
+    "team": "Newcastle",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0.0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Alex Murphy",
+    "team": "Newcastle",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Harrison Ashby",
+    "team": "Newcastle",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Miodrag Piva\u0161",
+    "team": "Newcastle",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Matt Targett",
+    "team": "Newcastle",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Anto\u00f1ito Cordero Campillo",
+    "team": "Newcastle",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Isaac Hayden",
+    "team": "Newcastle",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Garang Kuol",
+    "team": "Newcastle",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Joe White",
+    "team": "Newcastle",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Sean Neave",
+    "team": "Newcastle",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Seung-Soo Park",
+    "team": "Newcastle",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "John Ruddy",
+    "team": "Newcastle",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Leo Shahar",
+    "team": "Newcastle",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Sam Alabi",
+    "team": "Newcastle",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Carlos Miguel dos Santos Pereira",
+    "team": "Nott'm Forest",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Matt Turner",
+    "team": "Nott'm Forest",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "David Mota Veiga Teixeira do Carmo",
+    "team": "Nott'm Forest",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Omar Richards",
+    "team": "Nott'm Forest",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Willy Boly",
+    "team": "Nott'm Forest",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Lewis O'Brien",
+    "team": "Nott'm Forest",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Eric da Silva Moreira",
+    "team": "Nott'm Forest",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Marko Stameni\u0107",
+    "team": "Nott'm Forest",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Angus Gunn",
+    "team": "Nott'm Forest",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Luis Eduardo Soares da Silva",
+    "team": "Nott'm Forest",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Anthony Patterson",
+    "team": "Sunderland",
+    "price": 4.2,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Simon Moore",
+    "team": "Sunderland",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Blondy Nna Noukeu",
+    "team": "Sunderland",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Aji Alese",
+    "team": "Sunderland",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Joe Anderson",
+    "team": "Sunderland",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Leo Fuhr Hjelde",
+    "team": "Sunderland",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Niall Huggins",
+    "team": "Sunderland",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Zak Johnson",
+    "team": "Sunderland",
+    "price": 3.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Timoth\u00e9e Pemb\u00e9l\u00e9",
+    "team": "Sunderland",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Milan Aleksi\u0107",
+    "team": "Sunderland",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Ian Poveda-Ocampo",
+    "team": "Sunderland",
+    "price": 4.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Abdoullah Ba",
+    "team": "Sunderland",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Alan Browne",
+    "team": "Sunderland",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Pierre Ekwah Elimby",
+    "team": "Sunderland",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Harrison Jones",
+    "team": "Sunderland",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Jay Matete",
+    "team": "Sunderland",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Nectarios Triantis",
+    "team": "Sunderland",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Ahmed Abdullahi",
+    "team": "Sunderland",
+    "price": 4.2,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Lu\u00eds Hemir Silva Semedo",
+    "team": "Sunderland",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Nazarii Rusyn",
+    "team": "Sunderland",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Jenson Jones",
+    "team": "Sunderland",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Tymur Tutierov",
+    "team": "Sunderland",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Djiamgone Jocelin Ta Bi",
+    "team": "Sunderland",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Brandon Austin",
+    "team": "Spurs",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Anton\u00edn Kinsk\u00fd",
+    "team": "Spurs",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Ashley Phillips",
+    "team": "Spurs",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Takai K\u014dta",
+    "team": "Spurs",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Luka Vu\u0161kovi\u0107",
+    "team": "Spurs",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Son Heung-min",
+    "team": "Spurs",
+    "price": 8.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "James Maddison",
+    "team": "Spurs",
+    "price": 6.8,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Dejan Kulusevski",
+    "team": "Spurs",
+    "price": 6.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Manor Solomon",
+    "team": "Spurs",
+    "price": 5.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Bryan Gil Salvatierra",
+    "team": "Spurs",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Mikey Moore",
+    "team": "Spurs",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Yang Min-hyeok",
+    "team": "Spurs",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Callum Olusesi",
+    "team": "Spurs",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Will Lankshear",
+    "team": "Spurs",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Jun'ai Byfield",
+    "team": "Spurs",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "James Rowswell",
+    "team": "Spurs",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Yusuf Akhamrich",
+    "team": "Spurs",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Luc\u00e1 Williams-Barnett",
+    "team": "Spurs",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Wes Foderingham",
+    "team": "West Ham",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Kriszti\u00e1n Hegyi",
+    "team": "West Ham",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Emerson Palmieri dos Santos",
+    "team": "West Ham",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Kaelan Casey",
+    "team": "West Ham",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Edson \u00c1lvarez Vel\u00e1zquez",
+    "team": "West Ham",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Maxwel Cornet",
+    "team": "West Ham",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Lewis Orford",
+    "team": "West Ham",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Lukasz Fabianski",
+    "team": "West Ham",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Airidas Golambeckis",
+    "team": "West Ham",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Keiber Lamadrid",
+    "team": "West Ham",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Daniel Bentley",
+    "team": "Wolves",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 1
+  },
+  {
+    "name": "Bastien Meupiyou Menadjou",
+    "team": "Wolves",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Alfie Pond",
+    "team": "Wolves",
+    "price": 3.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Gon\u00e7alo Manuel Ganchinho Guedes",
+    "team": "Wolves",
+    "price": 5.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Boubacar Traor\u00e9",
+    "team": "Wolves",
+    "price": 5.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Tom Edozie",
+    "team": "Wolves",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Enso Gonz\u00e1lez Medina",
+    "team": "Wolves",
+    "price": 4.3,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Joe Hodge",
+    "team": "Wolves",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "F\u00e1bio Soares Silva",
+    "team": "Wolves",
+    "price": 4.9,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Leon Chiwome",
+    "team": "Wolves",
+    "price": 4.4,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Nathan Fraser",
+    "team": "Wolves",
+    "price": 4.2,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 4
+  },
+  {
+    "name": "Saheed Olagunju",
+    "team": "Wolves",
+    "price": 4.0,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 2
+  },
+  {
+    "name": "Luke Rawlings",
+    "team": "Wolves",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Temple Ojinnaka",
+    "team": "Wolves",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  },
+  {
+    "name": "Ethan Sutherland",
+    "team": "Wolves",
+    "price": 4.5,
+    "total_points": 0,
+    "ppg": 0,
+    "value": 0.0,
+    "form": 0.0,
+    "element_type": 3
+  }
+]
