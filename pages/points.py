@@ -258,7 +258,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 .player-pts {{
     background: rgba(255,255,255,0.12);
     backdrop-filter: blur(8px);
-    color: #00ff87;
+    color: #fefefe;
     font-size: 13px;
     font-weight: 800;
     padding: 3px 7px;
