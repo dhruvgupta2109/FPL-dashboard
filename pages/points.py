@@ -171,7 +171,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 
 .header-container {{ text-align: center; color: white; margin-bottom: 16px; }}
 .gw-label {{ font-size: 20px; opacity: 0.9; }}
-.total-points {{ font-size: 85px; font-weight: 900; color: #00ff87; line-height: 1; margin-bottom: 10px; }}
+.total-points {{ font-size: 85px; font-weight: 600; color: #00ff87; line-height: 1; margin-bottom: 10px; }}
 
 .big-glassbox {{
     background: rgba(255,255,255,0.08);
@@ -201,6 +201,17 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     flex-direction: column;
     gap: 16px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    position: relative;
+}}
+
+/* Field markings */
+.pitch-markings {{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }}
 
 .pitch-row {{
@@ -307,13 +318,26 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     <div class="total-points">{total_gw_points}</div>
 </div>
 <div class="big-glassbox">
-    <div class="pitch">{pitch_rows}</div>
+    <div class="pitch">
+    <svg class="pitch-markings" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <!-- Horizontal line after GK row -->
+        <line x1="0" y1="5" x2="100" y2="5" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+        <!-- Penalty box D -->
+        <path d="M 35 5 Q 50 20, 65 5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+        <path d="M 25 105 
+         A 25 25 0 0 1 75 105"
+      fill="none"
+      stroke="rgba(255,255,255,0.4)"
+      stroke-width="0.3"/>
+    </svg>
+    {pitch_rows}
+</div>
     <div class="bench-label">Bench</div>
     <div class="bench">{bench_cards}</div>
 </div>
 </body>
 </html>
-""", height=1150, scrolling=False)
+""", height=1200, scrolling=False)
 
 _, col, _ = st.columns([1,1,1])
 with col:
