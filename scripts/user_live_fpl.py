@@ -84,7 +84,7 @@ def main():
 
     entry_id = input("Enter your FPL Manager ID (TID): ").strip()
     entry_id = int(entry_id) 
-    manager_info = fetch_user_leagues(entry_id)  # returns basic info about the manager
+    manager_info = fetch_user_leagues(entry_id)  
     team_name = manager_info["player_first_name"] + " " + manager_info["player_last_name"]
 
     user_team = fetch_user_team(entry_id, gw)
