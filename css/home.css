@@ -29,7 +29,6 @@
 .gw        { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
 .points    { font-size: 64px; font-weight: 800; line-height: 1; color: white; }
 
-/* Button sits flush below the card */
 div[data-testid="stButton"] > button {
     width: 280px !important;
     padding: 14px 0 !important;

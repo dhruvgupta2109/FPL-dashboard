@@ -1,21 +1,17 @@
-/* Background */
 .stApp {
     background: linear-gradient(135deg, #37003c, #2b1e5b, #00ff87);
     min-height: 100vh;
 }
 
-/* Remove Streamlit default padding, add our own */
 .stMainBlockContainer {
     padding-top: 2.5rem !important;
     max-width: 860px !important;
 }
 
-/* Header */
 .header-container { text-align: center; color: white; margin-bottom: 16px; }
 .gw-label { font-size: 20px; opacity: 0.9; }
 .total-points { font-size: 85px; font-weight: 900; color: #00ff87; line-height: 1; margin-bottom: 10px; }
 
-/* The Large Container */
 .big-glassbox {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
@@ -28,7 +24,6 @@
     box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
 
-/* Pitch */
 .pitch {
     background: linear-gradient(to bottom, #2ecc71 50%, #27ae60 50%);
     background-size: 100% 60px;
@@ -40,14 +35,12 @@
     border: 3px solid rgba(255,255,255,0.2);
 }
 
-/* Each row of players on pitch */
 .pitch-row {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-/* Bench */
 .bench-label {
     color: rgba(255,255,255,0.6);
     font-size: 12px;
@@ -67,7 +60,6 @@
     border-radius: 15px;
 }
 
-/* Player cards */
 .player-card {
     text-align: center;
     width: 85px;
@@ -104,7 +96,6 @@
 .sub { width: 70px; opacity: 0.85; }
 .sub .jersey { font-size: 35px; }
 
-/* Back button */
 div[data-testid="stButton"] {
     display: flex !important;
     justify-content: center !important;
