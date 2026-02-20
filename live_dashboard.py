@@ -4,17 +4,14 @@ import urllib.request
 import ssl
 import certifi
 
-# ── Must be first Streamlit call ──────────────────────────────────────────────
 st.set_page_config(page_title="FPL Live Tracker", layout="centered")
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
 def fetch(url):
     ctx = ssl.create_default_context(cafile=certifi.where())
     with urllib.request.urlopen(url, context=ctx) as r:
         return json.loads(r.read())
 
 def load_bootstrap():
-    # Always fetch live — local file goes stale each gameweek
     return fetch("https://fantasy.premierleague.com/api/bootstrap-static/")
 
 def get_current_gw(bootstrap):
@@ -24,7 +21,6 @@ def get_current_gw(bootstrap):
     return None
 
 def build_player_map(bootstrap):
-    # Build team_id -> team_code map for kit URLs
     team_codes = {t["id"]: t["code"] for t in bootstrap["teams"]}
     return {
         p["id"]: {
@@ -39,7 +35,6 @@ def build_player_map(bootstrap):
         for p in bootstrap["elements"]
     }
 
-# ── Styles ────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
 .stApp {
@@ -78,7 +73,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ── UI ────────────────────────────────────────────────────────────────────────
 st.markdown("""
 <div class="center-box">
     <h1>FPL Live Tracker</h1>
@@ -98,7 +92,6 @@ with st.expander("How do I find my Manager ID?"):
 
 connect = st.button("Connect Team")
 
-# ── Logic: only fires on explicit button click ────────────────────────────────
 if connect:
     if not manager_id.strip().isdigit():
         st.error("Manager ID must be numeric.")
