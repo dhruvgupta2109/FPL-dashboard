@@ -52,7 +52,6 @@ gw              = st.session_state.gw
 picks           = sorted(st.session_state.picks["picks"], key=lambda x: x["position"])
 players         = st.session_state.players
 history         = st.session_state.history
-total_gw_points = history["current"][-1]["points"]
 
 @st.cache_data(ttl=60)
 def fetch_live_points(gw):
@@ -104,6 +103,11 @@ team_names = fetch_teams(gw)
 
 starters = picks[:11]
 subs     = picks[11:]
+
+total_gw_points = sum(
+    live_pts.get(pick["element"], 0) * pick.get("multiplier", 1)
+    for pick in starters
+)
 
 rows = {1: [], 2: [], 3: [], 4: []}
 for pick in starters:
