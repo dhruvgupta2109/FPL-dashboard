@@ -68,10 +68,9 @@ def fetch_fixtures(gw):
     url = f"https://fantasy.premierleague.com/api/fixtures/?event={gw}"
     with urllib.request.urlopen(url, context=ctx) as r:
         fixtures = json.loads(r.read())
-    # Build team short name map from session players
     team_map = {}
     for p in st.session_state.players.values():
-        team_map[p["team_id"]] = p["team_id"]  # placeholder
+        team_map[p["team_id"]] = p["team_id"]  
 
     result = {}
     for f in fixtures:
@@ -79,7 +78,6 @@ def fetch_fixtures(gw):
         for team_id, opp_id, venue in [(h, a, "H"), (a, h, "A")]:
             entry = {"opp": opp_id, "venue": venue}
             if team_id in result:
-                # Already has a fixture — double GW, convert to list
                 existing = result[team_id]
                 if isinstance(existing, list):
                     existing.append(entry)
@@ -117,9 +115,8 @@ for pick in starters:
 def get_fixture_str(team_id):
     fix = fixtures.get(team_id)
     if not fix:
-        return "—"  # no match this GW
+        return "—"  
     if isinstance(fix, list):
-        # Double gameweek
         parts = []
         for f in fix:
             opp = team_names.get(f["opp"], "?")
@@ -139,7 +136,6 @@ def player_card(pick, is_sub=False):
     fixture   = get_fixture_str(team_id)
     sub_class = " sub" if is_sub else ""
 
-    # Captain / vice badge
     if pick["is_captain"]:
         badge = '<span class="badge captain">C</span>'
     elif pick["is_vice_captain"]:
