@@ -202,6 +202,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     gap: 16px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     position: relative;
+    transform-style: preserve-3d;
 }}
 
 /* Field markings */
@@ -225,6 +226,12 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     position: relative;
     text-align: center;
     width: 100px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 8px 6px 6px 6px;
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }}
 
 .player-img {{
@@ -312,8 +319,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 </style>
 </head>
 <body>
-<div class="header-container">
-    <div class="gw-label">Your Team</div>         
+<div class="header-container">      
     <div class="gw-label">Gameweek {gw}</div>
     <div class="total-points">{total_gw_points}</div>
 </div>
