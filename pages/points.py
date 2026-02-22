@@ -323,7 +323,11 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
         <!-- Horizontal line after GK row -->
         <line x1="0" y1="5" x2="100" y2="5" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
         <!-- Penalty box D -->
-        <path d="M 35 5 Q 50 20, 65 5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+        <line x1="0" y1="5" x2="100" y2="5" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+        <line x1="30" y1="18.4" x2="70" y2="18.4" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+        <line x1="30" y1="5" x2="30" y2="18.4" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+        <line x1="70" y1="5" x2="70" y2="18.4" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+        <!-- half line-->
         <path d="M 25 105 
          A 25 25 0 0 1 75 105"
       fill="none"

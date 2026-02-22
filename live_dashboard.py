@@ -80,20 +80,14 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-manager_id = st.text_input("Manager ID", placeholder="e.g. 1234567")
-
-with st.expander("How do I find my Manager ID?"):
-    st.markdown("""
-    1. Go to **https://fantasy.premierleague.com**
-    2. Click **Points →**
-    3. Check the URL: `https://fantasy.premierleague.com/entry/1637221/event/26`
-    4. `1637221` is your Manager ID — paste it here
-    """)
-
-connect = st.button("Connect Team")
-
-if connect:
-    if not manager_id.strip().isdigit():
+def connect_team():
+    """Connect to FPL team - called by button or Enter key"""
+    manager_id = st.session_state.get("manager_id_input", "").strip()
+    
+    if not manager_id:
+        return
+    
+    if not manager_id.isdigit():
         st.error("Manager ID must be numeric.")
         st.stop()
 
@@ -117,3 +111,21 @@ if connect:
     st.session_state.gw         = gw
 
     st.switch_page("pages/home.py")
+
+manager_id_input = st.text_input(
+    "Manager ID",
+    placeholder="e.g. 1234567",
+    key="manager_id_input"
+)
+
+with st.expander("How do I find my Manager ID?"):
+    st.markdown("""
+    1. Go to **https://fantasy.premierleague.com**
+    2. Click **Points →**
+    3. Check the URL: `https://fantasy.premierleague.com/entry/1637221/event/26`
+    4. `1637221` is your Manager ID — paste it here
+    """)
+
+if st.button("Connect Team") or manager_id_input:
+    if manager_id_input:
+        connect_team()
