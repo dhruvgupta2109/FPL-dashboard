@@ -308,6 +308,72 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
     font-style: normal;
 }
 
+.trends-wrap {
+    margin-top: 14px;
+}
+
+.trend-box {
+    padding: 14px 14px 12px 14px;
+    border-radius: 16px;
+    min-height: 270px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+}
+
+.trend-title {
+    margin: 0 0 8px 0;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.trend-subtitle {
+    margin: 0 0 10px 0;
+    text-align: center;
+    font-size: 11px;
+    opacity: 0.78;
+}
+
+.trend-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.trend-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    margin-bottom: 7px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+}
+
+.trend-player {
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.trend-value {
+    font-size: 12px;
+    font-weight: 800;
+    color: #00ff87;
+    flex-shrink: 0;
+}
+
+.trend-empty {
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.75;
+    padding: 18px 8px;
+}
+
 /* Zero gap and padding on column layout rows */
 div[data-testid="stHorizontalBlock"] {
     gap: 0 !important;
@@ -500,6 +566,98 @@ def kickoff_label(kickoff_str):
         return "Kickoff TBC"
     return dt.strftime("%d %b %H:%M UTC")
 
+def safe_int(value):
+    try:
+        return int(value)
+    except Exception:
+        return 0
+
+def safe_float(value):
+    try:
+        return float(value)
+    except Exception:
+        return 0.0
+
+def build_top5_trends(bootstrap, gw):
+    elements = bootstrap.get("elements", [])
+    events = bootstrap.get("events", [])
+
+    player_by_id = {p.get("id"): p for p in elements if p.get("id") is not None}
+
+    subbed_in = sorted(elements, key=lambda p: safe_int(p.get("transfers_in_event")), reverse=True)[:5]
+    subbed_out = sorted(elements, key=lambda p: safe_int(p.get("transfers_out_event")), reverse=True)[:5]
+
+    current_event = next((e for e in events if e.get("id") == gw), {})
+    most_captained_id = current_event.get("most_captained")
+
+    top_by_ownership = sorted(elements, key=lambda p: safe_float(p.get("selected_by_percent")), reverse=True)
+    captained = []
+    seen_ids = set()
+
+    if most_captained_id in player_by_id:
+        captained.append(player_by_id[most_captained_id])
+        seen_ids.add(most_captained_id)
+
+    for player in top_by_ownership:
+        pid = player.get("id")
+        if pid in seen_ids:
+            continue
+        captained.append(player)
+        seen_ids.add(pid)
+        if len(captained) == 5:
+            break
+
+    def player_name(player):
+        return player.get("web_name") or player.get("second_name") or "Unknown"
+
+    captained_rows = [
+        {
+            "name": player_name(p),
+            "value": f"{safe_float(p.get('selected_by_percent')):.1f}%",
+        }
+        for p in captained[:5]
+    ]
+
+    subbed_in_rows = [
+        {
+            "name": player_name(p),
+            "value": f"{safe_int(p.get('transfers_in_event')):,}",
+        }
+        for p in subbed_in
+    ]
+
+    subbed_out_rows = [
+        {
+            "name": player_name(p),
+            "value": f"{safe_int(p.get('transfers_out_event')):,}",
+        }
+        for p in subbed_out
+    ]
+
+    return captained_rows, subbed_in_rows, subbed_out_rows
+
+def build_trend_box_html(title, subtitle, rows):
+    if not rows:
+        rows_html = '<div class="trend-empty">No data available.</div>'
+    else:
+        items = []
+        for idx, row in enumerate(rows, start=1):
+            items.append(
+                f'<li class="trend-row">'
+                f'  <span class="trend-player">{idx}. {row["name"]}</span>'
+                f'  <span class="trend-value">{row["value"]}</span>'
+                f'</li>'
+            )
+        rows_html = f'<ol class="trend-list">{"".join(items)}</ol>'
+
+    return (
+        f'<div class="glass-box trend-box">'
+        f'  <h4 class="trend-title">{title}</h4>'
+        f'  <p class="trend-subtitle">{subtitle}</p>'
+        f'  {rows_html}'
+        f'</div>'
+    )
+
 live_pts = fetch_live_points(gw)
 avg_points, highest_points = fetch_gw_stats(gw)
 picks    = sorted(st.session_state.picks["picks"], key=lambda x: x["position"])
@@ -521,6 +679,7 @@ team_map = {
 }
 
 fixtures = fetch_fixtures(gw)
+captained_top5, subbed_in_top5, subbed_out_top5 = build_top5_trends(bootstrap_data, gw)
 
 def build_league_html(leagues, show_total=False, max_count=5):
     html = ""
@@ -768,3 +927,36 @@ with right_col:
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+    st.markdown('<div class="trends-wrap"></div>', unsafe_allow_html=True)
+    t1, t2, t3 = st.columns(3)
+
+    with t1:
+        st.markdown(
+            build_trend_box_html(
+                "Most Captained Top 5",
+                "#1 is official GW most captained; remaining based on ownership %",
+                captained_top5,
+            ),
+            unsafe_allow_html=True,
+        )
+
+    with t2:
+        st.markdown(
+            build_trend_box_html(
+                "Most Subbed In Top 5",
+                "GW transfer-ins from official FPL API",
+                subbed_in_top5,
+            ),
+            unsafe_allow_html=True,
+        )
+
+    with t3:
+        st.markdown(
+            build_trend_box_html(
+                "Most Subbed Out Top 5",
+                "GW transfer-outs from official FPL API",
+                subbed_out_top5,
+            ),
+            unsafe_allow_html=True,
+        )
