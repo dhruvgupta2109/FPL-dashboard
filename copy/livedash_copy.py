@@ -4,17 +4,14 @@ import urllib.request
 import ssl
 import certifi
 
-# ── Must be first Streamlit call ──────────────────────────────────────────────
-st.set_page_config(page_title="FPL Live Tracker", layout="centered")
+st.set_page_config(page_title="FPL manager", layout="centered")
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
 def fetch(url):
     ctx = ssl.create_default_context(cafile=certifi.where())
     with urllib.request.urlopen(url, context=ctx) as r:
         return json.loads(r.read())
 
 def load_bootstrap():
-    # Always fetch live — local file goes stale each gameweek
     return fetch("https://fantasy.premierleague.com/api/bootstrap-static/")
 
 def get_current_gw(bootstrap):
@@ -24,7 +21,6 @@ def get_current_gw(bootstrap):
     return None
 
 def build_player_map(bootstrap):
-    # Build team_id -> team_code map for kit URLs
     team_codes = {t["id"]: t["code"] for t in bootstrap["teams"]}
     return {
         p["id"]: {
@@ -39,11 +35,10 @@ def build_player_map(bootstrap):
         for p in bootstrap["elements"]
     }
 
-# ── Styles ────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
 .stApp {
-    background: linear-gradient(135deg, #37003c, #2b1e5b, #00ff87);
+    background: linear-gradient(135deg, #37003c, #2b1e5b, #00cc6a);
     min-height: 100vh;
 }
 .center-box {
@@ -78,29 +73,21 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ── UI ────────────────────────────────────────────────────────────────────────
 st.markdown("""
 <div class="center-box">
-    <h1>FPL Live Tracker</h1>
+    <h1>FPL Manager</h1>
     <p>Connect your team to see live points, leagues & squad</p>
 </div>
 """, unsafe_allow_html=True)
 
-manager_id = st.text_input("Manager ID", placeholder="e.g. 1234567")
-
-with st.expander("How do I find my Manager ID?"):
-    st.markdown("""
-    1. Go to **https://fantasy.premierleague.com**
-    2. Click **Points →**
-    3. Check the URL: `https://fantasy.premierleague.com/entry/1637221/event/26`
-    4. `1637221` is your Manager ID — paste it here
-    """)
-
-connect = st.button("Connect Team")
-
-# ── Logic: only fires on explicit button click ────────────────────────────────
-if connect:
-    if not manager_id.strip().isdigit():
+def connect_team():
+    """Connect to FPL team - called by button or Enter key"""
+    manager_id = st.session_state.get("manager_id_input", "").strip()
+    
+    if not manager_id:
+        return
+    
+    if not manager_id.isdigit():
         st.error("Manager ID must be numeric.")
         st.stop()
 
@@ -124,3 +111,21 @@ if connect:
     st.session_state.gw         = gw
 
     st.switch_page("pages/home.py")
+
+manager_id_input = st.text_input(
+    "Manager ID",
+    placeholder="e.g. 1234567",
+    key="manager_id_input"
+)
+
+with st.expander("How do I find my Manager ID?"):
+    st.markdown("""
+    1. Go to **https://fantasy.premierleague.com**
+    2. Click **Points →**
+    3. Check the URL: `https://fantasy.premierleague.com/entry/1637221/event/26`
+    4. `1637221` is your Manager ID — paste it here
+    """)
+
+if st.button("Connect Team") or manager_id_input:
+    if manager_id_input:
+        connect_team()
