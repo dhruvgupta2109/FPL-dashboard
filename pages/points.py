@@ -149,13 +149,13 @@ else:
 
 if is_guest:
     live_pts = {}
-    avg_points = "-"
-    highest_points = "-"
+    avg_points = "Guest mode"
+    highest_points = "Guest mode"
     fixtures = fetch_fixtures(gw)
     team_names = fetch_teams(gw)
     starters = []
     subs = []
-    total_gw_points = "-"
+    total_gw_points = "Guest mode"
 else:
     live_pts = fetch_live_points(gw)
     avg_points, highest_points = fetch_gw_stats(gw)
@@ -170,6 +170,7 @@ else:
 
 avg_display = avg_points if is_guest else int(avg_points)
 highest_display = highest_points if is_guest else int(highest_points)
+gw_label = "Guest mode" if is_guest else f"Gameweek {gw}"
 
 # ── Chips ──────────────────────────────────────────────────────────────────
 chips_data = []
@@ -271,9 +272,16 @@ rank_series_json = json.dumps(rank_series)
 
 # ── Pitch layout ────────────────────────────────────────────────────────────
 rows = {1: [], 2: [], 3: [], 4: []}
-for pick in starters:
-    pos = players[pick["element"]]["position"]
-    rows[pos].append(pick)
+if is_guest:
+    rows[1] = [{"position": 1}]
+    rows[2] = [{"position": 2} for _ in range(4)]
+    rows[3] = [{"position": 3} for _ in range(4)]
+    rows[4] = [{"position": 4} for _ in range(2)]
+    subs = [{"position": 1}, {"position": 2}, {"position": 3}, {"position": 4}]
+else:
+    for pick in starters:
+        pos = players[pick["element"]]["position"]
+        rows[pos].append(pick)
 
 def get_fixture_str(team_id):
     fix = fixtures.get(team_id)
@@ -290,26 +298,35 @@ def get_fixture_str(team_id):
 
 POS_SHORT = {1: "GK", 2: "DEF", 3: "MID", 4: "FWD"}
 
+FALLBACK_JERSEY = (
+    "data:image/svg+xml;utf8,"
+    "<svg xmlns='http://www.w3.org/2000/svg' width='110' height='140' viewBox='0 0 110 140'>"
+    "<rect width='110' height='140' rx='10' fill='%232b1e5b'/>"
+    "<path d='M20 20 L40 8 L55 20 L70 8 L90 20 L90 46 L75 46 L75 130 L35 130 L35 46 L20 46 Z' fill='%2300ff87'/>"
+    "<rect x='35' y='46' width='40' height='84' fill='%2300cc6a' opacity='0.85'/>"
+    "</svg>"
+)
+
 def player_card(pick, is_sub=False):
-    pid       = pick["element"]
-    p         = players[pid]
-    name      = p.get("web_name", p["name"].split()[-1])
-    photo     = p.get("photo", "")
-    team_id   = p["team_id"]
-    raw_pts   = live_pts.get(pid, 0)
-    pts       = raw_pts if is_sub else raw_pts * pick.get("multiplier", 1)
+    pid = pick.get("element") if pick else None
+    p = players.get(pid, {})
+    name = p.get("web_name") or (p.get("name", "").split()[-1] if p.get("name") else "Guest mode")
+    photo = p.get("photo") or FALLBACK_JERSEY
+    team_id = p.get("team_id")
+    raw_pts = live_pts.get(pid, 0) if pid is not None else 0
+    pts = raw_pts if is_sub else raw_pts * pick.get("multiplier", 1)
     fixture   = get_fixture_str(team_id)
     sub_class = " sub" if is_sub else ""
-    cap_class = " captain-pick" if (not is_sub and pick["is_captain"]) else ""
+    cap_class = " captain-pick" if (not is_sub and pick.get("is_captain")) else ""
     pos_html  = ""
     if is_sub:
-        lbl = POS_SHORT.get(p.get("position"), "")
+        lbl = POS_SHORT.get(p.get("position") or pick.get("position"), "")
         if lbl:
             pos_html = f'<div class="bench-pos">{lbl}</div>'
 
-    if pick["is_captain"]:
+    if pick.get("is_captain"):
         badge = '<span class="badge captain">C</span>'
-    elif pick["is_vice_captain"]:
+    elif pick.get("is_vice_captain"):
         badge = '<span class="badge vice">V</span>'
     else:
         badge = ""
@@ -635,7 +652,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 <body>
 <div class="header-container">
     <div class="gw-label">Your Team</div>
-    <div class="gw-label">Gameweek {gw}</div>
+    <div class="gw-label">{gw_label}</div>
     <div class="points-row">
         <div class="side-points">
             <div class="side-label">Average</div>
