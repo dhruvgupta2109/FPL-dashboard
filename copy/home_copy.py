@@ -309,14 +309,21 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
 }
 
 .trends-wrap {
-    margin-top: 14px;
+    margin-top: 24px;
 }
 
 .trend-box {
     padding: 14px 14px 12px 14px;
     border-radius: 16px;
-    min-height: 270px;
+    min-height: 340px;
     box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+}
+
+/* Restore gap for the 3-card trends row in the right column */
+div[data-testid="stColumn"]:nth-of-type(2)
+  > div[data-testid="stVerticalBlock"]
+  > div[data-testid="stHorizontalBlock"] {
+        gap: 32px !important;
 }
 
 .trend-title {
@@ -929,7 +936,7 @@ with right_col:
     """, unsafe_allow_html=True)
 
     st.markdown('<div class="trends-wrap"></div>', unsafe_allow_html=True)
-    t1, t2, t3 = st.columns(3)
+    t1, gap1, t2, gap2, t3 = st.columns([1, 0.06, 1, 0.06, 1])
 
     with t1:
         st.markdown(
