@@ -1,5 +1,5 @@
-import streamlit as st
-import streamlit.components.v1 as components
+import streamlit as st # type: ignore
+import streamlit.components.v1 as components # type: ignore
 import json
 import urllib.request
 import ssl
