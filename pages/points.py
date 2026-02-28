@@ -168,6 +168,9 @@ else:
         for pick in starters
     )
 
+avg_display = avg_points if is_guest else int(avg_points)
+highest_display = highest_points if is_guest else int(highest_points)
+
 # ── Chips ──────────────────────────────────────────────────────────────────
 chips_data = []
 active_chip = picks[0].get("active_chip") if picks else None
@@ -636,12 +639,12 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     <div class="points-row">
         <div class="side-points">
             <div class="side-label">Average</div>
-            <div class="side-value">{int(avg_points)}</div>
+            <div class="side-value">{avg_display}</div>
         </div>
         <div class="total-points">{total_gw_points}</div>
         <div class="side-points">
             <div class="side-label">Highest</div>
-            <div class="side-value">{int(highest_points)}</div>
+            <div class="side-value">{highest_display}</div>
         </div>
     </div>
 </div>
