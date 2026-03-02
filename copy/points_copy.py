@@ -52,7 +52,6 @@ gw              = st.session_state.gw
 picks           = sorted(st.session_state.picks["picks"], key=lambda x: x["position"])
 players         = st.session_state.players
 history         = st.session_state.history
-total_gw_points = history["current"][-1]["points"]
 
 @st.cache_data(ttl=60)
 def fetch_live_points(gw):
@@ -104,6 +103,12 @@ team_names = fetch_teams(gw)
 
 starters = picks[:11]
 subs     = picks[11:]
+
+# Calculate total GW points from starting 11 (with captain multiplier)
+total_gw_points = sum(
+    live_pts.get(pick["element"], 0) * pick.get("multiplier", 1)
+    for pick in starters
+)
 
 rows = {1: [], 2: [], 3: [], 4: []}
 for pick in starters:
@@ -170,73 +175,72 @@ components.html(f"""<!DOCTYPE html>
 body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 
 .header-container {{ text-align: center; color: white; margin-bottom: 16px; }}
-.gw-label {{ font-size: 20px; opacity: 0.9; }}
-.total-points {{ font-size: 85px; font-weight: 900; color: #00ff87; line-height: 1; margin-bottom: 10px; }}
+.gw-label {{ font-size: 18px; opacity: 0.9; }}
+.total-points {{ font-size: 70px; font-weight: 600; color: #00ff87; line-height: 1; margin-bottom: 10px; }}
+
+.main-container {{
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}}
+
+.pitch-container {{ flex: 0 0 65%; }}
+.chips-container {{ flex: 0 0 32%; }}
 
 .big-glassbox {{
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(20px);
-    border-radius: 30px;
-    padding: 20px;
+    border-radius: 24px;
+    padding: 16px;
     border: 1px solid rgba(255,255,255,0.15);
-    max-width: 800px;
-    margin: 0 auto;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
     overflow: hidden;
 }}
 
-/* 3D pitch */
 .pitch {{
     background:
-        repeating-linear-gradient(
-            to bottom,
-            rgba(0,0,0,0.06) 0px, rgba(0,0,0,0.06) 40px,
-            transparent 40px, transparent 80px
-        ),
+        repeating-linear-gradient(to bottom, rgba(0,0,0,0.06) 0px, rgba(0,0,0,0.06) 32px, transparent 32px, transparent 64px),
         linear-gradient(to bottom, #2ecc71, #27ae60);
-    border-radius: 12px;
-    padding: 18px 10px;
-    border: 3px solid rgba(255,255,255,0.25);
+    border-radius: 10px;
+    padding: 14px 8px;
+    border: 2px solid rgba(255,255,255,0.25);
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    gap: 12px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.5);
+    position: relative;
+    transform: perspective(1200px) rotateX(15deg);
+    transform-style: preserve-3d;
 }}
 
-.pitch-row {{
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-}}
+.pitch-markings {{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }}
+.pitch-row {{ display: flex; justify-content: center; gap: 6px; transform-style: flat; }}
 
-/* Player card */
 .player-card {{
     position: relative;
     text-align: center;
-    width: 100px;
-}}
-
-.player-img {{
     width: 75px;
-    height: 95px;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 6px 4px 4px 4px;
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transform: rotateX(-15deg);
+    transform-style: flat;
 }}
 
-.jersey-fallback {{ font-size: 40px; line-height: 1; }}
-
-/* Name + pts label */
-.player-label {{
-    margin-top: 2px;
-}}
+.player-img {{ width: 56px; height: 71px; object-fit: contain; filter: drop-shadow(0 3px 5px rgba(0,0,0,0.5)); mix-blend-mode: multiply; }}
+.player-label {{ margin-top: 2px; }}
 
 .player-name {{
     background: rgba(55, 0, 60, 0.92);
     color: white;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 700;
-    padding: 4px 7px;
-    border-radius: 4px 4px 0 0;
+    padding: 3px 5px;
+    border-radius: 3px 3px 0 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -247,28 +251,23 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 .player-pts {{
     background: rgba(255,255,255,0.12);
     backdrop-filter: blur(8px);
-    color: #00ff87;
-    font-size: 13px;
+    color: #fefefe;
+    font-size: 11px;
     font-weight: 800;
-    padding: 3px 7px;
-    border-radius: 0 0 4px 4px;
+    padding: 2px 5px;
+    border-radius: 0 0 3px 3px;
     border: 1px solid rgba(255,255,255,0.15);
     border-top: none;
 }}
 
-.fixture-str {{
-    color: rgba(255,255,255,0.55);
-    font-size: 9px;
-    margin-top: 2px;
-}}
+.fixture-str {{ color: rgba(255,255,255,0.55); font-size: 7px; margin-top: 1px; }}
 
-/* Captain / Vice badges */
 .badge {{
     position: absolute;
-    top: 0; left: 4px;
-    width: 16px; height: 16px;
+    top: 0; left: 3px;
+    width: 14px; height: 14px;
     border-radius: 50%;
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -276,43 +275,103 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     z-index: 2;
 }}
 .badge.captain {{ background: #f2c80c; color: #000; }}
-.badge.vice    {{ background: rgba(255,255,255,0.85); color: #37003c; }}
+.badge.vice {{ background: rgba(255,255,255,0.85); color: #37003c; }}
 
-/* Bench */
 .bench-label {{
     color: rgba(255,255,255,0.6);
-    font-size: 11px;
+    font-size: 9px;
     text-align: center;
-    margin-top: 16px;
+    margin-top: 12px;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
 }}
 .bench {{
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 8px;
-    padding: 14px;
+    gap: 8px;
+    margin-top: 6px;
+    padding: 10px;
     background: rgba(0,0,0,0.12);
-    border-radius: 15px;
+    border-radius: 12px;
 }}
-.sub {{ opacity: 0.8; width: 90px; }}
-.sub .player-img {{ width: 62px; height: 78px; }}
+.sub {{ opacity: 0.8; width: 68px; }}
+.sub .player-img {{ width: 46px; height: 58px; }}
+
+.chips-title {{ color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; text-align: center; }}
+
+.chip-card {{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+}}
+
+.chip-card.used {{ background: rgba(128,128,128,0.25); border-color: rgba(128,128,128,0.3); }}
+.chip-card.active {{ background: rgba(242,200,12,0.25); border-color: rgba(242,200,12,0.5); }}
+.chip-card.available {{ background: rgba(0,255,135,0.15); border-color: rgba(0,255,135,0.3); }}
+
+.chip-name {{ color: white; font-size: 14px; font-weight: 700; margin-bottom: 4px; }}
+.chip-status {{ color: rgba(255,255,255,0.7); font-size: 11px; }}
+
+.chip-card.used .chip-status {{ color: rgba(255,255,255,0.5); }}
+.chip-card.active .chip-status {{ color: #f2c80c; }}
+.chip-card.available .chip-status {{ color: #00ff87; }}
 </style>
 </head>
 <body>
 <div class="header-container">
+    <div class="gw-label">Your Team</div>         
     <div class="gw-label">Gameweek {gw}</div>
     <div class="total-points">{total_gw_points}</div>
 </div>
-<div class="big-glassbox">
-    <div class="pitch">{pitch_rows}</div>
-    <div class="bench-label">Bench</div>
-    <div class="bench">{bench_cards}</div>
+
+<div class="main-container">
+    <div class="pitch-container">
+        <div class="big-glassbox">
+            <div class="pitch">
+                <svg class="pitch-markings" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <line x1="0" y1="5" x2="100" y2="5" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+                    <path d="M 35 5 Q 50 20, 65 5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+                    <path d="M 25 105 A 25 25 0 0 1 75 105" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+                </svg>
+                {pitch_rows}
+            </div>
+            <div class="bench-label">Bench</div>
+            <div class="bench">{bench_cards}</div>
+        </div>
+    </div>
+
+    <div class="chips-container">
+        <div class="big-glassbox">
+            <div class="chips-title">Chips</div>
+            
+            <div class="chip-card available">
+                <div class="chip-name">Bench Boost</div>
+                <div class="chip-status">Available</div>
+            </div>
+            
+            <div class="chip-card available">
+                <div class="chip-name">Free Hit</div>
+                <div class="chip-status">Available</div>
+            </div>
+            
+            <div class="chip-card used">
+                <div class="chip-name">Triple Captain</div>
+                <div class="chip-status">Played in GW 12</div>
+            </div>
+            
+            <div class="chip-card available">
+                <div class="chip-name">Wildcard</div>
+                <div class="chip-status">Available</div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
-""", height=1150, scrolling=False)
+""", height=1000, scrolling=False)
 
 _, col, _ = st.columns([1,1,1])
 with col:
