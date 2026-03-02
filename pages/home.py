@@ -352,7 +352,7 @@ div[data-testid="stColumn"]:nth-of-type(2)
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-    padding: 8px 10px;
+    padding: 8px 28px 8px 6px;
     margin-bottom: 7px;
     border-radius: 10px;
     background: rgba(255,255,255,0.08);
@@ -360,6 +360,7 @@ div[data-testid="stColumn"]:nth-of-type(2)
 }
 
 .trend-player {
+    flex: 1;
     font-size: 15px;
     font-weight: 700;
     white-space: nowrap;
