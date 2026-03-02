@@ -309,7 +309,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
 }
 
 .trends-wrap {
-    margin-top: 24px;
+    margin-top: 56px;
 }
 
 .trend-box {
@@ -360,7 +360,7 @@ div[data-testid="stColumn"]:nth-of-type(2)
 }
 
 .trend-player {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
@@ -657,10 +657,12 @@ def build_trend_box_html(title, subtitle, rows):
             )
         rows_html = f'<ol class="trend-list">{"".join(items)}</ol>'
 
+    subtitle_html = f'<p class="trend-subtitle">{subtitle}</p>' if subtitle else ""
+
     return (
         f'<div class="glass-box trend-box">'
         f'  <h4 class="trend-title">{title}</h4>'
-        f'  <p class="trend-subtitle">{subtitle}</p>'
+        f'  {subtitle_html}'
         f'  {rows_html}'
         f'</div>'
     )
@@ -941,8 +943,8 @@ with right_col:
     with t1:
         st.markdown(
             build_trend_box_html(
-                "Most Captained Top 5",
-                "#1 is official GW most captained; remaining based on ownership %",
+                "Most Captained",
+                "",
                 captained_top5,
             ),
             unsafe_allow_html=True,
@@ -951,8 +953,8 @@ with right_col:
     with t2:
         st.markdown(
             build_trend_box_html(
-                "Most Subbed In Top 5",
-                "GW transfer-ins from official FPL API",
+                "Most Subbed In",
+                "",
                 subbed_in_top5,
             ),
             unsafe_allow_html=True,
@@ -961,8 +963,8 @@ with right_col:
     with t3:
         st.markdown(
             build_trend_box_html(
-                "Most Subbed Out Top 5",
-                "GW transfer-outs from official FPL API",
+                "Most Subbed Out",
+                "",
                 subbed_out_top5,
             ),
             unsafe_allow_html=True,
