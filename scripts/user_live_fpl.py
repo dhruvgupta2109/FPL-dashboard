@@ -142,19 +142,19 @@ def main():
 
                 if current["goals"] > old["goals"]:
                     diff = current["goals"] - old["goals"]
-                    events.append(f"⚽ GOAL — {name} (+{diff * 4})")
+                    events.append(f"GOAL — {name} (+{diff * 4})")
 
                 if current["assists"] > old["assists"]:
                     diff = current["assists"] - old["assists"]
-                    events.append(f"🅰️ ASSIST — {name} (+{diff * 3})")
+                    events.append(f"ASSIST — {name} (+{diff * 3})")
 
                 if current["cs"] > old["cs"]:
-                    events.append(f"🧤 CLEAN SHEET — {name}")
+                    events.append(f"CLEAN SHEET — {name}")
 
                 if current["bonus"] != old["bonus"]:
                     diff = current["bonus"] - old["bonus"]
                     sign = "+" if diff > 0 else ""
-                    events.append(f"⭐ BONUS — {name} ({sign}{diff})")
+                    events.append(f"BONUS — {name} ({sign}{diff})")
 
             previous_stats[pid] = current
 
