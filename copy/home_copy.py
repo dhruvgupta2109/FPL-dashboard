@@ -944,7 +944,7 @@ with right_col:
     with t1:
         st.markdown(
             build_trend_box_html(
-                "Most Captained",
+                f"Most Captained for GW{gw}",
                 "",
                 captained_top5,
             ),
@@ -954,7 +954,7 @@ with right_col:
     with t2:
         st.markdown(
             build_trend_box_html(
-                "Most Subbed In",
+                f"Most Subbed In for GW{gw}",
                 "",
                 subbed_in_top5,
             ),
@@ -964,7 +964,7 @@ with right_col:
     with t3:
         st.markdown(
             build_trend_box_html(
-                "Most Subbed Out",
+                f"Most Subbed Out for GW{gw}",
                 "",
                 subbed_out_top5,
             ),
