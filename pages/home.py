@@ -351,8 +351,8 @@ div[data-testid="stColumn"]:nth-of-type(2)
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
-    padding: 8px 24px;
+    gap: 10px;
+    padding: 2px 20px;
     margin-bottom: 7px;
     border-radius: 10px;
     background: rgba(255,255,255,0.08);
