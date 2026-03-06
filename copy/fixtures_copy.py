@@ -297,7 +297,7 @@ def extract_stat_entries(fixture, identifiers):
 
 def render_player_stat_grid(rows, per_row=3, center_rows=False):
     if not rows:
-        st.markdown("<div class='empty-stat'>None recorded yet for this gameweek</div>", unsafe_allow_html=True)
+        st.markdown("<div class='empty-stat'>None recorded</div>", unsafe_allow_html=True)
         return
 
     if center_rows:
