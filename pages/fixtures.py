@@ -154,6 +154,29 @@ div[data-testid="stExpander"] details summary p {
     color: #00ff87;
 }
 
+.team-side-label {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    opacity: 0.9;
+}
+
+.team-side-label.right {
+    text-align: right;
+}
+
+.metric-divider {
+    width: 1px;
+    min-height: 100%;
+    margin: 0 auto;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.35),
+        rgba(255, 255, 255, 0)
+    );
+}
+
 .player-chip {
     border: 1px solid rgba(255,255,255,0.15);
     background: rgba(255,255,255,0.08);
@@ -268,7 +291,8 @@ player_map = {
 
 
 STAT_GROUPS = [
-    ("Goals scored", ("goals_scored",)),
+    ("Goals", ("goals_scored",)),
+    ("Own goals", ("own_goals",)),
     ("Assists", ("assists",)),
     ("Yellow cards", ("yellow_cards",)),
     ("Red cards", ("red_cards",)),
@@ -278,10 +302,10 @@ STAT_GROUPS = [
 ]
 
 
-def extract_stat_entries(fixture, identifiers):
+def extract_stat_entries_by_side(fixture, identifiers):
     stats_list = fixture.get("stats", []) or []
     stats_by_id = {s.get("identifier"): s for s in stats_list}
-    rows = []
+    rows_by_side = {"h": [], "a": []}
 
     for identifier in identifiers:
         stat_obj = stats_by_id.get(identifier)
@@ -299,10 +323,12 @@ def extract_stat_entries(fixture, identifiers):
                     continue
 
                 player_name = player_map.get(player_id, {}).get("name", f"Player {player_id}")
-                rows.append((player_name, team_short, value))
+                rows_by_side[side].append((player_name, team_short, value))
 
-    rows.sort(key=lambda r: (-r[2], r[0]))
-    return rows
+    for side in rows_by_side:
+        rows_by_side[side].sort(key=lambda r: (-r[2], r[0]))
+
+    return rows_by_side["h"], rows_by_side["a"]
 
 
 def render_player_stat_grid(rows, per_row=3, center_rows=False):
@@ -341,6 +367,22 @@ def render_player_stat_grid(rows, per_row=3, center_rows=False):
                     """,
                     unsafe_allow_html=True,
                 )
+
+
+def render_split_metric_section(title, home_rows, away_rows, home_label, away_label, per_row=2):
+    st.markdown(f"<div class='split-row-title'>{title}</div>", unsafe_allow_html=True)
+    left_col, divider_col, right_col = st.columns([1, 0.05, 1], gap="small")
+
+    with left_col:
+        st.markdown(f"<div class='team-side-label'>{home_label}</div>", unsafe_allow_html=True)
+        render_player_stat_grid(home_rows, per_row=per_row)
+
+    with divider_col:
+        st.markdown("<div class='metric-divider'></div>", unsafe_allow_html=True)
+
+    with right_col:
+        st.markdown(f"<div class='team-side-label right'>{away_label}</div>", unsafe_allow_html=True)
+        render_player_stat_grid(away_rows, per_row=per_row)
 
 
 sorted_fixtures = sorted(
@@ -419,35 +461,23 @@ for row_start in range(0, len(sorted_fixtures), 2):
 
                 st.caption(f"Fixture ID: {fixture_id}")
 
-                goals_rows = extract_stat_entries(fx, ("goals_scored",))
-                assists_rows = extract_stat_entries(fx, ("assists",))
-                yellow_rows = extract_stat_entries(fx, ("yellow_cards",))
-                red_rows = extract_stat_entries(fx, ("red_cards",))
-                saves_rows = extract_stat_entries(fx, ("saves",))
-                def_rows = extract_stat_entries(fx, ("defensive_contribution", "defensive_contributions"))
-                bonus_rows = extract_stat_entries(fx, ("bonus",))
+                home_label = f"{home.get('short')} ({home.get('name')})"
+                away_label = f"{away.get('short')} ({away.get('name')})"
 
-                ga_left, ga_right = st.columns(2)
-                with ga_left:
-                    st.markdown("<div class='split-row-title'>Goals</div>", unsafe_allow_html=True)
-                    render_player_stat_grid(goals_rows, per_row=2)
-                with ga_right:
-                    st.markdown("<div class='split-row-title'>Assists</div>", unsafe_allow_html=True)
-                    render_player_stat_grid(assists_rows, per_row=2)
+                goals_home, goals_away = extract_stat_entries_by_side(fx, ("goals_scored",))
+                own_goals_home, own_goals_away = extract_stat_entries_by_side(fx, ("own_goals",))
+                assists_home, assists_away = extract_stat_entries_by_side(fx, ("assists",))
+                yellow_home, yellow_away = extract_stat_entries_by_side(fx, ("yellow_cards",))
+                red_home, red_away = extract_stat_entries_by_side(fx, ("red_cards",))
+                saves_home, saves_away = extract_stat_entries_by_side(fx, ("saves",))
+                def_home, def_away = extract_stat_entries_by_side(fx, ("defensive_contribution", "defensive_contributions"))
+                bonus_home, bonus_away = extract_stat_entries_by_side(fx, ("bonus",))
 
-                ysr_cols = st.columns(2)
-                with ysr_cols[0]:
-                    st.markdown("<div class='split-row-title'>Yellow Cards</div>", unsafe_allow_html=True)
-                    render_player_stat_grid(yellow_rows, per_row=2)
-                with ysr_cols[1]:
-                    st.markdown("<div class='split-row-title'>Saves</div>", unsafe_allow_html=True)
-                    render_player_stat_grid(saves_rows, per_row=2)
-
-                    st.markdown("<div class='split-row-title'>Red Cards</div>", unsafe_allow_html=True)
-                    render_player_stat_grid(red_rows, per_row=2)
-
-                st.markdown("<div class='section-title'>Defensive contributions</div>", unsafe_allow_html=True)
-                render_player_stat_grid(def_rows, per_row=3)
-
-                st.markdown("<div class='section-title'>Bonus points</div>", unsafe_allow_html=True)
-                render_player_stat_grid(bonus_rows, per_row=3)
+                render_split_metric_section("Goals", goals_home, goals_away, home_label, away_label)
+                render_split_metric_section("Own goals", own_goals_home, own_goals_away, home_label, away_label)
+                render_split_metric_section("Assists", assists_home, assists_away, home_label, away_label)
+                render_split_metric_section("Yellow cards", yellow_home, yellow_away, home_label, away_label)
+                render_split_metric_section("Red cards", red_home, red_away, home_label, away_label)
+                render_split_metric_section("Saves", saves_home, saves_away, home_label, away_label)
+                render_split_metric_section("Defensive contributions", def_home, def_away, home_label, away_label, per_row=3)
+                render_split_metric_section("Bonus points", bonus_home, bonus_away, home_label, away_label, per_row=3)
