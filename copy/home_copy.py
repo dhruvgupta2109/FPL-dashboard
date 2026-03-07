@@ -351,8 +351,8 @@ div[data-testid="stColumn"]:nth-of-type(2)
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
-    padding: 8px 28px;
+    gap: 10px;
+    padding: 2px 18px !important;
     margin-bottom: 7px;
     border-radius: 10px;
     background: rgba(255,255,255,0.08);
@@ -652,7 +652,8 @@ def build_trend_box_html(title, subtitle, rows):
         for idx, row in enumerate(rows, start=1):
             items.append(
                 f'<li class="trend-row">'
-                f'  <span class="trend-player">{idx}. {row["name"]}</span>'
+                f'  <span class="trend-num">{idx}.</span>'
+                f'  <span class="trend-player">{row["name"]}</span>'
                 f'  <span class="trend-value">{row["value"]}</span>'
                 f'</li>'
             )
