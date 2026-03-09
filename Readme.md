@@ -138,5 +138,5 @@ This app uses public Fantasy Premier League API endpoints, including:
 
 ## License
 
-No license file is currently included.
-Add a `LICENSE` file if you plan to open-source or redistribute this project.
+This project is licensed under the MIT License.
+See the LICENSE file for details.
