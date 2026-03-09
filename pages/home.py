@@ -352,20 +352,37 @@ div[data-testid="stColumn"]:nth-of-type(2)
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    padding: 8px 18px !important;
+    padding: 8px 10px !important;
     margin-bottom: 7px;
     border-radius: 10px;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.14);
 }
 
-.trend-player {
+.trend-player-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     flex: 1;
+    min-width: 0;
+}
+
+.trend-num {
+    font-size: 14px;
+    font-weight: 700;
+    opacity: 0.8;
+    min-width: 18px;
+    text-align: right;
+}
+
+.trend-player {
     font-size: 15px;
     font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex-grow: 1;
+    text-align: center;
 }
 
 .trend-value {
