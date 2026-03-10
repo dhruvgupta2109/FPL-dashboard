@@ -250,6 +250,7 @@ div[role="radiogroup"] label {
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 10px;
+    align-items: center;
 }
 
 .result-badge {
