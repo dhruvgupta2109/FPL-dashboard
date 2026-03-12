@@ -137,6 +137,31 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
     color: #ffffff !important;
 }
 
+.st-key-see_leagues {
+    margin-top: 15.5px !important;
+    margin-bottom: 0 !important;
+    border-radius: 0 !important;
+}
+
+.st-key-see_leagues button {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 10px 14px !important;
+    border-radius: 0 !important;
+    border: 1px solid rgba(0,255,135,0.55) !important;
+    background: linear-gradient(135deg, rgba(0,255,135,0.22), rgba(255,255,255,0.12)) !important;
+    color: #00ff87 !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25) !important;
+    margin: 0 !important;
+}
+
+.st-key-see_leagues button:hover {
+    background: linear-gradient(135deg, rgba(0,255,135,0.3), rgba(255,255,255,0.18)) !important;
+    color: #ffffff !important;
+}
+
 .section-title {
     font-size: 15px;
     font-weight: 700;
@@ -224,13 +249,33 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
 .leagues-sections { display: flex; gap: 20px; }
 .league-section   { flex: 1; min-width: 0; }
 
+.leagues-header-box {
+    padding: 14px 16px 10px 16px;
+    border-radius: 22px 22px 0 0;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    margin-top: 20px;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+
+.leagues-body-box {
+    padding: 10px 16px 14px 16px;
+    border-radius: 0 0 22px 22px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    margin-top: 0;
+}
+
+.leagues-headings {
+    display: flex;
+    gap: 20px;
+}
+
 .leagues-title {
     font-size: 18px;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin: 0;
     text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 10px;
+    padding-bottom: 0;
     color: white;
 }
 
@@ -319,6 +364,22 @@ div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_fixtures div[data-testid=
 div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_fixtures div[data-testid="stButton"] > button:focus,
 div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_fixtures div[data-testid="stButton"] > button:active,
 div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_fixtures div[data-testid="stButton"] > button:active {
+    border-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: 1px solid rgba(255,255,255,0.35) !important;
+    border-left: 1px solid rgba(255,255,255,0.35) !important;
+}
+
+/* Keep Mini Leagues button fully uncurved too */
+div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_leagues div[data-testid="stButton"] > button,
+div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_leagues div[data-testid="stButton"] > button,
+div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_leagues div[data-testid="stButton"] > button:hover,
+div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_leagues div[data-testid="stButton"] > button:hover,
+div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_leagues div[data-testid="stButton"] > button:focus,
+div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_leagues div[data-testid="stButton"] > button:focus,
+div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_leagues div[data-testid="stButton"] > button:active,
+div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_leagues div[data-testid="stButton"] > button:active {
     border-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
@@ -684,16 +745,26 @@ with left_col:
 
 with right_col:
     st.markdown(f"""
-    <div class="glass-box leagues-box">
-        <div class="leagues-sections">
+    <div class="glass-box leagues-header-box">
+        <div class="leagues-headings">
             <div class="league-section">
                 <div class="leagues-title">Mini Leagues</div>
-                {mini_html}
             </div>
             <div class="league-section">
                 <div class="leagues-title">Public Leagues</div>
-                {public_html}
             </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    if st.button("See All Mini League Details", key="see_leagues", use_container_width=True):
+        st.switch_page("pages/leagues.py")
+
+    st.markdown(f"""
+    <div class="glass-box leagues-body-box">
+        <div class="leagues-sections">
+            <div class="league-section">{mini_html}</div>
+            <div class="league-section">{public_html}</div>
         </div>
     </div>
     """, unsafe_allow_html=True)
