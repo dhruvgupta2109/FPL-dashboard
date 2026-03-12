@@ -138,7 +138,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
 }
 
 .st-key-see_leagues {
-    margin-top: 0 !important;
+    margin-top: 15.5px !important;
     margin-bottom: 0 !important;
     border-radius: 0 !important;
 }
@@ -249,13 +249,33 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
 .leagues-sections { display: flex; gap: 20px; }
 .league-section   { flex: 1; min-width: 0; }
 
+.leagues-header-box {
+    padding: 14px 16px 10px 16px;
+    border-radius: 22px 22px 0 0;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    margin-top: 20px;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+
+.leagues-body-box {
+    padding: 10px 16px 14px 16px;
+    border-radius: 0 0 22px 22px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    margin-top: 0;
+}
+
+.leagues-headings {
+    display: flex;
+    gap: 20px;
+}
+
 .leagues-title {
     font-size: 18px;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin: 0;
     text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 10px;
+    padding-bottom: 0;
     color: white;
 }
 
@@ -724,23 +744,27 @@ with left_col:
     """, unsafe_allow_html=True)
 
 with right_col:
-    mini_col, public_col = st.columns(2)
-
-    with mini_col:
-        st.markdown(f"""
-        <div class="glass-box leagues-box">
-            <div class="leagues-title">Mini Leagues</div>
-            {mini_html}
+    st.markdown(f"""
+    <div class="glass-box leagues-header-box">
+        <div class="leagues-headings">
+            <div class="league-section">
+                <div class="leagues-title">Mini Leagues</div>
+            </div>
+            <div class="league-section">
+                <div class="leagues-title">Public Leagues</div>
+            </div>
         </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
 
-        if st.button("See All Mini League Details", key="see_leagues", use_container_width=True):
-            st.switch_page("pages/leagues.py")
+    if st.button("See All Mini League Details", key="see_leagues", use_container_width=True):
+        st.switch_page("pages/leagues.py")
 
-    with public_col:
-        st.markdown(f"""
-        <div class="glass-box leagues-box">
-            <div class="leagues-title">Public Leagues</div>
-            {public_html}
+    st.markdown(f"""
+    <div class="glass-box leagues-body-box">
+        <div class="leagues-sections">
+            <div class="league-section">{mini_html}</div>
+            <div class="league-section">{public_html}</div>
         </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
