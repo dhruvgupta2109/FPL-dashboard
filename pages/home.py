@@ -757,7 +757,7 @@ with right_col:
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("See All Mini League Details", key="see_leagues", use_container_width=True):
+    if st.button("See All League Details", key="see_leagues", use_container_width=True):
         st.switch_page("pages/leagues.py")
 
     st.markdown(f"""
