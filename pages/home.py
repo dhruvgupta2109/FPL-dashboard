@@ -638,7 +638,7 @@ def build_top5_trends(bootstrap, gw):
     captained_rows = [
         {
             "name": player_name(p),
-            "value": f"{safe_float(p.get('selected_by_percent')):.1f}%",
+            "value": f"{min(safe_float(p.get('selected_by_percent')), 100.0):.1f}%",
         }
         for p in captained[:5]
     ]
