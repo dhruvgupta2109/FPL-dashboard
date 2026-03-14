@@ -57,7 +57,7 @@ fpl/
 ### 1. Clone and enter the project
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/dhruvgupta2109/fplmanager.git
 cd fpl
 ```
 
