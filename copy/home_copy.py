@@ -932,9 +932,9 @@ with left_col:
     st.markdown(f"""
     <div class="glass-box matches-body-box">
         <div class="match-head">
-            <div class="match-head-side">Away</div>
+            <div class="match-head-side">Home</div>
             <div></div>
-            <div class="match-head-side right">Home</div>
+            <div class="match-head-side right">Away</div>
         </div>
         {matches_html}
     </div>
