@@ -337,7 +337,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 
 .badge {{
     position: absolute;
-    top: 0; left: 3px;
+    top: 3px; left: 3px;
     width: 14px; height: 14px;
     border-radius: 50%;
     font-size: 8px;
