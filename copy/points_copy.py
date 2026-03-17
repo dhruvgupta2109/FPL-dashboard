@@ -308,14 +308,14 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     border: 1px solid rgba(255,255,255,0.15);
 }}
 
-.chip-card.used {{ background: rgba(128,128,128,0.25); border-color: rgba(128,128,128,0.3); }}
+.chip-card.used {{ background: rgba(246, 70, 70, 0.25); border-color: rgba(225, 6, 6, 0.932) }}
 .chip-card.active {{ background: rgba(242,200,12,0.25); border-color: rgba(242,200,12,0.5); }}
 .chip-card.available {{ background: rgba(0,255,135,0.15); border-color: rgba(0,255,135,0.3); }}
 
 .chip-name {{ color: white; font-size: 14px; font-weight: 700; margin-bottom: 4px; }}
 .chip-status {{ color: rgba(255,255,255,0.7); font-size: 11px; }}
 
-.chip-card.used .chip-status {{ color: rgba(255,255,255,0.5); }}
+.chip-card.used .chip-status {{ color: rgba(225, 6, 6, 0.932) }}
 .chip-card.active .chip-status {{ color: #f2c80c; }}
 .chip-card.available .chip-status {{ color: #00ff87; }}
 </style>
@@ -352,7 +352,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
                 <div class="chip-status">Available</div>
             </div>
             
-            <div class="chip-card available">
+            <div class="chip-card active">
                 <div class="chip-name">Free Hit</div>
                 <div class="chip-status">Available</div>
             </div>
