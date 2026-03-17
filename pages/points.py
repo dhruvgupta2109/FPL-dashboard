@@ -268,7 +268,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     padding: 16px;
     border: 1px solid rgba(255,255,255,0.15);
     box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-    overflow: hidden;
+    overflow: visible;
 }}
 
 .pitch {{
@@ -283,28 +283,28 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     gap: 12px;
     box-shadow: 0 16px 32px rgba(0,0,0,0.5);
     position: relative;
-    transform: perspective(1200px) rotateX(15deg);
+    transform: perspective(1200px) rotateX(8deg);
     transform-style: preserve-3d;
 }}
 
 .pitch-markings {{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }}
-.pitch-row {{ display: flex; justify-content: center; gap: 6px; transform-style: flat; }}
+.pitch-row {{ display: flex; justify-content: center; gap: 8px; transform-style: flat; }}
 
 .player-card {{
     position: relative;
     text-align: center;
-    width: 75px;
+    width: 85px;
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(10px);
     border-radius: 10px;
     padding: 6px 4px 4px 4px;
     border: 1px solid rgba(255,255,255,0.15);
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    transform: rotateX(-15deg);
+    transform: rotateX(-8deg);
     transform-style: flat;
 }}
 
-.player-img {{ width: 56px; height: 71px; object-fit: contain; filter: drop-shadow(0 3px 5px rgba(0,0,0,0.5)); mix-blend-mode: multiply; }}
+.player-img {{ width: 64px; height: 81px; object-fit: contain; filter: drop-shadow(0 3px 5px rgba(0,0,0,0.5)); mix-blend-mode: multiply; }}
 .player-label {{ margin-top: 2px; }}
 
 .player-name {{
@@ -367,17 +367,22 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     background: rgba(0,0,0,0.12);
     border-radius: 12px;
 }}
-.sub {{ opacity: 0.8; width: 68px; }}
-.sub .player-img {{ width: 46px; height: 58px; }}
+.sub {{ opacity: 0.8; width: 78px; }}
+.sub .player-img {{ width: 52px; height: 66px; }}
 
 .chips-title {{ color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; text-align: center; }}
+
+.chips-grid {{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}}
 
 .chip-card {{
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: 12px;
-    margin-bottom: 10px;
     border: 1px solid rgba(255,255,255,0.15);
 }}
 
@@ -419,11 +424,13 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     <div class="chips-container">
         <div class="big-glassbox">
             <div class="chips-title">Chips</div>
+            <div class="chips-grid">
             {''.join(f'''
             <div class="chip-card {chip['status']}">
                 <div class="chip-name">{chip['name']}</div>
                 <div class="chip-status">{chip['status_text']}</div>
             </div>''' for chip in chips_data)}
+            </div>
         </div>
     </div>
 </div>
