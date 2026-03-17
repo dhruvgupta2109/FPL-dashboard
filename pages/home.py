@@ -635,12 +635,20 @@ def build_top5_trends(bootstrap, gw):
     def player_name(player):
         return player.get("web_name") or player.get("second_name") or "Unknown"
 
+    def estimate_captain_percent(ownership_percent, rank):
+        # Rough heuristic: captaincy is a fraction of ownership, higher for top ranks.
+        # Keep weights conservative so top-5 doesn't approach 100%.
+        weights = [0.40, 0.32, 0.26, 0.22, 0.18]
+        weight = weights[rank - 1] if 1 <= rank <= len(weights) else 0.35
+        estimate = ownership_percent * weight
+        return max(0.0, min(estimate, 100.0))
+
     captained_rows = [
         {
             "name": player_name(p),
-            "value": f"{min(safe_float(p.get('selected_by_percent')), 100.0):.1f}%",
+            "value": f"{estimate_captain_percent(safe_float(p.get('selected_by_percent')), idx):.1f}%",
         }
-        for p in captained[:5]
+        for idx, p in enumerate(captained[:5], start=1)
     ]
 
     subbed_in_rows = [
