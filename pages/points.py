@@ -120,12 +120,11 @@ for chip_entry in history.get("chips", []):
     chip_name = chip_entry["name"]
     chip_gw = chip_entry["event"]
     
-    # Handle wildcards and chips that can be used twice
     if chip_name not in chip_plays:
         chip_plays[chip_name] = []
     chip_plays[chip_name].append(chip_gw)
 
-# Define all available chips (wildcard can be used twice - GW1-19 and GW20+)
+# Define all available chips
 all_chips = [
     {"name": "bboost", "display": "Bench Boost"},
     {"name": "freehit", "display": "Free Hit"},
@@ -136,45 +135,53 @@ all_chips = [
 for chip in all_chips:
     chip_name = chip["name"]
     display_name = chip["display"]
+    gws_used = sorted(chip_plays.get(chip_name, []))
     
-    gws_used = chip_plays.get(chip_name, [])
+    # ALL CHIPS - show "First Half | Second Half" format
+    first_half = [gw for gw in gws_used if gw < 19]
+    second_half = [gw for gw in gws_used if gw >= 19]
     
-    if chip_name == active_chip:
-        # Currently in use this GW
-        if gws_used:
-            status_text = f"Played in GW {', '.join(map(str, gws_used))} | In Use Now"
-        else:
-            status_text = "In Use"
-        chips_data.append({
-            "name": display_name,
-            "status": "active",
-            "status_text": status_text
-        })
-    elif gws_used:
-        # Check if chip can still be used (wildcard has 2 uses)
-        can_use_again = chip_name == "wildcard" and len(gws_used) == 1 and gws_used[0] < 19 and gw >= 19
-        
-        if can_use_again:
-            status_text = f"Played in GW {gws_used[0]} | Available"
-            chips_data.append({
-                "name": display_name,
-                "status": "available",
-                "status_text": status_text
-            })
-        else:
-            status_text = f"Played in GW {', '.join(map(str, gws_used))}"
-            chips_data.append({
-                "name": display_name,
-                "status": "used",
-                "status_text": status_text
-            })
+    # Build first half text
+    if chip_name == active_chip and gw < 19:
+        first_text = "In Use"
+    elif first_half:
+        first_text = f"Played in GW {first_half[0]}"
     else:
-        # Available
-        chips_data.append({
-            "name": display_name,
-            "status": "available",
-            "status_text": "Available"
-        })
+        first_text = "Available"
+    
+    # Build second half text
+    if chip_name == active_chip and gw >= 19:
+        second_text = "In Use"
+    elif second_half:
+        second_text = f"Played in GW {second_half[0]}"
+    else:
+        second_text = "Available"
+    
+    status_text = f"{first_text} | {second_text}"
+    
+    # Color based on current period
+    if gw < 19:
+        # First half - color based on first half status
+        if chip_name == active_chip:
+            card_status = "active"
+        elif first_half:
+            card_status = "used"
+        else:
+            card_status = "available"
+    else:
+        # Second half - color based on second half status
+        if chip_name == active_chip:
+            card_status = "active"
+        elif second_half:
+            card_status = "used"
+        else:
+            card_status = "available"
+    
+    chips_data.append({
+        "name": display_name,
+        "status": card_status,
+        "status_text": status_text
+    })
 
 rows = {1: [], 2: [], 3: [], 4: []}
 for pick in starters:
