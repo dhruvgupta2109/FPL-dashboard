@@ -4,31 +4,89 @@
 }
 
 .stMainBlockContainer {
-    padding-top: 3.5rem !important;
-    padding-left: 2rem !important;
-    padding-right: 0 !important;
-    max-width: 360px !important;
-    margin-left: 0 !important;
-    margin-right: auto !important;
+    padding-top: 2.5rem !important;
+    max-width: 900px !important;
+    margin: 0 auto !important;
+}
+
+.home-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .glass-box {
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-    border-radius: 22px 22px 0 0;
-    width: 280px;
-    text-align: center;
+    border-radius: 22px;
     color: white;
     box-shadow: 0 0 45px rgba(0,0,0,0.35);
-    padding: 30px 30px 24px 30px;
-    margin-bottom: 0;
+    padding: 30px;
+}
+
+.points-box {
+    width: 280px;
+    text-align: center;
+}
+
+.leagues-box {
+    width: 500px;
+    padding: 24px;
 }
 
 .team-name { font-size: 16px; font-weight: 700; opacity: 0.85; margin-bottom: 4px; }
 .gw        { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
 .points    { font-size: 64px; font-weight: 800; line-height: 1; color: white; }
 
+.leagues-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 12px;
+}
+
+.league-row {
+    padding: 12px;
+    margin-bottom: 8px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.league-name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.league-ranks {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+}
+
+.rank-label {
+    opacity: 0.7;
+    font-size: 12px;
+}
+
+.rank-value {
+    font-weight: 700;
+    color: #00ff87;
+}
+
+.rank-arrow {
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: auto;
+}
+
+/* Button sits flush below the card */
 div[data-testid="stButton"] > button {
     width: 280px !important;
     padding: 14px 0 !important;
@@ -41,9 +99,9 @@ div[data-testid="stButton"] > button {
     letter-spacing: 0.4px !important;
     border: none !important;
     border-top: 1px solid rgba(255,255,255,0.2) !important;
-    border-radius: 0 0 22px 22px !important;
+    border-radius: 22px !important;
     box-shadow: 0 20px 45px rgba(0,0,0,0.35) !important;
-    margin-top: -8px !important;
+    margin-top: 12px !important;
     transition: background 0.2s ease, color 0.2s ease !important;
 }
 
