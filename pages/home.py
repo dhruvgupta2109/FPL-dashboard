@@ -70,26 +70,30 @@ for league in leagues[:5]:  # Show top 5 leagues
     current_rank = league.get("entry_rank")
     previous_rank = league.get("entry_last_rank")
     
-    # Determine arrow
+    # Determine arrow and current rank color
     if current_rank and previous_rank:
         if current_rank < previous_rank:
             arrow = "↑"
             arrow_color = "#00ff87"
+            current_rank_color = "#00ff87"  # Green for improved
         elif current_rank > previous_rank:
             arrow = "↓"
             arrow_color = "#f64646"
+            current_rank_color = "#f64646"  # Red for worsened
         else:
             arrow = "—"
             arrow_color = "#999"
+            current_rank_color = "#999"  # Grey for same
     else:
         arrow = "—"
         arrow_color = "#999"
+        current_rank_color = "#999"
     
     # Format ranks with commas
     current_display = format_rank(current_rank)
     previous_display = format_rank(previous_rank)
     
-    league_rows += f"""<div class="league-row"><div class="league-name">{league_name}</div><div class="league-ranks"><span class="rank-label">Current:</span> <span class="rank-value">{current_display}</span><span class="rank-label">Previous:</span> <span class="rank-value">{previous_display}</span><span class="rank-arrow" style="color: {arrow_color};">{arrow}</span></div></div>"""
+    league_rows += f"""<div class="league-row"><div class="league-name">{league_name}</div><div class="league-ranks"><span class="rank-label">Current:</span> <span class="rank-value" style="color: {current_rank_color};">{current_display}</span><span class="rank-label">Previous:</span> <span class="rank-value" style="color: #999;">{previous_display}</span><span class="rank-arrow" style="color: {arrow_color};">{arrow}</span></div></div>"""
 
 st.markdown(f"""<div class="home-container"><div class="glass-box points-box"><div class="team-name">{team_name}</div><div class="gw">Gameweek {gw}</div><div class="points">{gw_points}</div></div><div class="glass-box leagues-box"><div class="leagues-title">My Leagues</div>{league_rows}</div></div>""", unsafe_allow_html=True)
 
