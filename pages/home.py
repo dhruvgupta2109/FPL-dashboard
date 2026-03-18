@@ -37,7 +37,18 @@ def fetch_leagues(manager_id):
     url = f"https://fantasy.premierleague.com/api/entry/{manager_id}/"
     with urllib.request.urlopen(url, context=ctx) as r:
         data = json.loads(r.read())
-    return data.get("leagues", {}).get("classic", [])
+    
+    # Get both classic (public) and mini (private) leagues
+    classic_leagues = data.get("leagues", {}).get("classic", [])
+    
+    # Combine and return all leagues
+    return classic_leagues
+
+def format_rank(rank):
+    """Format rank with commas (e.g., 1234567 -> 1,234,567)"""
+    if rank is None:
+        return "N/A"
+    return f"{rank:,}"
 
 live_pts = fetch_live_points(gw)
 picks = sorted(st.session_state.picks["picks"], key=lambda x: x["position"])
@@ -74,8 +85,9 @@ for league in leagues[:5]:  # Show top 5 leagues
         arrow = "—"
         arrow_color = "#999"
     
-    current_display = current_rank if current_rank else "N/A"
-    previous_display = previous_rank if previous_rank else "N/A"
+    # Format ranks with commas
+    current_display = format_rank(current_rank)
+    previous_display = format_rank(previous_rank)
     
     league_rows += f"""<div class="league-row"><div class="league-name">{league_name}</div><div class="league-ranks"><span class="rank-label">Current:</span> <span class="rank-value">{current_display}</span><span class="rank-label">Previous:</span> <span class="rank-value">{previous_display}</span><span class="rank-arrow" style="color: {arrow_color};">{arrow}</span></div></div>"""
 
