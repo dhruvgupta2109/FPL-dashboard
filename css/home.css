@@ -5,14 +5,13 @@
 
 .stMainBlockContainer {
     padding-top: 2.5rem !important;
-    max-width: 900px !important;
-    margin: 0 auto !important;
+    padding-left: 2rem !important;
+    max-width: none !important;
 }
 
 .home-container {
     display: flex;
     gap: 20px;
-    justify-content: center;
     align-items: flex-start;
 }
 
@@ -20,20 +19,23 @@
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-    border-radius: 22px;
     color: white;
     box-shadow: 0 0 45px rgba(0,0,0,0.35);
-    padding: 30px;
 }
 
 .points-box {
     width: 280px;
+    margin-top: 15px;
     text-align: center;
+    border-radius: 22px 22px 0 0;
+    padding: 30px 30px 24px 30px;
 }
 
 .leagues-box {
     width: 500px;
     padding: 24px;
+    margin-top: 15px;
+    border-radius: 22px;
 }
 
 .team-name { font-size: 16px; font-weight: 700; opacity: 0.85; margin-bottom: 4px; }
@@ -86,7 +88,14 @@
     margin-left: auto;
 }
 
-/* Button sits flush below the card */
+/* Button sits flush below the points box */
+div[data-testid="stButton"] {
+    position: absolute !important;
+    top: -415px !important;
+    left: 0rem !important;
+    width: 280px !important;
+}
+
 div[data-testid="stButton"] > button {
     width: 280px !important;
     padding: 14px 0 !important;
@@ -99,9 +108,9 @@ div[data-testid="stButton"] > button {
     letter-spacing: 0.4px !important;
     border: none !important;
     border-top: 1px solid rgba(255,255,255,0.2) !important;
-    border-radius: 22px !important;
+    border-radius: 0 0 22px 22px !important;
     box-shadow: 0 20px 45px rgba(0,0,0,0.35) !important;
-    margin-top: 12px !important;
+    margin: 0 !important;
     transition: background 0.2s ease, color 0.2s ease !important;
 }
 
