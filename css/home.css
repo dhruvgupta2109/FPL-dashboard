@@ -100,7 +100,7 @@
 div[data-testid="stButton"] {
     position: absolute !important;
     top: -415px !important;
-    left: 2rem !important;
+    left: 0rem !important;
     width: 280px !important;
 }
 
