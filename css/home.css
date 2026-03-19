@@ -32,7 +32,7 @@
 }
 
 .leagues-box {
-    width: 500px;
+    width: 900px;
     padding: 24px;
     margin-top: 15px;
     border-radius: 22px;
@@ -42,13 +42,22 @@
 .gw        { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
 .points    { font-size: 64px; font-weight: 800; line-height: 1; color: white; }
 
+.leagues-sections {
+    display: flex;
+    gap: 20px;
+}
+
+.league-section {
+    flex: 1;
+}
+
 .leagues-title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     text-align: center;
     border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 12px;
+    padding-bottom: 10px;
 }
 
 .league-row {
@@ -91,7 +100,7 @@
 div[data-testid="stButton"] {
     position: absolute !important;
     top: -415px !important;
-    left: 0rem !important;
+    left: 2rem !important;
     width: 280px !important;
 }
 
