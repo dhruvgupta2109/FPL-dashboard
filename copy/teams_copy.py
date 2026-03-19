@@ -830,6 +830,7 @@ def result_badges_html(team_id):
         return "<div class='empty-note'>No completed fixtures loaded yet.</div>"
 
     badges = []
+    badges.append("<span class='kicker'>Latest |</span>")
     for match in recent:
         result = match.get("result") or "-"
         cls = {"W": "result-win", "D": "result-draw", "L": "result-loss"}.get(
