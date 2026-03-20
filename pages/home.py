@@ -66,12 +66,13 @@ gw_points = sum(
 mini_leagues, public_leagues = fetch_leagues(manager_id)
 
 # Helper function to build league rows
-def build_league_rows(leagues, max_count=5):
+def build_league_rows(leagues, max_count=5, show_total=False):
     rows = ""
     for league in leagues[:max_count]:
         league_name = league.get("name", "Unknown")
         current_rank = league.get("entry_rank")
         previous_rank = league.get("entry_last_rank")
+        total_managers = league.get("entries")  # Total number of managers
         
         # Determine arrow and current rank color
         if current_rank and previous_rank:
@@ -127,12 +128,16 @@ def build_league_rows(leagues, max_count=5):
         
         current_display = format_rank(current_rank)
         previous_display = format_rank(previous_rank)
+        total_display = format_rank(total_managers) if total_managers else "N/A"
         
-        rows += f"""<div class="league-row"><div class="league-name">{league_name}</div><div class="league-ranks"><span class="rank-label">Current:</span> <span class="rank-value" style="color: {current_rank_color}; font-weight: {current_rank_weight}; font-size: {current_rank_size};">{current_display}</span><span class="rank-label">Previous:</span> <span class="rank-value" style="color: {previous_rank_color}; font-weight: {previous_rank_weight}; font-size: {previous_rank_size};">{previous_display}</span><span class="rank-arrow" style="color: {arrow_color};">{arrow}</span></div></div>"""
+        # Add total managers line if show_total is True (for mini leagues)
+        total_line = f"""<div class="total-managers">Total managers: {total_display}</div>""" if show_total else ""
+        
+        rows += f"""<div class="league-row"><div class="league-name">{league_name}</div><div class="league-ranks"><span class="rank-label">Current:</span> <span class="rank-value" style="color: {current_rank_color}; font-weight: {current_rank_weight}; font-size: {current_rank_size};">{current_display}</span><span class="rank-label">Previous:</span> <span class="rank-value" style="color: {previous_rank_color}; font-weight: {previous_rank_weight}; font-size: {previous_rank_size};">{previous_display}</span><span class="rank-arrow" style="color: {arrow_color};">{arrow}</span></div>{total_line}</div>"""
     return rows
 
-mini_rows = build_league_rows(mini_leagues)
-public_rows = build_league_rows(public_leagues)
+mini_rows = build_league_rows(mini_leagues, show_total=True)
+public_rows = build_league_rows(public_leagues, show_total=False)
 
 st.markdown(f"""<div class="home-container"><div class="glass-box points-box"><div class="team-name">{team_name}</div><div class="gw">Gameweek {gw}</div><div class="points">{gw_points}</div></div><div class="glass-box leagues-box"><div class="leagues-sections"><div class="league-section"><div class="leagues-title">Mini Leagues</div>{mini_rows}</div><div class="league-section"><div class="leagues-title">Public Leagues</div>{public_rows}</div></div></div></div>""", unsafe_allow_html=True)
 
