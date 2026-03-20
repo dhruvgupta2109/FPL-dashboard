@@ -96,26 +96,26 @@ def build_league_rows(leagues, max_count=5):
         current_rank_weight = "700"
         previous_rank_weight = "700"
         previous_rank_color = "#999"
-        current_rank_size = "13px"
-        previous_rank_size = "13px"
+        current_rank_size = "16px"
+        previous_rank_size = "16px"
         
         if current_rank == 1:
             current_rank_color = "#FFD700"  # Gold
             current_rank_weight = "900"
-            current_rank_size = "16px"
+            current_rank_size = "20px"
         elif current_rank == 2:
             current_rank_color = "#C0C0C0"  # Silver
             current_rank_weight = "900"
-            current_rank_size = "16px"
+            current_rank_size = "20px"
         elif current_rank == 3:
             current_rank_color = "#CD7F32"  # Bronze
             current_rank_weight = "900"
-            current_rank_size = "16px"
+            current_rank_size = "20px"
         
         if previous_rank == 1:
             previous_rank_color = "#FFD700"  # Gold
             previous_rank_weight = "900"
-            previous_rank_size = "16px"
+            previous_rank_size = "20px"
         elif previous_rank == 2:
             previous_rank_color = "#C0C0C0"  # Silver
             previous_rank_weight = "900"
@@ -123,7 +123,7 @@ def build_league_rows(leagues, max_count=5):
         elif previous_rank == 3:
             previous_rank_color = "#CD7F32"  # Bronze
             previous_rank_weight = "900"
-            previous_rank_size = "16px"
+            previous_rank_size = "20px"
         
         current_display = format_rank(current_rank)
         previous_display = format_rank(previous_rank)
