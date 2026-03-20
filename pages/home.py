@@ -119,7 +119,7 @@ def build_league_rows(leagues, max_count=5):
         elif previous_rank == 2:
             previous_rank_color = "#C0C0C0"  # Silver
             previous_rank_weight = "900"
-            previous_rank_size = "16px"
+            previous_rank_size = "20px"
         elif previous_rank == 3:
             previous_rank_color = "#CD7F32"  # Bronze
             previous_rank_weight = "900"
