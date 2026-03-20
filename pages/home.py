@@ -92,10 +92,43 @@ def build_league_rows(leagues, max_count=5):
             arrow_color = "#999"
             current_rank_color = "#999"
         
+        # Override colors for top 3 ranks (gold/silver/bronze)
+        current_rank_weight = "700"
+        previous_rank_weight = "700"
+        previous_rank_color = "#999"
+        current_rank_size = "13px"
+        previous_rank_size = "13px"
+        
+        if current_rank == 1:
+            current_rank_color = "#FFD700"  # Gold
+            current_rank_weight = "900"
+            current_rank_size = "16px"
+        elif current_rank == 2:
+            current_rank_color = "#C0C0C0"  # Silver
+            current_rank_weight = "900"
+            current_rank_size = "16px"
+        elif current_rank == 3:
+            current_rank_color = "#CD7F32"  # Bronze
+            current_rank_weight = "900"
+            current_rank_size = "16px"
+        
+        if previous_rank == 1:
+            previous_rank_color = "#FFD700"  # Gold
+            previous_rank_weight = "900"
+            previous_rank_size = "16px"
+        elif previous_rank == 2:
+            previous_rank_color = "#C0C0C0"  # Silver
+            previous_rank_weight = "900"
+            previous_rank_size = "16px"
+        elif previous_rank == 3:
+            previous_rank_color = "#CD7F32"  # Bronze
+            previous_rank_weight = "900"
+            previous_rank_size = "16px"
+        
         current_display = format_rank(current_rank)
         previous_display = format_rank(previous_rank)
         
-        rows += f"""<div class="league-row"><div class="league-name">{league_name}</div><div class="league-ranks"><span class="rank-label">Current:</span> <span class="rank-value" style="color: {current_rank_color};">{current_display}</span><span class="rank-label">Previous:</span> <span class="rank-value" style="color: #999;">{previous_display}</span><span class="rank-arrow" style="color: {arrow_color};">{arrow}</span></div></div>"""
+        rows += f"""<div class="league-row"><div class="league-name">{league_name}</div><div class="league-ranks"><span class="rank-label">Current:</span> <span class="rank-value" style="color: {current_rank_color}; font-weight: {current_rank_weight}; font-size: {current_rank_size};">{current_display}</span><span class="rank-label">Previous:</span> <span class="rank-value" style="color: {previous_rank_color}; font-weight: {previous_rank_weight}; font-size: {previous_rank_size};">{previous_display}</span><span class="rank-arrow" style="color: {arrow_color};">{arrow}</span></div></div>"""
     return rows
 
 mini_rows = build_league_rows(mini_leagues)
