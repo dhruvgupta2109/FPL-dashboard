@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as st # type: ignore
 from nav import render_top_nav
 
 st.set_page_config(page_title="FPL Players", layout="wide")
