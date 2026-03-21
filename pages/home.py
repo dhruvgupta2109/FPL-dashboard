@@ -7,7 +7,7 @@ import certifi
 st.set_page_config(page_title="FPL Home", layout="centered")
 
 if "manager_id" not in st.session_state:
-    st.warning("No manager ID found. Go back to Dashboard and connect your team.")
+    st.warning("No manager ID found. Pls go back to Dashboard and connect your team.")
     if st.button("Go to Dashboard"):
         st.switch_page("live_dashboard.py")
     st.stop()
