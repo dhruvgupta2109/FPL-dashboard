@@ -41,8 +41,27 @@ def fetch_leagues(manager_id):
     all_leagues = data.get("leagues", {}).get("classic", [])
     
     # Separate mini (private) and public leagues
-    mini_leagues = [l for l in all_leagues if l.get("league_type") == "x"]
-    public_leagues = [l for l in all_leagues if l.get("league_type") == "s"]
+    # For mini leagues, try to get size from admin_entry or other fields
+    mini_leagues = []
+    public_leagues = []
+    
+    for l in all_leagues:
+        # Add all available fields to league dict
+        league_data = {
+            "name": l.get("name"),
+            "id": l.get("id"),
+            "entry_rank": l.get("entry_rank"),
+            "entry_last_rank": l.get("entry_last_rank"),
+            "league_type": l.get("league_type"),
+            "admin_entry": l.get("admin_entry"),
+            "start_event": l.get("start_event"),
+            "scoring": l.get("scoring")
+        }
+        
+        if l.get("league_type") == "x":
+            mini_leagues.append(league_data)
+        else:
+            public_leagues.append(league_data)
     
     return mini_leagues, public_leagues
 
@@ -65,14 +84,40 @@ gw_points = sum(
 # Get leagues data
 mini_leagues, public_leagues = fetch_leagues(manager_id)
 
+# Helper function to get league size
+def get_league_size(league_id):
+    if not league_id:
+        return None
+    try:
+        ctx = ssl.create_default_context(cafile=certifi.where())
+        url = f"https://fantasy.premierleague.com/api/leagues-classic/{league_id}/standings/"
+        req = urllib.request.Request(url)
+        req.add_header('User-Agent', 'Mozilla/5.0')
+        with urllib.request.urlopen(req, context=ctx, timeout=10) as r:
+            data = json.loads(r.read())
+            
+            # Try multiple possible locations for the size
+            league_info = data.get("league", {})
+            size = league_info.get("size") or league_info.get("max_entries") or len(data.get("standings", {}).get("results", []))
+            
+            return size if size and size > 0 else None
+    except Exception as e:
+        # Return None if there's any error
+        return None
+
 # Helper function to build league rows
 def build_league_rows(leagues, max_count=5, show_total=False):
     rows = ""
     for league in leagues[:max_count]:
         league_name = league.get("name", "Unknown")
+        league_id = league.get("id")
         current_rank = league.get("entry_rank")
         previous_rank = league.get("entry_last_rank")
-        total_managers = league.get("entries")  # Total number of managers
+        
+        # Fetch total managers from league standings API if show_total is True
+        total_managers = None
+        if show_total and league_id:
+            total_managers = get_league_size(league_id)
         
         # Determine arrow and current rank color
         if current_rank and previous_rank:
