@@ -158,12 +158,12 @@ for chip in all_chips:
         second_text = "Available"
     
     # Format with labels on separate lines
-    status_text = f"First Half: <br>{first_text}<br>Second Half: {second_text}"
+    status_text = f"First Half: <br>{first_text}<br>Second Half: <br>{second_text}"
     
     # Color based on current period
     if gw < 19:
         # First half - color based on first half status
-        if chip_name == active_chip:
+        if chip_name == active_chip or (first_half and gw in first_half):
             card_status = "active"
         elif first_half:
             card_status = "used"
@@ -171,7 +171,7 @@ for chip in all_chips:
             card_status = "available"
     else:
         # Second half - color based on second half status
-        if chip_name == active_chip:
+        if chip_name == active_chip or (second_half and gw in second_half):
             card_status = "active"
         elif second_half:
             card_status = "used"
