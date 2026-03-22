@@ -158,7 +158,7 @@ for chip in all_chips:
         second_text = "Available"
     
     # Format with labels on separate lines
-    status_text = f"First Half: {first_text}<br>Second Half: {second_text}"
+    status_text = f"First Half: <br>{first_text}<br>Second Half: {second_text}"
     
     # Color based on current period
     if gw < 19:
@@ -259,8 +259,8 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     margin: 0 auto;
 }}
 
-.pitch-container {{ flex: 0 0 65%; }}
-.chips-container {{ flex: 0 0 32%; }}
+.pitch-container {{ flex: 0 0 60%; }}
+.chips-container {{ flex: 0 0 38%; }}
 
 .big-glassbox {{
     background: rgba(255,255,255,0.08);
@@ -383,7 +383,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(10px);
     border-radius: 12px;
-    padding: 14px;
+    padding: 14px 18px;
     border: 1px solid rgba(255,255,255,0.15);
     min-height: 100px;
 }}
@@ -392,8 +392,8 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 .chip-card.active {{ background: rgba(242,200,12,0.25); border-color: rgba(242,200,12,0.5); }}
 .chip-card.available {{ background: rgba(0,255,135,0.15); border-color: rgba(0,255,135,0.3); }}
 
-.chip-name {{ color: white; font-size: 16px; font-weight: 700; margin-bottom: 6px; }}
-.chip-status {{ color: rgba(255,255,255,0.7); font-size: 12px; line-height: 1.5; }}
+.chip-name {{ color: white; font-size: 15px; font-weight: 700; margin-bottom: 6px; }}
+.chip-status {{ color: rgba(255,255,255,0.7); font-size: 11px; line-height: 1.5; }}
 
 .chip-card.used .chip-status {{ color: rgba(225, 6, 6, 0.932); }}
 .chip-card.active .chip-status {{ color: #f2c80c; }}
