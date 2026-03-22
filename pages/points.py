@@ -8,7 +8,7 @@ import certifi
 st.set_page_config(page_title="FPL Points", layout="centered")
 
 if "manager_id" not in st.session_state:
-    st.warning("No manager ID found. Pls go back to Home and connect your team.")
+    st.warning("No manager ID found. Go back to Home and connect your team.")
     if st.button("Go to Dashboard"):
         st.switch_page("live_dashboard.py")
     st.stop()
@@ -157,7 +157,8 @@ for chip in all_chips:
     else:
         second_text = "Available"
     
-    status_text = f"{first_text} | {second_text}"
+    # Format with labels on separate lines
+    status_text = f"First Half: {first_text}<br>Second Half: {second_text}"
     
     # Color based on current period
     if gw < 19:
@@ -337,7 +338,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 
 .badge {{
     position: absolute;
-    top: 3px; left: 3px;
+    top: 0; left: 3px;
     width: 14px; height: 14px;
     border-radius: 50%;
     font-size: 8px;
@@ -391,7 +392,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 .chip-card.available {{ background: rgba(0,255,135,0.15); border-color: rgba(0,255,135,0.3); }}
 
 .chip-name {{ color: white; font-size: 14px; font-weight: 700; margin-bottom: 4px; }}
-.chip-status {{ color: rgba(255,255,255,0.7); font-size: 11px; }}
+.chip-status {{ color: rgba(255,255,255,0.7); font-size: 11px; line-height: 1.4; }}
 
 .chip-card.used .chip-status {{ color: rgba(225, 6, 6, 0.932); }}
 .chip-card.active .chip-status {{ color: #f2c80c; }}
