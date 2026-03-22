@@ -383,16 +383,17 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(10px);
     border-radius: 12px;
-    padding: 12px;
+    padding: 14px;
     border: 1px solid rgba(255,255,255,0.15);
+    min-height: 100px;
 }}
 
 .chip-card.used {{ background: rgba(246, 70, 70, 0.25); border-color: rgba(225, 6, 6, 0.932); }}
 .chip-card.active {{ background: rgba(242,200,12,0.25); border-color: rgba(242,200,12,0.5); }}
 .chip-card.available {{ background: rgba(0,255,135,0.15); border-color: rgba(0,255,135,0.3); }}
 
-.chip-name {{ color: white; font-size: 14px; font-weight: 700; margin-bottom: 4px; }}
-.chip-status {{ color: rgba(255,255,255,0.7); font-size: 11px; line-height: 1.4; }}
+.chip-name {{ color: white; font-size: 16px; font-weight: 700; margin-bottom: 6px; }}
+.chip-status {{ color: rgba(255,255,255,0.7); font-size: 12px; line-height: 1.5; }}
 
 .chip-card.used .chip-status {{ color: rgba(225, 6, 6, 0.932); }}
 .chip-card.active .chip-status {{ color: #f2c80c; }}
