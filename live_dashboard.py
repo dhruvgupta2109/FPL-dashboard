@@ -75,7 +75,7 @@ st.markdown("""
 
 st.markdown("""
 <div class="center-box">
-    <h1>FPL Live Tracker</h1>
+    <h1>FPL Manager</h1>
     <p>Connect your team to see live points, leagues & squad</p>
 </div>
 """, unsafe_allow_html=True)
