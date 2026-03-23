@@ -97,7 +97,30 @@ def fetch_teams(gw):
         data = json.loads(r.read())
     return {t["id"]: t["short_name"] for t in data["teams"]}
 
+@st.cache_data(ttl=60)
+def fetch_gw_stats(gw):
+    ctx = ssl.create_default_context(cafile=certifi.where())
+    url = f"https://fantasy.premierleague.com/api/event/{gw}/live/"
+    with urllib.request.urlopen(url, context=ctx) as r:
+        data = json.loads(r.read())
+    # Get average and highest from the event data
+    # We need to call the bootstrap-static endpoint for this
+    url2 = "https://fantasy.premierleague.com/api/bootstrap-static/"
+    with urllib.request.urlopen(url2, context=ctx) as r:
+        bootstrap = json.loads(r.read())
+    
+    # Find current gameweek stats
+    for event in bootstrap.get("events", []):
+        if event["id"] == gw:
+            return event.get("average_entry_score", 0), event.get("highest_score", 0)
+    
+    return 0, 0
+
 live_pts  = fetch_live_points(gw)
+# avg_points, highest_points = fetch_gw_stats(gw)
+# Temporary test values
+avg_points = 45
+highest_points = 89
 fixtures  = fetch_fixtures(gw)
 team_names = fetch_teams(gw)
 
@@ -250,7 +273,35 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 
 .header-container {{ text-align: center; color: white; margin-bottom: 16px; }}
 .gw-label {{ font-size: 18px; opacity: 0.9; }}
-.total-points {{ font-size: 70px; font-weight: 600; color: #00ff87; line-height: 1; margin-bottom: 10px; }}
+
+.points-row {{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 10px;
+}}
+
+.total-points {{ font-size: 70px; font-weight: 600; color: #00ff87; line-height: 1; }}
+
+.side-points {{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}}
+
+.side-label {{
+    font-size: 12px;
+    opacity: 0.7;
+    margin-bottom: 4px;
+}}
+
+.side-value {{
+    font-size: 32px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    line-height: 1;
+}}
 
 .main-container {{
     display: flex;
@@ -404,7 +455,17 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 <div class="header-container">
     <div class="gw-label">Your Team</div>         
     <div class="gw-label">Gameweek {gw}</div>
-    <div class="total-points">{total_gw_points}</div>
+    <div class="points-row">
+        <div class="side-points">
+            <div class="side-label">Average</div>
+            <div class="side-value">{int(avg_points)}</div>
+        </div>
+        <div class="total-points">{total_gw_points}</div>
+        <div class="side-points">
+            <div class="side-label">Highest</div>
+            <div class="side-value">{int(highest_points)}</div>
+        </div>
+    </div>
 </div>
 
 <div class="main-container">
