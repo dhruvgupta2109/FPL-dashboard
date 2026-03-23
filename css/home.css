@@ -133,7 +133,7 @@
 /* Button sits flush below the points box */
 div[data-testid="stButton"] {
     position: absolute !important;
-    top: -415px !important;
+    top: -435px !important;
     left: 0rem !important;
     width: 400px !important;
 }
