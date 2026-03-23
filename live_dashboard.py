@@ -4,7 +4,7 @@ import urllib.request
 import ssl
 import certifi
 
-st.set_page_config(page_title="FPL Manager", layout="centered")
+st.set_page_config(page_title="FPL manager", layout="centered")
 
 def fetch(url):
     ctx = ssl.create_default_context(cafile=certifi.where())
