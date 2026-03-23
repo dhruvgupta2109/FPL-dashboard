@@ -100,27 +100,22 @@ def fetch_teams(gw):
 @st.cache_data(ttl=60)
 def fetch_gw_stats(gw):
     ctx = ssl.create_default_context(cafile=certifi.where())
-    url = f"https://fantasy.premierleague.com/api/event/{gw}/live/"
+    # Get average and highest from bootstrap-static
+    url = "https://fantasy.premierleague.com/api/bootstrap-static/"
     with urllib.request.urlopen(url, context=ctx) as r:
-        data = json.loads(r.read())
-    # Get average and highest from the event data
-    # We need to call the bootstrap-static endpoint for this
-    url2 = "https://fantasy.premierleague.com/api/bootstrap-static/"
-    with urllib.request.urlopen(url2, context=ctx) as r:
         bootstrap = json.loads(r.read())
     
     # Find current gameweek stats
     for event in bootstrap.get("events", []):
         if event["id"] == gw:
-            return event.get("average_entry_score", 0), event.get("highest_score", 0)
+            avg = event.get("average_entry_score") or 0
+            highest = event.get("highest_score") or event.get("top_element_info", {}).get("points") or 0
+            return round(avg), highest
     
     return 0, 0
 
 live_pts  = fetch_live_points(gw)
-# avg_points, highest_points = fetch_gw_stats(gw)
-# Temporary test values
-avg_points = 45
-highest_points = 89
+avg_points, highest_points = fetch_gw_stats(gw)
 fixtures  = fetch_fixtures(gw)
 team_names = fetch_teams(gw)
 
