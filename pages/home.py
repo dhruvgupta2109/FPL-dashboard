@@ -7,7 +7,7 @@ import certifi
 st.set_page_config(page_title="FPL Home", layout="centered")
 
 if "manager_id" not in st.session_state:
-    st.warning("No manager ID found. Pls go back to Dashboard and connect your team.")
+    st.warning("No manager ID found. Go back to Dashboard and connect your team.")
     if st.button("Go to Dashboard"):
         st.switch_page("live_dashboard.py")
     st.stop()
@@ -29,6 +29,22 @@ def fetch_live_points(gw):
     with urllib.request.urlopen(url, context=ctx) as r:
         data = json.loads(r.read())
     return {e["id"]: e["stats"]["total_points"] for e in data["elements"]}
+
+# Fetch GW stats (average and highest)
+@st.cache_data(ttl=60)
+def fetch_gw_stats(gw):
+    ctx = ssl.create_default_context(cafile=certifi.where())
+    url = "https://fantasy.premierleague.com/api/bootstrap-static/"
+    with urllib.request.urlopen(url, context=ctx) as r:
+        bootstrap = json.loads(r.read())
+    
+    for event in bootstrap.get("events", []):
+        if event["id"] == gw:
+            avg = event.get("average_entry_score") or 0
+            highest = event.get("highest_score") or 0
+            return round(avg), highest
+    
+    return 0, 0
 
 # Fetch leagues data
 @st.cache_data(ttl=300)
@@ -72,6 +88,7 @@ def format_rank(rank):
     return f"{rank:,}"
 
 live_pts = fetch_live_points(gw)
+avg_points, highest_points = fetch_gw_stats(gw)
 picks = sorted(st.session_state.picks["picks"], key=lambda x: x["position"])
 starters = picks[:11]
 
@@ -184,7 +201,7 @@ def build_league_rows(leagues, max_count=5, show_total=False):
 mini_rows = build_league_rows(mini_leagues, show_total=True)
 public_rows = build_league_rows(public_leagues, show_total=False)
 
-st.markdown(f"""<div class="home-container"><div class="glass-box points-box"><div class="team-name">{team_name}</div><div class="gw">Gameweek {gw}</div><div class="points">{gw_points}</div></div><div class="glass-box leagues-box"><div class="leagues-sections"><div class="league-section"><div class="leagues-title">Mini Leagues</div>{mini_rows}</div><div class="league-section"><div class="leagues-title">Public Leagues</div>{public_rows}</div></div></div></div>""", unsafe_allow_html=True)
+st.markdown(f"""<div class="home-container"><div class="glass-box points-box"><div class="team-name">{team_name}</div><div class="gw">Gameweek {gw}</div><div class="points-row"><div class="side-points"><div class="side-label">Average</div><div class="side-value">{avg_points}</div></div><div class="points">{gw_points}</div><div class="side-points"><div class="side-label">Highest</div><div class="side-value">{highest_points}</div></div></div></div><div class="glass-box leagues-box"><div class="leagues-sections"><div class="league-section"><div class="leagues-title">Mini Leagues</div>{mini_rows}</div><div class="league-section"><div class="leagues-title">Public Leagues</div>{public_rows}</div></div></div></div>""", unsafe_allow_html=True)
 
 if st.button("Points →", key="nav-btn"):
     st.switch_page("pages/points.py")

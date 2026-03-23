@@ -1,5 +1,5 @@
 .stApp {
-    background: linear-gradient(135deg, #5a0362, #2b1e5b, #00ff87);
+    background: linear-gradient(135deg, #37003c, #2b1e5b, #00ff87);
     min-height: 100vh;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .points-box {
-    width: 280px;
+    width: 400px;
     margin-top: 15px;
     text-align: center;
     border-radius: 22px 22px 0 0;
@@ -40,7 +40,34 @@
 
 .team-name { font-size: 16px; font-weight: 700; opacity: 0.85; margin-bottom: 4px; }
 .gw        { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+
+.points-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
 .points    { font-size: 64px; font-weight: 800; line-height: 1; color: white; }
+
+.side-points {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.side-label {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-bottom: 4px;
+}
+
+.side-value {
+    font-size: 28px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.75);
+    line-height: 1;
+}
 
 .leagues-sections {
     display: flex;
@@ -82,7 +109,7 @@
 }
 
 .total-managers {
-    font-size: 12px;
+    font-size: 16px;
     color: rgba(255,255,255,0.6);
     margin-top: 6px;
     font-style: italic;
@@ -108,11 +135,11 @@ div[data-testid="stButton"] {
     position: absolute !important;
     top: -415px !important;
     left: 0rem !important;
-    width: 280px !important;
+    width: 400px !important;
 }
 
 div[data-testid="stButton"] > button {
-    width: 280px !important;
+    width: 400px !important;
     padding: 14px 0 !important;
     text-align: center !important;
     background: rgba(255,255,255,0.12) !important;
