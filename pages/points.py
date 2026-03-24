@@ -302,7 +302,8 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 .main-container {{
     display: flex;
     gap: 20px;
-    max-width: 1200px;
+    max-width: none;
+    width: 100%;
     margin: 0 auto;
 }}
 
@@ -320,11 +321,14 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 }}
 
 .pitch {{
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 100%;
     background:
         repeating-linear-gradient(to bottom, rgba(0,0,0,0.06) 0px, rgba(0,0,0,0.06) 32px, transparent 32px, transparent 64px),
         linear-gradient(to bottom, #2ecc71, #27ae60);
     border-radius: 10px;
-    padding: 14px 8px;
+    padding: 14px 12px;
     border: 2px solid rgba(255,255,255,0.25);
     display: flex;
     flex-direction: column;
@@ -339,6 +343,9 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     display: flex;
     gap: 10px;
     align-items: stretch;
+    width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
 }}
 
 .bench-side {{
@@ -353,7 +360,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 }}
 
 .pitch-markings {{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }}
-.pitch-row {{ display: flex; justify-content: center; gap: 8px; transform-style: flat; }}
+.pitch-row {{ display: flex; justify-content: center; gap: 18px; transform-style: flat; }}
 
 .player-card {{
     position: relative;
@@ -488,10 +495,10 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
                     <div class="bench">{bench_cards}</div>
                 </div>
                 <div class="pitch">
-                    <svg class="pitch-markings" viewBox="0 0 100 100" preserveAspectRatio="none">
-                        <line x1="0" y1="5" x2="100" y2="5" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
-                        <path d="M 35 5 Q 50 20, 65 5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
-                        <path d="M 25 105 A 25 25 0 0 1 75 105" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+                    <svg class="pitch-markings" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                        <line x1="0" y1="5" x2="100" y2="5" stroke="rgba(255,255,255,0.4)" stroke-width="0.35"/>
+                        <path d="M 35 5 Q 50 20 65 5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.35"/>
+                        <path d="M 25 100 A 25 25 0 0 1 75 100" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.35"/>
                     </svg>
                     {pitch_rows}
                 </div>
