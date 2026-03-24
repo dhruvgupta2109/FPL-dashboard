@@ -5,7 +5,7 @@ import urllib.request
 import ssl
 import certifi
 
-st.set_page_config(page_title="FPL Points", layout="centered")
+st.set_page_config(page_title="FPL Points", layout="wide")
 
 if "manager_id" not in st.session_state:
     st.warning("No manager ID found. Go back to Home and connect your team.")
@@ -21,7 +21,8 @@ st.markdown("""
 }
 .stMainBlockContainer {
     padding-top: 2.5rem !important;
-    max-width: 860px !important;
+    max-width: none !important;
+    width: 100% !important;
     margin-left: auto !important;
     margin-right: auto !important;
 }
@@ -334,6 +335,23 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     transform-style: preserve-3d;
 }}
 
+.squad-layout {{
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+}}
+
+.bench-side {{
+    width: 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 6px;
+    background: rgba(0,0,0,0.12);
+    border-radius: 12px;
+}}
+
 .pitch-markings {{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }}
 .pitch-row {{ display: flex; justify-content: center; gap: 8px; transform-style: flat; }}
 
@@ -401,18 +419,16 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     color: rgba(255,255,255,0.6);
     font-size: 9px;
     text-align: center;
-    margin-top: 12px;
+    margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 1.2px;
 }}
 .bench {{
     display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 6px;
-    padding: 10px;
-    background: rgba(0,0,0,0.12);
-    border-radius: 12px;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
 }}
 .sub {{ opacity: 0.8; width: 78px; }}
 .sub .player-img {{ width: 52px; height: 66px; }}
@@ -466,16 +482,20 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 <div class="main-container">
     <div class="pitch-container">
         <div class="big-glassbox">
-            <div class="pitch">
-                <svg class="pitch-markings" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <line x1="0" y1="5" x2="100" y2="5" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
-                    <path d="M 35 5 Q 50 20, 65 5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
-                    <path d="M 25 105 A 25 25 0 0 1 75 105" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
-                </svg>
-                {pitch_rows}
+            <div class="squad-layout">
+                <div class="bench-side">
+                    <div class="bench-label">Bench</div>
+                    <div class="bench">{bench_cards}</div>
+                </div>
+                <div class="pitch">
+                    <svg class="pitch-markings" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <line x1="0" y1="5" x2="100" y2="5" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+                        <path d="M 35 5 Q 50 20, 65 5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+                        <path d="M 25 105 A 25 25 0 0 1 75 105" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3"/>
+                    </svg>
+                    {pitch_rows}
+                </div>
             </div>
-            <div class="bench-label">Bench</div>
-            <div class="bench">{bench_cards}</div>
         </div>
     </div>
 
