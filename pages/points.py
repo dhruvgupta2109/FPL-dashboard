@@ -342,7 +342,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 }}
 
 .bench-side {{
-    width: 96px;
+    width: 95px;
     display: flex;
     flex-direction: column;
     align-items: center;
