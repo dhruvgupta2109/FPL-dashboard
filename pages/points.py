@@ -170,17 +170,17 @@ for chip in all_chips:
     
     # Build first half text
     if chip_name == active_chip and gw < 19:
-        first_text = "In Use"
+        first_text = "Playing this GameWeek"
     elif first_half:
-        first_text = f"Played in GW {first_half[0]}"
+        first_text = "Playing this GameWeek" if first_half[0] == gw else f"Played in GW {first_half[0]}"
     else:
         first_text = "Available"
     
     # Build second half text
     if chip_name == active_chip and gw >= 19:
-        second_text = "In Use"
+        second_text = "Playing this GameWeek"
     elif second_half:
-        second_text = f"Played in GW {second_half[0]}"
+        second_text = "Playing this GameWeek" if second_half[0] == gw else f"Played in GW {second_half[0]}"
     else:
         second_text = "Available"
     
@@ -329,7 +329,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     align-items: center;
     justify-content: center;
     gap: 40px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }}
 
 .total-points {{ font-size: 70px; font-weight: 600; color: #00ff87; line-height: 1; }}
@@ -376,24 +376,18 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     overflow: visible;
 }}
 
-.graphs-title {{
-    color: white;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-align: center;
-}}
-
 .chart-stack {{
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 40px;
+    align-items: center;
 }}
 
 .chart-block {{
     height: 180px;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }}
 
 .chart-block canvas {{
@@ -406,7 +400,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     font-size: 12px;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 6px;
+    margin-bottom: -5px;
 }}
 
 .pitch {{
@@ -633,14 +627,13 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 
         <div class="graphs-container">
             <div class="big-glassbox">
-                <div class="graphs-title">Form</div>
                 <div class="chart-stack">
                     <div class="chart-block">
-                        <div class="chart-subtitle">Points (green) + Avg (blue)</div>
+                        <div class="chart-subtitle">Points + Avg</div>
                         <canvas id="pointsChart"></canvas>
                     </div>
                     <div class="chart-block">
-                        <div class="chart-subtitle">Worldwide Rank (green)</div>
+                        <div class="chart-subtitle">Worldwide Rank</div>
                         <canvas id="rankChart"></canvas>
                     </div>
                 </div>
