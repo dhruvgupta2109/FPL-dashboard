@@ -115,6 +115,14 @@ def fetch_gw_stats(gw):
     
     return 0, 0
 
+@st.cache_data(ttl=3600)
+def fetch_bootstrap_static():
+    """Pull bootstrap-static once for season-long series (avg points by GW)."""
+    ctx = ssl.create_default_context(cafile=certifi.where())
+    url = "https://fantasy.premierleague.com/api/bootstrap-static/"
+    with urllib.request.urlopen(url, context=ctx) as r:
+        return json.loads(r.read())
+
 live_pts  = fetch_live_points(gw)
 avg_points, highest_points = fetch_gw_stats(gw)
 fixtures  = fetch_fixtures(gw)
@@ -202,6 +210,43 @@ for chip in all_chips:
         "status": card_status,
         "status_text": status_text
     })
+
+@st.cache_data(ttl=3600)
+def fetch_entry_event_entry_history(entry_id, event_id):
+    """Fetch per-GW entry_history (includes points + overall rank)."""
+    ctx = ssl.create_default_context(cafile=certifi.where())
+    url = f"https://fantasy.premierleague.com/api/entry/{entry_id}/event/{event_id}/picks/"
+    with urllib.request.urlopen(url, context=ctx) as r:
+        data = json.loads(r.read())
+    return data.get("entry_history", {}) or {}
+
+bootstrap_static = fetch_bootstrap_static()
+avg_by_event = {
+    e.get("id"): (e.get("average_entry_score") or 0)
+    for e in bootstrap_static.get("events", [])
+    if e.get("id") is not None
+}
+
+# Build series from GW1 -> current GW (current should be last)
+gw_labels = list(range(1, gw + 1))
+pts_series = []
+rank_series = []
+for event_id in gw_labels:
+    try:
+        eh = fetch_entry_event_entry_history(manager_id, event_id)
+        pts_series.append(eh.get("points", eh.get("total_points", 0)) or 0)
+        # Use overall rank when available; fall back to event rank.
+        rank_series.append(eh.get("overall_rank", eh.get("rank", 0)) or 0)
+    except Exception:
+        pts_series.append(0)
+        rank_series.append(0)
+
+avg_series = [avg_by_event.get(event_id, 0) for event_id in gw_labels]
+
+gw_labels_json = json.dumps(gw_labels)
+pts_series_json = json.dumps(pts_series)
+avg_series_json = json.dumps(avg_series)
+rank_series_json = json.dumps(rank_series)
 
 rows = {1: [], 2: [], 3: [], 4: []}
 for pick in starters:
@@ -317,7 +362,9 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 }}
 
 .pitch-container {{ flex: 0 0 60%; }}
-.chips-container {{ flex: 0 0 38%; }}
+.right-column {{ flex: 0 0 38%; display: flex; flex-direction: column; gap: 16px; min-width: 0; }}
+.chips-container {{ flex: 0 0 auto; }}
+.graphs-container {{ flex: 0 0 auto; min-width: 0; }}
 
 .big-glassbox {{
     background: rgba(255,255,255,0.08);
@@ -327,6 +374,39 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     border: 1px solid rgba(255,255,255,0.15);
     box-shadow: 0 16px 40px rgba(0,0,0,0.4);
     overflow: visible;
+}}
+
+.graphs-title {{
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+}}
+
+.chart-stack {{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}}
+
+.chart-block {{
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+}}
+
+.chart-block canvas {{
+    width: 100% !important;
+    height: 100% !important;
+}}
+
+.chart-subtitle {{
+    color: rgba(255,255,255,0.75);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 6px;
 }}
 
 .pitch {{
@@ -537,22 +617,111 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
         </div>
     </div>
 
-    <div class="chips-container">
-        <div class="big-glassbox">
-            <div class="chips-title">Chips</div>
-            <div class="chips-grid">
-            {''.join(f'''
-            <div class="chip-card {chip['status']}">
-                <div class="chip-name">{chip['name']}</div>
-                <div class="chip-status">{chip['status_text']}</div>
-            </div>''' for chip in chips_data)}
+    <div class="right-column">
+        <div class="chips-container">
+            <div class="big-glassbox">
+                <div class="chips-title">Chips</div>
+                <div class="chips-grid">
+                {''.join(f'''
+                <div class="chip-card {chip['status']}">
+                    <div class="chip-name">{chip['name']}</div>
+                    <div class="chip-status">{chip['status_text']}</div>
+                </div>''' for chip in chips_data)}
+                </div>
+            </div>
+        </div>
+
+        <div class="graphs-container">
+            <div class="big-glassbox">
+                <div class="graphs-title">Form</div>
+                <div class="chart-stack">
+                    <div class="chart-block">
+                        <div class="chart-subtitle">Points (green) + Avg (blue)</div>
+                        <canvas id="pointsChart"></canvas>
+                    </div>
+                    <div class="chart-block">
+                        <div class="chart-subtitle">Worldwide Rank (green)</div>
+                        <canvas id="rankChart"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const gwLabels = {gw_labels_json};
+const pts = {pts_series_json};
+const avgPts = {avg_series_json};
+const ranks = {rank_series_json};
+
+function makeLineChart(canvasId, datasets) {{
+    const ctx = document.getElementById(canvasId).getContext('2d');
+    new Chart(ctx, {{
+        type: 'line',
+        data: {{
+            labels: gwLabels,
+            datasets: datasets
+        }},
+        options: {{
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {{
+                legend: {{
+                    labels: {{ color: 'rgba(255,255,255,0.9)' }}
+                }}
+            }},
+            scales: {{
+                x: {{
+                    ticks: {{ color: 'rgba(255,255,255,0.7)' }},
+                    grid: {{ color: 'rgba(255,255,255,0.08)' }}
+                }},
+                y: {{
+                    ticks: {{ color: 'rgba(255,255,255,0.7)' }},
+                    grid: {{ color: 'rgba(255,255,255,0.08)' }}
+                }}
+            }}
+        }}
+    }});
+}}
+
+makeLineChart('pointsChart', [
+    {{
+        label: 'Pts',
+        data: pts,
+        borderColor: '#00ff87',
+        backgroundColor: 'rgba(0,255,135,0.15)',
+        tension: 0.3,
+        fill: false,
+        pointRadius: 3
+    }},
+    {{
+        label: 'Avg points',
+        data: avgPts,
+        borderColor: '#4da3ff',
+        backgroundColor: 'rgba(77,163,255,0.15)',
+        tension: 0.3,
+        fill: false,
+        pointRadius: 3
+    }}
+]);
+
+makeLineChart('rankChart', [
+    {{
+        label: 'World Rank',
+        data: ranks,
+        borderColor: '#00ff87',
+        backgroundColor: 'rgba(0,255,135,0.15)',
+        tension: 0.3,
+        fill: false,
+        pointRadius: 3
+    }}
+]);
+</script>
 </body>
 </html>
-""", height=1000, scrolling=False)
+""", height=1200, scrolling=False)
 
 _, col, _ = st.columns([1,1,1])
 with col:
