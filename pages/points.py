@@ -370,9 +370,8 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(20px);
     border-radius: 24px;
-    padding: 16px;
+    padding: 16px 16px 28px 16px;
     border: 1px solid rgba(255,255,255,0.15);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
     overflow: visible;
 }}
 
@@ -700,17 +699,41 @@ makeLineChart('pointsChart', [
     }}
 ]);
 
-makeLineChart('rankChart', [
-    {{
-        label: 'World Rank',
-        data: ranks,
-        borderColor: '#00ff87',
-        backgroundColor: 'rgba(0,255,135,0.15)',
-        tension: 0.3,
-        fill: false,
-        pointRadius: 3
+new Chart(document.getElementById('rankChart').getContext('2d'), {{
+    type: 'line',
+    data: {{
+        labels: gwLabels,
+        datasets: [{{
+            label: 'World Rank',
+            data: ranks,
+            borderColor: '#00ff87',
+            backgroundColor: 'rgba(0,255,135,0.15)',
+            tension: 0.3,
+            fill: false,
+            pointRadius: 3
+        }}]
+    }},
+    options: {{
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {{
+            legend: {{
+                labels: {{ color: 'rgba(255,255,255,0.9)' }}
+            }}
+        }},
+        scales: {{
+            x: {{
+                ticks: {{ color: 'rgba(255,255,255,0.7)' }},
+                grid: {{ color: 'rgba(255,255,255,0.08)' }}
+            }},
+            y: {{
+                min: 1,
+                ticks: {{ color: 'rgba(255,255,255,0.7)' }},
+                grid: {{ color: 'rgba(255,255,255,0.08)' }}
+            }}
+        }}
     }}
-]);
+}});
 </script>
 </body>
 </html>
