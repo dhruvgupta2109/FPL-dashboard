@@ -378,7 +378,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 .chart-stack {{
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 35px;
     align-items: center;
 }}
 
@@ -628,11 +628,11 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
             <div class="big-glassbox">
                 <div class="chart-stack">
                     <div class="chart-block">
-                        <div class="chart-subtitle">Points + Avg</div>
+                        <div class="chart-subtitle">Points+Avg vs GW</div>
                         <canvas id="pointsChart"></canvas>
                     </div>
                     <div class="chart-block">
-                        <div class="chart-subtitle">Worldwide Rank</div>
+                        <div class="chart-subtitle">Worldwide Rank vs GW</div>
                         <canvas id="rankChart"></canvas>
                     </div>
                 </div>
@@ -691,7 +691,7 @@ makeLineChart('pointsChart', [
     {{
         label: 'Avg points',
         data: avgPts,
-        borderColor: '#4da3ff',
+        borderColor: '#ffb500',
         backgroundColor: 'rgba(77,163,255,0.15)',
         tension: 0.3,
         fill: false,
@@ -737,7 +737,7 @@ new Chart(document.getElementById('rankChart').getContext('2d'), {{
 </script>
 </body>
 </html>
-""", height=1200, scrolling=False)
+""", height=1000, scrolling=False)
 
 _, col, _ = st.columns([1,1,1])
 with col:
