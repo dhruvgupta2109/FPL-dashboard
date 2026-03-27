@@ -9,12 +9,20 @@
     max-width: none !important;
 }
 
+/* ── Main flex row ────────────────────────────────────── */
 .home-container {
     display: flex;
     gap: 20px;
     align-items: flex-start;
 }
 
+/* ── Left column — fixed 400 px wide ─────────────────── */
+.left-col {
+    width: 400px;
+    flex-shrink: 0;
+}
+
+/* ── Glassmorphism base ──────────────────────────────── */
 .glass-box {
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(18px);
@@ -22,6 +30,7 @@
     color: white;
 }
 
+/* ── Points box — flat bottom so buttons attach flush ── */
 .points-box {
     width: 400px;
     margin-top: 15px;
@@ -30,13 +39,16 @@
     padding: 30px 30px 24px 30px;
 }
 
+/* ── Leagues box ─────────────────────────────────────── */
 .leagues-box {
-    width: 900px;
+    flex: 1;
+    min-width: 0;
     padding: 24px;
     margin-top: 15px;
     border-radius: 22px;
 }
 
+/* ── Points display ──────────────────────────────────── */
 .team-name { font-size: 16px; font-weight: 700; opacity: 0.85; margin-bottom: 4px; }
 .gw        { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
 
@@ -47,35 +59,15 @@
     gap: 30px;
 }
 
-.points    { font-size: 64px; font-weight: 800; line-height: 1; color: white; }
+.points { font-size: 64px; font-weight: 800; line-height: 1; color: white; }
 
-.side-points {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+.side-points { display: flex; flex-direction: column; align-items: center; }
+.side-label  { font-size: 11px; opacity: 0.7; margin-bottom: 4px; }
+.side-value  { font-size: 28px; font-weight: 600; color: rgba(255,255,255,0.75); line-height: 1; }
 
-.side-label {
-    font-size: 11px;
-    opacity: 0.7;
-    margin-bottom: 4px;
-}
-
-.side-value {
-    font-size: 28px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.75);
-    line-height: 1;
-}
-
-.leagues-sections {
-    display: flex;
-    gap: 20px;
-}
-
-.league-section {
-    flex: 1;
-}
+/* ── Leagues ─────────────────────────────────────────── */
+.leagues-sections { display: flex; gap: 20px; }
+.league-section   { flex: 1; }
 
 .leagues-title {
     font-size: 18px;
@@ -94,11 +86,7 @@
     border: 1px solid rgba(255,255,255,0.15);
 }
 
-.league-name {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 6px;
-}
+.league-name  { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
 
 .league-ranks {
     display: flex;
@@ -108,37 +96,29 @@
 }
 
 .total-managers {
-    font-size: 16px;
+    font-size: 12px;
     color: rgba(255,255,255,0.6);
     margin-top: 6px;
     font-style: italic;
 }
 
-.rank-label {
-    opacity: 0.7;
-    font-size: 12px;
-}
+.rank-label { opacity: 0.7; font-size: 12px; }
+.rank-value { font-weight: 700; }
+.rank-arrow { font-size: 20px; font-weight: 700; margin-left: auto; }
 
-.rank-value {
-    font-weight: 700;
-}
+/* ══════════════════════════════════════════════════════
+   NAV BUTTONS
+   Streamlit renders the two buttons directly after the
+   HTML block. We use absolute positioning on the outer
+   stMainBlockContainer to pull them up into the left-col
+   gap, then size/style them to look like a contiguous
+   piece of the points glassbox.
+   ══════════════════════════════════════════════════════ */
 
-.rank-arrow {
-    font-size: 20px;
-    font-weight: 700;
-    margin-left: auto;
-}
-
-/* Button sits flush below the points box */
-div[data-testid="stButton"] {
-    position: absolute !important;
-    top: -435px !important;
-    left: 0rem !important;
-    width: 400px !important;
-}
-
-div[data-testid="stButton"] > button {
-    width: 400px !important;
+/* Target the two stButton wrappers that follow the HTML block */
+div[data-testid="stButton"]:nth-of-type(1) > button,
+div[data-testid="stButton"]:nth-of-type(2) > button {
+    width: 200px !important;          /* half of 400 px */
     padding: 14px 0 !important;
     text-align: center !important;
     background: rgba(255,255,255,0.12) !important;
@@ -149,13 +129,50 @@ div[data-testid="stButton"] > button {
     letter-spacing: 0.4px !important;
     border: none !important;
     border-top: 1px solid rgba(255,255,255,0.2) !important;
-    border-radius: 0 0 22px 22px !important;
-    box-shadow: 0 20px 45px rgba(0,0,0,0.35) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
     margin: 0 !important;
     transition: background 0.2s ease, color 0.2s ease !important;
+    display: block !important;
 }
 
-div[data-testid="stButton"] > button:hover {
+div[data-testid="stButton"]:nth-of-type(1) > button {
+    border-radius: 0 0 0 22px !important;  /* left bottom corner */
+    border-right: 1px solid rgba(255,255,255,0.15) !important;
+}
+
+div[data-testid="stButton"]:nth-of-type(2) > button {
+    border-radius: 0 0 22px 0 !important;  /* right bottom corner */
+    color: rgba(255,255,255,0.8) !important;
+    font-size: 14px !important;
+}
+
+div[data-testid="stButton"]:nth-of-type(1) > button:hover {
     background: rgba(0,255,135,0.2) !important;
     color: white !important;
+}
+
+div[data-testid="stButton"]:nth-of-type(2) > button:hover {
+    background: rgba(255,255,255,0.2) !important;
+    color: white !important;
+}
+
+/* Make the two buttons sit side-by-side in a single row */
+div[data-testid="stButton"]:nth-of-type(1),
+div[data-testid="stButton"]:nth-of-type(2) {
+    display: inline-block !important;
+    width: 200px !important;
+    vertical-align: top !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* The element-container wrapping both buttons should behave like a row */
+div[data-testid="stVerticalBlock"] > div:has(> div[data-testid="stButton"]:nth-of-type(1)) {
+    width: 400px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0 !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
 }

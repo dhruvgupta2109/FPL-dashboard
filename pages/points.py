@@ -26,7 +26,6 @@ st.markdown("""
     margin-left: auto !important;
     margin-right: auto !important;
 }
-/* Center back button by targeting the column container */
 div[data-testid="stHorizontalBlock"] {
     justify-content: center !important;
 }
@@ -64,23 +63,16 @@ def fetch_live_points(gw):
 
 @st.cache_data(ttl=3600)
 def fetch_fixtures(gw):
-    """Returns {team_id: 'OPP (H/A)'} for this GW"""
     ctx = ssl.create_default_context(cafile=certifi.where())
     url = f"https://fantasy.premierleague.com/api/fixtures/?event={gw}"
     with urllib.request.urlopen(url, context=ctx) as r:
         fixtures = json.loads(r.read())
-    # Build team short name map from session players
-    team_map = {}
-    for p in st.session_state.players.values():
-        team_map[p["team_id"]] = p["team_id"]  # placeholder
-
     result = {}
     for f in fixtures:
         h, a = f["team_h"], f["team_a"]
         for team_id, opp_id, venue in [(h, a, "H"), (a, h, "A")]:
             entry = {"opp": opp_id, "venue": venue}
             if team_id in result:
-                # Already has a fixture — double GW, convert to list
                 existing = result[team_id]
                 if isinstance(existing, list):
                     existing.append(entry)
@@ -101,23 +93,18 @@ def fetch_teams(gw):
 @st.cache_data(ttl=60)
 def fetch_gw_stats(gw):
     ctx = ssl.create_default_context(cafile=certifi.where())
-    # Get average and highest from bootstrap-static
     url = "https://fantasy.premierleague.com/api/bootstrap-static/"
     with urllib.request.urlopen(url, context=ctx) as r:
         bootstrap = json.loads(r.read())
-    
-    # Find current gameweek stats
     for event in bootstrap.get("events", []):
         if event["id"] == gw:
             avg = event.get("average_entry_score") or 0
             highest = event.get("highest_score") or event.get("top_element_info", {}).get("points") or 0
             return round(avg), highest
-    
     return 0, 0
 
 @st.cache_data(ttl=3600)
 def fetch_bootstrap_static():
-    """Pull bootstrap-static once for season-long series (avg points by GW)."""
     ctx = ssl.create_default_context(cafile=certifi.where())
     url = "https://fantasy.premierleague.com/api/bootstrap-static/"
     with urllib.request.urlopen(url, context=ctx) as r:
@@ -131,65 +118,55 @@ team_names = fetch_teams(gw)
 starters = picks[:11]
 subs     = picks[11:]
 
-# Calculate total GW points from starting 11 (with captain multiplier)
 total_gw_points = sum(
     live_pts.get(pick["element"], 0) * pick.get("multiplier", 1)
     for pick in starters
 )
 
-# Process chip data
+# ── Chips ──────────────────────────────────────────────────────────────────
 chips_data = []
-active_chip = picks[0].get("active_chip")  # Current GW active chip
+active_chip = picks[0].get("active_chip")
 
-# Check chips from history - chips are in the 'chips' array
 chip_plays = {}
 for chip_entry in history.get("chips", []):
     chip_name = chip_entry["name"]
     chip_gw = chip_entry["event"]
-    
     if chip_name not in chip_plays:
         chip_plays[chip_name] = []
     chip_plays[chip_name].append(chip_gw)
 
-# Define all available chips
 all_chips = [
     {"name": "bboost", "display": "Bench Boost"},
     {"name": "freehit", "display": "Free Hit"},
-    {"name": "3xc", "display": "Triple Captain"},
-    {"name": "wildcard", "display": "Wildcard"}
+    {"name": "3xc",    "display": "Triple Captain"},
+    {"name": "wildcard","display": "Wildcard"},
 ]
 
 for chip in all_chips:
-    chip_name = chip["name"]
+    chip_name    = chip["name"]
     display_name = chip["display"]
-    gws_used = sorted(chip_plays.get(chip_name, []))
-    
-    # ALL CHIPS - show "First Half | Second Half" format
-    first_half = [gw for gw in gws_used if gw < 19]
-    second_half = [gw for gw in gws_used if gw >= 19]
-    
-    # Build first half text
+    gws_used     = sorted(chip_plays.get(chip_name, []))
+
+    first_half  = [g for g in gws_used if g < 19]
+    second_half = [g for g in gws_used if g >= 19]
+
     if chip_name == active_chip and gw < 19:
         first_text = "Playing this GameWeek"
     elif first_half:
         first_text = "Playing this GameWeek" if first_half[0] == gw else f"Played in GW {first_half[0]}"
     else:
         first_text = "Available"
-    
-    # Build second half text
+
     if chip_name == active_chip and gw >= 19:
         second_text = "Playing this GameWeek"
     elif second_half:
         second_text = "Playing this GameWeek" if second_half[0] == gw else f"Played in GW {second_half[0]}"
     else:
         second_text = "Available"
-    
-    # Format with labels on separate lines
+
     status_text = f"First Half: <br>{first_text}<br>Second Half: <br>{second_text}"
-    
-    # Color based on current period
+
     if gw < 19:
-        # First half - color based on first half status
         if chip_name == active_chip or (first_half and gw in first_half):
             card_status = "active"
         elif first_half:
@@ -197,23 +174,18 @@ for chip in all_chips:
         else:
             card_status = "available"
     else:
-        # Second half - color based on second half status
         if chip_name == active_chip or (second_half and gw in second_half):
             card_status = "active"
         elif second_half:
             card_status = "used"
         else:
             card_status = "available"
-    
-    chips_data.append({
-        "name": display_name,
-        "status": card_status,
-        "status_text": status_text
-    })
 
+    chips_data.append({"name": display_name, "status": card_status, "status_text": status_text})
+
+# ── GW series data ──────────────────────────────────────────────────────────
 @st.cache_data(ttl=3600)
 def fetch_entry_event_entry_history(entry_id, event_id):
-    """Fetch per-GW entry_history (includes points + overall rank)."""
     ctx = ssl.create_default_context(cafile=certifi.where())
     url = f"https://fantasy.premierleague.com/api/entry/{entry_id}/event/{event_id}/picks/"
     with urllib.request.urlopen(url, context=ctx) as r:
@@ -227,15 +199,13 @@ avg_by_event = {
     if e.get("id") is not None
 }
 
-# Build series from GW1 -> current GW (current should be last)
-gw_labels = list(range(1, gw + 1))
-pts_series = []
+gw_labels   = list(range(1, gw + 1))
+pts_series  = []
 rank_series = []
 for event_id in gw_labels:
     try:
         eh = fetch_entry_event_entry_history(manager_id, event_id)
         pts_series.append(eh.get("points", eh.get("total_points", 0)) or 0)
-        # Use overall rank when available; fall back to event rank.
         rank_series.append(eh.get("overall_rank", eh.get("rank", 0)) or 0)
     except Exception:
         pts_series.append(0)
@@ -243,11 +213,12 @@ for event_id in gw_labels:
 
 avg_series = [avg_by_event.get(event_id, 0) for event_id in gw_labels]
 
-gw_labels_json = json.dumps(gw_labels)
+gw_labels_json  = json.dumps(gw_labels)
 pts_series_json = json.dumps(pts_series)
 avg_series_json = json.dumps(avg_series)
 rank_series_json = json.dumps(rank_series)
 
+# ── Pitch layout ────────────────────────────────────────────────────────────
 rows = {1: [], 2: [], 3: [], 4: []}
 for pick in starters:
     pos = players[pick["element"]]["position"]
@@ -256,9 +227,8 @@ for pick in starters:
 def get_fixture_str(team_id):
     fix = fixtures.get(team_id)
     if not fix:
-        return "—"  # no match this GW
+        return "—"
     if isinstance(fix, list):
-        # Double gameweek
         parts = []
         for f in fix:
             opp = team_names.get(f["opp"], "?")
@@ -286,7 +256,6 @@ def player_card(pick, is_sub=False):
         if lbl:
             pos_html = f'<div class="bench-pos">{lbl}</div>'
 
-    # Captain / vice badge
     if pick["is_captain"]:
         badge = '<span class="badge captain">C</span>'
     elif pick["is_vice_captain"]:
@@ -312,6 +281,10 @@ for pos in [1, 2, 3, 4]:
     pitch_rows += f'<div class="pitch-row">{cards}</div>'
 
 bench_cards = "".join(player_card(p, is_sub=True) for p in subs)
+
+# Determine how many GW labels to show (avoid crowding)
+# Show every Nth label so we get ~10 ticks max
+tick_step = max(1, len(gw_labels) // 10)
 
 components.html(f"""<!DOCTYPE html>
 <html>
@@ -373,7 +346,28 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     padding: 16px 16px 28px 16px;
     border: 1px solid rgba(255,255,255,0.15);
     overflow: visible;
+    position: relative;
 }}
+
+/* ── Graph icon button ──────────────────────────── */
+.graph-nav-btn {{
+    position: absolute;
+    top: 14px;
+    right: -14px;
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    padding: 0;
+}}
+.graph-nav-btn:hover {{ background: rgba(255,255,255,0.2); }}
+.graph-nav-btn svg {{ width: 16px; height: 16px; }}
 
 .chart-stack {{
     display: flex;
@@ -450,7 +444,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(10px);
     border-radius: 10px;
-    padding: 8px 5px 5px 5px;
+    padding: 18px 10px 10px 10px;
     border: 1px solid rgba(255,255,255,0.15);
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }}
@@ -491,7 +485,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     border-top: none;
 }}
 
-.fixture-str {{ color: rgba(255,255,255,0.55); font-size: 7px; margin-top: 1px; }}
+.fixture-str {{ color: rgba(255,255,255,0.55); font-size: 7px; margin-top: 5px; }}
 
 .badge {{
     position: absolute;
@@ -512,7 +506,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     color: rgba(255,255,255,0.6);
     font-size: 9px;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 18px;
     text-transform: uppercase;
     letter-spacing: 1.2px;
 }}
@@ -526,7 +520,8 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 .sub {{
     opacity: 0.8;
     width: 108px;
-    padding-top: 4px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }}
 .sub .player-img {{ width: 56px; height: 71px; }}
 .sub .player-name {{ font-size: 10px; }}
@@ -539,7 +534,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 0.6px;
-    margin-bottom: 2px;
+    margin-bottom: 12px;
 }}
 
 .chips-title {{ color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; text-align: center; }}
@@ -569,11 +564,26 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 .chip-card.used .chip-status {{ color: rgba(225, 6, 6, 0.932); }}
 .chip-card.active .chip-status {{ color: #f2c80c; }}
 .chip-card.available .chip-status {{ color: #00ff87; }}
+
+/* graphs section title row */
+.graphs-title-row {{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 16px;
+}}
+.graphs-section-title {{
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}}
 </style>
 </head>
 <body>
 <div class="header-container">
-    <div class="gw-label">Your Team</div>         
+    <div class="gw-label">Your Team</div>
     <div class="gw-label">Gameweek {gw}</div>
     <div class="points-row">
         <div class="side-points">
@@ -626,9 +636,13 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 
         <div class="graphs-container">
             <div class="big-glassbox">
+                <div class="graphs-title-row">
+                    <span class="graphs-section-title">Season Stats</span>
+                </div>
+
                 <div class="chart-stack">
                     <div class="chart-block">
-                        <div class="chart-subtitle">Points+Avg vs GW</div>
+                        <div class="chart-subtitle">Points &amp; Avg vs GW</div>
                         <canvas id="pointsChart"></canvas>
                     </div>
                     <div class="chart-block">
@@ -643,61 +657,67 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-const gwLabels = {gw_labels_json};
-const pts = {pts_series_json};
-const avgPts = {avg_series_json};
-const ranks = {rank_series_json};
+const gwLabels   = {gw_labels_json};
+const pts        = {pts_series_json};
+const avgPts     = {avg_series_json};
+const ranks      = {rank_series_json};
+const tickStep   = {tick_step};
 
-function makeLineChart(canvasId, datasets) {{
-    const ctx = document.getElementById(canvasId).getContext('2d');
-    new Chart(ctx, {{
-        type: 'line',
-        data: {{
-            labels: gwLabels,
-            datasets: datasets
-        }},
-        options: {{
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {{
-                legend: {{
-                    labels: {{ color: 'rgba(255,255,255,0.9)' }}
-                }}
+// ── shared axis options ───────────────────────────────────────────────────
+const xAxisOpts = {{
+    ticks: {{
+        color: 'rgba(255,255,255,0.7)',
+        maxRotation: 0,
+        minRotation: 0,
+        autoSkip: true,
+        maxTicksLimit: 10,
+        callback: function(val, idx) {{
+            return gwLabels[idx];
+        }}
+    }},
+    grid: {{ color: 'rgba(255,255,255,0.08)' }}
+}};
+
+new Chart(document.getElementById('pointsChart').getContext('2d'), {{
+    type: 'line',
+    data: {{
+        labels: gwLabels,
+        datasets: [
+            {{
+                label: 'My Pts',
+                data: pts,
+                borderColor: '#00ff87',
+                backgroundColor: 'rgba(0,255,135,0.15)',
+                tension: 0.3,
+                fill: false,
+                pointRadius: 3
             }},
-            scales: {{
-                x: {{
-                    ticks: {{ color: 'rgba(255,255,255,0.7)' }},
-                    grid: {{ color: 'rgba(255,255,255,0.08)' }}
-                }},
-                y: {{
-                    ticks: {{ color: 'rgba(255,255,255,0.7)' }},
-                    grid: {{ color: 'rgba(255,255,255,0.08)' }}
-                }}
+            {{
+                label: 'GW Avg',
+                data: avgPts,
+                borderColor: '#ffb500',
+                backgroundColor: 'rgba(255,181,0,0.15)',
+                tension: 0.3,
+                fill: false,
+                pointRadius: 3
+            }}
+        ]
+    }},
+    options: {{
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {{
+            legend: {{ labels: {{ color: 'rgba(255,255,255,0.9)', boxWidth: 12, font: {{ size: 11 }} }} }}
+        }},
+        scales: {{
+            x: xAxisOpts,
+            y: {{
+                ticks: {{ color: 'rgba(255,255,255,0.7)' }},
+                grid: {{ color: 'rgba(255,255,255,0.08)' }}
             }}
         }}
-    }});
-}}
-
-makeLineChart('pointsChart', [
-    {{
-        label: 'Pts',
-        data: pts,
-        borderColor: '#00ff87',
-        backgroundColor: 'rgba(0,255,135,0.15)',
-        tension: 0.3,
-        fill: false,
-        pointRadius: 3
-    }},
-    {{
-        label: 'Avg points',
-        data: avgPts,
-        borderColor: '#ffb500',
-        backgroundColor: 'rgba(77,163,255,0.15)',
-        tension: 0.3,
-        fill: false,
-        pointRadius: 3
     }}
-]);
+}});
 
 new Chart(document.getElementById('rankChart').getContext('2d'), {{
     type: 'line',
@@ -717,29 +737,31 @@ new Chart(document.getElementById('rankChart').getContext('2d'), {{
         responsive: true,
         maintainAspectRatio: false,
         plugins: {{
-            legend: {{
-                labels: {{ color: 'rgba(255,255,255,0.9)' }}
-            }}
+            legend: {{ labels: {{ color: 'rgba(255,255,255,0.9)', boxWidth: 12, font: {{ size: 11 }} }} }}
         }},
         scales: {{
-            x: {{
-                ticks: {{ color: 'rgba(255,255,255,0.7)' }},
-                grid: {{ color: 'rgba(255,255,255,0.08)' }}
-            }},
+            x: xAxisOpts,
             y: {{
                 min: 1,
+                reverse: false,
                 ticks: {{ color: 'rgba(255,255,255,0.7)' }},
                 grid: {{ color: 'rgba(255,255,255,0.08)' }}
             }}
         }}
     }}
 }});
+
 </script>
 </body>
 </html>
 """, height=1000, scrolling=False)
 
-_, col, _ = st.columns([1,1,1])
-with col:
+# [Left Padding, Back Button, Gap, Graphs Button, Right Padding]
+_, col1, spacer, col2, _ = st.columns([2.3, 3, 2.5, 3, 0.8])
+
+with col1:
     if st.button("← Back", use_container_width=True):
         st.switch_page("pages/home.py")
+with col2:
+    if st.button("Graphs →", use_container_width=True):
+        st.switch_page("pages/graphs.py")
