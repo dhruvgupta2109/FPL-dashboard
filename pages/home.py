@@ -21,10 +21,16 @@ st.markdown("""
     min-height: 100vh;
 }
 .stMainBlockContainer {
-    padding-top: 2rem !important;
+    padding-top: 3.5rem !important;
     padding-left: 2rem !important;
     padding-right: 2rem !important;
     max-width: none !important;
+}
+
+/* Gap between left (points) column and right (leagues) column */
+div[data-testid="stHorizontalBlock"]:first-of-type {
+    gap: 24px !important;
+    align-items: flex-start !important;
 }
 
 /* ── Glassmorphism card ── */
@@ -65,6 +71,7 @@ st.markdown("""
     padding: 24px;
     border-radius: 22px;
     box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    margin-top: 0;
 }
 
 .leagues-sections { display: flex; gap: 20px; }
@@ -132,22 +139,22 @@ div[data-testid="stButton"] > button:hover {
     color: white !important;
 }
 
-/* First button (Points) — no rounding */
+/* Points button — curves bottom-left only */
 div[data-testid="stColumn"]:nth-of-type(1) div[data-testid="stButton"] > button {
-    border-radius: 0 !important;
+    border-radius: 0 0 0 22px !important;
     color: #00ff87 !important;
 }
 
-/* Second button (Graphs) — bottom-right rounded */
+/* Graphs button — curves bottom-right only, same green colour */
 div[data-testid="stColumn"]:nth-of-type(2) div[data-testid="stButton"] > button {
-    border-radius: 0 0 22px 22px !important;
-    color: rgba(255,255,255,0.8) !important;
-    font-size: 14px !important;
+    border-radius: 0 0 22px 0 !important;
+    color: #00ff87 !important;
+    font-size: 15px !important;
     border-left: 1px solid rgba(255,255,255,0.15) !important;
 }
 
-/* Remove gap between columns so buttons sit flush */
-div[data-testid="stHorizontalBlock"] {
+/* Remove gap between nav button columns so they sit flush */
+div[data-testid="stHorizontalBlock"]:not(:first-of-type) {
     gap: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
