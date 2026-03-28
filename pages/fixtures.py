@@ -166,15 +166,10 @@ div[data-testid="stExpander"] details summary p {
 }
 
 .metric-divider {
-    width: 1px;
+    width: 0;
     min-height: 100%;
     margin: 0 auto;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 0.35),
-        rgba(255, 255, 255, 0)
-    );
+    border-left: 2px dotted rgba(255, 255, 255, 0.42);
 }
 
 .player-chip {
@@ -374,15 +369,15 @@ def render_split_metric_section(title, home_rows, away_rows, home_label, away_la
     left_col, divider_col, right_col = st.columns([1, 0.05, 1], gap="small")
 
     with left_col:
-        st.markdown(f"<div class='team-side-label'>{home_label}</div>", unsafe_allow_html=True)
-        render_player_stat_grid(home_rows, per_row=per_row)
+        st.markdown(f"<div class='team-side-label'>{away_label}</div>", unsafe_allow_html=True)
+        render_player_stat_grid(away_rows, per_row=per_row)
 
     with divider_col:
         st.markdown("<div class='metric-divider'></div>", unsafe_allow_html=True)
 
     with right_col:
-        st.markdown(f"<div class='team-side-label right'>{away_label}</div>", unsafe_allow_html=True)
-        render_player_stat_grid(away_rows, per_row=per_row)
+        st.markdown(f"<div class='team-side-label right'>{home_label}</div>", unsafe_allow_html=True)
+        render_player_stat_grid(home_rows, per_row=per_row)
 
 
 sorted_fixtures = sorted(
