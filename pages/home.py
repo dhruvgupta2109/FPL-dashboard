@@ -48,6 +48,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
     border-radius: 22px 22px 0 0;
     padding: 30px 30px 24px 30px;
     box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    margin-top: 20px;
 }
 
 .team-name { font-size: 16px; font-weight: 700; opacity: 0.85; margin-bottom: 4px; }
@@ -71,7 +72,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
     padding: 24px;
     border-radius: 22px;
     box-shadow: 0 20px 45px rgba(0,0,0,0.35);
-    margin-top: 0;
+    margin-top: 20px;
 }
 
 .leagues-sections { display: flex; gap: 20px; }
