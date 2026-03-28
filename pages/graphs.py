@@ -311,5 +311,5 @@ new Chart(document.getElementById('rankChart').getContext('2d'), {{
 
 _, col, _ = st.columns([1, 1, 1])
 with col:
-    if st.button("← Back to Points", use_container_width=True):
-        st.switch_page("pages/points.py")
+    if st.button("← Back", use_container_width=True):
+        st.switch_page("pages/home.py")
