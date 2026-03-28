@@ -116,53 +116,23 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
     font-style: italic;
 }
 
-/* ── Nav buttons — attach flush below points-box ── */
-div[data-testid="stButton"] > button {
-    padding: 14px 0 !important;
-    text-align: center !important;
-    background: rgba(255,255,255,0.12) !important;
-    backdrop-filter: blur(18px) !important;
-    color: #00ff87 !important;
-    font-size: 15px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.4px !important;
-    border: none !important;
-    border-top: 1px solid rgba(255,255,255,0.2) !important;
-    border-radius: 0 !important;
-    box-shadow: 0 20px 45px rgba(0,0,0,0.35) !important;
-    margin: 0 !important;
-    transition: background 0.2s ease !important;
-    width: 100% !important;
-}
-div[data-testid="stButton"] > button:hover {
-    background: rgba(0,255,135,0.2) !important;
-    color: white !important;
-}
-
-/* Points button — curves bottom-left only */
-div[data-testid="stColumn"]:nth-of-type(1) div[data-testid="stButton"] > button {
-    border-radius: 0 0 0 22px !important;
-    color: #00ff87 !important;
-}
-
-/* Graphs button — curves bottom-right only, same green colour */
-div[data-testid="stColumn"]:nth-of-type(2) div[data-testid="stButton"] > button {
-    border-radius: 0 0 22px 0 !important;
-    color: #00ff87 !important;
-    font-size: 15px !important;
-    border-left: 1px solid rgba(255,255,255,0.15) !important;
-}
-
-/* Remove gap between nav button columns so they sit flush */
-div[data-testid="stHorizontalBlock"]:not(:first-of-type) {
+/* Zero gap and padding on column layout rows */
+div[data-testid="stHorizontalBlock"] {
     gap: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
 }
-
-/* Remove Streamlit's default padding around columns */
 div[data-testid="stColumn"] {
     padding: 0 !important;
+    min-width: 0 !important;
+}
+div[data-testid="stColumn"] > div {
+    padding: 0 !important;
+    gap: 0 !important;
+}
+/* Restore gap on the outermost layout row only */
+div[data-testid="stMain"] > div > div[data-testid="stVerticalBlock"] > div[data-testid="stHorizontalBlock"]:first-of-type {
+    gap: 24px !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -302,14 +272,49 @@ with left_col:
     </div>
     """, unsafe_allow_html=True)
 
-    # Two nav buttons flush below — use nested columns so they sit side by side
-    btn1, btn2 = st.columns(2)
-    with btn1:
-        if st.button("Points →", key="nav_points", use_container_width=True):
-            st.switch_page("pages/points.py")
-    with btn2:
-        if st.button("Graphs →", key="nav_graphs", use_container_width=True):
-            st.switch_page("pages/graphs.py")
+    # Single HTML block — zero gap guaranteed, no Streamlit column spacing
+    st.markdown("""
+    <div style="display:flex; width:100%; margin:0; padding:0;">
+        <form action="" method="get" style="flex:1; margin:0; padding:0;">
+            <button name="nav" value="points" style="
+                width:100%; padding:14px 0; cursor:pointer;
+                background:rgba(255,255,255,0.12);
+                backdrop-filter:blur(18px);
+                color:#00ff87; font-size:15px; font-weight:700;
+                border:none; border-top:1px solid rgba(255,255,255,0.2);
+                border-right:1px solid rgba(255,255,255,0.15);
+                border-radius:0 0 0 22px;
+                transition:background 0.2s ease;
+            " onmouseover="this.style.background='rgba(0,255,135,0.2)'"
+               onmouseout="this.style.background='rgba(255,255,255,0.12)'">
+                Points →
+            </button>
+        </form>
+        <form action="" method="get" style="flex:1; margin:0; padding:0;">
+            <button name="nav" value="graphs" style="
+                width:100%; padding:14px 0; cursor:pointer;
+                background:rgba(255,255,255,0.12);
+                backdrop-filter:blur(18px);
+                color:#00ff87; font-size:15px; font-weight:700;
+                border:none; border-top:1px solid rgba(255,255,255,0.2);
+                border-radius:0 0 22px 0;
+                transition:background 0.2s ease;
+            " onmouseover="this.style.background='rgba(0,255,135,0.2)'"
+               onmouseout="this.style.background='rgba(255,255,255,0.12)'">
+                Graphs →
+            </button>
+        </form>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Handle form navigation via query params
+    nav = st.query_params.get("nav", "")
+    if nav == "points":
+        st.query_params.clear()
+        st.switch_page("pages/points.py")
+    elif nav == "graphs":
+        st.query_params.clear()
+        st.switch_page("pages/graphs.py")
 
 with right_col:
     st.markdown(f"""
