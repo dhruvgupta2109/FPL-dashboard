@@ -105,7 +105,7 @@ components.html(f"""<!DOCTYPE html>
 body {{
     background: transparent;
     font-family: sans-serif;
-    padding: 8px 4px 24px 4px;
+    padding: 8px 60px 24px 60px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -182,7 +182,8 @@ const xAxis = {{
             return gwLabels[idx];
         }}
     }},
-    grid: {{ color: 'rgba(255,255,255,0.08)' }}
+    grid: {{ color: 'rgba(255,255,255,0.08)' }},
+    afterFit: function(axis) {{ axis.paddingRight = 10; }}
 }};
 
 const yAxis = {{
@@ -249,7 +250,14 @@ new Chart(document.getElementById('pointsChart').getContext('2d'), {{
 }});
 
 // ── Rank chart ───────────────────────────────────────────────────────────
-new Chart(document.getElementById('rankChart').getContext('2d'), {{
+const rankCtx = document.getElementById('rankChart').getContext('2d');
+
+// Gradient fill: green (top/best rank) → red (bottom/worst rank)
+const rankGradient = rankCtx.createLinearGradient(0, 0, 0, 340);
+rankGradient.addColorStop(0, 'rgba(0,255,135,0.35)');
+rankGradient.addColorStop(1, 'rgba(255,60,60,0.08)');
+
+new Chart(rankCtx, {{
     type: 'line',
     data: {{
         labels: gwLabels,
@@ -257,7 +265,7 @@ new Chart(document.getElementById('rankChart').getContext('2d'), {{
             label: 'World Rank',
             data: ranks,
             borderColor: '#00ff87',
-            backgroundColor: 'rgba(0,255,135,0.12)',
+            backgroundColor: rankGradient,
             tension: 0.35,
             fill: true,
             pointRadius: 4,
@@ -288,9 +296,23 @@ new Chart(document.getElementById('rankChart').getContext('2d'), {{
             }}
         }},
         scales: {{
-            x: xAxis,
+            x: {{
+                ticks: {{
+                    color: 'rgba(255,255,255,0.75)',
+                    maxRotation: 0,
+                    minRotation: 0,
+                    autoSkip: true,
+                    maxTicksLimit: 10,
+                    callback: function(val, idx) {{
+                        return gwLabels[idx];
+                    }}
+                }},
+                grid: {{ color: 'rgba(255,255,255,0.08)' }},
+                afterFit: function(axis) {{ axis.paddingRight = 10; }}
+            }},
             y: {{
                 reverse: true,
+                min: 1,
                 ticks: {{
                     color: 'rgba(255,255,255,0.75)',
                     callback: function(v) {{

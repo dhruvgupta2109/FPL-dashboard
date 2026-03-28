@@ -134,6 +134,34 @@ div[data-testid="stColumn"] > div {
 div[data-testid="stMain"] > div > div[data-testid="stVerticalBlock"] > div[data-testid="stHorizontalBlock"]:first-of-type {
     gap: 24px !important;
 }
+
+/* ── Nav buttons ── */
+div[data-testid="stButton"] > button {
+    padding: 14px 0 !important;
+    background: rgba(255,255,255,0.12) !important;
+    color: #00ff87 !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    border: none !important;
+    border-top: 1px solid rgba(255,255,255,0.2) !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    transition: background 0.2s ease !important;
+}
+div[data-testid="stButton"] > button:hover {
+    background: rgba(0,255,135,0.2) !important;
+    color: white !important;
+}
+/* Points — bottom-left curve only */
+div[data-testid="stColumn"]:nth-of-type(1) div[data-testid="stButton"] > button {
+    border-radius: 0 0 0 22px !important;
+    border-right: 1px solid rgba(255,255,255,0.15) !important;
+}
+/* Graphs — bottom-right curve only */
+div[data-testid="stColumn"]:nth-of-type(2) div[data-testid="stButton"] > button {
+    border-radius: 0 0 22px 0 !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -272,49 +300,24 @@ with left_col:
     </div>
     """, unsafe_allow_html=True)
 
-    # Single HTML block — zero gap guaranteed, no Streamlit column spacing
+    btn1, btn2 = st.columns(2)
+    # Inject style targeting the button row that was just created
     st.markdown("""
-    <div style="display:flex; width:100%; margin:0; padding:0;">
-        <form action="" method="get" style="flex:1; margin:0; padding:0;">
-            <button name="nav" value="points" style="
-                width:100%; padding:14px 0; cursor:pointer;
-                background:rgba(255,255,255,0.12);
-                backdrop-filter:blur(18px);
-                color:#00ff87; font-size:15px; font-weight:700;
-                border:none; border-top:1px solid rgba(255,255,255,0.2);
-                border-right:1px solid rgba(255,255,255,0.15);
-                border-radius:0 0 0 22px;
-                transition:background 0.2s ease;
-            " onmouseover="this.style.background='rgba(0,255,135,0.2)'"
-               onmouseout="this.style.background='rgba(255,255,255,0.12)'">
-                Points →
-            </button>
-        </form>
-        <form action="" method="get" style="flex:1; margin:0; padding:0;">
-            <button name="nav" value="graphs" style="
-                width:100%; padding:14px 0; cursor:pointer;
-                background:rgba(255,255,255,0.12);
-                backdrop-filter:blur(18px);
-                color:#00ff87; font-size:15px; font-weight:700;
-                border:none; border-top:1px solid rgba(255,255,255,0.2);
-                border-radius:0 0 22px 0;
-                transition:background 0.2s ease;
-            " onmouseover="this.style.background='rgba(0,255,135,0.2)'"
-               onmouseout="this.style.background='rgba(255,255,255,0.12)'">
-                Graphs →
-            </button>
-        </form>
-    </div>
+    <style>
+    /* Target the inner button row specifically — override Streamlit inline gap */
+    div[data-testid="stVerticalBlock"] div[data-testid="stVerticalBlock"]
+    div[data-testid="stHorizontalBlock"] {
+        gap: 0px !important;
+        column-gap: 0px !important;
+    }
+    </style>
     """, unsafe_allow_html=True)
-
-    # Handle form navigation via query params
-    nav = st.query_params.get("nav", "")
-    if nav == "points":
-        st.query_params.clear()
-        st.switch_page("pages/points.py")
-    elif nav == "graphs":
-        st.query_params.clear()
-        st.switch_page("pages/graphs.py")
+    with btn1:
+        if st.button("Points →", key="nav_points", use_container_width=True):
+            st.switch_page("pages/points.py")
+    with btn2:
+        if st.button("Graphs →", key="nav_graphs", use_container_width=True):
+            st.switch_page("pages/graphs.py")
 
 with right_col:
     st.markdown(f"""
