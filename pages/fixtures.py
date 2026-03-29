@@ -170,6 +170,7 @@ div[data-testid="stExpander"] details summary p {
     min-height: 100%;
     margin: 0 auto;
     border-left: 2px dotted rgba(255, 255, 255, 0.42);
+    align-self: stretch;
 }
 
 .player-chip {
@@ -373,7 +374,7 @@ def render_split_metric_section(title, home_rows, away_rows, home_label, away_la
         render_player_stat_grid(away_rows, per_row=per_row)
 
     with divider_col:
-        st.markdown("<div class='metric-divider'></div>", unsafe_allow_html=True)
+        st.markdown("<div class='metric-divider'>&nbsp;</div>", unsafe_allow_html=True)
 
     with right_col:
         st.markdown(f"<div class='team-side-label right'>{home_label}</div>", unsafe_allow_html=True)
@@ -456,8 +457,8 @@ for row_start in range(0, len(sorted_fixtures), 2):
 
                 st.caption(f"Fixture ID: {fixture_id}")
 
-                home_label = f"{home.get('short')} ({home.get('name')})"
-                away_label = f"{away.get('short')} ({away.get('name')})"
+                home_label = home.get('name')
+                away_label = away.get('name')
 
                 goals_home, goals_away = extract_stat_entries_by_side(fx, ("goals_scored",))
                 own_goals_home, own_goals_away = extract_stat_entries_by_side(fx, ("own_goals",))
