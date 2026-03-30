@@ -182,8 +182,7 @@ const xAxis = {{
             return gwLabels[idx];
         }}
     }},
-    grid: {{ color: 'rgba(255,255,255,0.08)' }},
-    afterFit: function(axis) {{ axis.paddingRight = 10; }}
+    grid: {{ color: 'rgba(255,255,255,0.08)' }}
 }};
 
 const yAxis = {{
@@ -234,6 +233,7 @@ new Chart(document.getElementById('pointsChart').getContext('2d'), {{
         responsive: true,
         maintainAspectRatio: false,
         interaction: {{ mode: 'index', intersect: false }},
+        layout: {{ padding: {{ right: 16, bottom: 4 }} }},
         plugins: {{
             legend: legendOpts,
             tooltip: {{
@@ -252,10 +252,13 @@ new Chart(document.getElementById('pointsChart').getContext('2d'), {{
 // ── Rank chart ───────────────────────────────────────────────────────────
 const rankCtx = document.getElementById('rankChart').getContext('2d');
 
-// Gradient fill: green (top/best rank) → red (bottom/worst rank)
+// reverse:true means rank 1 = top, worst rank = bottom.
+// fill:'end' fills from the line DOWN to the bottom axis (worst rank area) = correct.
+// Gradient top→bottom: transparent → red, so the shading gets stronger toward worse ranks.
 const rankGradient = rankCtx.createLinearGradient(0, 0, 0, 340);
-rankGradient.addColorStop(0, 'rgba(0,255,135,0.35)');
-rankGradient.addColorStop(1, 'rgba(255,60,60,0.08)');
+rankGradient.addColorStop(0, 'rgba(255,80,80,0.0)');
+rankGradient.addColorStop(0.5, 'rgba(255,80,80,0.25)');
+rankGradient.addColorStop(1, 'rgba(255,80,80,0.55)');
 
 new Chart(rankCtx, {{
     type: 'line',
@@ -267,7 +270,7 @@ new Chart(rankCtx, {{
             borderColor: '#00ff87',
             backgroundColor: rankGradient,
             tension: 0.35,
-            fill: true,
+            fill: 'end',
             pointRadius: 4,
             pointHoverRadius: 6,
             borderWidth: 2.5
@@ -277,6 +280,7 @@ new Chart(rankCtx, {{
         responsive: true,
         maintainAspectRatio: false,
         interaction: {{ mode: 'index', intersect: false }},
+        layout: {{ padding: {{ right: 16, bottom: 24 }} }},
         plugins: {{
             legend: legendOpts,
             tooltip: {{
@@ -307,8 +311,7 @@ new Chart(rankCtx, {{
                         return gwLabels[idx];
                     }}
                 }},
-                grid: {{ color: 'rgba(255,255,255,0.08)' }},
-                afterFit: function(axis) {{ axis.paddingRight = 10; }}
+                grid: {{ color: 'rgba(255,255,255,0.08)' }}
             }},
             y: {{
                 reverse: true,
@@ -329,7 +332,7 @@ new Chart(rankCtx, {{
 </script>
 </body>
 </html>
-""", height=860, scrolling=False)
+""", height=900, scrolling=False)
 
 _, col, _ = st.columns([1, 1, 1])
 with col:
