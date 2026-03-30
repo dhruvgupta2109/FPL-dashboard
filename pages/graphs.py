@@ -252,13 +252,37 @@ new Chart(document.getElementById('pointsChart').getContext('2d'), {{
 // ── Rank chart ───────────────────────────────────────────────────────────
 const rankCtx = document.getElementById('rankChart').getContext('2d');
 
-// reverse:true means rank 1 = top, worst rank = bottom.
-// fill:'end' fills from the line DOWN to the bottom axis (worst rank area) = correct.
-// Gradient top→bottom: transparent → red, so the shading gets stronger toward worse ranks.
-const rankGradient = rankCtx.createLinearGradient(0, 0, 0, 340);
-rankGradient.addColorStop(0, 'rgba(255,80,80,0.0)');
-rankGradient.addColorStop(0.5, 'rgba(255,80,80,0.25)');
-rankGradient.addColorStop(1, 'rgba(255,80,80,0.55)');
+// reverse:true: rank 1 = TOP of canvas, worst rank = BOTTOM.
+// We draw the fill manually in a plugin so we have full control over direction.
+// The fill goes from each data point DOWN to the bottom of the chart area.
+const rankPlugin = {{
+    id: 'rankFill',
+    beforeDraw(chart) {{
+        const {{ ctx, chartArea, scales }} = chart;
+        if (!chartArea) return;
+        const xScale = scales.x;
+        const yScale = scales.y;
+        const dataset = chart.data.datasets[0];
+        const meta = chart.getDatasetMeta(0);
+        const points = meta.data;
+        if (!points.length) return;
+
+        const grad = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+        grad.addColorStop(0, 'rgba(255,80,80,0.0)');
+        grad.addColorStop(0.5, 'rgba(255,80,80,0.22)');
+        grad.addColorStop(1, 'rgba(255,80,80,0.55)');
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, chartArea.bottom);
+        points.forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.lineTo(points[points.length - 1].x, chartArea.bottom);
+        ctx.closePath();
+        ctx.fillStyle = grad;
+        ctx.fill();
+        ctx.restore();
+    }}
+}};
 
 new Chart(rankCtx, {{
     type: 'line',
@@ -268,14 +292,15 @@ new Chart(rankCtx, {{
             label: 'World Rank',
             data: ranks,
             borderColor: '#00ff87',
-            backgroundColor: rankGradient,
+            backgroundColor: 'transparent',
             tension: 0.35,
-            fill: 'end',
+            fill: false,
             pointRadius: 4,
             pointHoverRadius: 6,
             borderWidth: 2.5
         }}]
     }},
+    plugins: [rankPlugin],
     options: {{
         responsive: true,
         maintainAspectRatio: false,
