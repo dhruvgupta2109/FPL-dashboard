@@ -268,9 +268,9 @@ const rankPlugin = {{
         if (!points.length) return;
 
         const grad = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
-        grad.addColorStop(0, 'rgba(255,80,80,0.0)');
-        grad.addColorStop(0.5, 'rgba(255,80,80,0.22)');
-        grad.addColorStop(1, 'rgba(255,80,80,0.55)');
+        grad.addColorStop(0, 'rgba(0,255,135,0.0)');
+        grad.addColorStop(0.5, 'rgba(0,255,135,0.15)');
+        grad.addColorStop(1, 'rgba(0,255,135,0.35)');
 
         ctx.save();
         ctx.beginPath();
