@@ -86,6 +86,57 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
     margin-top: 14px;
 }
 
+/* Fixtures burger layout */
+.matches-header-box {
+    padding: 14px 16px 10px 16px;
+    border-radius: 22px 22px 0 0;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    margin-top: 14px;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+
+.matches-body-box {
+    padding: 10px 16px 14px 16px;
+    border-radius: 0 0 22px 22px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    margin-top: 0;
+}
+
+.matches-section-title {
+    font-size: 15px;
+    font-weight: 700;
+    opacity: 0.92;
+    margin: 0;
+    color: #ffffff;
+    text-align: center;
+}
+
+.st-key-see_fixtures {
+    margin-top: 15.5px !important;
+    margin-bottom: 0 !important;
+    border-radius: 0 !important;
+}
+
+.st-key-see_fixtures button {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 10px 14px !important;
+    border-radius: 0 !important;
+    border: 1px solid rgba(0,255,135,0.55) !important;
+    background: linear-gradient(135deg, rgba(0,255,135,0.22), rgba(255,255,255,0.12)) !important;
+    color: #00ff87 !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25) !important;
+    margin: 0 !important;
+}
+
+.st-key-see_fixtures button:hover {
+    background: linear-gradient(135deg, rgba(0,255,135,0.3), rgba(255,255,255,0.18)) !important;
+    color: #ffffff !important;
+}
+
 .section-title {
     font-size: 15px;
     font-weight: 700;
@@ -257,6 +308,21 @@ div[data-testid="stColumn"]:nth-of-type(1) div[data-testid="stButton"] > button 
 /* Graphs — bottom-right curve only */
 div[data-testid="stColumn"]:nth-of-type(2) div[data-testid="stButton"] > button {
     border-radius: 0 0 22px 0 !important;
+}
+
+/* Keep Fixtures button fully uncurved (override column corner rules) */
+div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_fixtures div[data-testid="stButton"] > button,
+div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_fixtures div[data-testid="stButton"] > button,
+div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_fixtures div[data-testid="stButton"] > button:hover,
+div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_fixtures div[data-testid="stButton"] > button:hover,
+div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_fixtures div[data-testid="stButton"] > button:focus,
+div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_fixtures div[data-testid="stButton"] > button:focus,
+div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_fixtures div[data-testid="stButton"] > button:active,
+div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_fixtures div[data-testid="stButton"] > button:active {
+    border-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: none !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -594,9 +660,18 @@ with left_col:
         height=150,
     )
 
+    # Fixtures burger: title (top), button (middle), matches (bottom)
     st.markdown(f"""
-    <div class="glass-box matches-box">
-        <div class="section-title">Fixtures & Results GW{gw}</div>
+    <div class="glass-box matches-header-box">
+        <div class="matches-section-title">Fixtures & Results GW{gw}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    if st.button("See All Stats", key="see_fixtures", use_container_width=True):
+        st.switch_page("pages/fixtures.py")
+
+    st.markdown(f"""
+    <div class="glass-box matches-body-box">
         <div class="match-head">
             <div class="match-head-side">Away</div>
             <div></div>
