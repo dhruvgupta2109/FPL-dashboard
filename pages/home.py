@@ -301,6 +301,9 @@ with left_col:
     </div>
     """, unsafe_allow_html=True)
 
+    st.markdown("""
+    <div style='height: 32px;'></div>
+    """, unsafe_allow_html=True)
     btn1, btn2 = st.columns(2)
     # Inject style targeting the button row that was just created
     st.markdown("""

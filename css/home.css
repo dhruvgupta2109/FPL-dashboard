@@ -173,6 +173,6 @@ div[data-testid="stVerticalBlock"] > div:has(> div[data-testid="stButton"]:nth-o
     display: flex !important;
     flex-direction: row !important;
     gap: 0 !important;
-    margin-top: 0 !important;
+    margin-top: 18px !important;
     padding: 0 !important;
 }
