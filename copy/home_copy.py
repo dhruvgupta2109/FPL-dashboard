@@ -46,9 +46,8 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
 .points-box {
     text-align: center;
     border-radius: 22px 22px 0 0;
-    border-bottom: none;
     padding: 30px 30px 24px 30px;
-    box-shadow: none;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.35);
     margin-top: 20px;
 }
 
@@ -135,6 +134,34 @@ div[data-testid="stColumn"] > div {
 /* Restore gap on the outermost layout row only */
 div[data-testid="stMain"] > div > div[data-testid="stVerticalBlock"] > div[data-testid="stHorizontalBlock"]:first-of-type {
     gap: 24px !important;
+}
+
+/* ── Nav buttons ── */
+div[data-testid="stButton"] > button {
+    padding: 14px 0 !important;
+    background: rgba(255,255,255,0.12) !important;
+    color: #00ff87 !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    border: none !important;
+    border-top: 1px solid rgba(255,255,255,0.2) !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    transition: background 0.2s ease !important;
+}
+div[data-testid="stButton"] > button:hover {
+    background: rgba(0,255,135,0.2) !important;
+    color: white !important;
+}
+/* Points — bottom-left curve only */
+div[data-testid="stColumn"]:nth-of-type(1) div[data-testid="stButton"] > button {
+    border-radius: 0 0 0 22px !important;
+    border-right: 1px solid rgba(255,255,255,0.15) !important;
+}
+/* Graphs — bottom-right curve only */
+div[data-testid="stColumn"]:nth-of-type(2) div[data-testid="stButton"] > button {
+    border-radius: 0 0 22px 0 !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -255,53 +282,9 @@ public_html = build_league_html(public_leagues, show_total=False)
 left_col, right_col = st.columns([1, 2])
 
 with left_col:
-    import streamlit.components.v1 as components_home
-    components_home.html(f"""
-    <style>
-    * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-    body {{ background: transparent; font-family: sans-serif; }}
-
-    .points-box {{
-        background: rgba(255,255,255,0.15);
-        backdrop-filter: blur(18px);
-        border: 1px solid rgba(255,255,255,0.2);
-        border-bottom: none;
-        border-radius: 22px 22px 0 0;
-        text-align: center;
-        padding: 30px 30px 24px 30px;
-        color: white;
-    }}
-    .team-name {{ font-size: 16px; font-weight: 700; opacity: 0.85; margin-bottom: 4px; }}
-    .gw-label  {{ font-size: 13px; opacity: 0.7; margin-bottom: 12px; }}
-    .points-row {{
-        display: flex; align-items: center;
-        justify-content: center; gap: 30px;
-    }}
-    .big-points {{ font-size: 64px; font-weight: 800; line-height: 1; color: white; }}
-    .side-points {{ display: flex; flex-direction: column; align-items: center; }}
-    .side-label  {{ font-size: 11px; opacity: 0.7; margin-bottom: 4px; }}
-    .side-value  {{ font-size: 28px; font-weight: 600; color: rgba(255,255,255,0.75); }}
-
-    .btn-row {{
-        display: flex; width: 100%;
-    }}
-    .btn-row button {{
-        flex: 1; padding: 14px 0; cursor: pointer;
-        background: rgba(255,255,255,0.12);
-        color: #00ff87; font-size: 15px; font-weight: 700;
-        border: none;
-        border-top: 1px solid rgba(255,255,255,0.2);
-        transition: background 0.2s;
-    }}
-    .btn-row button:hover {{ background: rgba(0,255,135,0.2); color: white; }}
-    #btn-points {{
-        border-right: 1px solid rgba(255,255,255,0.15);
-        border-radius: 0 0 0 22px;
-    }}
-    #btn-graphs {{ border-radius: 0 0 22px 0; }}
-    </style>
-
-    <div class="points-box">
+    # Points glassbox
+    st.markdown(f"""
+    <div class="glass-box points-box">
         <div class="team-name">{team_name}</div>
         <div class="gw-label">Gameweek {gw}</div>
         <div class="points-row">
@@ -316,19 +299,26 @@ with left_col:
             </div>
         </div>
     </div>
-    <div class="btn-row">
-        <button id="btn-points" onclick="window.parent.location.href='?nav=points'">Points →</button>
-        <button id="btn-graphs" onclick="window.parent.location.href='?nav=graphs'">Graphs →</button>
-    </div>
-    """, height=260, scrolling=False)
+    """, unsafe_allow_html=True)
 
-    nav = st.query_params.get("nav", "")
-    if nav == "points":
-        st.query_params.clear()
-        st.switch_page("pages/points.py")
-    elif nav == "graphs":
-        st.query_params.clear()
-        st.switch_page("pages/graphs.py")
+    btn1, btn2 = st.columns(2)
+    # Inject style targeting the button row that was just created
+    st.markdown("""
+    <style>
+    /* Target the inner button row specifically — override Streamlit inline gap */
+    div[data-testid="stVerticalBlock"] div[data-testid="stVerticalBlock"]
+    div[data-testid="stHorizontalBlock"] {
+        gap: 0px !important;
+        column-gap: 0px !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    with btn1:
+        if st.button("Points →", key="nav_points", use_container_width=True):
+            st.switch_page("pages/points.py")
+    with btn2:
+        if st.button("Graphs →", key="nav_graphs", use_container_width=True):
+            st.switch_page("pages/graphs.py")
 
 with right_col:
     st.markdown(f"""
