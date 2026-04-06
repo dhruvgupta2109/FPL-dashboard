@@ -32,7 +32,7 @@
 
 /* ── Points box — flat bottom so buttons attach flush ── */
 .points-box {
-    width: 400px;
+    width: 350px;
     margin-top: 15px;
     text-align: center;
     border-radius: 22px 22px 0 0;
