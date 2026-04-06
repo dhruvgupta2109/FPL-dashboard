@@ -52,7 +52,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
 }
 
 .team-name { font-size: 16px; font-weight: 700; opacity: 0.85; margin-bottom: 4px; }
-.gw-label  { font-size: 13px; opacity: 0.7; margin-bottom: 12px; }
+.gw-label  { font-size: 13px; opacity: 0.7;   margin-bottom: 12px; }
 
 .points-row {
     display: flex;
@@ -282,7 +282,7 @@ public_html = build_league_html(public_leagues, show_total=False)
 left_col, right_col = st.columns([1, 2])
 
 with left_col:
-    # Points glassbox
+    # Glass card — flat bottom so the Streamlit buttons attach flush below
     st.markdown(f"""
     <div class="glass-box points-box">
         <div class="team-name">{team_name}</div>
