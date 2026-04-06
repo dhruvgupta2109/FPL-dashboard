@@ -530,7 +530,7 @@ with left_col:
             box-shadow: 0 20px 45px rgba(0,0,0,0.35);
             color: #fff;
             text-align:center;
-            padding: 16px 12px;
+            padding: 16px 12px 1px 1px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         ">
             <div style="font-size:15px;font-weight:700;opacity:0.92;margin-bottom:10px;">Deadline Countdown (GW {next_gw_label})</div>
