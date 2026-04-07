@@ -322,7 +322,8 @@ div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_fixtures div[data-testid=
     border-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
-    border-right: none !important;
+    border-right: 1px solid rgba(255,255,255,0.35) !important;
+    border-left: 1px solid rgba(255,255,255,0.35) !important;
 }
 </style>
 """, unsafe_allow_html=True)
