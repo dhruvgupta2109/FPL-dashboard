@@ -51,10 +51,11 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
     padding: 30px 30px 24px 30px;
     box-shadow: 0 20px 45px rgba(0,0,0,0.35);
     margin-top: 20px;
+    font-size: 1.25rem; /* base font size up */
 }
 
-.team-name { font-size: 16px; font-weight: 700; opacity: 0.85; margin-bottom: 4px; }
-.gw-label  { font-size: 13px; opacity: 0.7;   margin-bottom: 12px; }
+.team-name { font-size: 18px; font-weight: 800; opacity: 0.92; margin-bottom: 4px; }
+.gw-label  { font-size: 15px; opacity: 0.8;   margin-bottom: 12px; }
 
 .points-row {
     display: flex;
@@ -63,11 +64,11 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
     gap: 30px;
 }
 
-.big-points { font-size: 64px; font-weight: 800; line-height: 1; color: white; }
+.big-points { font-size: 70px; font-weight: 900; line-height: 1; color: white; }
 
 .side-points { display: flex; flex-direction: column; align-items: center; }
-.side-label  { font-size: 11px; opacity: 0.7; margin-bottom: 4px; }
-.side-value  { font-size: 28px; font-weight: 600; color: rgba(255,255,255,0.75); }
+.side-label  { font-size: 14px; opacity: 0.8; margin-bottom: 2px; }
+.side-value  { font-size: 30px; font-weight: 700; color: rgba(255,255,255,0.85); }
 
 /* ── Leagues box ── */
 .leagues-box {
