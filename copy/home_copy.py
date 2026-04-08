@@ -1,8 +1,10 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import json
 import urllib.request
 import ssl
 import certifi
+from datetime import datetime, timezone
 
 st.set_page_config(page_title="FPL Home", layout="wide")
 
@@ -52,7 +54,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
 }
 
 .team-name { font-size: 16px; font-weight: 700; opacity: 0.85; margin-bottom: 4px; }
-.gw-label  { font-size: 13px; opacity: 0.7; margin-bottom: 12px; }
+.gw-label  { font-size: 13px; opacity: 0.7;   margin-bottom: 12px; }
 
 .points-row {
     display: flex;
@@ -73,6 +75,79 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
     border-radius: 22px;
     box-shadow: 0 20px 45px rgba(0,0,0,0.35);
     margin-top: 20px;
+}
+
+/* ── Countdown and matches (left column) ── */
+.matches-box {
+    padding: 18px 16px;
+    border-radius: 22px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    margin-top: 14px;
+}
+
+.section-title {
+    font-size: 15px;
+    font-weight: 700;
+    opacity: 0.92;
+    margin-bottom: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 8px;
+}
+
+.match-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.team-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.team-cell.right {
+    justify-content: flex-end;
+}
+
+.team-logo {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.team-name-small {
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.score-cell {
+    text-align: center;
+    min-width: 90px;
+}
+
+.score-main {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.score-sub {
+    font-size: 11px;
+    opacity: 0.75;
+    margin-top: 2px;
 }
 
 .leagues-sections { display: flex; gap: 20px; }
@@ -192,6 +267,20 @@ def fetch_gw_stats(gw):
     return 0, 0
 
 @st.cache_data(ttl=300)
+def fetch_bootstrap_data():
+    ctx = ssl.create_default_context(cafile=certifi.where())
+    url = "https://fantasy.premierleague.com/api/bootstrap-static/"
+    with urllib.request.urlopen(url, context=ctx) as r:
+        return json.loads(r.read())
+
+@st.cache_data(ttl=120)
+def fetch_fixtures(event_id):
+    ctx = ssl.create_default_context(cafile=certifi.where())
+    url = f"https://fantasy.premierleague.com/api/fixtures/?event={event_id}"
+    with urllib.request.urlopen(url, context=ctx) as r:
+        return json.loads(r.read())
+
+@st.cache_data(ttl=300)
 def fetch_leagues(manager_id):
     ctx = ssl.create_default_context(cafile=certifi.where())
     url = f"https://fantasy.premierleague.com/api/entry/{manager_id}/"
@@ -231,6 +320,38 @@ def rank_style(rank):
     if rank == 3: return "#CD7F32", "900", "20px"
     return None, "700", "16px"
 
+def parse_deadline(dt_str):
+    if not dt_str:
+        return None
+    try:
+        return datetime.fromisoformat(dt_str.replace("Z", "+00:00"))
+    except Exception:
+        return None
+
+def next_deadline_info(events, current_gw):
+    if not events:
+        return None, None
+
+    next_event = next((e for e in events if e.get("is_next")), None)
+    if not next_event:
+        next_event = next((e for e in events if (e.get("id") or 0) > current_gw), None)
+
+    if not next_event:
+        return None, None
+
+    return next_event.get("id"), parse_deadline(next_event.get("deadline_time"))
+
+def logo_url(team_code):
+    if not team_code:
+        return ""
+    return f"https://resources.premierleague.com/premierleague/badges/50/t{team_code}.png"
+
+def kickoff_label(kickoff_str):
+    dt = parse_deadline(kickoff_str)
+    if not dt:
+        return "Kickoff TBC"
+    return dt.strftime("%d %b %H:%M UTC")
+
 live_pts = fetch_live_points(gw)
 avg_points, highest_points = fetch_gw_stats(gw)
 picks    = sorted(st.session_state.picks["picks"], key=lambda x: x["position"])
@@ -238,6 +359,20 @@ starters = picks[:11]
 gw_points = sum(live_pts.get(p["element"], 0) * p.get("multiplier", 1) for p in starters)
 
 mini_leagues, public_leagues = fetch_leagues(manager_id)
+bootstrap_data = fetch_bootstrap_data()
+events = bootstrap_data.get("events", [])
+teams = bootstrap_data.get("teams", [])
+next_gw, next_deadline = next_deadline_info(events, gw)
+
+team_map = {
+    t.get("id"): {
+        "name": t.get("name", "Unknown"),
+        "code": t.get("code")
+    }
+    for t in teams
+}
+
+fixtures = fetch_fixtures(gw)
 
 def build_league_html(leagues, show_total=False, max_count=5):
     html = ""
@@ -278,11 +413,49 @@ def build_league_html(leagues, show_total=False, max_count=5):
 mini_html   = build_league_html(mini_leagues,   show_total=True)
 public_html = build_league_html(public_leagues, show_total=False)
 
+matches_html = ""
+for fx in fixtures:
+    home_id = fx.get("team_h")
+    away_id = fx.get("team_a")
+    home = team_map.get(home_id, {"name": "Home", "code": None})
+    away = team_map.get(away_id, {"name": "Away", "code": None})
+
+    hs = fx.get("team_h_score")
+    aas = fx.get("team_a_score")
+    finished = fx.get("finished")
+
+    if hs is not None and aas is not None:
+        score_text = f"{hs} - {aas}"
+    else:
+        score_text = "vs"
+
+    sub_text = "FT" if finished else kickoff_label(fx.get("kickoff_time"))
+
+    matches_html += (
+        f'<div class="match-row">'
+        f'  <div class="team-cell">'
+        f'    <img class="team-logo" src="{logo_url(home.get("code"))}" alt="{home.get("name")}">'
+        f'    <div class="team-name-small">{home.get("name")}</div>'
+        f'  </div>'
+        f'  <div class="score-cell">'
+        f'    <div class="score-main">{score_text}</div>'
+        f'    <div class="score-sub">{sub_text}</div>'
+        f'  </div>'
+        f'  <div class="team-cell right">'
+        f'    <div class="team-name-small">{away.get("name")}</div>'
+        f'    <img class="team-logo" src="{logo_url(away.get("code"))}" alt="{away.get("name")}">'
+        f'  </div>'
+        f'</div>'
+    )
+
+if not matches_html:
+    matches_html = '<div class="score-sub" style="text-align:center;padding:10px;">No fixtures found for this gameweek.</div>'
+
 # ── Layout: two columns — left (fixed 400px), right (leagues) ────────────────
 left_col, right_col = st.columns([1, 2])
 
 with left_col:
-    # Points glassbox
+    # Glass card — flat bottom so the Streamlit buttons attach flush below
     st.markdown(f"""
     <div class="glass-box points-box">
         <div class="team-name">{team_name}</div>
@@ -301,6 +474,9 @@ with left_col:
     </div>
     """, unsafe_allow_html=True)
 
+    st.markdown("""
+    <div style='height: 32px;'></div>
+    """, unsafe_allow_html=True)
     btn1, btn2 = st.columns(2)
     # Inject style targeting the button row that was just created
     st.markdown("""
@@ -319,6 +495,82 @@ with left_col:
     with btn2:
         if st.button("Graphs →", key="nav_graphs", use_container_width=True):
             st.switch_page("pages/graphs.py")
+
+    deadline_iso = next_deadline.isoformat() if next_deadline else ""
+    next_gw_label = next_gw if next_gw else (gw + 1)
+    components.html(
+        f"""
+        <div style="
+            margin-top: 14px;
+            border-radius: 22px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+            color: #fff;
+            text-align:center;
+            padding: 16px 12px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        ">
+            <div style="font-size:15px;font-weight:700;opacity:0.92;margin-bottom:10px;">Deadline Countdown (GW {next_gw_label})</div>
+            <div id="deadline-countdown" style="font-size:32px;font-weight:800;letter-spacing:1px;color:#00ff87;">--:--:--</div>
+            <div id="deadline-sub" style="font-size:12px;opacity:0.8;margin-top:6px;">Calculating...</div>
+        </div>
+        <script>
+            const deadlineIso = "{deadline_iso}";
+            const target = deadlineIso ? new Date(deadlineIso) : null;
+            const valueEl = document.getElementById("deadline-countdown");
+            const subEl = document.getElementById("deadline-sub");
+
+            function pad(n) {{ return String(n).padStart(2, "0"); }}
+
+            function tick() {{
+                if (!target || isNaN(target.getTime())) {{
+                    valueEl.textContent = "N/A";
+                    subEl.textContent = "Next deadline unavailable";
+                    return;
+                }}
+
+                const now = new Date();
+                let diff = Math.floor((target - now) / 1000);
+
+                if (diff <= 0) {{
+                    valueEl.textContent = "00:00:00";
+                    subEl.textContent = "Deadline passed";
+                    return;
+                }}
+
+                const days = Math.floor(diff / 86400);
+                diff %= 86400;
+                const hours = Math.floor(diff / 3600);
+                diff %= 3600;
+                const mins = Math.floor(diff / 60);
+                const secs = diff % 60;
+
+                let display = '';
+                if (days > 0) {{
+                    display = `${{days}}:${{pad(hours)}}:${{pad(mins)}}:${{pad(secs)}}`;
+                }} else {{
+                    display = `${{pad(hours)}}:${{pad(mins)}}:${{pad(secs)}}`;
+                }}
+                valueEl.textContent = display;
+                subEl.textContent = `Deadline: ${{target.toUTCString()}}`;
+            }}
+
+            tick();
+            setInterval(tick, 1000);
+        </script>
+        """,
+        height=150,
+    )
+
+    st.markdown(f"""
+    <div class="glass-box matches-box">
+        <div class="section-title">This Week's Fixtures & Scores (GW {gw})</div>
+        {matches_html}
+    </div>
+    """, unsafe_allow_html=True)
 
 with right_col:
     st.markdown(f"""
