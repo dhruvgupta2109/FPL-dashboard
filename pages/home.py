@@ -107,6 +107,25 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
     border: 1px solid rgba(255,255,255,0.12);
 }
 
+.match-head {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 0 10px;
+}
+
+.match-head-side {
+    font-size: 11px;
+    font-weight: 700;
+    opacity: 0.75;
+}
+
+.match-head-side.right {
+    text-align: right;
+}
+
 .team-cell {
     display: flex;
     align-items: center;
@@ -434,16 +453,16 @@ for fx in fixtures:
     matches_html += (
         f'<div class="match-row">'
         f'  <div class="team-cell">'
-        f'    <img class="team-logo" src="{logo_url(home.get("code"))}" alt="{home.get("name")}">'
-        f'    <div class="team-name-small">{home.get("name")}</div>'
+        f'    <img class="team-logo" src="{logo_url(away.get("code"))}" alt="{away.get("name")}">'
+        f'    <div class="team-name-small">{away.get("name")}</div>'
         f'  </div>'
         f'  <div class="score-cell">'
         f'    <div class="score-main">{score_text}</div>'
         f'    <div class="score-sub">{sub_text}</div>'
         f'  </div>'
         f'  <div class="team-cell right">'
-        f'    <div class="team-name-small">{away.get("name")}</div>'
-        f'    <img class="team-logo" src="{logo_url(away.get("code"))}" alt="{away.get("name")}">'
+        f'    <div class="team-name-small">{home.get("name")}</div>'
+        f'    <img class="team-logo" src="{logo_url(home.get("code"))}" alt="{home.get("name")}">'
         f'  </div>'
         f'</div>'
     )
@@ -515,12 +534,14 @@ with left_col:
         ">
             <div style="font-size:15px;font-weight:700;opacity:0.92;margin-bottom:10px;">Deadline Countdown (GW {next_gw_label})</div>
             <div id="deadline-countdown" style="font-size:32px;font-weight:800;letter-spacing:1px;color:#00ff87;">--:--:--</div>
+            <div id="deadline-format" style="font-size:11px;opacity:0.7;margin-top:4px;">(Days:Hours:Minutes:Seconds)</div>
             <div id="deadline-sub" style="font-size:12px;opacity:0.8;margin-top:6px;">Calculating...</div>
         </div>
         <script>
             const deadlineIso = "{deadline_iso}";
             const target = deadlineIso ? new Date(deadlineIso) : null;
             const valueEl = document.getElementById("deadline-countdown");
+            const formatEl = document.getElementById("deadline-format");
             const subEl = document.getElementById("deadline-sub");
 
             function pad(n) {{ return String(n).padStart(2, "0"); }}
@@ -528,6 +549,7 @@ with left_col:
             function tick() {{
                 if (!target || isNaN(target.getTime())) {{
                     valueEl.textContent = "N/A";
+                    formatEl.textContent = "Days : Hours : Minutes : Seconds";
                     subEl.textContent = "Next deadline unavailable";
                     return;
                 }}
@@ -537,6 +559,7 @@ with left_col:
 
                 if (diff <= 0) {{
                     valueEl.textContent = "00:00:00";
+                    formatEl.textContent = " Hours : Minutes : Seconds ";
                     subEl.textContent = "Deadline passed";
                     return;
                 }}
@@ -551,8 +574,10 @@ with left_col:
                 let display = '';
                 if (days > 0) {{
                     display = `${{days}}:${{pad(hours)}}:${{pad(mins)}}:${{pad(secs)}}`;
+                    formatEl.textContent = " Days : Hours : Minutes : Seconds ";
                 }} else {{
                     display = `${{pad(hours)}}:${{pad(mins)}}:${{pad(secs)}}`;
+                    formatEl.textContent = " Hours : Minutes : Seconds ";
                 }}
                 valueEl.textContent = display;
                 subEl.textContent = `Deadline: ${{target.toUTCString()}}`;
@@ -568,6 +593,11 @@ with left_col:
     st.markdown(f"""
     <div class="glass-box matches-box">
         <div class="section-title">This Week's Fixtures & Scores (GW {gw})</div>
+        <div class="match-head">
+            <div class="match-head-side">Away</div>
+            <div></div>
+            <div class="match-head-side right">Home</div>
+        </div>
         {matches_html}
     </div>
     """, unsafe_allow_html=True)
