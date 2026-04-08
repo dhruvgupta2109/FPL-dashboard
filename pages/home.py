@@ -580,7 +580,10 @@ with left_col:
                     formatEl.textContent = " Hours : Minutes : Seconds ";
                 }}
                 valueEl.textContent = display;
-                subEl.textContent = `Deadline: ${{target.toUTCString()}}`;
+                // Format deadline as 12-hour time with AM/PM
+                const options = {{ month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'UTC' }};
+                const formattedDeadline = target.toLocaleString('en-US', options) + ' UTC';
+                subEl.textContent = `Deadline: ${{formattedDeadline}}`;
             }}
 
             tick();
@@ -592,7 +595,7 @@ with left_col:
 
     st.markdown(f"""
     <div class="glass-box matches-box">
-        <div class="section-title">This Week's Fixtures & Scores (GW {gw})</div>
+        <div class="section-title">Fixtures & Results GW{gw}</div>
         <div class="match-head">
             <div class="match-head-side">Away</div>
             <div></div>
