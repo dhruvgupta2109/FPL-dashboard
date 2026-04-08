@@ -146,8 +146,8 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
 }
 
 .team-name-small {
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
