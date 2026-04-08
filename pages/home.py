@@ -548,8 +548,14 @@ with left_col:
                 const mins = Math.floor(diff / 60);
                 const secs = diff % 60;
 
-                valueEl.textContent = `${{pad(hours + days * 24)}}:${{pad(mins)}}:${{pad(secs)}}`;
-                subEl.textContent = `Time left • Deadline: ${{target.toUTCString()}}`;
+                let display = '';
+                if (days > 0) {{
+                    display = `${{days}}:${{pad(hours)}}:${{pad(mins)}}:${{pad(secs)}}`;
+                }} else {{
+                    display = `${{pad(hours)}}:${{pad(mins)}}:${{pad(secs)}}`;
+                }}
+                valueEl.textContent = display;
+                subEl.textContent = `Deadline: ${{target.toUTCString()}}`;
             }}
 
             tick();
