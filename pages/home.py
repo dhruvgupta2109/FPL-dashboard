@@ -115,6 +115,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
 .st-key-see_fixtures {
     margin-top: 15.5px !important;
     margin-bottom: 0 !important;
+    border-radius: 0 !important;
 }
 
 .st-key-see_fixtures button {
@@ -310,19 +311,18 @@ div[data-testid="stColumn"]:nth-of-type(2) div[data-testid="stButton"] > button 
 }
 
 /* Keep Fixtures button fully uncurved (override column corner rules) */
-div[data-testid="stColumn"] .st-key-see_fixtures button {
+div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_fixtures div[data-testid="stButton"] > button,
+div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_fixtures div[data-testid="stButton"] > button,
+div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_fixtures div[data-testid="stButton"] > button:hover,
+div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_fixtures div[data-testid="stButton"] > button:hover,
+div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_fixtures div[data-testid="stButton"] > button:focus,
+div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_fixtures div[data-testid="stButton"] > button:focus,
+div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_fixtures div[data-testid="stButton"] > button:active,
+div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_fixtures div[data-testid="stButton"] > button:active {
     border-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
     border-right: 1px solid rgba(0,255,135,0.55) !important;
-}
-
-/* Strong override for outer layout column-specific rules */
-div[data-testid="stColumn"]:nth-of-type(1) .st-key-see_fixtures button,
-div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_fixtures button {
-    border-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
 }
 </style>
 """, unsafe_allow_html=True)
