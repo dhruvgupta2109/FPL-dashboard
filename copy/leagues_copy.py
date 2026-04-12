@@ -295,6 +295,17 @@ def movement_symbol(current_rank, last_rank):
 	return "→ 0"
 
 
+def movement_label(current_rank, last_rank):
+	if current_rank is None or last_rank is None:
+		return "-"
+	delta = last_rank - current_rank
+	if delta > 0:
+		return f":green[↑ {delta}]"
+	if delta < 0:
+		return f":red[↓ {abs(delta)}]"
+	return ":gray[→ 0]"
+
+
 def movement_class(current_rank, last_rank):
 	if current_rank is None or last_rank is None:
 		return "move-flat"
@@ -401,10 +412,7 @@ for index, payload in enumerate(league_payloads, start=1):
 	current_rank = league.get("entry_rank")
 	last_rank = league.get("entry_last_rank")
 
-	label = (
-		f"{league_name} | rank: {fmt(current_rank)} "
-		f"({movement_symbol(current_rank, last_rank)})"
-	)
+	label = f"{league_name} | rank: {fmt(current_rank)} ({movement_label(current_rank, last_rank)})"
 
 	with st.expander(label, expanded=(index == 1)):
 		if load_error:
