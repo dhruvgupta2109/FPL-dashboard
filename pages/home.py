@@ -667,7 +667,7 @@ with left_col:
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("See All Fixtures", key="see_fixtures", use_container_width=True):
+    if st.button("See All Stats", key="see_fixtures", use_container_width=True):
         st.switch_page("pages/fixtures.py")
 
     st.markdown(f"""
