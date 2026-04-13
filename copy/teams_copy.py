@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import certifi
-import streamlit as st
+import streamlit as st # type: ignore
 from nav import render_top_nav
 
 
@@ -872,7 +872,7 @@ def fixture_pills_html(team_id, limit=5):
             f"""
             <div class="fixture-pill">
                 <div class="fixture-opp">{esc(team_short(match.get("opponent_id")))} ({venue})</div>
-                <div class="fixture-meta">FDR <span class="{fdr_class(fdr)}">{fdr}</span></div>
+                <div class="fixture-meta">Fixture Difficulty: <span class="{fdr_class(fdr)}">{fdr}</span></div>
                 <div class="fixture-date">{esc(kickoff_label(match.get("kickoff_time")))}</div>
             </div>
             """
@@ -1204,7 +1204,7 @@ def fixture_option_label(match):
     venue = "H" if match["is_home"] else "A"
     return (
         f"GW{match.get('event')} {team_short(match.get('opponent_id'))} "
-        f"({venue}) | FDR {match.get('difficulty')}"
+        f"({venue}) | Fixture difficulty: {match.get('difficulty')}"
     )
 
 
