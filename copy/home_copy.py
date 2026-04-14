@@ -260,7 +260,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
     font-size: 12px;
     color: rgba(255,255,255,0.6);
     margin-top: 6px;
-    font-style: italic;
+    font-style: normal;
 }
 
 /* Zero gap and padding on column layout rows */
