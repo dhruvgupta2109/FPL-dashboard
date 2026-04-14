@@ -868,10 +868,12 @@ def fixture_pills_html(team_id, limit=5):
     for match in upcoming:
         venue = "H" if match["is_home"] else "A"
         fdr = to_int(match.get("difficulty"), 3)
+        gw = to_int(match.get("event"), 0)
+        gw_label = f"GW{gw}" if gw else "GW?"
         pills.append(
             f"""
             <div class="fixture-pill">
-                <div class="fixture-opp">{esc(team_short(match.get("opponent_id")))} ({venue})</div>
+            <div class="fixture-opp">{esc(team_short(match.get("opponent_id")))} ({venue}) | {esc(gw_label)}</div>
                 <div class="fixture-meta">Fixture Difficulty: <span class="{fdr_class(fdr)}">{fdr}</span></div>
                 <div class="fixture-date">{esc(kickoff_label(match.get("kickoff_time")))}</div>
             </div>
