@@ -53,8 +53,11 @@ st.markdown("""
 }
 .center-box h1 { text-align: center; margin-bottom: 10px; }
 .center-box p  { text-align: center; opacity: 0.9; }
+.stButton {
+    width: 100%;
+}
 .stButton > button {
-    width: 500%; /* Make buttons cover the entire width of their container */
+    width: 100%;
     border-radius: 12px;
     background: #00ff87;
     color: black;
@@ -65,12 +68,12 @@ st.markdown("""
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .stButton > button:hover {
-    transform: scale(1.08);
+    transform: scale(1.03);
     box-shadow: 0 12px 30px rgba(0, 255, 135, 0.45);
     background: #00ff87;
 }
 .stButton > button:active {
-    transform: scale(2);
+    transform: scale(1.01);
 }
 </style>
 """, unsafe_allow_html=True)
@@ -129,37 +132,12 @@ with st.expander("How do I find my Manager ID?"):
     4. `1637221` is your Manager ID — paste it here
     """)
 
-# Update the button styles to make them cover the entire length of the container
-st.markdown("""
-<style>
-.stButton > button {
-    width: 250%; /* Make buttons cover the entire width of their container */
-    border-radius: 12px;
-    background: #00ff87;
-    color: black;
-    font-weight: 700;
-    border: none;
-    padding: 10px;
-    font-size: 16px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.stButton > button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 12px 30px rgba(0, 255, 135, 0.45);
-    background: #00ff87;
-}
-.stButton > button:active {
-    transform: scale(2);
-}
-</style>
-""", unsafe_allow_html=True)
-
-# Adjust the column widths and button styles to make the guest button move left, increase the length of the team button, and reduce the gap between buttons
-button_cols = st.columns([1, 0.1, 1])
+# Buttons should split the container evenly
+button_cols = st.columns(2, gap="small")
 with button_cols[0]:
-    connect_clicked = st.button("Connect Team")
-with button_cols[2]:
-    guest_clicked = st.button("Continue as Guest")
+    connect_clicked = st.button("Connect Team", use_container_width=True)
+with button_cols[1]:
+    guest_clicked = st.button("Continue as Guest", use_container_width=True)
 
 if connect_clicked or manager_id_input:
     if manager_id_input:
