@@ -4,19 +4,15 @@ import urllib.request
 import ssl
 import certifi
 from datetime import datetime
+from nav import render_top_nav
 
 st.set_page_config(page_title="FPL Fixtures", layout="wide")
 
-if "manager_id" not in st.session_state:
+is_guest = st.session_state.get("guest", False)
+if "manager_id" not in st.session_state and not is_guest:
     st.warning("No manager ID found. Go back to Dashboard and connect your team.")
     if st.button("Go to Dashboard"):
         st.switch_page("live_dashboard.py")
-    st.stop()
-
-if "gw" not in st.session_state:
-    st.warning("No gameweek found. Go back to Home.")
-    if st.button("Go to Home"):
-        st.switch_page("pages/home.py")
     st.stop()
 
 st.markdown(
@@ -193,6 +189,8 @@ div[data-testid="stExpander"] details summary p {
     unsafe_allow_html=True,
 )
 
+render_top_nav()
+
 
 def parse_deadline(dt_str):
     if not dt_str:
@@ -232,8 +230,20 @@ def fetch_fixtures(event_id):
         return json.loads(r.read())
 
 
-gw = st.session_state.gw
+def current_gw_from_events(events):
+    if not events:
+        return 1
+    current = next((e.get("id") for e in events if e.get("is_current")), None)
+    if current:
+        return current
+    return max((e.get("id") or 1 for e in events), default=1)
+
+
 bootstrap_data = fetch_bootstrap_data()
+if "gw" in st.session_state:
+    gw = st.session_state.gw
+else:
+    gw = current_gw_from_events(bootstrap_data.get("events", []))
 fixtures = fetch_fixtures(gw)
 
 teams = bootstrap_data.get("teams", [])
