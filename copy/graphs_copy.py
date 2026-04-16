@@ -1,13 +1,15 @@
-import streamlit as st # type: ignore
-import streamlit.components.v1 as components # type: ignore
+import streamlit as st
+import streamlit.components.v1 as components
 import json
 import urllib.request
 import ssl
 import certifi
+from nav import render_top_nav
 
 st.set_page_config(page_title="FPL Graphs", layout="wide")
 
-if "manager_id" not in st.session_state:
+is_guest = st.session_state.get("guest", False)
+if "manager_id" not in st.session_state and not is_guest:
     st.warning("No manager ID found. Go back to Home and connect your team.")
     if st.button("Go to Dashboard"):
         st.switch_page("live_dashboard.py")
@@ -44,8 +46,7 @@ iframe { background: transparent !important; }
 </style>
 """, unsafe_allow_html=True)
 
-manager_id = st.session_state.manager_id
-gw         = st.session_state.gw
+render_top_nav()
 
 # ── Data fetching ────────────────────────────────────────────────────────────
 
@@ -64,6 +65,14 @@ def fetch_entry_event_entry_history(entry_id, event_id):
         data = json.loads(r.read())
     return data.get("entry_history", {}) or {}
 
+def current_gw_from_events(events):
+    if not events:
+        return 1
+    current = next((e.get("id") for e in events if e.get("is_current")), None)
+    if current:
+        return current
+    return max((e.get("id") or 1 for e in events), default=1)
+
 bootstrap_static = fetch_bootstrap_static()
 avg_by_event = {
     e.get("id"): (e.get("average_entry_score") or 0)
@@ -71,17 +80,28 @@ avg_by_event = {
     if e.get("id") is not None
 }
 
-gw_labels   = list(range(1, gw + 1))
-pts_series  = []
+if is_guest:
+    manager_id = None
+    gw = current_gw_from_events(bootstrap_static.get("events", []))
+else:
+    manager_id = st.session_state.manager_id
+    gw = st.session_state.gw
+
+gw_labels = list(range(1, gw + 1)) if gw else []
+pts_series = []
 rank_series = []
-for event_id in gw_labels:
-    try:
-        eh = fetch_entry_event_entry_history(manager_id, event_id)
-        pts_series.append(eh.get("points", eh.get("total_points", 0)) or 0)
-        rank_series.append(eh.get("overall_rank", eh.get("rank", 0)) or 0)
-    except Exception:
-        pts_series.append(0)
-        rank_series.append(0)
+if is_guest or not manager_id:
+    pts_series = [None for _ in gw_labels]
+    rank_series = [None for _ in gw_labels]
+else:
+    for event_id in gw_labels:
+        try:
+            eh = fetch_entry_event_entry_history(manager_id, event_id)
+            pts_series.append(eh.get("points", eh.get("total_points", 0)) or 0)
+            rank_series.append(eh.get("overall_rank", eh.get("rank", 0)) or 0)
+        except Exception:
+            pts_series.append(0)
+            rank_series.append(0)
 
 avg_series = [avg_by_event.get(event_id, 0) for event_id in gw_labels]
 
