@@ -870,10 +870,10 @@ with left_col:
     </style>
     """, unsafe_allow_html=True)
     with btn1:
-        if st.button("Points →", key="nav_points", use_container_width=True, disabled=is_guest):
+        if st.button("Points →", key="nav_points", use_container_width=True):
             st.switch_page("pages/points.py")
     with btn2:
-        if st.button("Graphs →", key="nav_graphs", use_container_width=True, disabled=is_guest):
+        if st.button("Graphs →", key="nav_graphs", use_container_width=True):
             st.switch_page("pages/graphs.py")
 
     deadline_iso = next_deadline.isoformat() if next_deadline else ""
