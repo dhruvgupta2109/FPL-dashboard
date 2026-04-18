@@ -10,7 +10,8 @@ from nav import render_top_nav
 
 st.set_page_config(page_title="FPL Mini Leagues", layout="wide")
 
-if "manager_id" not in st.session_state:
+is_guest = st.session_state.get("guest", False)
+if "manager_id" not in st.session_state and not is_guest:
 	st.warning("No manager ID found. Go back to Dashboard and connect your team.")
 	if st.button("Go to Dashboard"):
 		st.switch_page("live_dashboard.py")
@@ -212,6 +213,17 @@ div[data-testid="stDataFrame"] [role="gridcell"] {
 )
 
 render_top_nav()
+
+if is_guest:
+	st.title("Mini Leagues")
+	st.info("Guest mode: connect your team to view mini league standings.")
+
+	summary_col1, summary_col2, summary_col3, summary_col4 = st.columns(4)
+	summary_col1.metric("Mini Leagues", "-")
+	summary_col2.metric("Total Members Loaded", "-")
+	summary_col3.metric("Best Current Rank", "-")
+	summary_col4.metric("Current GW", "-")
+	st.stop()
 
 
 def fetch_json(url, timeout=20):
