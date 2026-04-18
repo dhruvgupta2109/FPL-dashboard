@@ -1,9 +1,10 @@
-import streamlit as st # type: ignore
+import streamlit as st
 from nav import render_top_nav
 
 st.set_page_config(page_title="FPL Models", layout="wide")
 
-if "manager_id" not in st.session_state:
+is_guest = st.session_state.get("guest", False)
+if "manager_id" not in st.session_state and not is_guest:
     st.warning("No manager ID found. Go back to Dashboard and connect your team.")
     if st.button("Go to Dashboard"):
         st.switch_page("live_dashboard.py")
