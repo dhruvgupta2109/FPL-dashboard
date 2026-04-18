@@ -30,7 +30,25 @@ Live app: https://fplmanager.streamlit.app
 
 ```text
 fpl/
+├── LICENSE
+├── README.md
 ├── live_dashboard.py           # App entry page (manager ID connect)
+├── assets/
+│   └── players/                # Player/team image assets
+├── copy/
+│   ├── fixtures_copy.py
+│   ├── home_copy.py
+│   ├── leagues_copy.py
+│   ├── livedash_copy.py
+│   └── points_copy.py
+├── css/
+│   ├── home.css
+│   └── points.css
+├── data/
+│   ├── processed/
+│   │   └── players_processed.json
+│   └── raw/
+│       └── bootstrap_static.json
 ├── pages/
 │   ├── home.py                 # Main dashboard view
 │   ├── points.py               # Detailed points + pitch/chips view
@@ -42,14 +60,6 @@ fpl/
 │   ├── read_players.py         # Processes player value metrics
 │   ├── live_fpl.py             # CLI live event tracker
 │   └── user_live_fpl.py        # CLI tracker for a specific manager
-├── data/
-│   ├── raw/
-│   │   └── bootstrap_static.json
-│   └── processed/
-│       └── players_processed.json
-├── assets/
-│   └── players/                # Player/team image assets
-└── README.md
 ```
 
 ## Getting Started
