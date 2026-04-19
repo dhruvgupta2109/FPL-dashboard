@@ -191,10 +191,7 @@ manager_id_int = int(manager_id) if str(manager_id).isdigit() else None
 current_gw = st.session_state.get("gw")
 
 st.title("Mini Leagues")
-st.markdown(
-	"<div class='page-caption'>Full mini league standings with every member, rank movement, and season totals.</div>",
-	unsafe_allow_html=True,
-)
+
 
 nav_col1, nav_col2, _ = st.columns([1, 1, 5])
 with nav_col1:
