@@ -927,29 +927,123 @@ def sparkline_svg(values):
     """
 
 
-def projected_trend_html(team_id):
-    next_fixtures = upcoming_matches(team_id, 5)
-    if not next_fixtures:
-        value = TEAM_ANALYTICS[team_id]["xg_per_match"]
-        return f"""
-        <div class="mini-chart">
-            {sparkline_svg([value])}
-            <div class="chart-label-row"><div class="chart-label">Season xG/match {fmt_float(value)}</div></div>
-        </div>
-        """
+def positions_sparkline_svg(values):
+    if not values:
+        return ""
 
-    values = [
-        project_goals(team_id, match["opponent_id"], match["is_home"])
-        for match in next_fixtures
-    ]
-    labels = [
-        f"{team_short(match['opponent_id'])} {'H' if match['is_home'] else 'A'}"
-        for match in next_fixtures
-    ]
+    if len(values) == 1:
+        values = [values[0], values[0]]
+
+    width = 420
+    height = 120
+    pad_x = 34
+    pad_y = 18
+    low = 1
+    high = 20
+
+    points = []
+    fill_points = []
+    for index, value in enumerate(values):
+        value = clamp(to_int(value, low), low, high)
+        x = pad_x + index * ((width - pad_x * 2) / (len(values) - 1))
+        y = pad_y + ((value - low) / (high - low)) * (height - pad_y * 2)
+        points.append(f"{x:.1f},{y:.1f}")
+        fill_points.append((x, y))
+
+    fill_path = (
+        f"M {fill_points[0][0]:.1f},{height - pad_y:.1f} "
+        + " ".join(f"L {x:.1f},{y:.1f}" for x, y in fill_points)
+        + f" L {fill_points[-1][0]:.1f},{height - pad_y:.1f} Z"
+    )
+    circles = "".join(
+        f"<circle cx='{x:.1f}' cy='{y:.1f}' r='3.5' fill='#00ff87' />"
+        for x, y in fill_points
+    )
+    return f"""
+    <svg viewBox="0 0 {width} {height}" width="100%" height="120" aria-hidden="true">
+        <line x1="{pad_x}" y1="{height - pad_y}" x2="{width - pad_x}" y2="{height - pad_y}" stroke="rgba(255,255,255,0.18)" />
+        <line x1="{pad_x}" y1="{pad_y}" x2="{pad_x}" y2="{height - pad_y}" stroke="rgba(255,255,255,0.12)" />
+        <text x="{width / 2:.1f}" y="{height - 2}" fill="rgba(255,255,255,0.65)" font-size="10" text-anchor="middle">Gameweek</text>
+        <text x="12" y="{height / 2:.1f}" fill="rgba(255,255,255,0.65)" font-size="10" text-anchor="middle" transform="rotate(-90 12 {height / 2:.1f})">League position (1=top)</text>
+        <path d="{fill_path}" fill="rgba(0,255,135,0.12)" />
+        <polyline points="{' '.join(points)}" fill="none" stroke="#00ff87" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        {circles}
+    </svg>
+    """
+
+
+def projected_trend_html(team_id):
+    return ""
+
+
+def standings_positions_by_event(event_id):
+    table = {
+        team_id: {
+            "points": 0,
+            "gf": 0,
+            "ga": 0,
+            "gd": 0,
+            "name": team_name(team_id),
+        }
+        for team_id in team_ids
+    }
+    for fixture in fixtures:
+        if not fixture.get("finished"):
+            continue
+        fixture_event = to_int(fixture.get("event"), 0)
+        if not fixture_event or fixture_event > event_id:
+            continue
+        home_id = fixture.get("team_h")
+        away_id = fixture.get("team_a")
+        if not home_id or not away_id:
+            continue
+
+        home_gf = to_int(fixture.get("team_h_score"), 0)
+        away_gf = to_int(fixture.get("team_a_score"), 0)
+        home_row = table[home_id]
+        away_row = table[away_id]
+        home_row["gf"] += home_gf
+        home_row["ga"] += away_gf
+        away_row["gf"] += away_gf
+        away_row["ga"] += home_gf
+
+        if home_gf > away_gf:
+            home_row["points"] += 3
+        elif home_gf < away_gf:
+            away_row["points"] += 3
+        else:
+            home_row["points"] += 1
+            away_row["points"] += 1
+
+    for row in table.values():
+        row["gd"] = row["gf"] - row["ga"]
+
+    ordered = sorted(
+        table.items(),
+        key=lambda item: (
+            item[1]["points"],
+            item[1]["gd"],
+            item[1]["gf"],
+            item[1]["name"],
+        ),
+        reverse=True,
+    )
+    return {team_id: idx + 1 for idx, (team_id, _) in enumerate(ordered)}
+
+
+def positions_trend_html(team_id):
+    finished_events = sorted({to_int(f.get("event"), 0) for f in fixtures if f.get("finished")})
+    finished_events = [event_id for event_id in finished_events if event_id]
+    if not finished_events:
+        return "<div class='empty-note'>Table positions are not available yet.</div>"
+
+    recent_events = finished_events[-5:]
+    labels = [f"GW{event_id}" for event_id in recent_events]
+    positions = [standings_positions_by_event(event_id).get(team_id, 20) for event_id in recent_events]
     label_html = "".join(f"<div class='chart-label'>{esc(label)}</div>" for label in labels)
     return f"""
     <div class="mini-chart">
-        {sparkline_svg(values)}
+        {positions_sparkline_svg(positions)}
         <div class="chart-label-row">{label_html}</div>
     </div>
     """
@@ -988,7 +1082,7 @@ def snapshot_html(team_id):
     return f"""
     <div class="glass-panel">
         <div class="kicker">TEAM SNAPSHOT</div>
-        <div class="panel-title">Form, xG, and fixture difficulty</div>
+        <div class="panel-title">Form, xG, and table position</div>
         <div class="team-head">
             <img class="team-logo-large" src="{logo_url(team.get("code"))}" alt="{esc(team.get("name"))}">
             <div>
@@ -998,7 +1092,7 @@ def snapshot_html(team_id):
         </div>
         <div class="metric-grid">{''.join(cards)}</div>
         {result_badges_html(team_id)}
-        {projected_trend_html(team_id)}
+        {positions_trend_html(team_id)}
         {fixture_pills_html(team_id)}
     </div>
     """
