@@ -1417,7 +1417,7 @@ with right:
     compare_b_id = team_name_to_id[compare_b_name]
     st.markdown(clean_html(comparison_html(compare_a_id, compare_b_id)), unsafe_allow_html=True)
 
-st.markdown(" ")
+st.markdown("<style>div[data-testid='column'] { margin-top: -1rem; }</style>", unsafe_allow_html=True)
 
 wide_left, wide_right = st.columns(2, gap="large")
 
@@ -1425,6 +1425,7 @@ with wide_left:
     st.markdown(clean_html(prediction_inputs_html(selected_team_id)), unsafe_allow_html=True)
 
 with wide_right:
+    st.markdown("**Forecast**")
     forecast_team_name = st.selectbox(
         "Forecast team",
         name_options,
