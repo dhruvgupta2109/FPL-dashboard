@@ -69,9 +69,28 @@ div[data-testid="stExpander"] details summary p {
 }
 
 div[data-testid="stDataFrame"] {
-	border: 1px solid rgba(255,255,255,0.15);
-	border-radius: 10px;
+	background: rgba(255,255,255,0.10) !important;
+	border: 1px solid rgba(255,255,255,0.22) !important;
+	border-radius: 14px;
+	backdrop-filter: blur(16px) !important;
+	-webkit-backdrop-filter: blur(16px) !important;
 	overflow: hidden;
+	box-shadow: 0 10px 28px rgba(0,0,0,0.20);
+}
+
+div[data-testid="stDataFrame"] > div {
+	background: transparent !important;
+}
+
+div[data-testid="stDataFrame"] [role="columnheader"] {
+	background: rgba(255,255,255,0.14) !important;
+	color: white !important;
+	font-weight: 700 !important;
+}
+
+div[data-testid="stDataFrame"] [role="gridcell"] {
+	background: rgba(255,255,255,0.04) !important;
+	color: white !important;
 }
 
 .page-caption {
