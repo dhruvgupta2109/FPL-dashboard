@@ -312,6 +312,7 @@ div[role="radiogroup"] label {
     justify-content: space-between;
     gap: 6px;
     margin-top: -4px;
+    padding: 0 34px;
 }
 
 .chart-label {
@@ -927,17 +928,17 @@ def sparkline_svg(values):
     """
 
 
-def positions_sparkline_svg(values):
+def positions_sparkline_svg(values, labels):
     if not values:
         return ""
 
     if len(values) == 1:
         values = [values[0], values[0]]
 
-    width = 420
-    height = 120
-    pad_x = 34
-    pad_y = 18
+    width = 560
+    height = 160
+    pad_x = 40
+    pad_y = 22
     low = 1
     high = 20
 
@@ -945,7 +946,7 @@ def positions_sparkline_svg(values):
     fill_points = []
     for index, value in enumerate(values):
         value = clamp(to_int(value, low), low, high)
-        x = pad_x + index * ((width - pad_x * 2) / (len(values) - 1))
+        x = pad_x + index * ((width - pad_x * 2) / max(1, len(values) - 1))
         y = pad_y + ((value - low) / (high - low)) * (height - pad_y * 2)
         points.append(f"{x:.1f},{y:.1f}")
         fill_points.append((x, y))
@@ -956,15 +957,28 @@ def positions_sparkline_svg(values):
         + f" L {fill_points[-1][0]:.1f},{height - pad_y:.1f} Z"
     )
     circles = "".join(
-        f"<circle cx='{x:.1f}' cy='{y:.1f}' r='3.5' fill='#00ff87' />"
-        for x, y in fill_points
+        f"""
+        <g>
+            <circle cx='{x:.1f}' cy='{y:.1f}' r='3.5' fill='#00ff87' />
+            <circle cx='{x:.1f}' cy='{y:.1f}' r='8' fill='transparent'>
+                <title>{esc(labels[i])}: {to_int(values[i], 0)}</title>
+            </circle>
+        </g>
+        """
+        for i, (x, y) in enumerate(fill_points)
+    )
+    y_label_values = list(range(low, high + 1, 3))
+    y_labels = "".join(
+        f"<text x='{pad_x - 6}' y='{pad_y + ((value - low) / (high - low)) * (height - pad_y * 2) + 3:.1f}' "
+        f"fill='rgba(255,255,255,0.65)' font-size='9' text-anchor='end'>{value}</text>"
+        for value in y_label_values
     )
     return f"""
-    <svg viewBox="0 0 {width} {height}" width="100%" height="120" aria-hidden="true">
+    <svg viewBox="0 0 {width} {height}" width="100%" height="160" aria-hidden="true">
         <line x1="{pad_x}" y1="{height - pad_y}" x2="{width - pad_x}" y2="{height - pad_y}" stroke="rgba(255,255,255,0.18)" />
         <line x1="{pad_x}" y1="{pad_y}" x2="{pad_x}" y2="{height - pad_y}" stroke="rgba(255,255,255,0.12)" />
-        <text x="{width / 2:.1f}" y="{height - 2}" fill="rgba(255,255,255,0.65)" font-size="10" text-anchor="middle">Gameweek</text>
-        <text x="12" y="{height / 2:.1f}" fill="rgba(255,255,255,0.65)" font-size="10" text-anchor="middle" transform="rotate(-90 12 {height / 2:.1f})">League position (1=top)</text>
+        <text x="12" y="{height / 2:.1f}" fill="rgba(255,255,255,0.65)" font-size="10" text-anchor="middle" transform="rotate(-90 12 {height / 2:.1f})">Position</text>
+        {y_labels}
         <path d="{fill_path}" fill="rgba(0,255,135,0.12)" />
         <polyline points="{' '.join(points)}" fill="none" stroke="#00ff87" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
         {circles}
@@ -1037,13 +1051,24 @@ def positions_trend_html(team_id):
     if not finished_events:
         return "<div class='empty-note'>Table positions are not available yet.</div>"
 
-    recent_events = finished_events[-5:]
-    labels = [f"GW{event_id}" for event_id in recent_events]
-    positions = [standings_positions_by_event(event_id).get(team_id, 20) for event_id in recent_events]
-    label_html = "".join(f"<div class='chart-label'>{esc(label)}</div>" for label in labels)
+    labels = [f"GW{event_id}" for event_id in finished_events]
+    positions = [standings_positions_by_event(event_id).get(team_id, 20) for event_id in finished_events]
+    
+    if not labels:
+        return "<div class='empty-note'>No data for chart labels.</div>"
+
+    tick_step = 5
+    display_labels = []
+    for idx, label in enumerate(labels):
+        if idx == 0 or idx == len(labels) - 1 or idx % tick_step == 0:
+            display_labels.append(label)
+        else:
+            display_labels.append("")
+
+    label_html = "".join(f"<div class='chart-label'>{esc(label)}</div>" for label in display_labels)
     return f"""
     <div class="mini-chart">
-        {positions_sparkline_svg(positions)}
+        {positions_sparkline_svg(positions, labels)}
         <div class="chart-label-row">{label_html}</div>
     </div>
     """
