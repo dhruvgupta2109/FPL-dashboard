@@ -3,6 +3,7 @@ import json
 import urllib.request
 import ssl
 import certifi
+import html
 from datetime import datetime
 
 
@@ -91,6 +92,85 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
 div[data-testid="stDataFrame"] [role="gridcell"] {
 	background: rgba(255,255,255,0.04) !important;
 	color: white !important;
+}
+
+.league-standings-wrap {
+	margin-top: 12px;
+	border: 1px solid rgba(255,255,255,0.22);
+	border-radius: 14px;
+	background: rgba(255,255,255,0.08);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	overflow: hidden;
+	box-shadow: 0 10px 28px rgba(0,0,0,0.20);
+}
+
+.league-standings-header,
+.league-standings-row {
+	display: grid;
+	grid-template-columns: 0.8fr 1fr 1fr 2.3fr 2.3fr 1.2fr 1.2fr;
+	gap: 10px;
+	align-items: center;
+	padding: 10px 14px;
+	font-size: 13px;
+}
+
+.league-standings-header {
+	background: rgba(255,255,255,0.14);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.3px;
+	font-size: 12px;
+	border-bottom: 1px solid rgba(255,255,255,0.20);
+}
+
+.league-standings-body {
+	max-height: 560px;
+	overflow-y: auto;
+	padding: 8px;
+}
+
+.league-standings-row {
+	background: rgba(255,255,255,0.05);
+	border: 1px solid rgba(255,255,255,0.14);
+	border-radius: 10px;
+	margin-bottom: 8px;
+}
+
+.league-standings-row:last-child {
+	margin-bottom: 0;
+}
+
+.league-standings-row.is-you {
+	background: rgba(0,255,135,0.14);
+	border-color: rgba(0,255,135,0.42);
+}
+
+.league-cell.rank,
+.league-cell.last-rank,
+.league-cell.season-pts,
+.league-cell.gw-pts,
+.league-cell.move {
+	font-weight: 700;
+}
+
+.league-cell.move {
+	color: #00ff87;
+}
+
+.league-empty {
+	padding: 20px;
+	text-align: center;
+	opacity: 0.85;
+}
+
+@media (max-width: 1024px) {
+	.league-standings-header,
+	.league-standings-row {
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 8px;
+		font-size: 12px;
+	}
 }
 
 .page-caption {
@@ -313,6 +393,7 @@ for index, payload in enumerate(league_payloads, start=1):
 		you_col3.metric("Created", created_label)
 
 		standings_rows = []
+		rows_markup = []
 		for member in members:
 			is_you = manager_id_int is not None and member.get("entry") == manager_id_int
 			team_name = member.get("entry_name") or "-"
@@ -333,12 +414,38 @@ for index, payload in enumerate(league_payloads, start=1):
 				}
 			)
 
-		table_height = 420 if len(standings_rows) < 12 else min(900, 70 + len(standings_rows) * 34)
-		st.dataframe(
-			standings_rows,
-			use_container_width=True,
-			hide_index=True,
-			height=table_height,
+			row_class = "league-standings-row is-you" if is_you else "league-standings-row"
+			rows_markup.append(
+				(
+					f'<div class="{row_class}">'
+					f'<div class="league-cell rank">{fmt(member.get("rank"))}</div>'
+					f'<div class="league-cell last-rank">{fmt(member.get("last_rank"))}</div>'
+					f'<div class="league-cell move">{movement_symbol(member.get("rank"), member.get("last_rank"))}</div>'
+					f'<div class="league-cell team">{html.escape(team_name)}</div>'
+					f'<div class="league-cell manager">{html.escape(manager_name)}</div>'
+					f'<div class="league-cell season-pts">{fmt(member.get("total"))}</div>'
+					f'<div class="league-cell gw-pts">{fmt(member.get("event_total"))}</div>'
+					'</div>'
+				)
+			)
+
+		rows_html = "".join(rows_markup) if rows_markup else "<div class=\"league-empty\">No standings data available.</div>"
+		st.markdown(
+			(
+				'<div class="league-standings-wrap">'
+				'<div class="league-standings-header">'
+				'<div>Rank</div>'
+				'<div>Last</div>'
+				'<div>Move</div>'
+				'<div>Team</div>'
+				'<div>Manager</div>'
+				'<div>Season</div>'
+				'<div>GW</div>'
+				'</div>'
+				f'<div class="league-standings-body">{rows_html}</div>'
+				'</div>'
+			),
+			unsafe_allow_html=True,
 		)
 
 		st.caption(
