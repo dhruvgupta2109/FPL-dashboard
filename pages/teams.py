@@ -304,15 +304,18 @@ div[role="radiogroup"] label {
     border-radius: 12px;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.12);
-    padding: 10px 12px 8px 12px;
+    padding: 10px 12px 14px 12px;
 }
 
 .chart-label-row {
     display: flex;
     justify-content: space-between;
     gap: 6px;
-    margin-top: -4px;
-    padding: 0 34px;
+    margin-top: 6px;
+    padding: 0 40px 2px 40px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .chart-label {
@@ -322,8 +325,7 @@ div[role="radiogroup"] label {
     color: rgba(255,255,255,0.64);
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-}
+    text-overflow: ellipsis;}
 
 .comparison-row {
     display: grid;
@@ -1057,15 +1059,13 @@ def positions_trend_html(team_id):
     if not labels:
         return "<div class='empty-note'>No data for chart labels.</div>"
 
-    tick_step = 5
-    display_labels = []
-    for idx, label in enumerate(labels):
-        if idx == 0 or idx == len(labels) - 1 or idx % tick_step == 0:
-            display_labels.append(label)
-        else:
-            display_labels.append("")
+    target_ticks = 7
+    tick_step = max(1, len(labels) // max(1, target_ticks - 1))
+    visible_indexes = set(range(0, len(labels), tick_step))
+    visible_indexes.add(len(labels) - 1)
+    visible_labels = [labels[idx] for idx in sorted(visible_indexes)]
 
-    label_html = "".join(f"<div class='chart-label'>{esc(label)}</div>" for label in display_labels)
+    label_html = "".join(f"<div class='chart-label'>{esc(label)}</div>" for label in visible_labels)
     return f"""
     <div class="mini-chart">
         {positions_sparkline_svg(positions, labels)}
