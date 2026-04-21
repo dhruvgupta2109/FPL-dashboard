@@ -304,15 +304,18 @@ div[role="radiogroup"] label {
     border-radius: 12px;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.12);
-    padding: 10px 12px 8px 12px;
+    padding: 10px 12px 14px 12px;
 }
 
 .chart-label-row {
     display: flex;
     justify-content: space-between;
     gap: 6px;
-    margin-top: -4px;
-    padding: 0 34px;
+    margin-top: 6px;
+    padding: 0 40px 2px 40px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .chart-label {
@@ -322,8 +325,7 @@ div[role="radiogroup"] label {
     color: rgba(255,255,255,0.64);
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-}
+    text-overflow: ellipsis;}
 
 .comparison-row {
     display: grid;
@@ -935,10 +937,10 @@ def positions_sparkline_svg(values, labels):
     if len(values) == 1:
         values = [values[0], values[0]]
 
-    width = 420
-    height = 120
-    pad_x = 34
-    pad_y = 18
+    width = 560
+    height = 160
+    pad_x = 40
+    pad_y = 22
     low = 1
     high = 20
 
@@ -946,7 +948,7 @@ def positions_sparkline_svg(values, labels):
     fill_points = []
     for index, value in enumerate(values):
         value = clamp(to_int(value, low), low, high)
-        x = pad_x + index * ((width - pad_x * 2) / (len(values) - 1))
+        x = pad_x + index * ((width - pad_x * 2) / max(1, len(values) - 1))
         y = pad_y + ((value - low) / (high - low)) * (height - pad_y * 2)
         points.append(f"{x:.1f},{y:.1f}")
         fill_points.append((x, y))
@@ -967,14 +969,18 @@ def positions_sparkline_svg(values, labels):
         """
         for i, (x, y) in enumerate(fill_points)
     )
+    y_label_values = list(range(low, high + 1, 3))
+    y_labels = "".join(
+        f"<text x='{pad_x - 6}' y='{pad_y + ((value - low) / (high - low)) * (height - pad_y * 2) + 3:.1f}' "
+        f"fill='rgba(255,255,255,0.65)' font-size='9' text-anchor='end'>{value}</text>"
+        for value in y_label_values
+    )
     return f"""
-    <svg viewBox="0 0 {width} {height}" width="100%" height="120" aria-hidden="true">
+    <svg viewBox="0 0 {width} {height}" width="100%" height="160" aria-hidden="true">
         <line x1="{pad_x}" y1="{height - pad_y}" x2="{width - pad_x}" y2="{height - pad_y}" stroke="rgba(255,255,255,0.18)" />
         <line x1="{pad_x}" y1="{pad_y}" x2="{pad_x}" y2="{height - pad_y}" stroke="rgba(255,255,255,0.12)" />
         <text x="12" y="{height / 2:.1f}" fill="rgba(255,255,255,0.65)" font-size="10" text-anchor="middle" transform="rotate(-90 12 {height / 2:.1f})">Position</text>
-        <text x="{pad_x - 6}" y="{pad_y + 3}" fill="rgba(255,255,255,0.65)" font-size="9" text-anchor="end">1</text>
-        <text x="{pad_x - 6}" y="{height / 2 + 3:.1f}" fill="rgba(255,255,255,0.65)" font-size="9" text-anchor="end">10</text>
-        <text x="{pad_x - 6}" y="{height - pad_y + 3}" fill="rgba(255,255,255,0.65)" font-size="9" text-anchor="end">20</text>
+        {y_labels}
         <path d="{fill_path}" fill="rgba(0,255,135,0.12)" />
         <polyline points="{' '.join(points)}" fill="none" stroke="#00ff87" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
         {circles}
@@ -1049,12 +1055,17 @@ def positions_trend_html(team_id):
 
     labels = [f"GW{event_id}" for event_id in finished_events]
     positions = [standings_positions_by_event(event_id).get(team_id, 20) for event_id in finished_events]
-    tick_step = max(1, len(labels) // 6)
-    display_labels = [
-        label if idx % tick_step == 0 or idx == len(labels) - 1 else ""
-        for idx, label in enumerate(labels)
-    ]
-    label_html = "".join(f"<div class='chart-label'>{esc(label)}</div>" for label in display_labels)
+    
+    if not labels:
+        return "<div class='empty-note'>No data for chart labels.</div>"
+
+    target_ticks = 7
+    tick_step = max(1, len(labels) // max(1, target_ticks - 1))
+    visible_indexes = set(range(0, len(labels), tick_step))
+    visible_indexes.add(len(labels) - 1)
+    visible_labels = [labels[idx] for idx in sorted(visible_indexes)]
+
+    label_html = "".join(f"<div class='chart-label'>{esc(label)}</div>" for label in visible_labels)
     return f"""
     <div class="mini-chart">
         {positions_sparkline_svg(positions, labels)}
