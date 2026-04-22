@@ -69,6 +69,21 @@ div[data-testid="stExpander"] details summary p {
 	font-weight: 700 !important;
 }
 
+div[data-testid="stExpander"] details,
+div[data-testid="stExpander"] details summary,
+div[data-testid="stExpander"] details[open] summary {
+	background: rgba(255,255,255,0.10) !important;
+	color: white !important;
+}
+
+div[data-testid="stExpander"] details[open] summary {
+	border-bottom: 1px solid rgba(255,255,255,0.16) !important;
+}
+
+div[data-testid="stExpander"] details > div {
+	background: transparent !important;
+}
+
 div[data-testid="stDataFrame"] {
 	background: rgba(255,255,255,0.10) !important;
 	border: 1px solid rgba(255,255,255,0.22) !important;
@@ -155,7 +170,19 @@ div[data-testid="stDataFrame"] [role="gridcell"] {
 }
 
 .league-cell.move {
+	color: rgba(255,255,255,0.85);
+}
+
+.league-cell.move.move-up {
 	color: #00ff87;
+}
+
+.league-cell.move.move-down {
+	color: #ff5c7a;
+}
+
+.league-cell.move.move-flat {
+	color: rgba(255,255,255,0.50);
 }
 
 .league-empty {
@@ -266,6 +293,17 @@ def movement_symbol(current_rank, last_rank):
 	if delta < 0:
 		return f"↓ {abs(delta)}"
 	return "→ 0"
+
+
+def movement_class(current_rank, last_rank):
+	if current_rank is None or last_rank is None:
+		return "move-flat"
+	delta = last_rank - current_rank
+	if delta > 0:
+		return "move-up"
+	if delta < 0:
+		return "move-down"
+	return "move-flat"
 
 
 def scoring_label(scoring_code):
@@ -415,12 +453,13 @@ for index, payload in enumerate(league_payloads, start=1):
 			)
 
 			row_class = "league-standings-row is-you" if is_you else "league-standings-row"
+			move_class = movement_class(member.get("rank"), member.get("last_rank"))
 			rows_markup.append(
 				(
 					f'<div class="{row_class}">'
 					f'<div class="league-cell rank">{fmt(member.get("rank"))}</div>'
 					f'<div class="league-cell last-rank">{fmt(member.get("last_rank"))}</div>'
-					f'<div class="league-cell move">{movement_symbol(member.get("rank"), member.get("last_rank"))}</div>'
+					f'<div class="league-cell move {move_class}">{movement_symbol(member.get("rank"), member.get("last_rank"))}</div>'
 					f'<div class="league-cell team">{html.escape(team_name)}</div>'
 					f'<div class="league-cell manager">{html.escape(manager_name)}</div>'
 					f'<div class="league-cell season-pts">{fmt(member.get("total"))}</div>'
