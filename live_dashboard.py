@@ -127,11 +127,17 @@ with st.expander("How do I find my Manager ID?"):
     4. `1637221` is your Manager ID — paste it here
     """)
 
-if st.button("Connect Team") or manager_id_input:
+button_cols = st.columns(2, gap="small")
+with button_cols[0]:
+    connect_clicked = st.button("Connect Team")
+with button_cols[1]:
+    guest_clicked = st.button("Continue as Guest")
+
+if connect_clicked or manager_id_input:
     if manager_id_input:
         connect_team()
 
-if st.button("Continue as Guest"):
+if guest_clicked:
     st.session_state.guest = True
     for key in ("manager_id", "entry", "history", "picks", "players", "gw"):
         st.session_state.pop(key, None)
