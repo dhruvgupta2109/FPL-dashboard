@@ -401,7 +401,7 @@ for index, payload in enumerate(league_payloads, start=1):
 	current_rank = league.get("entry_rank")
 	last_rank = league.get("entry_last_rank")
 
-	label = f"{league_name}  |  Your rank: {fmt(current_rank)} ({movement_symbol(current_rank, last_rank)})"
+	label = f"{league_name} | current rank: {fmt(current_rank)}"
 
 	with st.expander(label, expanded=(index == 1)):
 		if load_error:
