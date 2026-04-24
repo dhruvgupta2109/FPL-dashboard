@@ -408,7 +408,6 @@ for index, payload in enumerate(league_payloads, start=1):
 			st.error(f"Could not load this league's standings. ({load_error})")
 			continue
 
-		league_size = league_meta.get("size") or league_meta.get("max_entries") or len(members)
 		created_at = parse_datetime(league_meta.get("created"))
 		created_label = created_at.strftime("%d %b %Y") if created_at else "N/A"
 
@@ -417,18 +416,12 @@ for index, payload in enumerate(league_payloads, start=1):
 			your_member = next((m for m in members if m.get("entry") == manager_id_int), None)
 
 		season_points = your_member.get("total") if your_member else None
-		gw_points = your_member.get("event_total") if your_member else None
 
 		info_col1, info_col2, info_col3, info_col4 = st.columns(4)
-		info_col1.metric("Total Members", fmt(league_size))
-		info_col2.metric("Your Previous Rank", fmt(last_rank))
-		info_col3.metric("Your Rank Movement", movement_text(current_rank, last_rank))
-		info_col4.metric("Scoring", scoring_label(league.get("scoring") or league_meta.get("scoring")))
-
-		you_col1, you_col2, you_col3 = st.columns(3)
-		you_col1.metric("Your Season Points", fmt(season_points))
-		you_col2.metric("Your GW Points", fmt(gw_points))
-		you_col3.metric("Created", created_label)
+		info_col1.metric("Current Rank", fmt(current_rank))
+		info_col2.metric("Season Points", fmt(season_points))
+		info_col3.metric("Scoring", scoring_label(league.get("scoring") or league_meta.get("scoring")))
+		info_col4.metric("Created", created_label)
 
 		standings_rows = []
 		rows_markup = []
