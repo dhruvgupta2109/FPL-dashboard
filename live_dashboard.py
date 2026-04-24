@@ -103,6 +103,7 @@ def connect_team():
         st.error(f"Could not connect to this team. ({e})")
         st.stop()
 
+    st.session_state.guest      = False
     st.session_state.manager_id = manager_id
     st.session_state.entry      = entry
     st.session_state.history    = history
@@ -129,3 +130,9 @@ with st.expander("How do I find my Manager ID?"):
 if st.button("Connect Team") or manager_id_input:
     if manager_id_input:
         connect_team()
+
+if st.button("Continue as Guest"):
+    st.session_state.guest = True
+    for key in ("manager_id", "entry", "history", "picks", "players", "gw"):
+        st.session_state.pop(key, None)
+    st.switch_page("pages/home.py")
