@@ -9,7 +9,8 @@ from nav import render_top_nav
 
 st.set_page_config(page_title="FPL Home", layout="wide")
 
-if "manager_id" not in st.session_state:
+is_guest = st.session_state.get("guest", False)
+if "manager_id" not in st.session_state and not is_guest:
     st.warning("No manager ID found. Go back to Dashboard and connect your team.")
     if st.button("Go to Dashboard"):
         st.switch_page("live_dashboard.py")
@@ -483,12 +484,6 @@ div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_leagues div[data-testid="
 
 render_top_nav()
 
-# ── Data ─────────────────────────────────────────────────────────────────────
-gw         = st.session_state.gw
-entry      = st.session_state.entry
-team_name  = entry["name"]
-manager_id = st.session_state.manager_id
-
 @st.cache_data(ttl=60)
 def fetch_live_points(gw):
     ctx = ssl.create_default_context(cafile=certifi.where())
@@ -582,6 +577,14 @@ def next_deadline_info(events, current_gw):
         return None, None
 
     return next_event.get("id"), parse_deadline(next_event.get("deadline_time"))
+
+def current_gw_from_events(events):
+    if not events:
+        return 0
+    current = next((e.get("id") for e in events if e.get("is_current")), None)
+    if current:
+        return current
+    return max((e.get("id") or 0 for e in events), default=0)
 
 def logo_url(team_code):
     if not team_code:
@@ -699,16 +702,33 @@ def build_trend_box_html(title, subtitle, rows):
         f'</div>'
     )
 
-live_pts = fetch_live_points(gw)
-avg_points, highest_points = fetch_gw_stats(gw)
-picks    = sorted(st.session_state.picks["picks"], key=lambda x: x["position"])
-starters = picks[:11]
-gw_points = sum(live_pts.get(p["element"], 0) * p.get("multiplier", 1) for p in starters)
-
-mini_leagues, public_leagues = fetch_leagues(manager_id)
 bootstrap_data = fetch_bootstrap_data()
 events = bootstrap_data.get("events", [])
 teams = bootstrap_data.get("teams", [])
+
+if is_guest:
+    gw = current_gw_from_events(events)
+    team_name = "Guest"
+    manager_id = None
+    live_pts = {}
+    avg_points = "-"
+    highest_points = "-"
+    gw_points = "-"
+    picks = []
+    starters = []
+    mini_leagues, public_leagues = [], []
+else:
+    gw         = st.session_state.gw
+    entry      = st.session_state.entry
+    team_name  = entry["name"]
+    manager_id = st.session_state.manager_id
+    live_pts = fetch_live_points(gw)
+    avg_points, highest_points = fetch_gw_stats(gw)
+    picks    = sorted(st.session_state.picks["picks"], key=lambda x: x["position"])
+    starters = picks[:11]
+    gw_points = sum(live_pts.get(p["element"], 0) * p.get("multiplier", 1) for p in starters)
+    mini_leagues, public_leagues = fetch_leagues(manager_id)
+
 next_gw, next_deadline = next_deadline_info(events, gw)
 
 team_map = {
@@ -724,6 +744,18 @@ captained_top5, subbed_in_top5, subbed_out_top5 = build_top5_trends(bootstrap_da
 
 def build_league_html(leagues, show_total=False, max_count=5):
     html = ""
+    if not leagues:
+        return (
+            '<div class="league-row">'
+            '<div class="league-name">-</div>'
+            '<div class="league-ranks">'
+            '<span class="rank-label">Current:</span>'
+            '<span style="color:#999;font-weight:700;font-size:16px;font-family:sans-serif;">-</span>'
+            '<span class="rank-label">Previous:</span>'
+            '<span style="color:#999;font-weight:700;font-size:16px;font-family:sans-serif;">-</span>'
+            '<span class="rank-arrow" style="color:#999;">—</span>'
+            '</div></div>'
+        )
     for league in leagues[:max_count]:
         name   = league.get("name", "Unknown")
         lid    = league.get("id")
@@ -838,10 +870,10 @@ with left_col:
     </style>
     """, unsafe_allow_html=True)
     with btn1:
-        if st.button("Points →", key="nav_points", use_container_width=True):
+        if st.button("Points →", key="nav_points", use_container_width=True, disabled=is_guest):
             st.switch_page("pages/points.py")
     with btn2:
-        if st.button("Graphs →", key="nav_graphs", use_container_width=True):
+        if st.button("Graphs →", key="nav_graphs", use_container_width=True, disabled=is_guest):
             st.switch_page("pages/graphs.py")
 
     deadline_iso = next_deadline.isoformat() if next_deadline else ""
@@ -957,7 +989,7 @@ with right_col:
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("See All League Details", key="see_leagues", use_container_width=True):
+    if st.button("See All League Details", key="see_leagues", use_container_width=True, disabled=is_guest):
         st.switch_page("pages/leagues.py")
 
     st.markdown(f"""
