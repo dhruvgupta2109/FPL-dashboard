@@ -612,7 +612,7 @@ body {{ background: transparent; font-family: sans-serif; padding: 16px; }}
                         <line x1="30" y1="14" x2="70" y2="14" stroke="rgba(255,255,255,0.4)" stroke-width="0.35"/>
                         <line x1="30" y1="-2" x2="30" y2="14" stroke="rgba(255,255,255,0.4)" stroke-width="0.35"/>
                         <line x1="70" y1="-2" x2="70" y2="14" stroke="rgba(255,255,255,0.4)" stroke-width="0.35"/>
-                        <path d="M 20 133 A 30 30 0 0 1 80 133" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.35"/>
+                        <path d="M 18 133 A 32 32 0 0 1 82 133" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.35"/>
                     </svg>
                     {pitch_rows}
                 </div>
