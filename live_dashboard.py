@@ -38,7 +38,7 @@ def build_player_map(bootstrap):
 st.markdown("""
 <style>
 .stApp {
-    background: linear-gradient(135deg, #37003c, #2b1e5b, #00ff87);
+    background: linear-gradient(135deg, #37003c, #2b1e5b, #00cc6a);
     min-height: 100vh;
 }
 .center-box {
