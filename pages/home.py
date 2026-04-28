@@ -5,6 +5,7 @@ import urllib.request
 import ssl
 import certifi
 from datetime import datetime, timezone
+from nav import render_top_nav
 
 st.set_page_config(page_title="FPL Home", layout="wide")
 
@@ -479,6 +480,8 @@ div[data-testid="stColumn"]:nth-of-type(2) .st-key-see_leagues div[data-testid="
 }
 </style>
 """, unsafe_allow_html=True)
+
+render_top_nav()
 
 # ── Data ─────────────────────────────────────────────────────────────────────
 gw         = st.session_state.gw
