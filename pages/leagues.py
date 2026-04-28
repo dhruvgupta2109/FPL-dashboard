@@ -5,6 +5,7 @@ import ssl
 import certifi
 import html
 from datetime import datetime
+from nav import render_top_nav
 
 
 st.set_page_config(page_title="FPL Mini Leagues", layout="wide")
@@ -209,6 +210,8 @@ div[data-testid="stDataFrame"] [role="gridcell"] {
 """,
 	unsafe_allow_html=True,
 )
+
+render_top_nav()
 
 
 def fetch_json(url, timeout=20):
