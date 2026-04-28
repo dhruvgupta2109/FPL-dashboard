@@ -4,6 +4,7 @@ import json
 import urllib.request
 import ssl
 import certifi
+from nav import render_top_nav
 
 st.set_page_config(page_title="FPL Graphs", layout="wide")
 
@@ -43,6 +44,8 @@ div[data-testid="stButton"] > button:hover {
 iframe { background: transparent !important; }
 </style>
 """, unsafe_allow_html=True)
+
+render_top_nav()
 
 manager_id = st.session_state.manager_id
 gw         = st.session_state.gw

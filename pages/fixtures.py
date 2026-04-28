@@ -4,6 +4,7 @@ import urllib.request
 import ssl
 import certifi
 from datetime import datetime
+from nav import render_top_nav
 
 st.set_page_config(page_title="FPL Fixtures", layout="wide")
 
@@ -192,6 +193,8 @@ div[data-testid="stExpander"] details summary p {
 """,
     unsafe_allow_html=True,
 )
+
+render_top_nav()
 
 
 def parse_deadline(dt_str):
