@@ -99,6 +99,12 @@ def load_local_json(path, fallback):
         return json.load(f)
 
 
+def save_local_json(path, payload):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w") as f:
+        json.dump(payload, f)
+
+
 def fetch_json(url):
     ctx = ssl.create_default_context(cafile=certifi.where())
     with urllib.request.urlopen(url, context=ctx, timeout=8) as response:
@@ -108,7 +114,9 @@ def fetch_json(url):
 @st.cache_data(ttl=900, show_spinner=False)
 def fetch_bootstrap_data():
     try:
-        return fetch_json(BOOTSTRAP_URL)
+        data = fetch_json(BOOTSTRAP_URL)
+        save_local_json(LOCAL_BOOTSTRAP_PATH, data)
+        return data
     except Exception:
         return load_local_json(LOCAL_BOOTSTRAP_PATH, {})
 
@@ -116,7 +124,9 @@ def fetch_bootstrap_data():
 @st.cache_data(ttl=900, show_spinner=False)
 def fetch_fixtures_data():
     try:
-        return fetch_json(FIXTURES_URL)
+        data = fetch_json(FIXTURES_URL)
+        save_local_json(LOCAL_FIXTURES_PATH, data)
+        return data
     except Exception:
         return load_local_json(LOCAL_FIXTURES_PATH, [])
 
