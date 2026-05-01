@@ -1,13 +1,15 @@
-import streamlit as st # type: ignore
-import streamlit.components.v1 as components # type: ignore
+import streamlit as st
+import streamlit.components.v1 as components
 import json
 import urllib.request
 import ssl
 import certifi
+from nav import render_top_nav
 
 st.set_page_config(page_title="FPL Points", layout="wide")
 
-if "manager_id" not in st.session_state:
+is_guest = st.session_state.get("guest", False)
+if "manager_id" not in st.session_state and not is_guest:
     st.warning("No manager ID found. Go back to Home and connect your team.")
     if st.button("Go to Dashboard"):
         st.switch_page("live_dashboard.py")
@@ -47,11 +49,23 @@ iframe { background: transparent !important; }
 </style>
 """, unsafe_allow_html=True)
 
-manager_id      = st.session_state.manager_id
-gw              = st.session_state.gw
-picks           = sorted(st.session_state.picks["picks"], key=lambda x: x["position"])
-players         = st.session_state.players
-history         = st.session_state.history
+render_top_nav()
+
+def build_player_map(bootstrap):
+    team_codes = {t.get("id"): t.get("code", 0) for t in bootstrap.get("teams", [])}
+    return {
+        p.get("id"): {
+            "name": f"{p.get('first_name', '')} {p.get('second_name', '')}".strip() or p.get("web_name") or "Unknown",
+            "web_name": p.get("web_name"),
+            "team_id": p.get("team"),
+            "team_code": team_codes.get(p.get("team"), 0),
+            "position": p.get("element_type"),
+            "price": (p.get("now_cost", 0) or 0) / 10,
+            "photo": f"https://resources.premierleague.com/premierleague/photos/players/110x140/p{str(p.get('photo', '')).replace('.jpg','.png')}",
+        }
+        for p in bootstrap.get("elements", [])
+        if p.get("id") is not None
+    }
 
 @st.cache_data(ttl=60)
 def fetch_live_points(gw):
@@ -110,25 +124,56 @@ def fetch_bootstrap_static():
     with urllib.request.urlopen(url, context=ctx) as r:
         return json.loads(r.read())
 
-live_pts  = fetch_live_points(gw)
-avg_points, highest_points = fetch_gw_stats(gw)
-fixtures  = fetch_fixtures(gw)
-team_names = fetch_teams(gw)
+def current_gw_from_events(events):
+    if not events:
+        return 1
+    current = next((e.get("id") for e in events if e.get("is_current")), None)
+    if current:
+        return current
+    return max((e.get("id") or 1 for e in events), default=1)
 
-starters = picks[:11]
-subs     = picks[11:]
+bootstrap_static = fetch_bootstrap_static()
 
-total_gw_points = sum(
-    live_pts.get(pick["element"], 0) * pick.get("multiplier", 1)
-    for pick in starters
-)
+if is_guest:
+    gw = current_gw_from_events(bootstrap_static.get("events", []))
+    manager_id = None
+    players = build_player_map(bootstrap_static)
+    picks = []
+    history = {}
+else:
+    manager_id = st.session_state.manager_id
+    gw = st.session_state.gw
+    picks = sorted(st.session_state.picks["picks"], key=lambda x: x["position"])
+    players = st.session_state.players
+    history = st.session_state.history
+
+if is_guest:
+    live_pts = {}
+    avg_points = "-"
+    highest_points = "-"
+    fixtures = fetch_fixtures(gw)
+    team_names = fetch_teams(gw)
+    starters = []
+    subs = []
+    total_gw_points = "-"
+else:
+    live_pts = fetch_live_points(gw)
+    avg_points, highest_points = fetch_gw_stats(gw)
+    fixtures = fetch_fixtures(gw)
+    team_names = fetch_teams(gw)
+    starters = picks[:11]
+    subs = picks[11:]
+    total_gw_points = sum(
+        live_pts.get(pick["element"], 0) * pick.get("multiplier", 1)
+        for pick in starters
+    )
 
 # ── Chips ──────────────────────────────────────────────────────────────────
 chips_data = []
-active_chip = picks[0].get("active_chip")
+active_chip = picks[0].get("active_chip") if picks else None
 
 chip_plays = {}
-for chip_entry in history.get("chips", []):
+for chip_entry in history.get("chips", []) if history else []:
     chip_name = chip_entry["name"]
     chip_gw = chip_entry["event"]
     if chip_name not in chip_plays:
@@ -192,24 +237,27 @@ def fetch_entry_event_entry_history(entry_id, event_id):
         data = json.loads(r.read())
     return data.get("entry_history", {}) or {}
 
-bootstrap_static = fetch_bootstrap_static()
 avg_by_event = {
     e.get("id"): (e.get("average_entry_score") or 0)
     for e in bootstrap_static.get("events", [])
     if e.get("id") is not None
 }
 
-gw_labels   = list(range(1, gw + 1))
-pts_series  = []
+gw_labels = list(range(1, gw + 1)) if gw else []
+pts_series = []
 rank_series = []
-for event_id in gw_labels:
-    try:
-        eh = fetch_entry_event_entry_history(manager_id, event_id)
-        pts_series.append(eh.get("points", eh.get("total_points", 0)) or 0)
-        rank_series.append(eh.get("overall_rank", eh.get("rank", 0)) or 0)
-    except Exception:
-        pts_series.append(0)
-        rank_series.append(0)
+if is_guest or not manager_id:
+    pts_series = [None for _ in gw_labels]
+    rank_series = [None for _ in gw_labels]
+else:
+    for event_id in gw_labels:
+        try:
+            eh = fetch_entry_event_entry_history(manager_id, event_id)
+            pts_series.append(eh.get("points", eh.get("total_points", 0)) or 0)
+            rank_series.append(eh.get("overall_rank", eh.get("rank", 0)) or 0)
+        except Exception:
+            pts_series.append(0)
+            rank_series.append(0)
 
 avg_series = [avg_by_event.get(event_id, 0) for event_id in gw_labels]
 
