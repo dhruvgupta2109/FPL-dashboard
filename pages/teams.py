@@ -1387,15 +1387,16 @@ def forecast_html(team_id, opponent_id, is_home, source_match=None):
 st.markdown("### Teams")
 
 name_options = [team.get("name") for team in teams]
-selected_name = st.selectbox("Team snapshot", name_options, key="teams_snapshot_select")
-selected_team_id = team_name_to_id[selected_name]
 
 left, right = st.columns(2, gap="large")
 
 with left:
+    selected_name = st.selectbox("Team snapshot", name_options, key="teams_snapshot_select")
+    selected_team_id = team_name_to_id[selected_name]
     st.markdown(clean_html(snapshot_html(selected_team_id)), unsafe_allow_html=True)
 
 with right:
+    st.markdown("**Team comparisons**")
     compare_left, compare_right = st.columns(2)
     with compare_left:
         compare_a_name = st.selectbox(
