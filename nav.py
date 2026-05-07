@@ -31,17 +31,17 @@ THEMES = {
     },
     True: {
         "page_bg": (
-            "radial-gradient(circle at 16% 12%, rgba(0,255,135,0.15), transparent 28%), "
-            "radial-gradient(circle at 84% 10%, rgba(116,245,192,0.10), transparent 24%), "
-            "linear-gradient(135deg, #120018 0%, #17102e 48%, #04170f 100%)"
+            "radial-gradient(circle at 16% 12%, rgba(0,255,135,0.12), transparent 28%), "
+            "radial-gradient(circle at 84% 10%, rgba(116,245,192,0.08), transparent 24%), "
+            "linear-gradient(135deg, #230027 0%, #2a174d 52%, #102a20 100%)"
         ),
-        "nav_bg": "rgba(7, 5, 16, 0.78)",
-        "panel_bg": "rgba(8, 7, 18, 0.58)",
-        "panel_bg_strong": "rgba(11, 8, 24, 0.72)",
-        "panel_border": "rgba(116,245,192,0.20)",
-        "soft_bg": "rgba(255,255,255,0.07)",
-        "button_bg": "rgba(255,255,255,0.09)",
-        "button_hover": "rgba(0,255,135,0.16)",
+        "nav_bg": "rgba(33, 0, 46, 0.72)",
+        "panel_bg": "rgba(42, 20, 72, 0.56)",
+        "panel_bg_strong": "rgba(50, 24, 84, 0.70)",
+        "panel_border": "rgba(191, 142, 255, 0.24)",
+        "soft_bg": "rgba(255,255,255,0.08)",
+        "button_bg": "rgba(255,255,255,0.10)",
+        "button_hover": "rgba(191,142,255,0.18)",
         "text": "#f8fff9",
         "text_muted": "rgba(248,255,249,0.76)",
         "shadow": "0 18px 42px rgba(0,0,0,0.44)",
