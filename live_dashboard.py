@@ -3,6 +3,7 @@ import json
 import urllib.request
 import ssl
 import certifi
+from nav import render_theme_styles
 
 st.set_page_config(page_title="FPL manager", layout="centered")
 
@@ -77,6 +78,8 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
+
+render_theme_styles()
 
 st.markdown("""
 <div class="center-box">
