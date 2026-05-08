@@ -31,7 +31,7 @@ st.markdown(
 	padding-right: 2rem !important;
 }
 
-h1, h2, h3, h4, p, div, span, li {
+h1, h2, h3, h4, p, div, li {
 	color: white;
 }
 
@@ -176,15 +176,15 @@ div[data-testid="stDataFrame"] [role="gridcell"] {
 }
 
 .league-cell.move.move-up {
-	color: #00ff87;
+	color: #00ff87 !important;
 }
 
 .league-cell.move.move-down {
-	color: #ff5c7a;
+	color: #f64646 !important;
 }
 
 .league-cell.move.move-flat {
-	color: rgba(255,255,255,0.50);
+	color: rgba(255,255,255,0.50) !important;
 }
 
 .league-empty {
