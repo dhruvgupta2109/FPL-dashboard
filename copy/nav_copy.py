@@ -90,7 +90,7 @@ def render_theme_styles():
     max-width: none !important;
 }}
 
-h1, h2, h3, p, div, span, li, label {{
+h1, h2, h3, p, div, li, label {{
     color: var(--fpl-text) !important;
 }}
 
@@ -153,6 +153,30 @@ div[data-testid="stButton"] > button:hover {{
 .mini-player-meta,
 .mini-stat-row {{
     color: var(--fpl-text-muted) !important;
+}}
+
+.rank-gold,
+.league-cell.rank.rank-gold,
+.league-cell.last-rank.rank-gold {{
+    color: #ffd700 !important;
+    font-weight: 900 !important;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.35) !important;
+}}
+
+.rank-silver,
+.league-cell.rank.rank-silver,
+.league-cell.last-rank.rank-silver {{
+    color: #d7dde7 !important;
+    font-weight: 900 !important;
+    text-shadow: 0 0 12px rgba(215, 221, 231, 0.28) !important;
+}}
+
+.rank-bronze,
+.league-cell.rank.rank-bronze,
+.league-cell.last-rank.rank-bronze {{
+    color: #cd7f32 !important;
+    font-weight: 900 !important;
+    text-shadow: 0 0 12px rgba(205, 127, 50, 0.32) !important;
 }}
 
 div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) {{
