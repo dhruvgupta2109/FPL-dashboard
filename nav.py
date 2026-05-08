@@ -90,7 +90,7 @@ def render_theme_styles():
     max-width: none !important;
 }}
 
-h1, h2, h3, p, div, span, li, label {{
+h1, h2, h3, p, div, li, label {{
     color: var(--fpl-text) !important;
 }}
 
