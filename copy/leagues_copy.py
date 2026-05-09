@@ -517,7 +517,6 @@ for index, payload in enumerate(league_payloads, start=1):
 			),
 			unsafe_allow_html=True,
 		)
-
 		st.caption(
 			f"League ID: {league.get('id')} | Start event: {fmt(league.get('start_event') or league_meta.get('start_event'))} | "
 			f"Pages loaded: {payload.get('pages_loaded')} | Members shown: {len(standings_rows)}"
