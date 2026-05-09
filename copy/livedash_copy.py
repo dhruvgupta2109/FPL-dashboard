@@ -148,3 +148,5 @@ if guest_clicked:
     for key in ("manager_id", "entry", "history", "picks", "players", "gw"):
         st.session_state.pop(key, None)
     st.switch_page("pages/home.py")
+
+    
