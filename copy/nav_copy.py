@@ -310,3 +310,5 @@ div[data-testid="stPageLink"] > a[aria-current="page"] {
     if selected_dark != theme_is_dark():
         set_theme_preference(selected_dark)
         st.rerun()
+
+        
