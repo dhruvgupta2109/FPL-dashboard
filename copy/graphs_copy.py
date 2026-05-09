@@ -226,14 +226,22 @@ def apply_plotly_layout(fig, height=380, title=None):
     fig.update_layout(
         height=height,
         title=title,
-        margin=dict(l=10, r=10, t=40 if title else 10, b=10),
+        margin=dict(l=34, r=18, t=48 if title else 16, b=44),
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
         font=dict(color="white"),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
     )
-    fig.update_xaxes(gridcolor="rgba(255,255,255,0.12)")
-    fig.update_yaxes(gridcolor="rgba(255,255,255,0.12)")
+    fig.update_xaxes(
+        gridcolor="rgba(255,255,255,0.12)",
+        automargin=True,
+        ticklabelstandoff=10,
+    )
+    fig.update_yaxes(
+        gridcolor="rgba(255,255,255,0.12)",
+        automargin=True,
+        ticklabelstandoff=10,
+    )
     return fig
 
 
