@@ -23,7 +23,6 @@ st.markdown(
     padding-left: 2rem !important;
     padding-right: 2rem !important;
 }
-
 .glass-panel {
     background: rgba(255,255,255,0.12);
     border: 1px solid rgba(255,255,255,0.2);
