@@ -8,6 +8,7 @@ import certifi
 import plotly.graph_objects as go
 import streamlit as st  # type: ignore
 
+import streamlit.components.v1 as components
 try:
     from streamlit_plotly_events import plotly_events
 except Exception:
@@ -26,11 +27,14 @@ st.markdown(
     min-height: 100vh;
 }
 .stMainBlockContainer {
-    padding-top: 2rem !important;
+    padding-top: 2.5rem !important;
     max-width: none !important;
     width: 100% !important;
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+div[data-testid="stHorizontalBlock"] {
+    justify-content: center !important;
 }
 
 h1, h2, h3, p, span, li, label {
@@ -424,44 +428,34 @@ with manager_tab:
     else:
         manager_id = st.session_state.manager_id
         
-        # Week range selector
-        gw_labels = list(range(gw_start, gw_end + 1))
-        max_weeks_available = len(gw_labels)
-        if "manager_weeks" not in st.session_state:
-            st.session_state.manager_weeks = min(10, max_weeks_available)
-        
-        weeks_to_show = st.slider(
-            "Show last N weeks",
-            min_value=1,
-            max_value=max_weeks_available,
-            value=st.session_state.manager_weeks,
-            key="manager_weeks",
-        )
-        
-        # Filter data based on weeks selection
-        week_start_idx = max(0, len(gw_labels) - weeks_to_show)
-        gw_labels_filtered = gw_labels[week_start_idx:]
-        
         avg_by_event = {
             e.get("id"): (e.get("average_entry_score") or 0)
             for e in events
             if e.get("id") is not None
         }
+
+        gw_labels = list(range(1, gw_end + 1))
+        
         pts_series = []
         rank_series = []
-        avg_series = []
-        for event_id in gw_labels_filtered:
+        for event_id in gw_labels:
             history = fetch_entry_event_entry_history(manager_id, event_id)
             pts_series.append(to_int(history.get("points", history.get("total_points", 0))))
             rank_series.append(
                 to_int(history.get("overall_rank", history.get("rank", 0)), 0)
             )
-            avg_series.append(to_int(avg_by_event.get(event_id, 0), 0))
+        
+        avg_series = [avg_by_event.get(event_id, 0) for event_id in gw_labels]
+
+        gw_labels_json = json.dumps(gw_labels)
+        pts_series_json = json.dumps(pts_series)
+        avg_series_json = json.dumps(avg_series)
+        rank_series_json = json.dumps(rank_series)
 
         if pts_series:
-            last_points = pts_series[-1]
-            last_avg = avg_series[-1]
-            last_rank = rank_series[-1]
+            last_points = pts_series[-1] if pts_series else 0
+            last_avg = avg_series[-1] if avg_series else 0
+            last_rank = rank_series[-1] if rank_series else 0
         else:
             last_points = 0
             last_avg = 0
@@ -472,87 +466,185 @@ with manager_tab:
         m2.metric("Latest GW average", last_avg)
         m3.metric("Latest overall rank", f"{last_rank:,}")
 
-        points_fig = go.Figure()
-        points_fig.add_trace(
-            go.Scatter(
-                x=gw_labels_filtered,
-                y=pts_series,
-                mode="lines+markers",
-                name="My points",
-                line=dict(color="#00ff87", width=3),
-            )
-        )
-        points_fig.add_trace(
-            go.Scatter(
-                x=gw_labels_filtered,
-                y=avg_series,
-                mode="lines",
-                name="GW average",
-                line=dict(color="#ffb500", width=2, dash="dash"),
-            )
-        )
-        apply_plotly_layout(points_fig, title="Points vs GW average")
-        render_plotly(points_fig, key="mgr_points", height=360)
-
-        rank_fig = go.Figure()
-        rank_fig.add_trace(
-            go.Scatter(
-                x=gw_labels_filtered,
-                y=rank_series,
-                mode="lines+markers",
-                name="Overall rank",
-                line=dict(color="#00ff87", width=3),
-            )
-        )
-        rank_fig.update_yaxes(autorange="reversed")
-        apply_plotly_layout(rank_fig, title="Overall rank trend")
-        render_plotly(rank_fig, key="mgr_rank", height=360)
-
-        delta_fig = go.Figure()
-        delta_fig.add_trace(
-            go.Bar(
-                x=gw_labels_filtered,
-                y=[p - a for p, a in zip(pts_series, avg_series)],
-                marker_color="#05f0ff",
-            )
-        )
-        apply_plotly_layout(delta_fig, title="Points delta vs average")
-        render_plotly(delta_fig, key="mgr_delta", height=320)
+        deltas = [p - a for p, a in zip(pts_series, avg_series)]
+        deltas_json = json.dumps(deltas)
 
         history = st.session_state.get("history", {}) or {}
         chips = history.get("chips", []) if isinstance(history, dict) else []
-        if chips:
-            # Filter chips to selected week range
-            chips_filtered = [c for c in chips if gw_start + week_start_idx <= c.get("event", 0) <= gw_end]
-            
-            if chips_filtered:
-                chip_map = {
-                    "bboost": "Bench Boost",
-                    "freehit": "Free Hit",
-                    "3xc": "Triple Captain",
-                    "wildcard": "Wildcard",
-                }
-                chip_rows = [
-                    {"chip": chip_map.get(c.get("name"), c.get("name", "Chip")), "gw": c.get("event")}
-                    for c in chips_filtered
-                ]
-                chip_fig = go.Figure()
-                chip_fig.add_trace(
-                    go.Scatter(
-                        x=[c["gw"] for c in chip_rows],
-                        y=[c["chip"] for c in chip_rows],
-                        mode="markers+text",
-                        text=[c["chip"] for c in chip_rows],
-                        textposition="top center",
-                        marker=dict(color="#ff4f6d", size=10),
-                    )
-                )
-                apply_plotly_layout(chip_fig, title="Chip usage timeline", height=260)
-                render_plotly(chip_fig, key="mgr_chips", height=260)
-            else:
-                st.caption("No chip usage data in selected week range.")
-        else:
-            st.caption("No chip usage data available.")
+        chip_map = {
+            "bboost": "Bench Boost",
+            "freehit": "Free Hit",
+            "3xc": "Triple Captain",
+            "wildcard": "Wildcard",
+        }
+        chip_rows = []
+        for chip in chips:
+            chip_name = chip_map.get(chip.get("name"), chip.get("name", "Chip"))
+            chip_gw = chip.get("event")
+            if chip_gw in gw_labels:
+                chip_rows.append({"chip": chip_name, "gw": chip_gw})
+
+        chip_labels = sorted({row["chip"] for row in chip_rows})
+        chip_index = {name: idx for idx, name in enumerate(chip_labels)}
+        chip_points = [
+            {"x": row["gw"], "y": chip_index[row["chip"]]}
+            for row in chip_rows
+            if row["chip"] in chip_index
+        ]
+
+        chip_labels_json = json.dumps(chip_labels)
+        chip_points_json = json.dumps(chip_points)
+
+        components.html(
+            f"""
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {{ box-sizing: border-box; margin: 0; padding: 0; }}
+body {{ background: transparent; color: white; font-family: sans-serif; padding: 6px 0 2px; }}
+
+.charts-stack {{ display: flex; flex-direction: column; gap: 18px; }}
+.chart-block {{ height: 240px; width: 100%; }}
+.chart-subtitle {{
+    color: rgba(255,255,255,0.8);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 6px;
+}}
+.chart-block canvas {{ width: 100% !important; height: 100% !important; }}
+</style>
+</head>
+<body>
+<div class="charts-stack">
+    <div class="chart-block">
+        <div class="chart-subtitle">Points &amp; Avg vs GW</div>
+        <canvas id="pointsChart"></canvas>
+    </div>
+    <div class="chart-block">
+        <div class="chart-subtitle">Worldwide Rank vs GW</div>
+        <canvas id="rankChart"></canvas>
+    </div>
+    <div class="chart-block">
+        <div class="chart-subtitle">Points Delta vs Avg</div>
+        <canvas id="deltaChart"></canvas>
+    </div>
+    <div class="chart-block">
+        <div class="chart-subtitle">Chip Usage Timeline</div>
+        <canvas id="chipsChart"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const gwLabels = {gw_labels_json};
+const pts = {pts_series_json};
+const avgPts = {avg_series_json};
+const ranks = {rank_series_json};
+const deltas = {deltas_json};
+const chipLabels = {chip_labels_json};
+const chipPoints = {chip_points_json};
+
+const axisCommon = {{
+    ticks: {{
+        color: 'rgba(255,255,255,0.7)',
+        maxRotation: 0,
+        minRotation: 0,
+        autoSkip: true,
+        maxTicksLimit: 10,
+        callback: function(value, idx) {{
+            return gwLabels[idx] ?? value;
+        }}
+    }},
+    grid: {{ color: 'rgba(255,255,255,0.08)' }}
+}};
+
+const baseOpts = {{
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {{
+        legend: {{ labels: {{ color: 'rgba(255,255,255,0.9)', boxWidth: 12, font: {{ size: 11 }} }} }}
+    }},
+    scales: {{
+        x: axisCommon,
+        y: {{ ticks: {{ color: 'rgba(255,255,255,0.7)' }}, grid: {{ color: 'rgba(255,255,255,0.08)' }} }}
+    }}
+}};
+
+const rankOpts = JSON.parse(JSON.stringify(baseOpts));
+rankOpts.scales.y.reverse = true;
+
+new Chart(document.getElementById('pointsChart'), {{
+    type: 'line',
+    data: {{
+        labels: gwLabels,
+        datasets: [
+            {{ label: 'My Pts', data: pts, borderColor: '#00ff87', tension: 0.3, fill: false, pointRadius: 3 }},
+            {{ label: 'GW Avg', data: avgPts, borderColor: '#ffb500', tension: 0.3, fill: false, pointRadius: 3 }}
+        ]
+    }},
+    options: baseOpts
+}});
+
+new Chart(document.getElementById('rankChart'), {{
+    type: 'line',
+    data: {{
+        labels: gwLabels,
+        datasets: [
+            {{ label: 'World Rank', data: ranks, borderColor: '#05f0ff', tension: 0.3, fill: false, pointRadius: 3 }}
+        ]
+    }},
+    options: rankOpts
+}});
+
+new Chart(document.getElementById('deltaChart'), {{
+    type: 'bar',
+    data: {{
+        labels: gwLabels,
+        datasets: [
+            {{ label: 'Delta', data: deltas, backgroundColor: 'rgba(0,255,135,0.35)', borderColor: '#00ff87' }}
+        ]
+    }},
+    options: baseOpts
+}});
+
+const chipOpts = JSON.parse(JSON.stringify(baseOpts));
+chipOpts.scales.y = {{
+    min: chipLabels.length ? -0.5 : 0,
+    max: chipLabels.length ? chipLabels.length - 0.5 : 1,
+    ticks: {{
+        color: 'rgba(255,255,255,0.7)',
+        callback: function(value) {{
+            return chipLabels[value] ?? '';
+        }}
+    }},
+    grid: {{ color: 'rgba(255,255,255,0.08)' }}
+}};
+
+new Chart(document.getElementById('chipsChart'), {{
+    type: 'scatter',
+    data: {{
+        datasets: [
+            {{
+                label: chipLabels.length ? 'Chips' : 'No chip data',
+                data: chipPoints,
+                borderColor: '#ff4f6d',
+                backgroundColor: 'rgba(255,79,109,0.6)',
+                pointRadius: 5
+            }}
+        ]
+    }},
+    options: chipOpts
+}});
+</script>
+</body>
+</html>
+""",
+            height=1150,
+            scrolling=False,
+        )
 
 with players_tab:
     st.subheader("Player value and performance")
