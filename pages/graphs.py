@@ -604,7 +604,7 @@ new Chart(document.getElementById('deltaChart'), {{
     data: {{
         labels: gwLabels,
         datasets: [
-            {{ label: 'Delta', data: deltas, backgroundColor: 'rgba(0,255,135,0.35)', borderColor: '#00ff87' }}
+            {{ label: 'Delta', data: deltas, backgroundColor: 'rgba(7, 255, 172, 1)', borderColor: '#00ff87' }}
         ]
     }},
     options: baseOpts
