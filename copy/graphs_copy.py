@@ -466,6 +466,8 @@ with manager_tab:
         m2.metric("Latest GW average", last_avg)
         m3.metric("Latest overall rank", f"{last_rank:,}")
 
+        st.markdown('<div style="height: 20px;"></div>', unsafe_allow_html=True)
+
         deltas = [p - a for p, a in zip(pts_series, avg_series)]
         deltas_json = json.dumps(deltas)
 
@@ -505,14 +507,14 @@ with manager_tab:
 * {{ box-sizing: border-box; margin: 0; padding: 0; }}
 body {{ background: transparent; color: white; font-family: sans-serif; padding: 6px 0 2px; }}
 
-.charts-stack {{ display: flex; flex-direction: column; gap: 18px; }}
-.chart-block {{ height: 240px; width: 100%; }}
+.charts-stack {{ display: flex; flex-direction: column; gap: 38px; }}
+.chart-block {{ height: 240px; width: 100%; padding-top: 8px; overflow: hidden; }}
 .chart-subtitle {{
     color: rgba(255,255,255,0.8);
     font-size: 12px;
     font-weight: 700;
     text-align: left;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
 }}
 .chart-block canvas {{ width: 100% !important; height: 100% !important; }}
 </style>
