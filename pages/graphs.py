@@ -234,7 +234,7 @@ def apply_plotly_layout(fig, height=380, title=None):
     fig.update_layout(
         height=height,
         title=title_spec,
-        margin=dict(l=70, r=24, t=74 if title else 18, b=56),
+        margin=dict(l=70, r=24, t=74 if title else 18, b=90),
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
         font=dict(color="white"),
@@ -244,6 +244,7 @@ def apply_plotly_layout(fig, height=380, title=None):
         gridcolor="rgba(255,255,255,0.12)",
         automargin=True,
         ticklabelstandoff=10,
+        title_standoff=20,
     )
     fig.update_yaxes(
         gridcolor="rgba(255,255,255,0.12)",
@@ -653,7 +654,7 @@ with players_tab:
     else:
         pos_colors = {"GKP": "#05f0ff", "DEF": "#00ff87", "MID": "#ffb500", "FWD": "#ff4f6d"}
 
-        def scatter_by_position(x_key, y_key, title, x_label, y_label, chart_key):
+        def scatter_by_position(x_key, y_key, title, x_label, y_label, chart_key, height=520):
             fig = go.Figure()
             for pos_name in ["GKP", "DEF", "MID", "FWD"]:
                 group = [p for p in filtered_players if p["position"] == pos_name]
@@ -665,7 +666,7 @@ with players_tab:
                         y=[p[y_key] for p in group],
                         mode="markers",
                         name=pos_name,
-                        marker=dict(color=pos_colors.get(pos_name, "#00ff87"), size=9, opacity=0.8),
+                        marker=dict(color=pos_colors.get(pos_name, "#00ff87"), size=11, opacity=0.9),
                         text=[p["name"] for p in group],
                         customdata=[p["id"] for p in group],
                     )
@@ -673,52 +674,57 @@ with players_tab:
             fig.update_xaxes(title=x_label)
             fig.update_yaxes(title=y_label)
             apply_plotly_layout(fig, title=title)
-            clicks = render_plotly(fig, key=chart_key, height=360)
+            clicks = render_plotly(fig, key=chart_key, height=height)
             update_selected_player(clicks)
+        # Render each player graph as full-width rows and slightly larger
+        scatter_by_position(
+            "price",
+            "total_points",
+            "Price vs total points",
+            "Price",
+            "Total points",
+            "players_price_points",
+            height=550,
+        )
 
-        col1, col2 = st.columns(2)
-        with col1:
-            scatter_by_position(
-                "price",
-                "total_points",
-                "Price vs total points",
-                "Price",
-                "Total points",
-                "players_price_points",
-            )
-        with col2:
-            scatter_by_position(
-                "xgi",
-                "total_points",
-                "xGI vs total points",
-                "xGI",
-                "Total points",
-                "players_xgi_points",
-            )
+        st.markdown("<div style='height:18px'></div>", unsafe_allow_html=True)
 
-        col3, col4 = st.columns(2)
-        with col3:
-            scatter_by_position(
-                "price",
-                "points_per_90",
-                "Price vs points per 90",
-                "Price",
-                "Points per 90",
-                "players_pp90",
+        scatter_by_position(
+            "xgi",
+            "total_points",
+            "xGI vs total points",
+            "xGI",
+            "Total points",
+            "players_xgi_points",
+            height=540,
+        )
+
+        st.markdown("<div style='height:18px'></div>", unsafe_allow_html=True)
+
+        scatter_by_position(
+            "price",
+            "points_per_90",
+            "Price vs points per 90",
+            "Price",
+            "Points per 90",
+            "players_pp90",
+            height=520,
+        )
+
+        st.markdown("<div style='height:18px'></div>", unsafe_allow_html=True)
+
+        top_value = sorted(filtered_players, key=lambda p: p["value"], reverse=True)[:10]
+        fig = go.Figure(
+            go.Bar(
+                x=[p["name"] for p in top_value],
+                y=[round(p["value"], 2) for p in top_value],
+                marker_color="#00ff87",
             )
-        with col4:
-            top_value = sorted(filtered_players, key=lambda p: p["value"], reverse=True)[:10]
-            fig = go.Figure(
-                go.Bar(
-                    x=[p["name"] for p in top_value],
-                    y=[round(p["value"], 2) for p in top_value],
-                    marker_color="#00ff87",
-                )
-            )
-            fig.update_xaxes(title="Player")
-            fig.update_yaxes(title="Points per 1.0 price")
-            apply_plotly_layout(fig, title="Top value players")
-            render_plotly(fig, key="players_value", height=360)
+        )
+        fig.update_xaxes(title="Player")
+        fig.update_yaxes(title="Points per 1.0 price")
+        apply_plotly_layout(fig, title="Top value players")
+        render_plotly(fig, key="players_value", height=520)
 
         selected_id = st.session_state.selected_player_id
         if selected_id and selected_id in player_by_id:
