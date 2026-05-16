@@ -135,7 +135,6 @@ with st.expander("How do I find my Manager ID?"):
     4. `1637221` is your Manager ID — paste it here
     """)
 
-# Buttons should split the container evenly
 button_cols = st.columns(2, gap="small")
 with button_cols[0]:
     connect_clicked = st.button("Connect Team", use_container_width=True)
