@@ -3,6 +3,7 @@ import json
 import urllib.request
 import ssl
 import certifi
+from nav import render_theme_styles
 
 st.set_page_config(page_title="FPL manager", layout="centered")
 
@@ -78,6 +79,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+render_theme_styles()
+
 st.markdown("""
 <div class="center-box">
     <h1>FPL Manager</h1>
@@ -132,7 +135,6 @@ with st.expander("How do I find my Manager ID?"):
     4. `1637221` is your Manager ID — paste it here
     """)
 
-# Buttons should split the container evenly
 button_cols = st.columns(2, gap="small")
 with button_cols[0]:
     connect_clicked = st.button("Connect Team", use_container_width=True)
@@ -148,5 +150,3 @@ if guest_clicked:
     for key in ("manager_id", "entry", "history", "picks", "players", "gw"):
         st.session_state.pop(key, None)
     st.switch_page("pages/home.py")
-
-    
