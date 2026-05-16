@@ -16,7 +16,6 @@ if "manager_id" not in st.session_state and not is_guest:
         st.switch_page("live_dashboard.py")
     st.stop()
 
-# ── Global styles ────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
 /* ── App background ── */
@@ -850,9 +849,11 @@ for fx in fixtures:
 if not matches_html:
     matches_html = '<div class="score-sub" style="text-align:center;padding:10px;">No fixtures found for this gameweek.</div>'
 
+# ── Layout: two columns — left (fixed 400px), right (leagues) ────────────────
 left_col, right_col = st.columns([1, 2])
 
 with left_col:
+    # Glass card — flat bottom so the Streamlit buttons attach flush below
     st.markdown(f"""
     <div class="glass-box points-box">
         <div class="team-name">{team_name}</div>
