@@ -67,7 +67,6 @@ def build_player_map(bootstrap):
         if p.get("id") is not None
     }
 
-
 @st.cache_data(ttl=60)
 def fetch_live_points(gw):
     ctx = ssl.create_default_context(cafile=certifi.where())
@@ -173,7 +172,6 @@ avg_display = avg_points if is_guest else int(avg_points)
 highest_display = highest_points if is_guest else int(highest_points)
 gw_label = "Guest mode" if is_guest else f"Gameweek {gw}"
 
-# ── Chips ──────────────────────────────────────────────────────────────────
 chips_data = []
 active_chip = picks[0].get("active_chip") if picks else None
 
