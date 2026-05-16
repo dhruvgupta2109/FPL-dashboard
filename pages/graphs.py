@@ -345,7 +345,6 @@ fixtures = fetch_fixtures_data()
 team_ids = [0] + sorted(teams.keys(), key=lambda tid: teams[tid]["name"])
 position_ids = [0, 1, 2, 3, 4]
 
-# Sidebar filters
 st.sidebar.header("Filters")
 if plotly_events is None:
     st.sidebar.info("Install streamlit-plotly-events to enable click drill-down.")
