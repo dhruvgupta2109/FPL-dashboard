@@ -9,7 +9,6 @@
     max-width: none !important;
 }
 
-/* ── Main flex row ────────────────────────────────────── */
 .home-container {
     display: flex;
     gap: 20px;
