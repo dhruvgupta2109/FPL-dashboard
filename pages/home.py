@@ -16,7 +16,6 @@ if "manager_id" not in st.session_state and not is_guest:
         st.switch_page("live_dashboard.py")
     st.stop()
 
-# ── Global styles ────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
 /* ── App background ── */
