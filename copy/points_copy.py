@@ -817,7 +817,6 @@ new Chart(document.getElementById('rankChart').getContext('2d'), {{
 </html>
 """, height=1000, scrolling=False)
 
-# [Left Padding, Back Button, Gap, Graphs Button, Right Padding]
 _, col1, spacer, col2, _ = st.columns([2.3, 3, 2.5, 3, 0.8])
 
 with col1:
