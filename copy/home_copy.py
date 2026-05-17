@@ -647,7 +647,6 @@ def build_top5_trends(bootstrap, gw):
         return player.get("web_name") or player.get("second_name") or "Unknown"
 
     def estimate_captain_percent(ownership_percent, rank):
-        # Rough heuristic: captaincy is a fraction of ownership, higher for top ranks.
         # Keep weights conservative so top-5 doesn't approach 100%.
         weights = [0.40, 0.32, 0.26, 0.22, 0.18]
         weight = weights[rank - 1] if 1 <= rank <= len(weights) else 0.35
