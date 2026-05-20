@@ -970,7 +970,6 @@ with left_col:
         height=150,
     )
 
-    # Fixtures burger: title (top), button (middle), matches (bottom)
     st.markdown(f"""
     <div class="glass-box matches-header-box">
         <div class="matches-section-title">Fixtures & Results GW{gw}</div>
