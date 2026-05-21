@@ -874,7 +874,6 @@ with left_col:
     <div style='height: 32px;'></div>
     """, unsafe_allow_html=True)
     btn1, btn2 = st.columns(2)
-    # Inject style targeting the button row that was just created
     st.markdown("""
     <style>
     /* Target the inner button row specifically — override Streamlit inline gap */
