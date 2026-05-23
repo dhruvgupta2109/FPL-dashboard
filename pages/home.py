@@ -851,7 +851,6 @@ if not matches_html:
 left_col, right_col = st.columns([1, 2])
 
 with left_col:
-    # Glass card — flat bottom so the Streamlit buttons attach flush below
     st.markdown(f"""
     <div class="glass-box points-box">
         <div class="team-name">{team_name}</div>
