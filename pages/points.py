@@ -268,7 +268,6 @@ pts_series_json = json.dumps(pts_series)
 avg_series_json = json.dumps(avg_series)
 rank_series_json = json.dumps(rank_series)
 
-# ── Pitch layout ────────────────────────────────────────────────────────────
 rows = {1: [], 2: [], 3: [], 4: []}
 if is_guest:
     rows[1] = [{"position": 1}]
