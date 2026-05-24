@@ -847,7 +847,6 @@ for fx in fixtures:
 if not matches_html:
     matches_html = '<div class="score-sub" style="text-align:center;padding:10px;">No fixtures found for this gameweek.</div>'
 
-# ── Layout: two columns — left (fixed 400px), right (leagues) ────────────────
 left_col, right_col = st.columns([1, 2])
 
 with left_col:
