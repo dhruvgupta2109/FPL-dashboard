@@ -342,7 +342,6 @@ for pos in [1, 2, 3, 4]:
 
 bench_cards = "".join(player_card(p, is_sub=True) for p in subs)
 
-# Determine how many GW labels to show (avoid crowding)
 tick_step = max(1, len(gw_labels) // 10)
 
 components.html(f"""<!DOCTYPE html>
