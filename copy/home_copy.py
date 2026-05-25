@@ -302,6 +302,9 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
 
 .rank-label { opacity: 0.7; font-size: 12px; }
 .rank-arrow { font-size: 20px; font-weight: 700; margin-left: auto; }
+.rank-arrow.up { color: #00ff87 !important; }
+.rank-arrow.down { color: #f64646 !important; }
+.rank-arrow.flat { color: #999 !important; }
 
 .total-managers {
     font-size: 12px;
@@ -771,11 +774,14 @@ def build_league_html(leagues, show_total=False, max_count=5):
             total_line = f'<div class="total-managers">Total managers: {fmt(size)}</div>'
 
         if cur and prev:
-            if cur < prev:   arrow, ac, default_cc = "↑", "#00ff87", "#00ff87"
-            elif cur > prev: arrow, ac, default_cc = "↓", "#f64646", "#f64646"
-            else:            arrow, ac, default_cc = "—", "#999",    "#999"
+            if cur < prev:
+                arrow, arrow_class, default_cc = "↑", "up", "#00ff87"
+            elif cur > prev:
+                arrow, arrow_class, default_cc = "↓", "down", "#f64646"
+            else:
+                arrow, arrow_class, default_cc = "—", "flat", "#999"
         else:
-            arrow, ac, default_cc = "—", "#999", "#999"
+            arrow, arrow_class, default_cc = "—", "flat", "#999"
 
         cur_rank_class, cur_size = rank_style(cur)
         prev_rank_class, prev_size = rank_style(prev)
@@ -798,7 +804,7 @@ def build_league_html(leagues, show_total=False, max_count=5):
             f'<span class="{cur_rank_class}" style="{cur_style}">{fmt(cur)}</span>'
             f'<span class="rank-label">Previous:</span>'
             f'<span class="{prev_rank_class}" style="{prev_style}">{fmt(prev)}</span>'
-            f'<span class="rank-arrow" style="color:{ac};">{arrow}</span>'
+            f'<span class="rank-arrow {arrow_class}">{arrow}</span>'
             f'</div>{total_line}</div>'
         )
     return html
