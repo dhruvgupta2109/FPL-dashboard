@@ -552,10 +552,13 @@ def fmt(rank):
     return f"{rank:,}" if rank is not None else "N/A"
 
 def rank_style(rank):
-    if rank == 1: return "#FFD700", "900", "20px"
-    if rank == 2: return "#C0C0C0", "900", "20px"
-    if rank == 3: return "#CD7F32", "900", "20px"
-    return None, "700", "16px"
+    if rank == 1:
+        return "rank-gold", "20px"
+    if rank == 2:
+        return "rank-silver", "20px"
+    if rank == 3:
+        return "rank-bronze", "20px"
+    return "", "16px"
 
 def parse_deadline(dt_str):
     if not dt_str:
@@ -774,17 +777,27 @@ def build_league_html(leagues, show_total=False, max_count=5):
         else:
             arrow, ac, default_cc = "—", "#999", "#999"
 
-        cc, cw, cs = rank_style(cur);   cc = cc or default_cc
-        pc, pw, ps = rank_style(prev);  pc = pc or "#999"
+        cur_rank_class, cur_size = rank_style(cur)
+        prev_rank_class, prev_size = rank_style(prev)
+        cur_style = (
+            f"font-weight:900;font-size:{cur_size};font-family:sans-serif;"
+            if cur_rank_class
+            else f"color:{default_cc};font-weight:700;font-size:{cur_size};font-family:sans-serif;"
+        )
+        prev_style = (
+            f"font-weight:900;font-size:{prev_size};font-family:sans-serif;"
+            if prev_rank_class
+            else f"color:#999;font-weight:700;font-size:{prev_size};font-family:sans-serif;"
+        )
 
         html += (
             f'<div class="league-row">'
             f'<div class="league-name">{name}</div>'
             f'<div class="league-ranks">'
             f'<span class="rank-label">Current:</span>'
-            f'<span style="color:{cc};font-weight:{cw};font-size:{cs};font-family:sans-serif;">{fmt(cur)}</span>'
+            f'<span class="{cur_rank_class}" style="{cur_style}">{fmt(cur)}</span>'
             f'<span class="rank-label">Previous:</span>'
-            f'<span style="color:{pc};font-weight:{pw};font-size:{ps};font-family:sans-serif;">{fmt(prev)}</span>'
+            f'<span class="{prev_rank_class}" style="{prev_style}">{fmt(prev)}</span>'
             f'<span class="rank-arrow" style="color:{ac};">{arrow}</span>'
             f'</div>{total_line}</div>'
         )

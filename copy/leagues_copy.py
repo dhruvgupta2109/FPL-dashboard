@@ -332,6 +332,16 @@ def movement_class(current_rank, last_rank):
 	return "move-flat"
 
 
+def rank_medal_class(rank):
+	if rank == 1:
+		return "rank-gold"
+	if rank == 2:
+		return "rank-silver"
+	if rank == 3:
+		return "rank-bronze"
+	return ""
+
+
 def scoring_label(scoring_code):
 	mapping = {
 		"c": "Classic",
@@ -473,11 +483,13 @@ for index, payload in enumerate(league_payloads, start=1):
 
 			row_class = "league-standings-row is-you" if is_you else "league-standings-row"
 			move_class = movement_class(member.get("rank"), member.get("last_rank"))
+			rank_class = rank_medal_class(member.get("rank"))
+			last_rank_class = rank_medal_class(member.get("last_rank"))
 			rows_markup.append(
 				(
 					f'<div class="{row_class}">'
-					f'<div class="league-cell rank">{fmt(member.get("rank"))}</div>'
-					f'<div class="league-cell last-rank">{fmt(member.get("last_rank"))}</div>'
+					f'<div class="league-cell rank {rank_class}">{fmt(member.get("rank"))}</div>'
+					f'<div class="league-cell last-rank {last_rank_class}">{fmt(member.get("last_rank"))}</div>'
 					f'<div class="league-cell move {move_class}">{movement_symbol(member.get("rank"), member.get("last_rank"))}</div>'
 					f'<div class="league-cell team">{html.escape(team_name)}</div>'
 					f'<div class="league-cell manager">{html.escape(manager_name)}</div>'
