@@ -12,7 +12,6 @@ NAV_ITEMS = [
 ]
 
 THEME_STATE_KEY = "fpl_dark_mode"
-THEME_TOGGLE_KEY = "fpl_dark_mode_toggle"
 
 
 THEMES = {
@@ -53,16 +52,12 @@ def init_theme_state():
     if THEME_STATE_KEY not in st.session_state:
         st.session_state[THEME_STATE_KEY] = bool(st.session_state.get("dark_mode", False))
 
-    if (
-        THEME_TOGGLE_KEY not in st.session_state
-        or st.session_state[THEME_TOGGLE_KEY] != st.session_state[THEME_STATE_KEY]
-    ):
-        st.session_state[THEME_TOGGLE_KEY] = st.session_state[THEME_STATE_KEY]
-
-
-def sync_theme_from_toggle():
-    st.session_state[THEME_STATE_KEY] = bool(st.session_state.get(THEME_TOGGLE_KEY, False))
     st.session_state["dark_mode"] = st.session_state[THEME_STATE_KEY]
+
+
+def set_theme_preference(is_dark):
+    st.session_state[THEME_STATE_KEY] = bool(is_dark)
+    st.session_state["dark_mode"] = bool(is_dark)
 
 
 def theme_is_dark():
@@ -165,19 +160,42 @@ div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) {{
     border-color: var(--fpl-panel-border) !important;
 }}
 
-div[data-testid="stToggle"] {{
+div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) div[data-testid="stCheckbox"],
+div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) div[data-testid="stToggle"] {{
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    min-height: 36px !important;
+    min-height: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }}
 
-div[data-testid="stToggle"] label {{
+div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) div[data-testid="stCheckbox"] label,
+div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) div[data-testid="stToggle"] label {{
+    display: flex !important;
+    align-items: center !important;
     gap: 6px !important;
     margin: 0 !important;
+    padding: 0 !important;
     font-size: 12px !important;
     font-weight: 800 !important;
+    line-height: 1 !important;
     color: var(--fpl-text) !important;
+}}
+
+div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) div[data-testid="stCheckbox"] label > div,
+div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) div[data-testid="stToggle"] label > div,
+div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) div[data-testid="stWidgetLabel"] {{
+    display: flex !important;
+    align-items: center !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}}
+
+div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) div[data-testid="stWidgetLabel"] p {{
+    line-height: 1 !important;
+    margin: 0 !important;
 }}
 </style>
 """,
@@ -192,9 +210,11 @@ def render_top_nav():
 /* Top nav row */
 div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) {
     margin: 0 0 14px 0 !important;
-    padding: 8px 10px !important;
+    padding: 4px 10px !important;
     gap: 10px !important;
-    border-radius: 18px !important;
+    min-height: 46px !important;
+    align-items: center !important;
+    border-radius: 16px !important;
     background: rgba(14, 10, 28, 0.55) !important;
     border: 1px solid rgba(255,255,255,0.18) !important;
     backdrop-filter: blur(16px) !important;
@@ -203,12 +223,14 @@ div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) {
 
 div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) > div[data-testid="stColumn"] {
     padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
 }
 
 div[data-testid="stPageLink"] > a {
     display: block !important;
     text-align: center !important;
-    padding: 8px 12px !important;
+    padding: 6px 12px !important;
     border-radius: 999px !important;
     background: rgba(255,255,255,0.08) !important;
     border: 1px solid rgba(255,255,255,0.16) !important;
@@ -234,14 +256,15 @@ div[data-testid="stPageLink"] > a[aria-current="page"] {
 
 @media (max-width: 768px) {
     div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) {
-        padding: 8px 8px !important;
+        padding: 4px 8px !important;
         gap: 6px !important;
+        min-height: 42px !important;
         border-radius: 14px !important;
     }
 
     div[data-testid="stPageLink"] > a {
         font-size: 11.5px !important;
-        padding: 7px 9px !important;
+        padding: 6px 9px !important;
     }
 }
 </style>
@@ -258,4 +281,8 @@ div[data-testid="stPageLink"] > a[aria-current="page"] {
             st.page_link(path, label=label)
 
     with nav_cols[-1]:
-        st.toggle("Dark", key=THEME_TOGGLE_KEY, on_change=sync_theme_from_toggle)
+        selected_dark = st.toggle("Dark", value=theme_is_dark())
+
+    if selected_dark != theme_is_dark():
+        set_theme_preference(selected_dark)
+        st.rerun()
