@@ -223,14 +223,18 @@ def build_maps(bootstrap):
 
 
 def apply_plotly_layout(fig, height=380, title=None):
+    title_spec = None
+    if title:
+        title_spec = dict(text=title, x=0.5, xanchor="center", y=0.98, yanchor="top")
+
     fig.update_layout(
         height=height,
-        title=title,
-        margin=dict(l=34, r=18, t=48 if title else 16, b=44),
+        title=title_spec,
+        margin=dict(l=70, r=24, t=74 if title else 18, b=56),
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
         font=dict(color="white"),
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        legend=dict(orientation="h", yanchor="bottom", y=1.12, xanchor="right", x=1),
     )
     fig.update_xaxes(
         gridcolor="rgba(255,255,255,0.12)",
