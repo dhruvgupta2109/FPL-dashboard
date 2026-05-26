@@ -516,8 +516,8 @@ const pts = {pts_series_json};
 const avgPts = {avg_series_json};
 const ranks = {rank_series_json};
 const deltas = {deltas_json};
-const deltaColors = deltas.map((val) => (val < 0 ? 'rgba(255,79,109,0.7)' : 'rgba(0,255,135,0.6)'));
-const deltaBorders = deltas.map((val) => (val < 0 ? '#ff4f6d' : '#00ff87'));
+const deltaColors = deltas.map((val) => (val < 0 ? 'rgba(245, 0, 0, 0.8)' : 'rgba(7, 255, 172, 1)'));
+const deltaBorders = deltas.map((val) => (val < 0 ? 'rgba(245, 0, 0, 0.8)' : 'rgba(7, 255, 172, 1)'));
 const zeroMarkers = deltas.map((val) => (val === 0 ? 0 : null));
 
 const axisCommon = {{
@@ -551,6 +551,33 @@ const baseOpts = {{
             }}
         }},
         y: {{ ticks: {{ color: 'rgba(255,255,255,0.7)' }}, grid: {{ color: 'rgba(255,255,255,0.08)' }} }}
+    }}
+}};
+
+const deltaLegendOpts = {{
+    ...baseOpts,
+    plugins: {{
+        ...baseOpts.plugins,
+        legend: {{
+            ...baseOpts.plugins.legend,
+            labels: {{
+                ...baseOpts.plugins.legend.labels,
+                generateLabels: function(chart) {{
+                    const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                    return labels.map((label) => {{
+                        if (label.text === 'Delta') {{
+                            label.fillStyle = 'rgba(7, 255, 172, 1)';
+                            label.strokeStyle = 'rgba(7, 255, 172, 1)';
+                        }}
+                        if (label.text === 'Zero') {{
+                            label.fillStyle = '#ffb500';
+                            label.strokeStyle = '#ffb500';
+                        }}
+                        return label;
+                    }});
+                }}
+            }}
+        }}
     }}
 }};
 
@@ -609,7 +636,7 @@ new Chart(document.getElementById('deltaChart'), {{
             }}
         ]
     }},
-    options: baseOpts
+    options: deltaLegendOpts
 }});
 </script>
 </body>
