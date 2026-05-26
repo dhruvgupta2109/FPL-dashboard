@@ -423,17 +423,34 @@ with manager_tab:
         st.info("Connect a manager to see personal performance charts.")
     else:
         manager_id = st.session_state.manager_id
+        
+        # Week range selector
+        gw_labels = list(range(gw_start, gw_end + 1))
+        max_weeks_available = len(gw_labels)
+        if "manager_weeks" not in st.session_state:
+            st.session_state.manager_weeks = min(10, max_weeks_available)
+        
+        weeks_to_show = st.slider(
+            "Show last N weeks",
+            min_value=1,
+            max_value=max_weeks_available,
+            value=st.session_state.manager_weeks,
+            key="manager_weeks",
+        )
+        
+        # Filter data based on weeks selection
+        week_start_idx = max(0, len(gw_labels) - weeks_to_show)
+        gw_labels_filtered = gw_labels[week_start_idx:]
+        
         avg_by_event = {
             e.get("id"): (e.get("average_entry_score") or 0)
             for e in events
             if e.get("id") is not None
         }
-
-        gw_labels = list(range(gw_start, gw_end + 1))
         pts_series = []
         rank_series = []
         avg_series = []
-        for event_id in gw_labels:
+        for event_id in gw_labels_filtered:
             history = fetch_entry_event_entry_history(manager_id, event_id)
             pts_series.append(to_int(history.get("points", history.get("total_points", 0))))
             rank_series.append(
@@ -458,7 +475,7 @@ with manager_tab:
         points_fig = go.Figure()
         points_fig.add_trace(
             go.Scatter(
-                x=gw_labels,
+                x=gw_labels_filtered,
                 y=pts_series,
                 mode="lines+markers",
                 name="My points",
@@ -467,7 +484,7 @@ with manager_tab:
         )
         points_fig.add_trace(
             go.Scatter(
-                x=gw_labels,
+                x=gw_labels_filtered,
                 y=avg_series,
                 mode="lines",
                 name="GW average",
@@ -480,7 +497,7 @@ with manager_tab:
         rank_fig = go.Figure()
         rank_fig.add_trace(
             go.Scatter(
-                x=gw_labels,
+                x=gw_labels_filtered,
                 y=rank_series,
                 mode="lines+markers",
                 name="Overall rank",
@@ -494,7 +511,7 @@ with manager_tab:
         delta_fig = go.Figure()
         delta_fig.add_trace(
             go.Bar(
-                x=gw_labels,
+                x=gw_labels_filtered,
                 y=[p - a for p, a in zip(pts_series, avg_series)],
                 marker_color="#05f0ff",
             )
@@ -505,29 +522,35 @@ with manager_tab:
         history = st.session_state.get("history", {}) or {}
         chips = history.get("chips", []) if isinstance(history, dict) else []
         if chips:
-            chip_map = {
-                "bboost": "Bench Boost",
-                "freehit": "Free Hit",
-                "3xc": "Triple Captain",
-                "wildcard": "Wildcard",
-            }
-            chip_rows = [
-                {"chip": chip_map.get(c.get("name"), c.get("name", "Chip")), "gw": c.get("event")}
-                for c in chips
-            ]
-            chip_fig = go.Figure()
-            chip_fig.add_trace(
-                go.Scatter(
-                    x=[c["gw"] for c in chip_rows],
-                    y=[c["chip"] for c in chip_rows],
-                    mode="markers+text",
-                    text=[c["chip"] for c in chip_rows],
-                    textposition="top center",
-                    marker=dict(color="#ff4f6d", size=10),
+            # Filter chips to selected week range
+            chips_filtered = [c for c in chips if gw_start + week_start_idx <= c.get("event", 0) <= gw_end]
+            
+            if chips_filtered:
+                chip_map = {
+                    "bboost": "Bench Boost",
+                    "freehit": "Free Hit",
+                    "3xc": "Triple Captain",
+                    "wildcard": "Wildcard",
+                }
+                chip_rows = [
+                    {"chip": chip_map.get(c.get("name"), c.get("name", "Chip")), "gw": c.get("event")}
+                    for c in chips_filtered
+                ]
+                chip_fig = go.Figure()
+                chip_fig.add_trace(
+                    go.Scatter(
+                        x=[c["gw"] for c in chip_rows],
+                        y=[c["chip"] for c in chip_rows],
+                        mode="markers+text",
+                        text=[c["chip"] for c in chip_rows],
+                        textposition="top center",
+                        marker=dict(color="#ff4f6d", size=10),
+                    )
                 )
-            )
-            apply_plotly_layout(chip_fig, title="Chip usage timeline", height=260)
-            render_plotly(chip_fig, key="mgr_chips", height=260)
+                apply_plotly_layout(chip_fig, title="Chip usage timeline", height=260)
+                render_plotly(chip_fig, key="mgr_chips", height=260)
+            else:
+                st.caption("No chip usage data in selected week range.")
         else:
             st.caption("No chip usage data available.")
 
