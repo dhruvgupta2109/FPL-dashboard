@@ -471,32 +471,6 @@ with manager_tab:
         deltas = [p - a for p, a in zip(pts_series, avg_series)]
         deltas_json = json.dumps(deltas)
 
-        history = st.session_state.get("history", {}) or {}
-        chips = history.get("chips", []) if isinstance(history, dict) else []
-        chip_map = {
-            "bboost": "Bench Boost",
-            "freehit": "Free Hit",
-            "3xc": "Triple Captain",
-            "wildcard": "Wildcard",
-        }
-        chip_rows = []
-        for chip in chips:
-            chip_name = chip_map.get(chip.get("name"), chip.get("name", "Chip"))
-            chip_gw = chip.get("event")
-            if chip_gw in gw_labels:
-                chip_rows.append({"chip": chip_name, "gw": chip_gw})
-
-        chip_labels = sorted({row["chip"] for row in chip_rows})
-        chip_index = {name: idx for idx, name in enumerate(chip_labels)}
-        chip_points = [
-            {"x": row["gw"], "y": chip_index[row["chip"]]}
-            for row in chip_rows
-            if row["chip"] in chip_index
-        ]
-
-        chip_labels_json = json.dumps(chip_labels)
-        chip_points_json = json.dumps(chip_points)
-
         components.html(
             f"""
 <!DOCTYPE html>
@@ -533,10 +507,6 @@ body {{ background: transparent; color: white; font-family: sans-serif; padding:
         <div class="chart-subtitle">Points Delta vs Avg</div>
         <canvas id="deltaChart"></canvas>
     </div>
-    <div class="chart-block">
-        <div class="chart-subtitle">Chip Usage Timeline</div>
-        <canvas id="chipsChart"></canvas>
-    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -546,11 +516,9 @@ const pts = {pts_series_json};
 const avgPts = {avg_series_json};
 const ranks = {rank_series_json};
 const deltas = {deltas_json};
-const chipLabels = {chip_labels_json};
-const chipPoints = {chip_points_json};
-const maxGw = gwLabels.length ? gwLabels[gwLabels.length - 1] : 1;
 const deltaColors = deltas.map((val) => (val < 0 ? 'rgba(255,79,109,0.7)' : 'rgba(0,255,135,0.6)'));
 const deltaBorders = deltas.map((val) => (val < 0 ? '#ff4f6d' : '#00ff87'));
+const zeroMarkers = deltas.map((val) => (val === 0 ? 0 : null));
 
 const axisCommon = {{
     ticks: {{
@@ -573,7 +541,15 @@ const baseOpts = {{
         legend: {{ labels: {{ color: 'rgba(255,255,255,0.9)', boxWidth: 12, font: {{ size: 11 }} }} }}
     }},
     scales: {{
-        x: axisCommon,
+        x: {{
+            ...axisCommon,
+            title: {{
+                display: true,
+                text: 'GW',
+                color: 'rgba(255,255,255,0.7)',
+                font: {{ size: 11, weight: '600' }}
+            }}
+        }},
         y: {{ ticks: {{ color: 'rgba(255,255,255,0.7)' }}, grid: {{ color: 'rgba(255,255,255,0.08)' }} }}
     }}
 }};
@@ -615,57 +591,31 @@ new Chart(document.getElementById('deltaChart'), {{
                 backgroundColor: deltaColors,
                 borderColor: deltaBorders,
                 borderWidth: 1
+            }},
+            {{
+                type: 'line',
+                label: 'Zero',
+                data: zeroMarkers,
+                borderColor: '#ffb500',
+                borderWidth: 0,
+                pointRadius: 11,
+                pointHoverRadius: 11,
+                pointStyle: 'line',
+                pointBorderColor: '#ffb500',
+                pointBackgroundColor: '#ffb500',
+                pointBorderWidth: 2,
+                showLine: false,
+                fill: false
             }}
         ]
     }},
     options: baseOpts
 }});
-
-const chipOpts = JSON.parse(JSON.stringify(baseOpts));
-chipOpts.scales.y = {{
-    min: chipLabels.length ? -0.5 : 0,
-    max: chipLabels.length ? chipLabels.length - 0.5 : 1,
-    ticks: {{
-        color: 'rgba(255,255,255,0.7)',
-        autoSkip: false,
-        callback: function(value) {{
-            return chipLabels[value] ?? '';
-        }}
-    }},
-    grid: {{ color: 'rgba(255,255,255,0.08)' }}
-}};
-chipOpts.scales.x = {{
-    type: 'linear',
-    min: 1,
-    max: maxGw,
-    ticks: {{ color: 'rgba(255,255,255,0.7)' }},
-    grid: {{ color: 'rgba(255,255,255,0.08)' }}
-}};
-chipOpts.plugins.legend.display = chipLabels.length > 0;
-
-new Chart(document.getElementById('chipsChart'), {{
-    type: 'scatter',
-    data: {{
-        datasets: [
-            {{
-                label: chipLabels.length ? 'Chips' : 'No chip data',
-                data: chipPoints,
-                borderColor: '#ff4f6d',
-                backgroundColor: 'rgba(255,79,109,0.6)',
-                pointRadius: 7,
-                pointHoverRadius: 9,
-                showLine: false,
-                clip: false
-            }}
-        ]
-    }},
-    options: chipOpts
-}});
 </script>
 </body>
 </html>
 """,
-            height=1150,
+            height=900,
             scrolling=False,
         )
 
