@@ -518,6 +518,7 @@ const ranks = {rank_series_json};
 const deltas = {deltas_json};
 const deltaColors = deltas.map((val) => (val < 0 ? 'rgba(255,79,109,0.7)' : 'rgba(0,255,135,0.6)'));
 const deltaBorders = deltas.map((val) => (val < 0 ? '#ff4f6d' : '#00ff87'));
+const zeroMarkers = deltas.map((val) => (val === 0 ? 0 : null));
 
 const axisCommon = {{
     ticks: {{
@@ -590,6 +591,21 @@ new Chart(document.getElementById('deltaChart'), {{
                 backgroundColor: deltaColors,
                 borderColor: deltaBorders,
                 borderWidth: 1
+            }},
+            {{
+                type: 'line',
+                label: 'Zero',
+                data: zeroMarkers,
+                borderColor: '#ffb500',
+                borderWidth: 0,
+                pointRadius: 11,
+                pointHoverRadius: 11,
+                pointStyle: 'line',
+                pointBorderColor: '#ffb500',
+                pointBackgroundColor: '#ffb500',
+                pointBorderWidth: 2,
+                showLine: false,
+                fill: false
             }}
         ]
     }},
