@@ -15,7 +15,6 @@
     align-items: flex-start;
 }
 
-/* ── Left column — fixed 400 px wide ─────────────────── */
 .left-col {
     width: 400px;
     flex-shrink: 0;
