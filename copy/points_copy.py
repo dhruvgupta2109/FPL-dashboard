@@ -231,7 +231,6 @@ for chip in all_chips:
 
     chips_data.append({"name": display_name, "status": card_status, "status_text": status_text})
 
-# ── GW series data ──────────────────────────────────────────────────────────
 @st.cache_data(ttl=3600)
 def fetch_entry_event_entry_history(entry_id, event_id):
     ctx = ssl.create_default_context(cafile=certifi.where())
