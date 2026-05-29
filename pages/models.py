@@ -3,6 +3,7 @@ import html
 import json
 import ssl
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -459,6 +460,29 @@ def load_fallback_jersey():
     return ""
 
 
+@st.cache_data(ttl=3600, show_spinner=False)
+def _url_ok(url: str) -> bool:
+    """Return True if a HEAD request to *url* returns HTTP 200."""
+    if not url:
+        return False
+    try:
+        ctx = ssl.create_default_context(cafile=certifi.where())
+        req = urllib.request.Request(url, method="HEAD")
+        with urllib.request.urlopen(req, context=ctx, timeout=3) as r:
+            return r.getcode() == 200
+    except Exception:
+        return False
+
+
+def _prewarm_photo_urls(player_list):
+    """Concurrently HEAD-check all photo URLs to warm the cache in one shot."""
+    urls = list({photo_url(p) for p in player_list if photo_url(p)})
+    if not urls:
+        return
+    with ThreadPoolExecutor(max_workers=min(len(urls), 20)) as pool:
+        pool.map(_url_ok, urls)
+
+
 def fetch_json(url):
     ctx = ssl.create_default_context(cafile=certifi.where())
     with urllib.request.urlopen(url, context=ctx, timeout=10) as r:
@@ -702,6 +726,11 @@ for pick in squad_picks:
 team_name = entry_data.get("player_first_name", "") + " " + entry_data.get("player_last_name", "")
 fpl_team_name = entry_data.get("name", "My Team")
 
+# ── Pre-warm photo URL cache for squad + top candidates ───────────────────────
+_prewarm_photo_urls(
+    [sp["player"] for sp in squad_players]
+    + sorted(all_players, key=lambda p: player_scores.get(p["id"], 0), reverse=True)[:50]
+)
 
 # ─── RENDER ────────────────────────────────────────────────────────────────────
 
@@ -759,17 +788,11 @@ st.markdown("")
 def image_tag(src, css_class=""):
     fallback = load_fallback_jersey()
     class_attr = f' class="{css_class}"' if css_class else ""
-    if src:
-        if fallback:
-            # Try the real player photo; swap to jersey on load failure
-            fb_js = fallback.replace("\\", "\\\\").replace("'", "\\'")
-            return f'<img{class_attr} src="{esc(src)}" onerror="this.onerror=null;this.src=\'{fb_js}\'">'
-        else:
-            return f'<img{class_attr} src="{esc(src)}">'
-    elif fallback:
-        return f'<img{class_attr} src="{esc(fallback)}">'
-    else:
+    actual_src = src if _url_ok(src) else ""
+    display_src = actual_src or fallback
+    if not display_src:
         return ""
+    return f'<img{class_attr} src="{esc(display_src)}">'
 
 
 def render_fdr_pills(fixtures):
