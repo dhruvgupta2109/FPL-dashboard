@@ -79,6 +79,9 @@ def render_theme_styles():
     --fpl-soft-bg: {theme["soft_bg"]};
     --fpl-button-bg: {theme["button_bg"]};
     --fpl-button-hover: {theme["button_hover"]};
+    --fpl-glass-bg: linear-gradient(135deg, rgba(255,255,255,0.17), rgba(255,255,255,0.07));
+    --fpl-glass-bg-strong: linear-gradient(135deg, rgba(255,255,255,0.23), rgba(255,255,255,0.10));
+    --fpl-glass-highlight: inset 0 1px 0 rgba(255,255,255,0.24);
     --fpl-text: {theme["text"]};
     --fpl-text-muted: {theme["text_muted"]};
     --fpl-shadow: {theme["shadow"]};
@@ -127,16 +130,85 @@ div[data-testid="stMetric"] {{
 }}
 
 div[data-testid="stButton"] > button,
+div[data-testid="stDownloadButton"] > button,
+div[data-testid="stFormSubmitButton"] button,
+div[data-testid="stLinkButton"] > a,
+div[data-testid="stPageLink"] > a,
 div[data-baseweb="select"] > div,
 div[role="radiogroup"] label {{
-    background: var(--fpl-button-bg) !important;
+    background: var(--fpl-glass-bg) !important;
     border-color: var(--fpl-panel-border) !important;
     color: var(--fpl-text) !important;
+    backdrop-filter: blur(18px) saturate(145%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(145%) !important;
+    box-shadow: var(--fpl-glass-highlight), 0 8px 22px rgba(0,0,0,0.20) !important;
 }}
 
-div[data-testid="stButton"] > button:hover {{
-    background: var(--fpl-button-hover) !important;
+div[data-testid="stButton"] > button:hover,
+div[data-testid="stDownloadButton"] > button:hover,
+div[data-testid="stFormSubmitButton"] button:hover,
+div[data-testid="stLinkButton"] > a:hover,
+div[data-testid="stPageLink"] > a:hover {{
+    background: var(--fpl-glass-bg-strong) !important;
     color: var(--fpl-text) !important;
+    border-color: rgba(255,255,255,0.38) !important;
+    box-shadow: var(--fpl-glass-highlight), 0 10px 26px rgba(0,0,0,0.24) !important;
+}}
+
+div[data-testid="stButton"] > button:disabled,
+div[data-testid="stDownloadButton"] > button:disabled,
+div[data-testid="stFormSubmitButton"] button:disabled {{
+    background: linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035)) !important;
+    border-color: rgba(255,255,255,0.11) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.10) !important;
+}}
+
+div[data-testid="stPageLink"] > a[aria-current="page"] {{
+    background: linear-gradient(135deg, rgba(0,255,135,0.30), rgba(116,245,192,0.12)) !important;
+    border-color: rgba(0,255,135,0.48) !important;
+    color: var(--fpl-text) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 0 8px 22px rgba(0,0,0,0.20) !important;
+}}
+
+/* Glass tables: Streamlit grids, native HTML tables, and league standings. */
+div[data-testid="stDataFrame"],
+div[data-testid="stDataEditor"],
+div[data-testid="stTable"],
+.league-standings-wrap,
+table {{
+    background: var(--fpl-glass-bg) !important;
+    border: 1px solid var(--fpl-panel-border) !important;
+    border-radius: 14px !important;
+    backdrop-filter: blur(18px) saturate(145%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(145%) !important;
+    box-shadow: var(--fpl-glass-highlight), 0 12px 30px rgba(0,0,0,0.24) !important;
+}}
+
+div[data-testid="stDataFrame"] > div,
+div[data-testid="stDataEditor"] > div,
+div[data-testid="stTable"] > div {{
+    background: transparent !important;
+}}
+
+div[data-testid="stDataFrame"] [role="columnheader"],
+div[data-testid="stDataFrame"] [role="rowheader"],
+div[data-testid="stDataEditor"] [role="columnheader"],
+div[data-testid="stDataEditor"] [role="rowheader"],
+table thead,
+.league-standings-header {{
+    background: linear-gradient(135deg, rgba(255,255,255,0.20), rgba(255,255,255,0.09)) !important;
+}}
+
+div[data-testid="stDataFrame"] [role="gridcell"],
+div[data-testid="stDataEditor"] [role="gridcell"],
+table tbody tr,
+.league-standings-row {{
+    background: rgba(255,255,255,0.045) !important;
+}}
+
+table tbody tr:hover,
+.league-standings-row:hover {{
+    background: rgba(255,255,255,0.10) !important;
 }}
 
 .panel-sub,
