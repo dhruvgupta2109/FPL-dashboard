@@ -120,9 +120,17 @@ header[data-testid="stHeader"] {
     padding: 0 !important;
 }
 
+.st-key-login_shell div[data-testid="column"]:has(.login-hero),
+.st-key-login_shell div[data-testid="column"]:has(.login-hero) > div[data-testid="stVerticalBlock"],
+.st-key-login_shell div[data-testid="column"]:has(.login-hero) div[data-testid="stElementContainer"],
+.st-key-login_shell div[data-testid="column"]:has(.login-hero) div[data-testid="stMarkdownContainer"] {
+    height: 100%;
+}
+
 .login-hero {
     position: relative;
     display: flex;
+    height: 100%;
     min-height: 550px;
     box-sizing: border-box;
     flex-direction: column;
@@ -479,7 +487,7 @@ with st.container(key="login_shell"):
             """
             <section class="login-hero">
                 <div>
-                    <h1>Every point. <span>One view.</span></h1>
+                    <h1>Your team. <span>In real time.</span></h1>
                     <p class="hero-copy">
                         Connect your Fantasy Premier League team and turn matchday
                         chaos into a clear, live view of your squad's performance.
