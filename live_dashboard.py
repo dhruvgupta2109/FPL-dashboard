@@ -48,7 +48,7 @@ st.markdown("""
     --violet: #5b2b82;
     --green: #00ff87;
     --green-deep: #00c96b;
-    --paper: #fbf9ff;
+    --paper: #ebe4f0;
     --muted: #756b7b;
 }
 
@@ -243,7 +243,9 @@ header[data-testid="stHeader"] {
     box-sizing: border-box;
     justify-content: center;
     padding: clamp(2.2rem, 4vw, 4rem) clamp(2rem, 4vw, 3.6rem);
-    background: var(--paper);
+    background:
+        radial-gradient(circle at 100% 0%, rgba(91,43,130,0.10), transparent 18rem),
+        linear-gradient(155deg, #f0eaf4 0%, var(--paper) 100%);
 }
 
 .st-key-login_form_panel > div[data-testid="stVerticalBlock"] {
@@ -370,7 +372,7 @@ header[data-testid="stHeader"] {
 .st-key-login_form_panel div[data-testid="stExpander"] details {
     border: 0 !important;
     border-radius: 11px !important;
-    background: #f2edf5 !important;
+    background: #e1d7e7 !important;
 }
 
 .st-key-login_form_panel div[data-testid="stExpander"] summary {
