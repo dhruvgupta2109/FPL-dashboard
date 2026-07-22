@@ -95,7 +95,7 @@ header[data-testid="stHeader"] {
 }
 
 .stMainBlockContainer {
-    max-width: 1120px !important;
+    max-width: 1240px !important;
     padding: clamp(2.5rem, 7vh, 6rem) 2rem 2.5rem !important;
 }
 
@@ -155,7 +155,7 @@ header[data-testid="stHeader"] {
 }
 
 .login-hero h1 {
-    max-width: 9ch;
+    max-width: none;
     margin: 0;
     color: white;
     font-size: clamp(2.55rem, 4.2vw, 4.6rem);
@@ -168,12 +168,23 @@ header[data-testid="stHeader"] {
     color: var(--green);
 }
 
+.headline-nowrap {
+    display: inline-block;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+}
+
 .hero-copy {
     max-width: 31rem;
     margin: 1.35rem 0 0;
     color: rgba(255,255,255,0.72);
     font-size: 1.03rem;
     line-height: 1.65;
+}
+
+.hero-copy + .hero-copy {
+    margin-top: 0.8rem;
 }
 
 .feature-row {
@@ -487,10 +498,29 @@ with st.container(key="login_shell"):
             """
             <section class="login-hero">
                 <div>
-                    <h1>Your team. <span>In real time.</span></h1>
+                    <h1>Your team.<br><span class="headline-nowrap">In&nbsp;real&nbsp;time.</span></h1>
+                    <br>
                     <p class="hero-copy">
-                        Connect your Fantasy Premier League team and turn matchday
-                        chaos into a clear, live view of your squad's performance.
+                        Follow every gameweek as it happens, with live scoring for
+                        your active eleven, captain and vice captain multipliers,
+                        bench returns, and the wider context of average and highest scores.
+                    </p>
+                    <br>
+                    <p class="hero-copy">
+                        Go deeper with fixture statistics, player performance profiles,
+                        value comparisons, team strength analysis, and upcoming
+                        fixture difficulty.
+                    </p>
+                    <br>
+                    <p class="hero-copy">
+                        Review how your points and overall rank evolve across the
+                        season, then see exactly where you stand in every mini league.
+                    </p>
+                    <br>
+                    <p class="hero-copy">
+                        Use the Transfer Lab to assess your current squad, discover
+                        standout picks in every position, and explore recommendations
+                        shaped by performance and value.
                     </p>
                 </div>
                 <div class="feature-row" aria-label="Features">
