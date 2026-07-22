@@ -224,7 +224,7 @@ header[data-testid="stHeader"] {
 
 .form-intro h2 {
     margin: 0 0 0.55rem;
-    color: var(--ink);
+    color: #ffffff;
     font-size: clamp(1.7rem, 2.4vw, 2.15rem);
     font-weight: 850;
     letter-spacing: -0.035em;
@@ -232,7 +232,7 @@ header[data-testid="stHeader"] {
 
 .form-intro p {
     margin: 0;
-    color: var(--muted);
+    color: rgba(255,255,255,0.62);
     font-size: 0.94rem;
     line-height: 1.55;
 }
@@ -244,8 +244,8 @@ header[data-testid="stHeader"] {
     justify-content: center;
     padding: clamp(2.2rem, 4vw, 4rem) clamp(2rem, 4vw, 3.6rem);
     background:
-        radial-gradient(circle at 100% 0%, rgba(91,43,130,0.10), transparent 18rem),
-        linear-gradient(155deg, #f0eaf4 0%, var(--paper) 100%);
+        radial-gradient(circle at 100% 0%, rgba(119,45,130,0.24), transparent 20rem),
+        linear-gradient(155deg, #251a31 0%, #17151f 100%);
 }
 
 .st-key-login_form_panel > div[data-testid="stVerticalBlock"] {
@@ -266,23 +266,23 @@ header[data-testid="stHeader"] {
 }
 
 .st-key-manager_id_input label p {
-    color: #342a39 !important;
+    color: rgba(255,255,255,0.88) !important;
     font-size: 0.83rem !important;
     font-weight: 800 !important;
 }
 
 .st-key-manager_id_input [data-baseweb="input"] {
     min-height: 3.3rem;
-    border: 1px solid #ddd5e2 !important;
+    border: 1px solid rgba(255,255,255,0.16) !important;
     border-radius: 13px !important;
-    background: #211b25 !important;
-    box-shadow: 0 1px 2px rgba(22,5,29,0.03);
+    background: rgba(7,5,12,0.52) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
     transition: border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .st-key-manager_id_input [data-baseweb="input"]:focus-within {
-    border-color: #7b2b83 !important;
-    box-shadow: 0 0 0 4px rgba(91,43,130,0.10) !important;
+    border-color: rgba(0,255,135,0.65) !important;
+    box-shadow: 0 0 0 4px rgba(0,255,135,0.10) !important;
 }
 
 .st-key-manager_id_input input {
@@ -329,7 +329,7 @@ header[data-testid="stHeader"] {
     align-items: center;
     gap: 0.75rem;
     margin: 0.1rem 0;
-    color: #9b929f;
+    color: rgba(255,255,255,0.42);
     font-size: 0.7rem;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -341,15 +341,15 @@ header[data-testid="stHeader"] {
     content: "";
     flex: 1;
     height: 1px;
-    background: #e6e0e8;
+    background: rgba(255,255,255,0.12);
 }
 
 .st-key-guest_login button {
     min-height: 3.15rem;
-    border: 1px solid #ddd5e2 !important;
+    border: 1px solid rgba(255,255,255,0.18) !important;
     border-radius: 13px !important;
     background: transparent !important;
-    color: #4a3c50 !important;
+    color: rgba(255,255,255,0.82) !important;
     font-size: 0.88rem !important;
     font-weight: 800 !important;
     box-shadow: none !important;
@@ -357,9 +357,9 @@ header[data-testid="stHeader"] {
 }
 
 .st-key-guest_login button:hover {
-    border-color: #bdaec4 !important;
-    background: #f2edf5 !important;
-    color: var(--plum) !important;
+    border-color: rgba(255,255,255,0.32) !important;
+    background: rgba(255,255,255,0.08) !important;
+    color: #ffffff !important;
     transform: translateY(-1px);
 }
 
@@ -370,35 +370,39 @@ header[data-testid="stHeader"] {
 }
 
 .st-key-login_form_panel div[data-testid="stExpander"] details {
-    border: 0 !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
     border-radius: 11px !important;
-    background: #e1d7e7 !important;
+    background: rgba(255,255,255,0.055) !important;
 }
 
 .st-key-login_form_panel div[data-testid="stExpander"] summary {
-    color: #594c5f !important;
+    color: rgba(255,255,255,0.70) !important;
     font-size: 0.79rem !important;
     font-weight: 750 !important;
 }
 
+.st-key-login_form_panel div[data-testid="stExpander"] summary p {
+    color: inherit !important;
+}
+
 .st-key-login_form_panel div[data-testid="stExpander"] summary:hover {
-    color: var(--plum) !important;
+    color: #ffffff !important;
 }
 
 .st-key-login_form_panel [data-testid="stExpanderDetails"] {
-    color: #62566a !important;
+    color: rgba(255,255,255,0.64) !important;
     font-size: 0.78rem !important;
     line-height: 1.5;
 }
 
 .st-key-login_form_panel [data-testid="stExpanderDetails"] p,
 .st-key-login_form_panel [data-testid="stExpanderDetails"] li {
-    color: #62566a !important;
+    color: rgba(255,255,255,0.64) !important;
 }
 
 .st-key-login_form_panel [data-testid="stExpanderDetails"] code {
-    color: var(--plum) !important;
-    background: rgba(55,0,60,0.08) !important;
+    color: var(--green) !important;
+    background: rgba(0,255,135,0.08) !important;
 }
 
 .stAlert {
