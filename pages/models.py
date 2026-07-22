@@ -650,7 +650,7 @@ for p in all_players:
 
 # ─── Manager data ─────────────────────────────────────────────────────────────
 if is_guest:
-    st.markdown("### ⚽ Transfer Lab")
+    st.markdown("### Transfer Lab")
     st.info("Connect your team on the Dashboard to use the Transfer Lab. Guest mode shows a demo view.")
     st.stop()
 
