@@ -131,7 +131,7 @@ header[data-testid="stHeader"] {
     position: relative;
     display: flex;
     height: 100%;
-    min-height: 550px;
+    min-height: 700px;
     box-sizing: border-box;
     flex-direction: column;
     justify-content: space-between;
@@ -228,7 +228,7 @@ header[data-testid="stHeader"] {
 
 .st-key-login_form_panel {
     display: flex;
-    min-height: 550px;
+    min-height: 700px;
     box-sizing: border-box;
     justify-content: center;
     padding: clamp(2.2rem, 4vw, 4rem) clamp(2rem, 4vw, 3.6rem);
@@ -536,7 +536,7 @@ with st.container(key="login_shell"):
                 key="guest_login",
             )
 
-            with st.expander("Where can I find my Manager ID?", expanded=False):
+            with st.expander("Where can I find my Manager ID?", expanded=True):
                 st.markdown(
                     """
                     Open your team on the FPL website and select **Points**.
