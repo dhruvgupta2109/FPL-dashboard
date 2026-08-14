@@ -545,7 +545,7 @@ with st.container(key="login_shell"):
                 """
                 <div class="form-intro">
                     <h2>Connect your team</h2>
-                    <p>Enter your FPL Manager ID.</p>
+                    <p>Getting ready for new season.</p>
                 </div>
                 """,
                 unsafe_allow_html=True,
