@@ -545,7 +545,8 @@ with st.container(key="login_shell"):
                 """
                 <div class="form-intro">
                     <h2>Connect your team</h2>
-                    <p>Getting ready for new season.</p>
+                    <p>Getting ready for new season.</p><br>
+                    <p>Continue as guest for now.</p>
                 </div>
                 """,
                 unsafe_allow_html=True,
