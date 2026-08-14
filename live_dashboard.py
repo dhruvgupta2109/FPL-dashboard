@@ -104,7 +104,7 @@ header[data-testid="stHeader"] {
     border: 1px solid rgba(255,255,255,0.20);
     border-radius: 28px;
     background: rgba(255,255,255,0.96);
-    box-shadow: 0 30px 80px rgba(10, 0, 20, 0.42);
+    box-shadow: 0 30px 80px rgba(9, 0, 20, 0.42);
 }
 
 .st-key-login_shell > div[data-testid="stVerticalBlock"] {
