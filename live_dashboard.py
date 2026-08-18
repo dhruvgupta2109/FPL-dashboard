@@ -577,7 +577,7 @@ with st.container(key="login_shell"):
                 st.markdown(
                     """
                     Open your team on the FPL website and select **Points**.
-                    In a URL like `fantasy.premierleague.com/entry/1637221/event/26`,
+                    In a URL like: `fantasy.premierleague.com/entry/1637221/event/26`,
                     your Manager ID is `1637221`.
                     """
                 )
