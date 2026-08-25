@@ -313,7 +313,6 @@ header[data-testid="stHeader"] {
 /* The nav horizontal block: pulled out of flow and pinned to the top */
 div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) {
     position: fixed !important;
-    top: 8px !important;
     top: 60px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
@@ -333,12 +332,11 @@ div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) {
     box-shadow: 0 4px 24px rgba(0,0,0,0.35) !important;
 }
 
-/* Push page content down so it isn't hidden behind the fixed nav */
 /* Push page content down so it clears the fixed nav (bar bottom ~106px + 20px gap) */
 div[data-testid="stAppViewBlockContainer"],
 .stMainBlockContainer {
     padding-top: 70px !important;
-    padding-top: 126px !important;
+    padding-top: 80px !important;
 }
 
 div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) > div[data-testid="stColumn"] {
@@ -376,7 +374,6 @@ div[data-testid="stPageLink"] > a[aria-current="page"] {
 
 @media (max-width: 768px) {
     div[data-testid="stHorizontalBlock"]:has(div[data-testid="stPageLink"]) {
-        top: 6px !important;
         top: 60px !important;
         width: calc(100% - 16px) !important;
         padding: 4px 8px !important;
@@ -391,7 +388,6 @@ div[data-testid="stPageLink"] > a[aria-current="page"] {
     }
 
     .stMainBlockContainer {
-        padding-top: 60px !important;
         padding-top: 126px !important;
     }
 }
