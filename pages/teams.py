@@ -427,6 +427,10 @@ div[role="radiogroup"] label {
     color: rgba(255,255,255,0.72);
 }
 
+.column-section-gap {
+    height: 20px;
+}
+
 @media (max-width: 900px) {
     .metric-grid,
     .data-grid {
@@ -935,8 +939,14 @@ def positions_sparkline_svg(values, labels):
     if not values:
         return ""
 
+    # A one-gameweek series is rendered as two points so the line is visible.
+    # Keep its labels aligned with those duplicated points for the SVG tooltips.
+    labels = list(labels)
     if len(values) == 1:
         values = [values[0], values[0]]
+        labels = [labels[0], labels[0]] if labels else ["", ""]
+    elif len(labels) < len(values):
+        labels.extend([""] * (len(values) - len(labels)))
 
     width = 560
     height = 160
@@ -1417,14 +1427,15 @@ with right:
     compare_b_id = team_name_to_id[compare_b_name]
     st.markdown(clean_html(comparison_html(compare_a_id, compare_b_id)), unsafe_allow_html=True)
 
-st.markdown("<style>div[data-testid='column'] { margin-top: -1rem; }</style>", unsafe_allow_html=True)
-
-wide_left, wide_right = st.columns(2, gap="large")
-
-with wide_left:
+# Continue each lower panel in its existing column. A separate `st.columns` row
+# would align both panels below the taller snapshot, leaving a large gap above
+# the Forecast panel.
+with left:
+    st.markdown("<div class='column-section-gap'></div>", unsafe_allow_html=True)
     st.markdown(clean_html(prediction_inputs_html(selected_team_id)), unsafe_allow_html=True)
 
-with wide_right:
+with right:
+    st.markdown("<div class='column-section-gap'></div>", unsafe_allow_html=True)
     st.markdown("**Forecast**")
     forecast_team_name = st.selectbox(
         "Forecast team",
