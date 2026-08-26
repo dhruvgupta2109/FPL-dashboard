@@ -4,6 +4,8 @@ import json
 import urllib.request
 import ssl
 import certifi
+import os
+import tempfile
 from datetime import datetime, timezone
 from nav import render_top_nav
 
@@ -280,6 +282,139 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
     color: white;
 }
 
+.league-reorder-heading {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 800;
+    opacity: 0.82;
+}
+
+.league-reorder-name {
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+[data-testid="stPopover"] [data-testid="stCheckbox"] label > div:first-child {
+    border-radius: 50% !important;
+    border-color: #00ff87 !important;
+    background: #00ff87 !important;
+}
+
+[data-testid="stPopover"] [data-testid="stCheckbox"] input:disabled + div {
+    opacity: 1 !important;
+}
+
+.league-show-indicator {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255,255,255,0.28);
+    border-radius: 50%;
+    box-sizing: border-box;
+    color: #10251a;
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.league-show-indicator.visible {
+    border-color: #00ff87;
+    background: #00ff87;
+}
+
+.league-show-indicator.hidden {
+    background: transparent;
+}
+
+.st-key-see_leagues,
+[data-testid="stPopover"] {
+    margin-top: 8px !important;
+}
+
+.st-key-league_actions {
+    margin-top: 8px !important;
+}
+
+.st-key-league_actions > div[data-testid="stHorizontalBlock"] {
+    align-items: stretch !important;
+}
+
+.st-key-league_actions .st-key-see_leagues,
+.st-key-league_actions [data-testid="stPopover"] {
+    margin-top: 10px !important;
+    height: 44px !important;
+}
+
+.st-key-league_actions .st-key-see_leagues button,
+.st-key-league_actions [data-testid="stPopover"] button {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    padding: 10px 14px !important;
+    line-height: 22px !important;
+    border-radius: 0 !important;
+    border: 1px solid rgba(0,255,135,0.55) !important;
+    background: linear-gradient(135deg, rgba(0,255,135,0.22), rgba(255,255,255,0.12)) !important;
+    color: #00ff87 !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+}
+
+.st-key-league_actions .st-key-see_leagues button:hover,
+.st-key-league_actions .st-key-see_leagues button:focus,
+.st-key-league_actions .st-key-see_leagues button:active,
+.st-key-league_actions [data-testid="stPopover"] button:hover,
+.st-key-league_actions [data-testid="stPopover"] button:focus,
+.st-key-league_actions [data-testid="stPopover"] button:active {
+    background: linear-gradient(135deg, rgba(0,255,135,0.30), rgba(255,255,255,0.18)) !important;
+    color: #ffffff !important;
+    border-radius: 0 !important;
+    border-color: rgba(0,255,135,0.55) !important;
+}
+
+.st-key-league_actions [data-testid="stPopover"] button {
+    background: linear-gradient(135deg, rgba(0,255,135,0.30), rgba(255,255,255,0.18)) !important;
+    color: #ffffff !important;
+}
+
+.st-key-league_actions [data-testid="stPopover"] {
+    border-radius: 0 !important;
+}
+
+.st-key-league_actions [data-testid="stPopover"] > div,
+.st-key-league_actions [data-testid="stPopover"] > div > button {
+    width: 100% !important;
+    border-radius: 0 !important;
+}
+
+.st-key-league_actions .st-key-see_leagues button,
+.st-key-league_actions .st-key-see_leagues button:hover,
+.st-key-league_actions .st-key-see_leagues button:focus,
+.st-key-league_actions .st-key-see_leagues button:active {
+    border-radius: 0 !important;
+}
+
+[data-testid="stPopover"] [data-testid="stSelectbox"] label {
+    display: block !important;
+    font-size: 11px !important;
+    opacity: 0.7;
+}
+
+[data-testid="stPopover"] [data-testid="stCheckbox"] label p {
+    white-space: nowrap !important;
+}
+
+.league-reorder-public-heading {
+    margin-top: 22px;
+}
+
 .league-row {
     padding: 12px;
     margin-bottom: 8px;
@@ -533,6 +668,121 @@ def fetch_leagues(manager_id):
         (mini_leagues if l.get("league_type") == "x" else public_leagues).append(ld)
     return mini_leagues, public_leagues
 
+
+LEAGUE_ORDER_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "league_orders.json")
+
+
+def load_league_order(manager_id, mini_leagues, public_leagues):
+    try:
+        with open(LEAGUE_ORDER_FILE, encoding="utf-8") as order_file:
+            saved = json.load(order_file).get(str(manager_id), {})
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        saved = {}
+
+    def apply_order(leagues, key):
+        by_id = {str(league.get("id")): league for league in leagues}
+        ordered_ids = [str(league_id) for league_id in saved.get(key, [])]
+        ordered = [by_id.pop(league_id) for league_id in ordered_ids if league_id in by_id]
+        return ordered + list(by_id.values())
+
+    return apply_order(mini_leagues, "mini"), apply_order(public_leagues, "public")
+
+
+def save_league_order(manager_id, mini_leagues, public_leagues):
+    os.makedirs(os.path.dirname(LEAGUE_ORDER_FILE), exist_ok=True)
+    try:
+        with open(LEAGUE_ORDER_FILE, encoding="utf-8") as order_file:
+            all_orders = json.load(order_file)
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        all_orders = {}
+
+    all_orders[str(manager_id)] = {
+        "mini": [league.get("id") for league in mini_leagues],
+        "public": [league.get("id") for league in public_leagues],
+    }
+    temp_path = None
+    try:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=os.path.dirname(LEAGUE_ORDER_FILE), delete=False) as temp_file:
+            json.dump(all_orders, temp_file, indent=2)
+            temp_path = temp_file.name
+        os.replace(temp_path, LEAGUE_ORDER_FILE)
+    finally:
+        if temp_path and os.path.exists(temp_path):
+            os.remove(temp_path)
+
+
+def render_reorder_popover(manager_id, mini_leagues, public_leagues):
+    popover_version = st.session_state.get("league_reorder_version", 0)
+    with st.popover(
+        "Reorder Leagues",
+        use_container_width=True,
+        width="large",
+        disabled=is_guest,
+        key=f"league_reorder_popover_{popover_version}",
+    ):
+        st.markdown('<div class="league-reorder-heading">Choose up to 4 and set their order</div>', unsafe_allow_html=True)
+        choices = []
+        for section_index, (title, leagues, order_key, max_visible) in enumerate(
+            (
+                ("Mini Leagues", mini_leagues, "mini", 4),
+                ("Public Leagues", public_leagues, "public", 5),
+            )
+        ):
+            heading_class = "league-reorder-heading"
+            if section_index == 1:
+                heading_class += " league-reorder-public-heading"
+            st.markdown(f'<div class="{heading_class}">{title}</div>', unsafe_allow_html=True)
+            for index, league in enumerate(leagues):
+                league_id = league.get("id")
+                choice_key = f"league_show_{order_key}_{league_id}"
+                rank_key = f"league_rank_v2_{order_key}_{league_id}"
+                row_col, show_col, rank_col = st.columns([5, 1.8, 1.6], gap="small", vertical_alignment="center")
+                with row_col:
+                    st.markdown(f'<div class="league-reorder-name">{league.get("name", "Unknown")}</div>', unsafe_allow_html=True)
+                with show_col:
+                    indicator_state = "visible" if index < max_visible else "hidden"
+                    indicator_mark = "&#10003;" if index < max_visible else ""
+                    indicator_title = "Shown" if index < max_visible else "Hidden"
+                    st.markdown(
+                        f'<div class="league-show-indicator {indicator_state}" title="{indicator_title}">{indicator_mark}</div>',
+                        unsafe_allow_html=True,
+                    )
+                with rank_col:
+                    rank_options = ["-"] + list(range(1, max_visible + 1))
+                    st.selectbox(
+                        "Rank",
+                        options=rank_options,
+                        index=index + 1 if index < max_visible else 0,
+                        key=rank_key,
+                        label_visibility="visible",
+                    )
+                choices.append((order_key, league, choice_key, rank_key, index))
+
+        if st.button("Apply order", key="apply_league_order", type="primary", use_container_width=True):
+            for order_key, leagues in (("mini", mini_leagues), ("public", public_leagues)):
+                category_choices = [choice for choice in choices if choice[0] == order_key]
+                selected = [choice for choice in category_choices if st.session_state.get(choice[3]) != "-"]
+                if len(selected) > 4:
+                    st.error(f"Select no more than 4 {order_key} leagues.")
+                    break
+            else:
+                for order_key, leagues in (("mini", mini_leagues), ("public", public_leagues)):
+                    category_choices = [choice for choice in choices if choice[0] == order_key]
+                    selected = [choice for choice in category_choices if st.session_state.get(choice[3]) != "-"]
+                    selected.sort(
+                        key=lambda choice: (
+                            st.session_state[choice[3]] == "-",
+                            st.session_state[choice[3]] if st.session_state[choice[3]] != "-" else 5,
+                            choice[4],
+                        )
+                    )
+                    selected_ids = {choice[1].get("id") for choice in selected}
+                    leagues[:] = [choice[1] for choice in selected]
+                    leagues.extend(choice[1] for choice in category_choices if choice[1].get("id") not in selected_ids)
+                save_league_order(manager_id, mini_leagues, public_leagues)
+                st.session_state.league_reorder_version = popover_version + 1
+                st.rerun()
+
 def get_league_size(league_id):
     if not league_id:
         return None
@@ -731,6 +981,7 @@ else:
     starters = picks[:11]
     gw_points = sum(live_pts.get(p["element"], 0) * p.get("multiplier", 1) for p in starters)
     mini_leagues, public_leagues = fetch_leagues(manager_id)
+    mini_leagues, public_leagues = load_league_order(manager_id, mini_leagues, public_leagues)
 
 next_gw, next_deadline = next_deadline_info(events, gw)
 
@@ -745,7 +996,7 @@ team_map = {
 fixtures = fetch_fixtures(gw)
 captained_top5, subbed_in_top5, subbed_out_top5 = build_top5_trends(bootstrap_data, gw)
 
-def build_league_html(leagues, show_total=False, max_count=5):
+def build_league_html(leagues, show_total=False, max_count=4):
     html = ""
     if not leagues:
         return (
@@ -806,8 +1057,8 @@ def build_league_html(leagues, show_total=False, max_count=5):
         )
     return html
 
-mini_html   = build_league_html(mini_leagues,   show_total=True)
-public_html = build_league_html(public_leagues, show_total=False)
+mini_html   = build_league_html(mini_leagues,   show_total=True, max_count=4)
+public_html = build_league_html(public_leagues, show_total=False, max_count=5)
 
 matches_html = ""
 for fx in fixtures:
@@ -1001,8 +1252,13 @@ with right_col:
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("See All League Details", key="see_leagues", use_container_width=True, disabled=is_guest):
-        st.switch_page("pages/leagues.py")
+    with st.container(key="league_actions"):
+        action_col1, action_col2 = st.columns(2)
+        with action_col1:
+            if st.button("See All League Details", key="see_leagues", use_container_width=True, disabled=is_guest):
+                st.switch_page("pages/leagues.py")
+        with action_col2:
+            render_reorder_popover(manager_id, mini_leagues, public_leagues)
 
     st.markdown(f"""
     <div class="glass-box leagues-body-box">
