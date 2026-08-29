@@ -26,6 +26,20 @@ Live app: https://fplmanager.streamlit.app
 - FPL public API (fantasy.premierleague.com)
 - Chart.js (embedded in Streamlit components)
 
+## Screenshots
+
+> Only a couple of screens are up for now — more will be added as the season progresses.
+
+**Connect your team**
+Enter your Manager ID (or continue as a guest) to link your squad.
+
+![Connect your team](screenshots/connect-team.png)
+
+**Home dashboard**
+Live points, mini league standings, upcoming fixtures, and gameweek highlights like most captained/subbed players.
+
+![Home dashboard](screenshots/home-dashboard.png)
+
 ## Project Structure
 
 ```text
