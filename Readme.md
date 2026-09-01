@@ -34,7 +34,7 @@ Live app: https://fplmanager.streamlit.app
   <tr>
     <td width="50%" valign="top" align="left">
       <b>Connect your team</b><br>
-      Enter your Manager ID (or continue as a guest) to link your squad. Once connected, you can view all your team details including your active XI, bench, transfers, and current gameweek status at a glance.<br><br>
+      Enter your Manager ID (or continue as a guest) to link your squad. Once connected, you can view all your team details including your stats.<br><br>
       <img src="screenshots/connect-team.png" width="100%" alt="Connect your team">
     </td>
     <td width="50%" valign="top" align="left">
