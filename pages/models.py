@@ -1041,7 +1041,7 @@ st.markdown("")
 
 # ── Top picks by position ─────────────────────────────────────────────────────
 with st.container(border=True):
-    st.markdown("#### 🏆 Top Picks by Position")
+    st.markdown("#### Top Picks by Position")
     st.caption("Best available players not in your squad, ranked by our composite model score.")
 
     position_filter = st.radio(
