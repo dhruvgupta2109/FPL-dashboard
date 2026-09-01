@@ -892,7 +892,7 @@ def find_replacements(out_sp, available_cash, counts, excluded_ids, count=3):
 
 
 with st.container(border=True):
-    st.markdown("#### 🔄 Recommended Transfers")
+    st.markdown("#### Recommended Transfers")
     st.caption(
         "Suggestions use model score, budget, position, squad ownership, and the three-player club limit."
     )
