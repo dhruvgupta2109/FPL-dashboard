@@ -56,6 +56,42 @@ Live app: https://fplmanager.streamlit.app
       <img src="screenshots/Graphs.png" width="100%" alt="Graphs">
     </td>
   </tr>
+  <tr>
+    <td width="50%" valign="top" align="left">
+      <b>Points page</b><br>
+      Detailed breakdown of your current gameweek points with a visual pitch layout showing your active XI and bench. See which players earned bonus points, clean sheets, and other scoring events.<br><br>
+      <img src="screenshots/Points.png" width="100%" alt="Points page">
+    </td>
+    <td width="50%" valign="top" align="left">
+      <b>Players page</b><br>
+      Explore all FPL players with detailed stats, form history, and selection percentages. Filter by position, team, and performance metrics to find your next transfer targets.<br><br><br>
+      <img src="screenshots/Players.png" width="100%" alt="Players page">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="left">
+      <b>Teams page</b><br>
+      View team-level statistics including strength of schedule, average player value, and team form. Useful for planning your transfers and understanding team performance trends.<br><br>
+      <img src="screenshots/Teams.png" width="100%" alt="Teams page">
+    </td>
+    <td width="50%" valign="top" align="left">
+      <b>Leagues page</b><br>
+      Manage your mini leagues and track standings against your friends. See head-to-head comparisons and reorder your leagues for easier navigation.<br><br><br>
+      <img src="screenshots/leagues.png" width="100%" alt="Leagues page">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="left">
+      <b>Models page</b><br>
+      Advanced analytics and predictive models to help forecast player performance and optimize your squad selection strategy.<br><br>
+      <img src="screenshots/Models.png" width="100%" alt="Models page">
+    </td>
+    <td width="50%" valign="top" align="left">
+      <b>Reordering leagues</b><br>
+      Easily customize the order of your mini leagues for quick access to the ones that matter most to you.<br><br>
+      <img src="screenshots/Reordering leagues.png" width="100%" alt="Reordering leagues">
+    </td>
+  </tr>
 </table>
 
 
