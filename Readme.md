@@ -30,25 +30,33 @@ Live app: https://fplmanager.streamlit.app
 
 > Only a couple of screens are up for now — more will be added as the season progresses.
 
-**Connect your team**
-Enter your Manager ID (or continue as a guest) to link your squad.
-
-<img src="screenshots/connect-team.png" width="500" alt="Connect your team">
-
-**Home dashboard**
-Live points, mini league standings, upcoming fixtures, and gameweek highlights like most captained/subbed players.
-
-<img src="screenshots/home-dashboard.png" width="500" alt="Home dashboard">
-
-**Fixtures page**
-=Current gameweek matches with detailed stats and player.
-
-<img src="screenshots/Fixtures.png" width="500" alt="Fixtures page">
-
-**Graphs**
-Track your and players individual performance trends with visual charts showing your points vs gameweek average and your overall rank progression throughout the season.
-
-<img src="screenshots/Graphs.png" width="500" alt="Graphs">
+<table border="1" cellpadding="10" cellspacing="0">
+  <tr>
+    <td width="50%" valign="top" align="left">
+      <b>Connect your team</b><br>
+      Enter your Manager ID (or continue as a guest) to link your squad. Once connected, you can view all your team details including your active XI, bench, transfers, and current gameweek status at a glance.<br><br>
+      <img src="screenshots/connect-team.png" width="100%" alt="Connect your team">
+    </td>
+    <td width="50%" valign="top" align="left">
+      <b>Home dashboard</b><br>
+      Live points, mini league standings, upcoming fixtures, and gameweek highlights like most captained/subbed players.
+	  <br><br>
+      <img src="screenshots/home-dashboard.png" width="100%" alt="Home dashboard">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="left">
+      <b>Fixtures page</b><br>
+      View current gameweek matches with detailed stats including team form, player injuries, and key performance indicators. See fixture difficulty ratings and upcoming matchups to inform your captain and transfer decisions.<br><br>
+      <img src="screenshots/Fixtures.png" width="100%" alt="Fixtures page">
+    </td>
+    <td width="50%" valign="top" align="left">
+      <b>Graphs</b><br>
+      Track your and players individual performance trends with visual charts showing your points vs gameweek average and your overall rank progression throughout the season.<br><br>
+      <img src="screenshots/Graphs.png" width="100%" alt="Graphs">
+    </td>
+  </tr>
+</table>
 
 
 ## Project Structure
