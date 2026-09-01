@@ -43,12 +43,12 @@ Live points, mini league standings, upcoming fixtures, and gameweek highlights l
 **Fixtures page**
 =Current gameweek matches with detailed stats and player.
 
-<img src="screenshots/fixtures.png" width="500" alt="Fixtures page">
+<img src="screenshots/Fixtures.png" width="500" alt="Fixtures page">
 
 **Graphs**
 Track your and players individual performance trends with visual charts showing your points vs gameweek average and your overall rank progression throughout the season.
 
-<img src="screenshots/graphs.png" width="500" alt="Graphs">
+<img src="screenshots/Graphs.png" width="500" alt="Graphs">
 
 
 ## Project Structure
