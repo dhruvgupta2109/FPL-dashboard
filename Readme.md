@@ -33,12 +33,12 @@ Live app: https://fplmanager.streamlit.app
 **Connect your team**
 Enter your Manager ID (or continue as a guest) to link your squad.
 
-![Connect your team](screenshots/connect-team.png)
+<img src="screenshots/connect-team.png" width="500" alt="Connect your team">
 
 **Home dashboard**
 Live points, mini league standings, upcoming fixtures, and gameweek highlights like most captained/subbed players.
 
-![Home dashboard](screenshots/home-dashboard.png)
+<img src="screenshots/home-dashboard.png" width="500" alt="Home dashboard">
 
 ## Project Structure
 
