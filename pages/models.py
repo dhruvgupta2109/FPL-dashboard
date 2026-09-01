@@ -809,7 +809,7 @@ def render_fdr_pills(fixtures):
 
 
 with st.container(border=True):
-    st.markdown("#### 📋 Current Squad")
+    st.markdown("#### Current Squad")
     st.caption("Your 15-man squad scored by our model. Lower scores = potential transfer-out candidates.")
 
     sorted_squad = sorted(
