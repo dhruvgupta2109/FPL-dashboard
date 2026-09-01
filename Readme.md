@@ -40,6 +40,12 @@ Live points, mini league standings, upcoming fixtures, and gameweek highlights l
 
 <img src="screenshots/home-dashboard.png" width="500" alt="Home dashboard">
 
+**Fixtures page**
+=Current gameweek matches with detailed stats and player.
+
+<img src="screenshots/fixtures.png" width="500" alt="Fixtures page">
+
+
 ## Project Structure
 
 ```text
