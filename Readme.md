@@ -41,7 +41,7 @@ Live app: https://fplmanager.streamlit.app
       <b>Home dashboard</b><br>
       Live points, mini league standings, upcoming fixtures, and gameweek highlights like most captained/subbed players.
 	  <br><br>
-      <img src="screenshots/home-dashboard.png" width="100%" alt="Home dashboard">
+      <img src="screenshots/home-dashboard2.png" width="100%" alt="Home dashboard">
     </td>
   </tr>
   <tr>
@@ -60,7 +60,7 @@ Live app: https://fplmanager.streamlit.app
     <td width="50%" valign="top" align="left">
       <b>Points page</b><br>
       Detailed breakdown of your current gameweek points with a visual pitch layout showing your active XI and bench. See which players earned bonus points, clean sheets, and other scoring events.<br><br>
-      <img src="screenshots/Points.png" width="100%" alt="Points page">
+      <img src="screenshots/Points2.png" width="100%" alt="Points page">
     </td>
     <td width="50%" valign="top" align="left">
       <b>Players page</b><br>
@@ -77,7 +77,7 @@ Live app: https://fplmanager.streamlit.app
     <td width="50%" valign="top" align="left">
       <b>Leagues page</b><br>
       Manage your mini leagues and track standings against your friends. See head-to-head comparisons and reorder your leagues for easier navigation.<br><br><br>
-      <img src="screenshots/leagues.png" width="100%" alt="Leagues page">
+      <img src="screenshots/leagues2.png" width="100%" alt="Leagues page">
     </td>
   </tr>
   <tr>
